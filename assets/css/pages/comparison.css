@@ -1,0 +1,58 @@
+.swiper-button-prev-comparison,
+.swiper-button-next-comparison {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0px 0px 0px 0.5px rgba(0, 0, 0, 0.16);
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+  position: absolute;
+  top: 158px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  cursor: pointer;
+}
+.swiper-button-prev-comparison {
+  left: -24px;
+}
+.page-container-body .swiper-button-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.swiper-button-next-comparison {
+  right: -24px;
+  transform: rotate(0deg);
+}
+.page-container-body {
+  position: relative;
+}
+.page-container {
+  padding-top: 33px;
+}
+.page-container-title {
+  margin-top: 16px;
+  margin-bottom: 33px;
+  display: flex;
+  justify-content: space-between;
+}
+.page-container-title span {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 8px;
+  margin-left: 12px;
+  font-family: var(--SB_400);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.24px;
+
+  color: #8c959c;
+}
+.page-container-title .main-title {
+  margin-bottom: 0;
+}

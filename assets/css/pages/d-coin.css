@@ -1,0 +1,319 @@
+.d-coin-page {
+  padding-bottom: 120px;
+}
+.d-coin__tab {
+  border-radius: 24px;
+  background: #fafafa;
+  padding: 12px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 50px;
+  margin-bottom: 32px;
+}
+.d-coin__tab-item {
+  padding: 12px;
+  border-radius: 11.619px;
+  background: var(--stroke-style, #eaeaea);
+  width: 266px;
+}
+.d-coin__tab-item p {
+  color: #000;
+  font-family: var(--SB_400);
+  font-size: 14px;
+  font-style: normal;
+  line-height: 12.2px;
+  letter-spacing: -0.174px;
+}
+.d-coin__tab-item div h6 {
+  color: #000;
+  font-family: var(--SB_700);
+  font-size: 24px;
+  font-style: normal;
+  line-height: normal;
+}
+.d-coin__tab-item div {
+  display: flex;
+  gap: 11px;
+  margin-top: 6px;
+}
+.coin-tab_down {
+  display: flex;
+  gap: 20px;
+  width: auto;
+  padding: 11px;
+  padding-right: 24px;
+  align-items: center;
+}
+.coin-tab_down span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #edfcf8;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+}
+.coin-tab_down h5 {
+  color: #000;
+  font-family: var(--SB_400);
+  font-size: 18px;
+  font-style: normal;
+  line-height: 12.2px;
+  letter-spacing: -0.174px;
+}
+.coin-tab__active {
+  background: var(--color_dark_green);
+}
+.coin-tab__active p,
+.coin-tab__active h5,
+.coin-tab__active h6 {
+  color: #fff !important;
+}
+.d-coin__body {
+  display: grid;
+  grid-template-columns: 528px 1fr;
+  grid-gap: 24px;
+  width: 80%;
+  margin-top: 70px;
+  margin-bottom: 120px;
+}
+.d-coin__image {
+  border-radius: 20px;
+  background: #edfcf8;
+  height: 260px;
+  position: relative;
+}
+.d-coin__image img:first-child {
+  position: absolute;
+  top: -74px;
+  left: 40px;
+  width: 300px;
+}
+.d-coin__image img:last-child {
+  width: 136px;
+  transform: rotate(40.421deg);
+  top: 17px;
+  position: absolute;
+  right: 81px;
+}
+
+.d-coin__info h4 {
+  color: #000;
+  font-family: var(--SB_500);
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 48px;
+  margin-bottom: 32px;
+}
+.d-coin__info p {
+  color: #656565;
+  font-family: var(--SB_400);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+.d-coin__table-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 200px;
+  padding: 32px 24px;
+}
+.d-coin__table-header div p {
+  color: #a6a6a6;
+  font-family: var(--SB_500);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 27px */
+}
+.d-coin__table-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 200px;
+  padding: 24px;
+  border-radius: 24px;
+}
+.d-coin__table-row:nth-child(2n + 1) {
+  background: #f6f7f9;
+}
+.d-coin__table-row div p {
+  color: #000;
+  font-family: var(--SB_500);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  display: flex;
+  align-items: center;
+}
+.d-coin__table-row div p span {
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
+}
+.d-coin__table-row div p span svg {
+  width: 38px;
+  height: 37px;
+}
+.di-coin-hours {
+  margin-right: 0;
+  margin-left: 16px;
+}
+.up-history-row div span svg path {
+  fill: #fbc100;
+}
+.d-coin__table-row_mobile {
+  display: none;
+}
+@media (max-width: 576px) {
+  .d-coin__table-header {
+    display: none;
+  }
+  .d-coin__tab-item p {
+    font-size: 8px;
+    font-weight: 400;
+    line-height: 12.2px; /* 152.5% */
+    letter-spacing: -0.174px;
+  }
+  .d-coin__tab-item {
+    width: max-content;
+    padding: 8px 5px;
+    border-radius: 7px;
+    padding-right: 15px;
+  }
+  .d-coin__tab-item div h6 {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    line-height: 15px;
+  }
+  .d-coin__tab-item span img {
+    width: 14px;
+    height: 14px;
+  }
+  .d-coin__tab-item span {
+    height: 14px;
+    display: flex;
+    align-items: center;
+  }
+  .d-coin__tab-item div {
+    margin-top: 0;
+    gap: 3px;
+    align-items: center;
+  }
+  .d-coin__tab {
+    gap: 10px;
+    overflow-x: scroll;
+    border-radius: 0;
+    padding: 7px;
+  }
+  .coin-tab_down span {
+    width: 25px;
+    height: 25px;
+  }
+  .coin-tab_down {
+    height: 100%;
+    gap: 10px;
+  }
+  .coin-tab_down h5 {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 12.2px; /* 87.143% */
+    letter-spacing: -0.174px;
+    text-transform: capitalize;
+  }
+  .coin-tab_down span svg {
+    width: 12px;
+  }
+  .coin-tab_down span {
+    border-radius: 5px;
+  }
+  .d-coin__image {
+    height: 188px;
+  }
+  .d-coin__image img:first-child {
+    width: 170px;
+    left: 20px;
+    top: -44px;
+  }
+  .d-coin__image img:last-child {
+    width: 90px;
+    left: 170px;
+  }
+  .d-coin__body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+    width: 100%;
+    margin-top: 70px;
+    margin-bottom: 0;
+  }
+  .d-coin__info h4 {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 150%;
+    margin-bottom: 24px;
+  }
+  .categories-page-info {
+    width: 100% !important;
+    margin-top: 20px;
+  }
+  .d-coin-title {
+    margin-bottom: 14px !important;
+  }
+  .d-coin__table-row_mobile {
+    padding: 18px;
+    border-radius: 12px;
+    border: 1.5px solid #ebebeb;
+    background: #fff;
+  }
+  .d-coin__table-row {
+    display: none;
+  }
+  .d-coin__table-row_mobile {
+    display: block;
+  }
+  .d-coin__table-row_mobile-header {
+    padding-bottom: 14px;
+    border-bottom: 1px solid #ebebeb;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .d-coin__table-row_mobile-header span {
+    display: flex;
+    gap: 10px;
+    color: #000;
+    font-family: var(--SB_500);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 27px */
+    align-items: center;
+  }
+  .d-coin__table-row_mobile-header span h6 {
+    color: #a6a6a6;
+  }
+  .d-coin__table-row_mobile-body {
+    display: flex;
+    margin-top: 14px;
+    gap: 50px;
+  }
+  .d-coin__table-row_mobile-body div span {
+    color: #a6a6a6;
+    font-family: var(--SB_500);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 21px */
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .d-coin__table-row_mobile-body div span p {
+    color: #000;
+  }
+}

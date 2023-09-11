@@ -1,0 +1,273 @@
+.personal-info {
+  padding-top: 23px;
+  padding-bottom: 98px;
+}
+.profile-page-grid {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-gap: 55px;
+}
+.profile-menu {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 14px;
+  position: sticky;
+  top: 170px;
+}
+.profile-menu a,
+.profile-exit {
+  padding: 14px;
+  font-family: var(--SB_400);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  border-radius: 16px;
+  transition: 0.3s;
+  color: #4d4d4d;
+  cursor: pointer;
+}
+.profile-exit {
+  color: #f5363e;
+}
+.profile-menu a:hover,
+.profile-exit:hover {
+  background: #f9f9fd;
+  color: #09454f;
+}
+.profile-menu-active {
+  background: #f9f9fd;
+  color: #09454f !important;
+}
+/* .profile-menu a:hover svg path,
+.profile-menu-active svg path {
+  fill: #00b2a9 !important;
+} */
+.profile-menu a span,
+.profile-exit span {
+  margin-right: 11px;
+}
+/* .profile-menu a span svg path {
+  fill: #000;
+  transition: 0.3s;
+} */
+
+.personal-info-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  grid-gap: 20px;
+}
+.personal-info-card {
+  border: 1px solid #f2f2fa;
+  border-radius: 8px;
+}
+.personal-info-card-header {
+  padding: 24px 16px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #f2f2fa;
+  max-height: 68px;
+}
+.personal-info-card-header2 {
+  padding: 20px 24px;
+  display: flex;
+  border-bottom: 1px solid #f2f2fa;
+  max-height: 64px;
+}
+.personal-info-card-header h3,
+.personal-info-card-header2 h3 {
+  font-family: var(--SF_500);
+  font-style: normal;
+  font-weight: 510;
+  font-size: 16px;
+  line-height: 24px;
+  color: #020105;
+}
+.personal-info-edit-btn {
+  font-family: var(--SF_400);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  text-decoration-line: underline;
+  color: #00b2a9;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.personal-info-edit-btn span {
+  margin-right: 16px;
+}
+.personal-info-card-body {
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 24px;
+}
+.personal-info-card-body > div > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 40px;
+}
+.personal-info-card-body > div p {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #727474;
+  display: flex;
+}
+.personal-info-card-body > div span {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  margin-left: 8px;
+  color: #020105;
+}
+.personal-info-card-body2 {
+  padding: 24px;
+}
+.personal-info-card-body2 p {
+  font-family: var(--SF_400);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #727474;
+  margin-bottom: 28px;
+}
+.personal-info-card-body2 > span > .sms-title {
+  font-family: var(--SF_400);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+  color: #000000;
+  margin-left: 22px;
+}
+.ant-switch-checked {
+  background-color: #00b2a9;
+}
+
+.personal-info-banner {
+  margin-top: 43px;
+  padding: 24px;
+  background: linear-gradient(90deg, #0f5561 0%, #068f96 100%);
+  border-radius: 16px;
+}
+.personal-info-banner h4 {
+  font-family: var(--SF_500);
+  font-style: normal;
+  font-weight: 510;
+  font-size: 18px;
+  line-height: 150%;
+  color: #ffffff;
+  margin-bottom: 14px;
+}
+.personal-info-banner p {
+  font-family: var(--SF_400);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: #ffffff;
+  margin-bottom: 14px;
+  width: 75%;
+}
+.personal-info-banner a {
+  font-family: var(--SF_300);
+  font-style: normal;
+  font-weight: 274;
+  font-size: 14px;
+  line-height: 150%;
+  text-decoration-line: underline;
+  color: #ffffff;
+}
+.personal-info-save-btn {
+  background: #00b2a9;
+  border-radius: 10px;
+  padding: 0 12px;
+  font-family: var(--SF_500);
+  font-style: normal;
+  font-weight: 510;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.personal-info-colse-btn {
+  border-radius: 10px;
+  font-family: var(--SF_500);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #f5363e;
+  border-radius: 10px;
+  border: 1px solid #f5363e;
+  margin-right: 16px;
+  padding: 0 12px 0 7px;
+}
+.personal-info-save-btn span {
+  margin-right: 17px;
+}
+@media screen and (max-width: 1024px) {
+  .personal-info {
+    padding-bottom: 64px;
+  }
+  .profile-page-grid,
+  .personal-info-grid,
+  .personal-info-card-body {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .main-title h2 {
+    margin-bottom: 24px;
+  }
+  .personal-info-card-header2 {
+    flex-direction: column;
+    max-height: none;
+    align-items: flex-start !important;
+    gap: 16px;
+  }
+  .form-grid-3 {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 16px;
+  }
+  .form-item label {
+    margin-bottom: 0 !important;
+  }
+  .my-orders-card-header {
+    flex-direction: column;
+  }
+  .my-orders-card {
+    padding: 16px;
+    border-radius: 16px;
+  }
+  .my-orders-card-header p {
+    margin-bottom: 18px;
+  }
+  .order-product-body {
+    padding-left: 14px;
+  }
+  .order-product-body p {
+    font-size: 13px;
+  }
+  .my-orders-card-footer {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 16px;
+    margin-top: 10px;
+  }
+}

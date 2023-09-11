@@ -1,0 +1,39 @@
+.discount-carousel {
+  position: relative;
+}
+.swiper-button-prev1,
+.swiper-button-next1 {
+  position: absolute;
+  background-color: blue;
+  border-radius: 50%;
+  top: 40px;
+  z-index: 100;
+  width: 53px;
+  height: 53px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+}
+.discount-carousel .swiper-button-disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+.swiper-button-prev1 {
+  left: -101px;
+}
+.swiper-button-next1 {
+  right: -101px;
+}
+.swiper-button-prev1 span,
+.swiper-button-next1 span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.swiper-button-prev1 span {
+  transform: rotate(180deg);
+}

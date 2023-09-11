@@ -1,0 +1,35 @@
+{
+  "name": "discont",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/i18n": "^7.3.1",
+    "@nuxtjs/svg": "^0.4.0",
+    "ant-design-vue": "^1.7.8",
+    "aos": "^2.3.4",
+    "bootstrap": "^4.6.2",
+    "bootstrap-vue": "^2.22.0",
+    "core-js": "^3.25.3",
+    "nuxt": "^2.15.8",
+    "nuxt-seo-meta": "^2.3.1",
+    "swiper": "^9.0.5",
+    "v-mask": "^2.3.0",
+    "vue": "^2.7.10",
+    "vue-browser-geolocation": "^1.8.0",
+    "vue-ripple-directive": "^2.0.1",
+    "vue-server-renderer": "^2.7.10",
+    "vue-template-compiler": "^2.7.10",
+    "vue-the-mask": "^0.11.1",
+    "vue3-fortune-wheel": "^1.1.37"
+  },
+  "devDependencies": {
+    "@nuxt/image": "^0.7.1"
+  }
+}
