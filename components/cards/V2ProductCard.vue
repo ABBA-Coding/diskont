@@ -10,7 +10,7 @@
     </div>
     <a :href="img?.link">
       <div class="v2-product-card-btns">
-        <div>Купить сейчас</div>
+        <div>{{ $store.state.translations["main.buy-now"] }}</div>
       </div>
     </a>
   </div>

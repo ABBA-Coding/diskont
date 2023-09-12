@@ -218,7 +218,6 @@ export default {
       }),
     ]);
     const showcases = showcasesData?.showcase;
-    console.log(showcases);
     return {
       showcases,
     };

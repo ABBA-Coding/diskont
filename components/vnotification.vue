@@ -5,7 +5,7 @@
     </div>
     <div class="v-notification-body">
       <h4>{{ title }}</h4>
-      <p>Haridlar qilishda davom eting!</p>
+      <p>{{ $store.state.translations["main.keep-shooping"] }}</p>
       <span class="toast-close" @click="$emit('click')">
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -25,8 +25,8 @@
                       : `/stock/${topBar?.promotion?.slug}`
                   )
                 "
-                ><img :src="topBar?.icon_svg" alt="">
-                
+                ><img :src="topBar?.icon_svg" alt="" />
+
                 <!-- <span v-html="topBar?.icon_svg"></span> -->
                 {{ topBar?.name }}</nuxt-link
               >
@@ -92,7 +92,10 @@
           </ul>
         </div>
         <div class="d-flex align-items-center" v-if="$store.state.auth">
-          <div class="coin_btn" @click="$router.push(localePath('/d-coin/about'))">
+          <div
+            class="coin_btn web_coin_btn"
+            @click="$router.push(localePath('/d-coin/about'))"
+          >
             <span><img src="../../assets/images/coin.png" alt="" /></span>
             {{ $store.state.profile?.dicoin?.quantity }}
             {{ $store.state.translations["main.dicoin"] }}
@@ -127,4 +130,10 @@ export default {
   },
 };
 </script>
-<style lang=""></style>
+<style lang="css">
+@media (max-width: 768px) {
+  .web_coin_btn {
+    display: none;
+  }
+}
+</style>

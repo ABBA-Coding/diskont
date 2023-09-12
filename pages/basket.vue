@@ -344,15 +344,15 @@
               >
               <!-- <span
                 ><p>Промокод:</p>
-                <p>0 сум</p></span
+                <p>0 {{ $store.state.translations["main.som"] }}</p></span
               >
               <span
                 ><p>Di Coinlar:</p>
-                <p>0 сум</p></span
+                <p>0 {{ $store.state.translations["main.som"] }}</p></span
               > -->
               <!-- <span
                 ><p>Стоимость доставки:</p>
-                <p>25 000 сум</p></span
+                <p>25 000 {{ $store.state.translations["main.som"] }}</p></span
               > -->
             </div>
             <div class="basket-checkout-btn" @click="checkoutCheck()">

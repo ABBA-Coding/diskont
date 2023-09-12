@@ -3,23 +3,27 @@
     <nuxt-link
       :to="localePath(`/profile/personal-info`)"
       :class="{ 'profile-menu-active': $route.name.includes('profile-personal-info') }"
-      ><span v-html="profileInfo"></span> Shaxsiy ma`lumotlarim
+      ><span v-html="profileInfo"></span>
+      {{ $store.state.translations["profile.personal-info"] }}
     </nuxt-link>
     <nuxt-link
       class="disabled"
       :to="localePath('/profile/my-pay')"
       :class="{ 'profile-menu-active': $route.name.includes('profile-my-pay') }"
-      ><span v-html="piecePay"></span> Bo’lib to’lash</nuxt-link
+      ><span v-html="piecePay"></span>
+      {{ $store.state.translations["profile.pay-installments"] }}</nuxt-link
     >
     <nuxt-link
       :to="localePath('/profile/my-orders')"
       :class="{ 'profile-menu-active': $route.name.includes('profile-my-orders') }"
-      ><span v-html="myOrders"></span>Mening buyurtmalarim</nuxt-link
+      ><span v-html="myOrders"></span
+      >{{ $store.state.translations["profile.my-orders"] }}</nuxt-link
     >
     <nuxt-link
       :to="localePath('/profile/my-comments')"
       :class="{ 'profile-menu-active': $route.name.includes('profile-my-comments') }"
-      ><span v-html="myComments"></span>Mening izohlarim</nuxt-link
+      ><span v-html="myComments"></span
+      >{{ $store.state.translations["main.my-comments"] }}</nuxt-link
     >
     <div class="profile-exit" @click="visibleLogOut = true">
       <span v-html="logout"></span>Chiqish
@@ -75,14 +79,15 @@
             stroke-linejoin="round"
           />
         </svg>
-        <p>Akauntingizdan chiqishni hoxlaysizmi?</p>
-        <span
-          >1500s, when an unknown printer took a galley of type and scrambled it to make a
-          type specimen book. It has survived not only five centuries, but also th</span
-        >
+        <p>{{ $store.state.translations["profile.logout-title"] }}</p>
+        <span>{{ $store.state.translations["profile.logout-text"] }}</span>
       </div>
-      <div class="logout-btn" @click="handleOkSuccess()">Yo’q bekor qilish</div>
-      <div class="logout-btn_2" @click="logOut()">Ha, akauntdan chiqish</div>
+      <div class="logout-btn" @click="handleOkSuccess()">
+        {{ $store.state.translations["profile.logout-btn1"] }}
+      </div>
+      <div class="logout-btn_2" @click="logOut()">
+        {{ $store.state.translations["profile.logout-btn2"] }}
+      </div>
       <template slot="footer"> <h3></h3></template>
     </a-modal>
   </div>

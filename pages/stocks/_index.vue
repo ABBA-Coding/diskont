@@ -5,7 +5,7 @@
         <nuxt-link :to="localePath('/')">{{
           $store.state.translations["main.home-page"]
         }}</nuxt-link>
-        <nuxt-link :to="localePath('/')"> Aksiyalar </nuxt-link>
+        <nuxt-link :to="localePath('/')"> {{$store.state.translations["main.promotions"]}} </nuxt-link>
       </div>
       <div class="stocks-body">
         <div

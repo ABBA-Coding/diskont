@@ -23,7 +23,10 @@
       </div>
     </div>
     <div class="profile-comment-card-body">
-      <p><span>Sizning izohingiz:</span> {{ comment?.comment }}</p>
+      <p>
+        <span>{{ $store.state.translations["profile.your-comment"] }}:</span>
+        {{ comment?.comment }}
+      </p>
     </div>
   </div>
 </template>

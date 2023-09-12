@@ -57,9 +57,12 @@
               </div>
             </div>
             <p class="reviews" v-if="product?.info?.stars != null">
-              ({{ product?.info?.comments.length }} ta feedbacks)
+              ({{ product?.info?.comments.length }}
+              {{ $store.state.translations["product.feedbacks-count"] }})
             </p>
-            <p class="reviews" v-else>(0 ta feedbacks)</p>
+            <p class="reviews" v-else>
+              (0 {{ $store.state.translations["product.feedbacks-count"] }})
+            </p>
           </div>
           <div class="right">
             <div class="bottom">
@@ -164,7 +167,7 @@
                   />
                 </svg>
 
-                Taqqoslash
+                {{ $store.state.translations["product.comparison"] }}
               </button>
             </div>
           </div>
@@ -183,10 +186,13 @@
                 <path
                   d="M15.6536 6.27082L7.90429 14.8278L4.35254 10.9059L5.26308 9.90041L7.90429 12.8098L14.743 5.26538L15.6536 6.27082Z"
                   fill="white"
-                /></svg
-              >Sotuvda mavjud
+                />
+              </svg>
+              {{ $store.state.translations["product.available-sale"] }}
             </p>
-            <span>Код: {{ product?.id }}</span>
+            <span
+              >{{ $store.state.translations["product.code"] }}: {{ product?.id }}</span
+            >
           </div>
           <div class="buttons__mobile">
             <button>
@@ -317,15 +323,17 @@
                   d="M15.6536 6.27082L7.90429 14.8278L4.35254 10.9059L5.26308 9.90041L7.90429 12.8098L14.743 5.26538L15.6536 6.27082Z"
                   fill="white"
                 /></svg
-              >Sotuvda mavjud
+              >{{ $store.state.translations["product.available-sale"] }}
             </p>
-            <span>Код: {{ product?.id }}</span>
+            <span
+              >{{ $store.state.translations["product.code"] }}: {{ product?.id }}</span
+            >
           </div>
         </div>
         <div class="col-md-4 col-xs-12 stats">
           <div class="widther">
             <div class="specs" v-if="productCharacteristic.length > 0">
-              <p class="lil">Maxsulot haqida qisqacha</p>
+              <p class="lil">{{ $store.state.translations["product.short-info"] }}</p>
               <div v-if="skeleton">
                 <div
                   v-for="(characteristic, chIndex) in [1, 2, 3, 4]"
@@ -353,7 +361,7 @@
                 @click="scrollElement('characteristic')"
                 v-if="productCharacteristic.length > 0"
               >
-                Barcha xarakteristikalar
+                {{ $store.state.translations["product.all-characteristic"] }}
               </p>
             </div>
 
@@ -441,7 +449,7 @@
               class="counter"
               v-if="$store.state.cart.find((item) => item.id == product?.id)"
             >
-              <p class="lil">Кол-во</p>
+              <p class="lil">{{ $store.state.translations["product.count"] }}</p>
               <div class="grid">
                 <div class="number">
                   <button
@@ -487,7 +495,7 @@
                 </p>
                 <p class="dis__price" v-if="product?.discount_price">
                   {{ `${product?.real_price}`.replace(/\B(?=(\d{3})+(?!\d))/g, " ") }}
-                  so'm
+                  {{ $store.state.translations["main.som"] }}
                 </p>
                 <p class="dis__txt">
                   {{ $store.state.translations["main.at-discount-price"] }}
@@ -526,7 +534,7 @@
                         : 1)
                   )
                 }}
-                Di coin
+                {{ $store.state.translations["main.dicoin"] }}
               </p>
             </div>
 
@@ -585,7 +593,9 @@
                   />
                 </svg>
               </button>
-              <button class="click" @click="visibleOc = true">Hoziroq sotib olish</button>
+              <button class="click" @click="visibleOc = true">
+                {{ $store.state.translations["product.buy-now"] }}
+              </button>
             </div>
           </div>
 
@@ -598,15 +608,15 @@
           <div class="credit__items">
             <div>
               <img src="@/assets/images/credit-1.svg" alt="" />
-              <p>100 % Halol nasiya savdo</p>
+              <p>{{ $store.state.translations["product.credit-text1"] }}</p>
             </div>
             <div>
               <img src="@/assets/images/credit-2.svg" alt="" />
-              <p>Hech qanday penyalarsiz</p>
+              <p>{{ $store.state.translations["product.credit-text2"] }}</p>
             </div>
             <div>
               <img src="@/assets/images/credit-3.svg" alt="" />
-              <p>1 yil kafolat va service</p>
+              <p>{{ $store.state.translations["product.credit-text3"] }}</p>
             </div>
           </div>
         </div>
@@ -614,31 +624,31 @@
       <div class="tabs">
         <div class="butns" id="characteristic">
           <button :class="{ active: tabHandle == 'desc' }" @click="tabHandle = 'desc'">
-            Mahsulot haqida
+            {{ $store.state.translations["product.about-product"] }}
           </button>
           <button
             :class="{ active: tabHandle == 'characteristic' }"
             @click="tabHandle = 'characteristic'"
           >
-            Xarakteristikalari
+            {{ $store.state.translations["product.characteristics"] }}
           </button>
           <button
             :class="{ active: tabHandle == 'location' }"
             @click="tabHandle = 'location'"
           >
-            Do'konlarda mavjudligi
+            {{ $store.state.translations["product.availability-stores"] }}
           </button>
           <button
             :class="{ active: tabHandle == 'comment' }"
             @click="tabHandle = 'comment'"
           >
-            Mijozlarning sharhlari
+            {{ $store.state.translations["product.customer-reviews"] }}
           </button>
         </div>
         <div class="contents">
           <div v-if="tabHandle == 'desc'" class="about">
             <div class="about__wrap">
-              <h4 class="paragraph">Tavsif</h4>
+              <h4 class="paragraph">{{ $store.state.translations["product.info"] }}</h4>
               <p v-html="product?.info?.desc"></p>
             </div>
           </div>
@@ -691,7 +701,7 @@
             </div>
             <div class="comments-empty" v-if="characteristics.length == 0">
               <img src="../../assets/images/comments-empty.png" alt="" />
-              <h4>Mahsulotlarga baho qo’yilmagan</h4>
+              <h4>{{ $store.state.translations["product.no-reting"] }}</h4>
             </div>
           </div>
           <div
@@ -703,13 +713,13 @@
               <thead>
                 <tr>
                   <th>
-                    <p>Manzil</p>
+                    <p>{{ $store.state.translations["product.address"] }}</p>
                   </th>
                   <th>
-                    <p>Ish vaqti</p>
+                    <p>{{ $store.state.translations["product.working-time"] }}</p>
                   </th>
                   <th>
-                    <p>Telefon raqami</p>
+                    <p>{{ $store.state.translations["product.phone-number"] }}</p>
                   </th>
                 </tr>
               </thead>
@@ -795,16 +805,18 @@
               </div>
               <div class="comments-empty" v-if="product?.info?.comments.length == 0">
                 <img src="../../assets/images/comments-empty.png" alt="" />
-                <h4>Mahsulotlarga baho qo’yilmagan</h4>
+                <h4>{{ $store.state.translations["product.no-reting"] }}</h4>
               </div>
             </div>
             <div class="reviews__right">
               <div class="leave">
                 <p class="leave__title">
                   <img src="@/assets/images/like.svg" alt="" />
-                  O’z fikr va izohlaringizni qoldiring
+                  {{ $store.state.translations["product.leave-comment"] }}
                 </p>
-                <button class="leave__btn" @click="commentOpen()">Baho qoldirish</button>
+                <button class="leave__btn" @click="commentOpen()">
+                  {{ $store.state.translations["product.leave-comment-btn"] }}
+                </button>
               </div>
               <div class="rating">
                 <!-- <img src="@/assets/images/cheat.png" alt="" /> -->
@@ -851,7 +863,7 @@
         </div>
       </div>
       <div class="other pb-5">
-        <h4>O’xshash tovarlar</h4>
+        <h4>{{ $store.state.translations["product.similar-products"] }}</h4>
         <ProductCarousel>
           <div class="swiper-slide" v-for="product in productsOthers" :key="product.id">
             <ProductCardVue :product="product" />
@@ -1021,8 +1033,15 @@
               ></span>
               <div class="call-number">
                 <p>{{ $store.state.translations["main.call-centre"] }}:</p>
-                <a href="tel:+998712077788">
-                  <h4>71 207 77 88</h4>
+                <a :href="`tel:${$store.state.siteInfo?.phone_number}`">
+                  <h4>
+                    +{{
+                      `${$store.state.siteInfo?.phone_number}`
+                        .match(/(\d{3})(\d{2})(\d{3})(\d{2})(\d{2})/)
+                        ?.filter((item, index) => index != 0)
+                        .join(" ")
+                    }}
+                  </h4>
                 </a>
               </div>
             </div>
@@ -1034,7 +1053,7 @@
     <Transition name="bounce-toast">
       <Vnotification
         v-if="compToast"
-        title="Buyurtma muvaffaqiyatli jo'natildi. "
+        :title="$store.state.translations['main.order-success']"
         @click="toastClose()"
       >
         <span v-html="iconComp"></span>
@@ -1088,7 +1107,7 @@
       </div>
       <div class="comment-modal-btns">
         <div class="comment-rate">
-          <p>Sizning Bahoyingiz:</p>
+          <p>{{ $store.state.translations["product.your-rating"] }}:</p>
           <a-rate v-model="formComment.stars">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -1109,14 +1128,14 @@
           </a-rate>
         </div>
         <div class="comment-btn comment-btn-close" @click="visibleComment = false">
-          Bekor qilish
+          {{ $store.state.translations["product.close"] }}
         </div>
         <div
           class="comment-btn"
           :class="{ disabled: !formComment.stars }"
           @click="submitComment()"
         >
-          Fikr qoldiring
+          {{ $store.state.translations["product.send-comment"] }}
         </div>
       </div>
       <template slot="footer"> <h3></h3></template>
@@ -1157,10 +1176,10 @@
       </div>
       <div class="vmodal-body comment-modal-success">
         <img src="../../assets/images/modal-success.png" alt="" />
-        <p>Заказ оформлен. Мы свяжемся с вами в ближайшее время</p>
+        <p>{{ $store.state.translations["product.send-comment"] }}</p>
       </div>
       <div class="vmodal-btn" @click="handleOkSuccess">
-        {{ $store.state.translations["main.comment-succes-btn"] }}
+        {{ $store.state.translations["oc-text"] }}
       </div>
       <template slot="footer"> <h3></h3></template>
     </a-modal>
@@ -1248,7 +1267,7 @@ export default {
         "Декабрь",
       ],
       nolVal: 0,
-      skeleton: false,
+      skeleton: true,
       count: 1,
       value: 5,
       callBox: false,
@@ -1311,6 +1330,7 @@ export default {
     try {
       await this.$getLocation().then((coordinates) => {
         this.locations = coordinates;
+        console.log(this.locations);
       });
     } catch (e) {
       console.log(e);
@@ -1345,6 +1365,7 @@ export default {
     this.branches = productData?.branches;
     this.carouselImages = [...this.product.images];
     this.productsOthers = productsData?.products?.data;
+    this.skeleton = false;
   },
   computed: {
     commetItems() {

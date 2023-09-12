@@ -2,10 +2,14 @@
   <div class="personal-info">
     <div class="container_xl">
       <div class="page-breadcrumb">
-        <nuxt-link :to="localePath('/')">{{ $store.state.translations["main.home-page"] }}</nuxt-link>
-        <nuxt-link :to="localePath('/')"> Mening izohlarim </nuxt-link>
+        <nuxt-link :to="localePath('/')">{{
+          $store.state.translations["main.home-page"]
+        }}</nuxt-link>
+        <nuxt-link :to="localePath('/')">
+          {{ $store.state.translations["main.my-comments"] }}
+        </nuxt-link>
       </div>
-      <div><MainTitle title="Mening izohlarim" /></div>
+      <div><MainTitle :title="$store.state.translations['main.my-comments']" /></div>
       <div class="profile-page-grid">
         <div>
           <ProfileMenu />
@@ -24,8 +28,7 @@
           <div class="comments-empty" v-else>
             <img src="../../assets/images/comments-empty.png" alt="" />
             <h4>
-              Mahsulotlarga baho qo’ysangiz <br />
-              shu yerda paydo boladi
+              {{ $store.state.translations["profile.comment-empty"] }}
             </h4>
           </div>
         </div>

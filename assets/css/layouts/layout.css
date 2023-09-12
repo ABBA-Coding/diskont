@@ -569,7 +569,10 @@
   background-color: transparent;
   margin-right: 18px;
 }
-@media (max-width: 576px) {
+@media (max-width: 768px) {
+  .header-navbar_web {
+    display: none !important;
+  }
   .header-mobile {
     display: flex;
     align-items: center;
@@ -579,9 +582,8 @@
   .header-top {
     display: none !important;
   }
-  .header-navbar_web {
-    display: none !important;
-  }
+}
+@media (max-width: 576px) {
   .header-category {
     overflow-x: scroll;
   }

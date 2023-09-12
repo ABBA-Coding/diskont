@@ -28,7 +28,7 @@
             <input
               type="text"
               ref="search"
-              placeholder="Search ..."
+              :placeholder="`${$store.state.translations['main.search']} ...`"
               v-on:keyup.enter="searchAction"
               v-model="search"
               @focus="searchBlockHide = true"
@@ -280,7 +280,7 @@
           ><span class="nav_logo" v-html="navLogoMobile"></span
         ></nuxt-link>
       </div>
-      <div class="coin_btn" @click="$router.push(localePath('/d-coin/about'))">
+      <div class="coin_btn " @click="$router.push(localePath('/d-coin/about'))">
         <span><img src="../../assets/images/coin.png" alt="" /></span>
         {{ $store.state.profile?.dicoin?.quantity }}
         {{ $store.state.translations["main.dicoin"] }}
@@ -1777,6 +1777,11 @@ export default {
   }
   .catalog-menu-body {
     padding: 0 12px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .search_input_container {
+    width: 100%;
   }
 }
 </style>

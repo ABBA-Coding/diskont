@@ -2,10 +2,14 @@
   <div class="personal-info">
     <div class="container_xl">
       <div class="page-breadcrumb">
-        <nuxt-link :to="localePath('/')">{{ $store.state.translations["main.home-page"] }}</nuxt-link>
-        <nuxt-link :to="localePath('/')"> Shaxsiy ma`lumotlarim </nuxt-link>
+        <nuxt-link :to="localePath('/')">{{
+          $store.state.translations["main.home-page"]
+        }}</nuxt-link>
+        <nuxt-link :to="localePath('/')">
+          {{ $store.state.translations["profile.personal-info"] }}
+        </nuxt-link>
       </div>
-      <div><MainTitle title="Shaxsiy ma`lumotlarim" /></div>
+      <div><MainTitle :title="$store.state.translations['profile.personal-info']" /></div>
       <div class="profile-page-grid">
         <div>
           <ProfileMenu />
@@ -14,7 +18,7 @@
           <div class="personal-info-grid" v-if="!profileEdit">
             <div class="personal-info-card">
               <div class="personal-info-card-header">
-                <h3>Shaxsiy ma’lumotlarim</h3>
+                <h3>{{ $store.state.translations["profile.personal-info"] }}</h3>
 
                 <span class="personal-info-edit-btn" @click="profileEdit = true"
                   ><span v-html="edit"></span>
@@ -26,11 +30,15 @@
                   <div>
                     <b-skeleton v-if="skeleton" width="200px" height="20px"></b-skeleton>
                     <p v-else>
-                      F.I.Sh:<span>{{ profile?.name ? profile?.name : "-----" }}</span>
+                      {{ $store.state.translations["profile.name"] }}:<span>{{
+                        profile?.name ? profile?.name : "-----"
+                      }}</span>
                     </p>
                     <b-skeleton v-if="skeleton" width="200px" height="20px"></b-skeleton>
                     <p v-else>
-                      E-mail:<span>{{ profile?.email ? profile?.email : "-----" }}</span>
+                      {{ $store.state.translations["profile.email"] }}:<span>{{
+                        profile?.email ? profile?.email : "-----"
+                      }}</span>
                     </p>
                     <!-- <p>Пароль:<span>12****AA</span></p> -->
                   </div>
@@ -39,13 +47,13 @@
                   <div>
                     <b-skeleton v-if="skeleton" width="200px" height="20px"></b-skeleton>
                     <p v-else>
-                      Telefon:<span>{{
+                      {{ $store.state.translations["profile.phone"] }}:<span>{{
                         profile?.login ? `${profile?.login}` : "-----"
                       }}</span>
                     </p>
                     <b-skeleton v-if="skeleton" width="200px" height="20px"></b-skeleton>
                     <p v-else>
-                      Adress:<span>{{
+                      {{ $store.state.translations["profile.address"] }}:<span>{{
                         profile?.address ? profile?.address : "-----"
                       }}</span>
                     </p>
@@ -55,16 +63,17 @@
             </div>
             <div class="personal-info-card">
               <div class="personal-info-card-header2">
-                <h3>Bildirishnomalar yoki yangiliklar</h3>
+                <h3>{{ $store.state.translations["profile.text-1"] }}</h3>
 
                 <span class="personal-info-edit-btn"> </span>
               </div>
               <div class="personal-info-card-body2">
-                <p>Aksiyalar va chegirmalar haqida ma'lumot olish</p>
+                <p>{{ $store.state.translations["profile.text-2"] }}</p>
 
                 <span>
-                  <a-switch default-checked @change="onChange" /><span class="sms-title"
-                    >SMS orqali</span
+                  <a-switch default-checked @change="onChange" /><span
+                    class="sms-title"
+                    >{{ $store.state.translations["profile.by-sms"] }}</span
                   ></span
                 >
               </div>
@@ -75,31 +84,48 @@
               <div
                 class="personal-info-card-header2 d-flex align-items-center justify-content-between"
               >
-                <h3>Ma’lumotlarni ozgartirish</h3>
+                <h3>{{ $store.state.translations["profile.change-info"] }}</h3>
                 <div class="d-flex">
                   <span class="personal-info-colse-btn" @click="profileEdit = false"
-                    ><span v-html="close"></span> Bekor qilish</span
+                    ><span v-html="close"></span>
+                    {{ $store.state.translations["product.close"] }}</span
                   >
                   <span class="personal-info-save-btn" @click="submitForm()"
-                    ><span v-html="save"></span> Saqlash</span
+                    ><span v-html="save"></span>
+                    {{ $store.state.translations["profile.save"] }}</span
                   >
                 </div>
               </div>
               <div class="personal-info-card-body2">
-                <h4 class="form-title">Shaxsiy</h4>
+                <h4 class="form-title">
+                  {{ $store.state.translations["profile.personal"] }}
+                </h4>
                 <div class="form-grid-3">
-                  <a-form-model-item class="form-item mb-0" label="Ism" prop="name">
-                    <a-input v-model="form.name" placeholder="Ism..." />
+                  <a-form-model-item
+                    class="form-item mb-0"
+                    :label="$store.state.translations['profile.form-name']"
+                    prop="name"
+                  >
+                    <a-input
+                      v-model="form.name"
+                      :placeholder="`${$store.state.translations['profile.form-name']}...`"
+                    />
                   </a-form-model-item>
                   <a-form-model-item
                     class="form-item mb-0"
-                    label="Familiya"
+                    :label="$store.state.translations['profile.last-name']"
                     prop="last_name"
                   >
-                    <a-input v-model="form.last_name" placeholder="Familiya..." />
+                    <a-input
+                      v-model="form.last_name"
+                      :placeholder="`${$store.state.translations['profile.last-name']}...`"
+                    />
                   </a-form-model-item>
                   <span></span>
-                  <a-form-model-item class="form-item mb-0" label="Telefon raqam">
+                  <a-form-model-item
+                    class="form-item mb-0"
+                    :label="$store.state.translations['profile.phone-number']"
+                  >
                     <input
                       type="text"
                       class="w-100 ant-input"
@@ -108,8 +134,14 @@
                       placeholder="+998 __ ___ __ __"
                     />
                   </a-form-model-item>
-                  <a-form-model-item class="form-item mb-0" label="Email">
-                    <a-input v-model="form.email" placeholder="Email" />
+                  <a-form-model-item
+                    class="form-item mb-0"
+                    :label="$store.state.translations['profile.form-email']"
+                  >
+                    <a-input
+                      v-model="form.email"
+                      :placeholder="$store.state.translations['profile.form-email']"
+                    />
                   </a-form-model-item>
                 </div>
                 <!-- <h4 class="form-title">Manzil</h4>
@@ -155,43 +187,45 @@
                     <a-input v-model="form.address" placeholder="Adress" />
                   </a-form-model-item>
                 </div> -->
-                <h4 class="form-title">Parol</h4>
+                <h4 class="form-title">
+                  {{ $store.state.translations["profile.password-title"] }}
+                </h4>
                 <div class="form-grid-3" v-if="$store.state.profile.password_updated">
-                  <a-form-model-item class="form-item mb-0" label="Hozirgi parolingiz">
+                  <a-form-model-item
+                    class="form-item mb-0"
+                    :label="$store.state.translations['profile.password']"
+                  >
                     <a-input-password
                       v-model="form.current_password"
-                      placeholder="Last password"
+                      :placeholder="$store.state.translations['profile.password']"
                     />
                   </a-form-model-item>
-                  <a-form-model-item class="form-item mb-0" label="Yangi parol">
-                    <a-input-password
-                      v-model="form.password"
-                      placeholder="Parol"
-                    />
+                  <a-form-model-item class="form-item mb-0"  :label="$store.state.translations['profile.new-password']">
+                    <a-input-password v-model="form.password" :placeholder="$store.state.translations['profile.new-password']" />
                   </a-form-model-item>
                   <a-form-model-item
                     class="form-item mb-0"
-                    label="Yangi parolni takrorlang"
+                    :label="$store.state.translations['profile.repeat-password']"
                     :class="{ password_repeat_error: passwordConfirmationError }"
                   >
                     <a-input-password
                       v-model="form.password_confirmation"
-                      placeholder="Parol"
+                      :placeholder="$store.state.translations['profile.repeat-password']"
                     />
                   </a-form-model-item>
                 </div>
                 <div class="form-grid-3" v-else>
-                  <a-form-model-item class="form-item mb-0" label="Yangi parol">
-                    <a-input-password v-model="form.password" placeholder="Parol" />
+                  <a-form-model-item class="form-item mb-0" :label="$store.state.translations['profile.new-password']">
+                    <a-input-password v-model="form.password" :placeholder="$store.state.translations['profile.new-password']" />
                   </a-form-model-item>
                   <a-form-model-item
                     class="form-item mb-0"
-                    label="Yangi parolni takrorlang"
+                    :label="$store.state.translations['profile.repeat-password']"
                     :class="{ password_repeat_error: passwordConfirmationError }"
                   >
                     <a-input-password
                       v-model="form.password_confirmation"
-                      placeholder="Parol"
+                      :placeholder="$store.state.translations['profile.repeat-password']"
                     />
                   </a-form-model-item>
                 </div>

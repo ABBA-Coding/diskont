@@ -131,7 +131,7 @@
         <!-- .slice(0, product?.price?.indexOf("."))
             .replace(".", ",")
             .replace(/\B(?=(\d{3})+(?!\d))/g, " ") -->
-        so'm
+        {{ $store.state.translations["main.som"] }}
       </p>
     </div>
     <!-- <div class="cart-anim"></div> -->
@@ -265,9 +265,16 @@
             <div class="product-modal-price-block">
               <div class="cardo">
                 <div class="cardo__header">
-                  <div class="discount" v-if="product?.discount">
-                    <p v-if="product?.discount?.pivot?.percent" class="tag">
-                      - {{ product?.discount?.pivot?.percent }}%
+                  <div class="discount" v-if="product?.discount?.pivot">
+                    <p v-if="product?.discount?.pivot" class="tag">
+                      {{
+                        product?.discount?.pivot?.amount
+                          ? `-${(
+                              (product?.discount?.pivot?.amount * 100) /
+                              product?.real_price
+                            ).toFixed()}%`
+                          : `-${product?.discount?.pivot?.percent}%`
+                      }}
                     </p>
                     <p v-if="product?.discount?.pivot?.amount" class="dis__price">
                       - {{ product?.discount?.pivot?.amount }}
@@ -334,23 +341,21 @@
                 </div>
               </div>
             </div>
-            <div class="product-modal-characteristic">
+            <div class="product-modal-characteristic" v-if="skeleton">
+              <h4><b-skeleton width="100%" height="100%"> </b-skeleton></h4>
+              <div v-for="item in [1, 2, 3, 4]" :key="item">
+                <p><b-skeleton width="150px" height="100%"> </b-skeleton></p>
+                <p><b-skeleton width="150px" height="100%"> </b-skeleton></p>
+              </div>
+            </div>
+            <div class="product-modal-characteristic" v-else>
               <h4>{{ $store.state.translations["main.short-info"] }}</h4>
-              <div>
-                <p>Бренд</p>
-                <p>Samsung</p>
-              </div>
-              <div>
-                <p>Диагональ</p>
-                <p>6,5"</p>
-              </div>
-              <div>
-                <p>Экран тури</p>
-                <p>PLS</p>
-              </div>
-              <div>
-                <p>Экраннинг янгиланиш тезлиги</p>
-                <p>60 Гц</p>
+              <div
+                v-for="characteristicItem in characteristics"
+                :key="characteristicItem?.id"
+              >
+                <p>{{ characteristicItem?.characteristic?.name }}</p>
+                <p>{{ characteristicItem?.name }}</p>
               </div>
             </div>
             <nuxt-link
@@ -591,9 +596,9 @@
                     {{
                       `${productInner?.real_price}`.replace(/\B(?=(\d{3})+(?!\d))/g, " ")
                     }}
-                    СУМ
+                    {{ $store.state.translations["main.som"] }}
                   </h4>
-                  <!-- <p>28 880 000 СУМ</p> -->
+                  <!-- <p>28 880 000 {{ $store.state.translations["main.som"] }}</p> -->
                 </div>
               </div>
             </div>
@@ -791,7 +796,7 @@
       <div class="vmodal-forget-password" v-if="!callBox" @click="callBox = true">
         {{ $store.state.translations["main.contact-you"] }}
       </div>
-      <a href="tel:+998712077788">
+      <a :href="`tel:${$store.state.siteInfo?.phone_number}`">
         <Transition name="oc-bounce">
           <div class="oc-product-call" v-if="callBox">
             <span
@@ -819,8 +824,15 @@
             ></span>
             <div class="call-number">
               <p>{{ $store.state.translations["main.call-centre"] }}:</p>
-              <a href="tel:+998712077788">
-                <h4>71 207 77 88</h4>
+              <a :href="`tel:${$store.state.siteInfo?.phone_number}`">
+                <h4>
+                  +{{
+                    `${$store.state.siteInfo?.phone_number}`
+                      .match(/(\d{3})(\d{2})(\d{3})(\d{2})(\d{2})/)
+                      ?.filter((item, index) => index != 0)
+                      .join(" ")
+                  }}
+                </h4>
               </a>
             </div>
           </div>
@@ -879,6 +891,7 @@ export default {
   props: ["product"],
   data() {
     return {
+      characteristics: [],
       fullRating: 5,
       count: 1,
       productCount: 1,
@@ -990,6 +1003,7 @@ export default {
 
       this.productInner = productData.product;
       this.productAttributes = productData?.attributes;
+      this.characteristics = productData?.product?.characteristic_options.splice(0, 4);
       this.skeleton = false;
     },
     addToCart(event, product) {
@@ -1005,7 +1019,7 @@ export default {
     },
   },
   watch: {
-    visibleBuy(val) {
+    visible(val) {
       if (val) {
         this.__GET_PRODUCTS_BY_SLUG(this.product.slug);
       }
@@ -1054,6 +1068,16 @@ export default {
 }
 .ant-carousel .slick-dots {
   height: auto;
+  overflow-x: scroll;
+  position: static;
+  margin-top: 16px;
+  top: 0;
+}
+.ant-carousel .slick-dots::-webkit-scrollbar {
+  display: none;
+}
+.ant-carousel .slick-dots li {
+  min-width: 86px;
 }
 .ant-carousel .slick-slide img {
   border: 5px solid #fff;
@@ -1061,7 +1085,7 @@ export default {
   margin: auto;
 }
 .ant-carousel .slick-thumb {
-  bottom: -102px;
+  /* bottom: -102px; */
   display: flex !important;
 }
 .ant-carousel .slick-thumb .slick-active {
@@ -1091,6 +1115,8 @@ export default {
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  top: 0;
+  margin-top: 16px;
 }
 
 .product-card-header:hover .pc-img-container {
@@ -1237,6 +1263,7 @@ export default {
 .product-modal-characteristic {
   margin-bottom: 21px;
   margin-top: 16px;
+  min-height: 170px;
 }
 .product-modal-characteristic h4 {
   font-family: var(--SB_500);
@@ -1487,7 +1514,7 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  align-items: center;
+  align-items: start;
 }
 .product_badges_item {
   transform: rotate(-2.91deg);

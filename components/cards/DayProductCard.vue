@@ -3,9 +3,9 @@
     <div class="day-product-card">
       <img class="day-product-card-bg" :src="banner?.lg_img" alt="" />
       <div class="day-product-card-head">
-        <h3>Kunlik chegirmalar</h3>
+        <h3>{{ $store.state.translations["main.daily-discounts"] }}</h3>
         <a :href="banner?.link"
-          >Barchasi
+          >{{ $store.state.translations["main.all"] }}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="19"

@@ -2,9 +2,10 @@
   <div class="my-orders-card">
     <div class="my-orders-card-header">
       <div class="d-flex flex-column">
-        <h4>Buyurtma #{{ order?.id }}</h4>
+        <h4>{{ $store.state.translations["diCoin.order"] }} #{{ order?.id }}</h4>
         <p>
-          Yangilangan {{ moment(order?.updated_at).format("DD") }}
+          {{ $store.state.translations["main.updated"] }}
+          {{ moment(order?.updated_at).format("DD") }}
           {{ month[moment(order?.updated_at).format("M") - 1] }}
           {{ moment(order?.updated_at).format("YYYY") }} y.,
           {{ moment(order?.updated_at).format("HH:mm") }}
@@ -21,15 +22,15 @@
         }"
         >{{
           order?.status == "new"
-            ? "Yangi"
+            ? $store.state.translations["checkout.new"]
             : order?.status == "pending"
-            ? "Kutilmoqda"
+            ? $store.state.translations["checkout.pending"]
             : order?.status == "returned"
-            ? "Qaytarildi"
+            ? $store.state.translations["checkout.returned"]
             : order?.status == "accepted"
-            ? "Qabul qilindi"
+            ? $store.state.translations["checkout.accepted"]
             : order?.status == "done"
-            ? "Yetkazib berildi"
+            ? $store.state.translations["checkout.done"]
             : ""
         }}</span
       >
@@ -71,7 +72,7 @@
     </div>
     <div class="my-orders-card-footer">
       <div>
-        <p>Buyurtma sanasi</p>
+        <p>{{$store.state.translations["checkout.order-date"]}}</p>
         <span>
           {{ weekDay[moment(order?.created_at).weekday()] }},
           {{ moment(order?.created_at).format("DD") }}
@@ -81,17 +82,20 @@
         >
       </div>
       <div>
-        <p>Yetkazib berish turi</p>
+        <p>{{$store.state.translations["checkout.type-delivery"]}}</p>
         <span>{{ pickupMethod[order?.delivery_method] }}</span>
       </div>
       <div>
-        <p>To'lov turi</p>
+        <p>{{$store.state.translations["checkout.payment-type"]}}</p>
         <span>{{ order?.payment_method }}</span>
       </div>
 
       <div>
-        <p>Buyurtma narxi</p>
-        <span>{{ `${order?.amount}`.replace(/\B(?=(\d{3})+(?!\d))/g, " ") }} сум</span>
+        <p>{{$store.state.translations["checkout.order-price"]}}</p>
+        <span
+          >{{ `${order?.amount}`.replace(/\B(?=(\d{3})+(?!\d))/g, " ") }}
+          {{ $store.state.translations["main.som"] }}</span
+        >
       </div>
     </div>
   </div>

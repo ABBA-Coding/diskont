@@ -5,11 +5,13 @@
         <nuxt-link :to="localePath('/')">{{
           $store.state.translations["main.home-page"]
         }}</nuxt-link>
-        <nuxt-link :to="localePath('/')"> Di Coin </nuxt-link>
+        <nuxt-link :to="localePath('/')">
+          {{ $store.state.translations["main.dicoin"] }}
+        </nuxt-link>
       </div>
       <div class="d-flex page-container-title">
         <div class="d-flex align-items-end">
-          <MainTitle title="Di Coin" />
+          <MainTitle :title="$store.state.translations['main.dicoin']" />
         </div>
       </div>
       <div class="d-coin__tab">
@@ -18,10 +20,13 @@
             class="d-coin__tab-item"
             :class="{ 'coin-tab__active': $route.name.includes('about') }"
           >
-            <p>Sizning Di Coinlaringiz soni</p>
+            <p>{{ $store.state.translations["diCoin.your-dicoin-count"] }}</p>
             <div>
               <span><img src="../../assets/svg/d-coin-tab.svg" alt="" /></span>
-              <h6>65 di coin</h6>
+              <h6>
+                {{ $store.state.profile?.dicoin?.quantity }}
+                {{ $store.state.translations["main.dicoin"] }}
+              </h6>
             </div>
           </div>
         </nuxt-link>
@@ -31,7 +36,7 @@
             :class="{ 'coin-tab__active': $route.name.includes('down-history') }"
           >
             <span v-html="download"></span>
-            <h5>Tushgan Di Coinlar tarixi</h5>
+            <h5>{{ $store.state.translations["diCoin.down-history"] }}</h5>
           </div>
         </nuxt-link>
         <nuxt-link :to="localePath('/d-coin/up-history')">
@@ -40,15 +45,21 @@
             :class="{ 'coin-tab__active': $route.name.includes('up-history') }"
           >
             <span v-html="upload"></span>
-            <h5>Ishlatilgan Di Coinlar tarixi</h5>
+            <h5>{{ $store.state.translations["diCoin.up-history"] }}</h5>
           </div>
         </nuxt-link>
       </div>
       <div class="d-coin__body_table">
         <div class="d-coin__table-header">
-          <div><p>Di Coin soni</p></div>
-          <div><p>Tushgan Di coin</p></div>
-          <div><p>Vaqti va sanasi</p></div>
+          <div>
+            <p>{{ $store.state.translations["diCoin.count"] }}</p>
+          </div>
+          <div>
+            <p>{{ $store.state.translations["diCoin.down-dicoin"] }}</p>
+          </div>
+          <div>
+            <p>{{ $store.state.translations["diCoin.date"] }}</p>
+          </div>
         </div>
         <div class="d-coin__table-row" v-for="dicoin in dicoinIn" :key="dicoin?.id">
           <div>
@@ -59,7 +70,9 @@
             </p>
           </div>
           <div>
-            <p v-if="dicoin?.order_id">Buyurtma #{{ dicoin?.order_id }}</p>
+            <p v-if="dicoin?.order_id">
+              {{ $store.state.translations["diCoin.order"] }} #{{ dicoin?.order_id }}
+            </p>
             <p v-else>Empty</p>
           </div>
           <div>
@@ -80,14 +93,14 @@
             <span v-html="upload"></span>
             <span v-if="dicoin?.order_id">
               #{{ dicoin?.order_id }}
-              <h6>Buyurtma</h6></span
+              <h6>{{ $store.state.translations["diCoin.order"] }}</h6></span
             >
             <span v-else>Empty</span>
           </div>
           <div class="d-coin__table-row_mobile-body">
             <div>
               <span
-                >Vaqti va sanasi
+                >{{ $store.state.translations["diCoin.date"] }}
                 <p>
                   {{ moment(dicoin?.created_at).format("DD.MM.YYYY") }}
                   {{ moment(dicoin?.created_at).format("HH:mm") }}
@@ -96,7 +109,7 @@
             </div>
             <div>
               <span
-                >Буюртма нархи
+                >{{ $store.state.translations["diCoin.order-price"] }}
                 <p>
                   {{ dicoin?.type == "plus" ? "+" : "-" }}{{ dicoin?.quantity }}
                   {{ $store.state.translations["main.cout-di-coin"] }}

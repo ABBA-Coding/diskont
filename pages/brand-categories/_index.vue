@@ -125,7 +125,7 @@
           </div>
         </div>
       </div>
-      <div class="categories-page-inner-grid">
+      <!-- <div class="categories-page-inner-grid">
         <div></div>
         <div class="categories-page-info">
           <h5>
@@ -166,7 +166,7 @@
             для дома DISKONT!
           </p>
         </div>
-      </div>
+      </div> -->
     </div>
     <div class="categories-app-banner-container">
       <!--<div class="container_xl">
@@ -253,7 +253,6 @@ export default {
         params: { ...this.$route.query, brand: this.$route.params.index },
       });
       this.totalPage = data?.products?.total;
-      console.log(this.totalPage);
       this.products = data?.products?.data;
       this.loading = false;
     },

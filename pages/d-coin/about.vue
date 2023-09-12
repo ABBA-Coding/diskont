@@ -5,11 +5,13 @@
         <nuxt-link :to="localePath('/')">{{
           $store.state.translations["main.home-page"]
         }}</nuxt-link>
-        <nuxt-link :to="localePath('/')"> Di Coin </nuxt-link>
+        <nuxt-link :to="localePath('/')">
+          {{ $store.state.translations["main.dicoin"] }}
+        </nuxt-link>
       </div>
       <div class="d-flex page-container-title d-coin-title">
         <div class="d-flex align-items-end">
-          <MainTitle title="Di Coin" class="mb-0" />
+          <MainTitle :title="$store.state.translations['main.dicoin']" class="mb-0" />
         </div>
       </div>
       <div class="d-coin__tab">
@@ -18,10 +20,13 @@
             class="d-coin__tab-item"
             :class="{ 'coin-tab__active': $route.name.includes('about') }"
           >
-            <p>Sizning Di Coinlaringiz soni</p>
+            <p>{{ $store.state.translations["diCoin.your-dicoin-count"] }}</p>
             <div>
               <span><img src="../../assets/svg/d-coin-tab.svg" alt="" /></span>
-              <h6>65 di coin</h6>
+              <h6>
+                {{ $store.state.profile?.dicoin?.quantity }}
+                {{ $store.state.translations["main.dicoin"] }}
+              </h6>
             </div>
           </div>
         </nuxt-link>
@@ -31,7 +36,7 @@
             :class="{ 'coin-tab__active': $route.name.includes('down-history') }"
           >
             <span v-html="download"></span>
-            <h5>Tushgan Di Coinlar tarixi</h5>
+            <h5>{{ $store.state.translations["diCoin.down-history"] }}</h5>
           </div>
         </nuxt-link>
         <nuxt-link :to="localePath('/d-coin/up-history')">
@@ -40,7 +45,7 @@
             :class="{ 'coin-tab__active': $route.name.includes('up-history') }"
           >
             <span v-html="upload"></span>
-            <h5>Ishlatilgan Di Coinlar tarixi</h5>
+            <h5>{{ $store.state.translations["diCoin.up-history"] }}</h5>
           </div>
         </nuxt-link>
       </div>
@@ -50,16 +55,9 @@
           <img src="../../assets/images/Group 1000004239.png" alt="" />
         </div>
         <div class="d-coin__info">
-          <h4>Di Coin haqida</h4>
+          <h4>{{ $store.state.translations["diCoin.about-di-coin"] }}</h4>
           <p>
-            simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-            been the industry's standard dummy text ever since the 1500s, when an unknown
-            printer took a galley of type and scrambled it to make a type specimen book.
-            It has survived not only five centuries, but also the leap into electronic
-            typesetting, remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages, and more
-            recently with desktop publishing software like Aldus PageMaker including
-            versions of Lorem Ipsum.
+            {{ $store.state.translations["diCoin.about-text"] }}
           </p>
         </div>
       </div>

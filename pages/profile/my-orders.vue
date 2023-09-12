@@ -5,9 +5,11 @@
         <nuxt-link :to="localePath('/')">{{
           $store.state.translations["main.home-page"]
         }}</nuxt-link>
-        <nuxt-link :to="localePath('/')"> Mening buyurtmalarim </nuxt-link>
+        <nuxt-link :to="localePath('/')">
+          {{ $store.state.translations["profile.my-orders"] }}
+        </nuxt-link>
       </div>
-      <div><MainTitle title="Mening buyurtmalarim" /></div>
+      <div><MainTitle :title="$store.state.translations['profile.my-orders']" /></div>
       <div class="profile-page-grid">
         <div>
           <ProfileMenu />
@@ -26,12 +28,11 @@
           </div>
           <div class="orders-empty" v-if="orders.length == 0 && !loading">
             <img src="../../assets/images/orders-empty.png" alt="" />
-            <h4>Sizda hali buyurtmalar mavjud emas</h4>
+            <h4>{{ $store.state.translations["profile.order-empty-title"] }}</h4>
             <p>
-              xaridlar qilishni davom ettiring bu yerda <br />
-              paydo boladi
+              {{ $store.state.translations["profile.order-empty-text"] }}
             </p>
-            <nuxt-link :to="localePath('/')">Xaridni qilish</nuxt-link>
+            <nuxt-link :to="localePath('/')">{{ $store.state.translations["profile.order-empty-btn"] }}</nuxt-link>
           </div>
         </div>
       </div>

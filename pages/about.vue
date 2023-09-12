@@ -10,7 +10,7 @@
           :class="{ active: activeTab == 'delivery' }"
           @click="scrollElement('delivery')"
         >
-          Yetkazib berish
+          {{ $store.state.translations["main.delivery"] }}
         </li>
         <li
           class="tab"
@@ -83,7 +83,10 @@
                   fill="#06858C"
                 />
               </svg>
-              <p>Мы не тратим на рекламу огромные суммы, исключая лишнюю наценку</p>
+              <p>
+                Мы не тратим на рекламу огромные
+                {{ $store.state.translations["main.som"] }}мы, исключая лишнюю наценку
+              </p>
             </div>
             <div class="block1-card">
               <svg
@@ -105,7 +108,10 @@
                   fill="#06858C"
                 />
               </svg>
-              <p>Мы не тратим на рекламу огромные суммы, исключая лишнюю наценку</p>
+              <p>
+                Мы не тратим на рекламу огромные
+                {{ $store.state.translations["main.som"] }}мы, исключая лишнюю наценку
+              </p>
             </div>
             <div class="block1-card">
               <svg
@@ -127,7 +133,10 @@
                   fill="#06858C"
                 />
               </svg>
-              <p>Мы не тратим на рекламу огромные суммы, исключая лишнюю наценку</p>
+              <p>
+                Мы не тратим на рекламу огромные
+                {{ $store.state.translations["main.som"] }}мы, исключая лишнюю наценку
+              </p>
             </div>
             <div class="block1-card">
               <svg
@@ -149,7 +158,10 @@
                   fill="#06858C"
                 />
               </svg>
-              <p>Мы не тратим на рекламу огромные суммы, исключая лишнюю наценку</p>
+              <p>
+                Мы не тратим на рекламу огромные
+                {{ $store.state.translations["main.som"] }}мы, исключая лишнюю наценку
+              </p>
             </div>
           </div>
         </div>

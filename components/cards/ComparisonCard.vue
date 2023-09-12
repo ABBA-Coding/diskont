@@ -16,7 +16,7 @@
       </div>
       <div class="comparison-card-head-body">
         <h5>{{ product?.info?.name }}</h5>
-        <h4>{{ `${product?.real_price}`.replace(/\B(?=(\d{3})+(?!\d))/g, " ") }} сум</h4>
+        <h4>{{ `${product?.real_price}`.replace(/\B(?=(\d{3})+(?!\d))/g, " ") }} {{ $store.state.translations["main.som"] }}</h4>
         <p><span v-html="star"></span>{{ product?.info?.stars }}</p>
       </div>
     </div>

@@ -5,11 +5,13 @@
         <nuxt-link :to="localePath('/')">{{
           $store.state.translations["main.home-page"]
         }}</nuxt-link>
-        <nuxt-link :to="localePath('/')"> Yangilik </nuxt-link>
+        <nuxt-link :to="localePath('/')">
+          {{ $store.state.translations["main.news-title"] }}
+        </nuxt-link>
       </div>
       <div class="d-flex page-container-title">
         <div class="d-flex align-items-end">
-          <MainTitle title="Yangilik" />
+          <MainTitle :title="$store.state.translations['main.news-title']" />
           <span class="d-flex align-items-end">{{
             moment(post?.created_at).format("DD.MM.YYYY")
           }}</span>
@@ -26,7 +28,7 @@
         </div>
       </div>
       <div class="last-news">
-        <h2>So’nggi yangiliklar</h2>
+        <h2>{{ $store.state.translations["main.last-news"] }}</h2>
       </div>
       <PostsCarousel>
         <div class="swiper-slide" v-for="post in posts" :key="post.id">

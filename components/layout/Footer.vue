@@ -308,6 +308,13 @@ export default {
   flex-direction: column;
   gap: 40px;
 }
+@media (max-width: 1024px) {
+  .footer .payment-types {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}
 @media (max-width: 576px) {
   .mobile-menu {
     display: flex;

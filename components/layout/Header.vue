@@ -41,6 +41,9 @@
       <span style="z-index: 3; position: relative" ref="navScroll3">
         <Navbar />
       </span>
+      <span style="z-index: 1; position: relative" ref="navScrollSearch">
+        <MobileSearch />
+      </span>
       <span ref="navScroll2" class="category-list-scroll">
         <CategoryList />
       </span>
@@ -51,6 +54,7 @@
 import CategoryList from "./CategoryList.vue";
 import HeaderMobile from "./HeaderMobile.vue";
 import Navbar from "./Navbar.vue";
+import MobileSearch from "./MobileSearch.vue";
 
 export default {
   data() {
@@ -81,6 +85,7 @@ export default {
     var header2 = this.$refs.navScroll2;
     var header3 = this.$refs.navScroll3;
     var headerTop = this.$refs.header_top;
+    var searchBlock = this.$refs.navScrollSearch;
 
     window.addEventListener("scroll", () => {
       let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -92,13 +97,16 @@ export default {
         // header2.style.marginTop = `-${header2.offsetHeight}px`;
         header2.style.display = "none";
         header3.style.boxShadow = " 0 0.5rem 1rem rgb(0 0 0 / 15%)";
+        searchBlock.style.display = "none";
+
         // header.style.background = "#04babe";
         header.style.marginTop = "0";
       } else if (document.documentElement.scrollTop == 0) {
-        // header.style.marginTop = "0";
         header.style.boxShadow = "none";
-        // header3.style.boxShadow = "none";
         header2.style.display = "block";
+        searchBlock.style.display = "block";
+        // header.style.marginTop = "0";
+        // header3.style.boxShadow = "none";
         // header.style.background = "#04babe";
       } else {
         // header2.style.display = "block";
@@ -121,7 +129,7 @@ export default {
       header.style.boxShadow = "none";
     },
   },
-  components: { Navbar, CategoryList },
+  components: { Navbar, CategoryList, MobileSearch },
 };
 </script>
 <style lang="css">

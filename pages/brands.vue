@@ -5,12 +5,15 @@
         <nuxt-link :to="localePath('/')">{{
           $store.state.translations["main.home-page"]
         }}</nuxt-link>
-        <nuxt-link class="disabled" :to="localePath('/')"> Smartfonlar </nuxt-link>
+        <nuxt-link class="disabled" :to="localePath('/')">
+          {{ $store.state.translations["brend.brands"] }}
+        </nuxt-link>
       </div>
       <div class="d-flex categories-page-title">
-        <MainTitle title="Barcha brendlar" class="mb-0" />
+        <MainTitle :title="$store.state.translations['brend.all-brands']" class="mb-0" />
         <span
-          >{{ brands?.length }} {{ $store.state.translations["category.product-count"] }}</span
+          >{{ brands?.length }}
+          {{ $store.state.translations["category.product-count"] }}</span
         >
       </div>
       <div class="brands-grid">

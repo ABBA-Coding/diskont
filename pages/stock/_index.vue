@@ -16,13 +16,15 @@
         </div>
         <div class="stock-page__static">
           <p>
-            Akisya davomiyligi:
+            {{ $store.state.translations["main.promotion-duration"] }}:
             <span
-              >{{ moment(promotion?.start_date).format("DD.MM") }} dan
-              {{ moment(promotion?.end_date).format("DD.MM") }} gacha</span
+              >{{ moment(promotion?.start_date).format("DD.MM") }}
+              {{ $store.state.translations["main.from"] }}
+              {{ moment(promotion?.end_date).format("DD.MM") }}
+              {{ $store.state.translations["main.until"] }}</span
             >
           </p>
-          <p>Akisya bo’ladigan filiallar: <span>Barcha filiallar</span></p>
+          <p>{{ $store.state.translations["main.promotions-stores"] }}: <span>{{ $store.state.translations["main.all-stores"] }}</span></p>
         </div>
         <div class="stock-page__info" v-html="promotion?.desc"></div>
       </div>
@@ -116,14 +118,14 @@
           </div>
         </div>
         <div class="categories-card-grid" v-if="promotion?.products.length > 0">
-          <ProductCard
+          <!-- <ProductCard
             v-for="product in promotion?.products"
             :key="product.id"
             :product="{
               ...product,
               ...product?.default_product,
             }"
-          />
+          /> -->
         </div>
         <div class="comments-empty" v-else>
           <img src="../../assets/images/comments-empty.png" alt="" />
