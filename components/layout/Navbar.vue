@@ -468,7 +468,6 @@
 import MainTitle from "../Main-title.vue";
 import Vnotification from "../vnotification.vue";
 import AuthModals from "./AuthModals.vue";
-
 export default {
   name: "Navbar",
   data() {
@@ -608,11 +607,11 @@ export default {
         this.searchCategories = [];
       }
     },
-    routerPath() {
+    routerPath(val) {
+      if (val == "/") this.search = "";
       this.searchBlockHide = false;
       this.targetPage = false;
       this.catalogMenu = false;
-
       document.body.style.height = "auto";
       document.body.style.overflow = "auto";
     },
@@ -632,7 +631,7 @@ export default {
 </script>
 <style lang="css">
 /* .nav-icons svg path {
-  fill: #09454f;
+  fill: var(--color_green);
 } */
 .category-name {
   display: flex;
@@ -768,7 +767,7 @@ export default {
 }
 .catalog-menu-list ul li:hover {
   background: #f7f7f7;
-  color: #09454f;
+  color: var(--color_green);
 }
 .nested-enter-active,
 .nested-leave-active {
@@ -869,7 +868,7 @@ export default {
   line-height: 150%;
   text-align: center;
   letter-spacing: -0.02em;
-  color: #09454f;
+  color: var(--color_green);
   position: relative;
   display: flex;
   justify-content: center;
@@ -891,7 +890,7 @@ export default {
   left: 50px;
 }
 .vmodal-btn-outline {
-  border: 2px solid #09454f;
+  border: 2px solid var(--color_green);
   border-radius: 16px;
   height: 59px;
   display: flex;
@@ -902,7 +901,7 @@ export default {
   font-size: 18px;
   line-height: 150%;
   letter-spacing: -0.02em;
-  color: #09454f;
+  color: var(--color_green);
   margin-top: 10px;
   cursor: pointer;
 }

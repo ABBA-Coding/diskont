@@ -264,7 +264,7 @@ export default {
   background: #f1f1f1;
 }
 .stocks-menu ul li > span {
-  background: #09454f;
+  background: var(--color_green);
   border-radius: 12px;
   padding: 12px 17px;
   display: flex;

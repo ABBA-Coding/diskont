@@ -888,6 +888,7 @@
 <script>
 import "swiper/swiper-bundle.min.css";
 export default {
+  name: "ProductCard",
   props: ["product"],
   data() {
     return {
@@ -1089,7 +1090,7 @@ export default {
   display: flex !important;
 }
 .ant-carousel .slick-thumb .slick-active {
-  border: 1.5px solid #09454f;
+  border: 1.5px solid var(--color_green);
 }
 .ant-carousel .slick-thumb li {
   width: 86px;
@@ -1200,7 +1201,7 @@ export default {
   font-weight: 400;
   font-size: 14px;
   line-height: 16px;
-  color: #09454f;
+  color: var(--color_green);
   z-index: 10;
   bottom: -100%;
   transition: 0.3s linear;
@@ -1479,15 +1480,15 @@ export default {
   align-items: center;
   text-align: center;
   justify-content: center;
-  color: #09454f;
-  border: 1px solid #09454f;
+  color: var(--color_green);
+  border: 1px solid var(--color_green);
   border-radius: 10px;
   padding-top: 16px;
   padding-bottom: 16px;
   cursor: pointer;
 }
 .product-modal-buy-mode-btns span {
-  background: #09454f;
+  background: var(--color_green);
   border-radius: 10px;
   height: 100%;
   display: flex;

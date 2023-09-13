@@ -310,7 +310,7 @@ export default {
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
-  color: #09454f;
+  color: var(--color_green);
   display: inline-flex;
   align-items: center;
   cursor: pointer;

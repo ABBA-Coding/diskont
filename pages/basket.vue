@@ -411,7 +411,6 @@ export default {
       like: require("../assets/svg/card-like.svg?raw"),
       deleteIcon: require("../assets/svg/basket-delete.svg?raw"),
       activeHeart: require("../assets/svg/active-heart.svg?raw"),
-      // twoCoin: require("../assets/svg/basket-2coin.svg?raw"),
       products: [],
     };
   },
@@ -477,9 +476,6 @@ export default {
       return `${
         product.discount_price ? product.discount_price : product.real_price
       }`.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-      // .slice(0, product?.price?.indexOf("."))
-      // .replace(".", ",")
-      // .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
     },
   },
   components: { MainTitle, CategoriesAppCard },
@@ -714,7 +710,7 @@ export default {
   font-style: normal;
   font-size: 14.9343px;
   line-height: 22px;
-  color: #09454f;
+  color: var(--color_green);
   height: 100%;
   display: flex;
   align-items: center;
@@ -741,7 +737,7 @@ export default {
   justify-content: space-between;
 }
 .basket-checkout-btn {
-  background: #09454f;
+  background: var(--color_green);
   border-radius: 11.2007px;
   height: 52px;
   font-family: var(--SB_500);
@@ -785,7 +781,7 @@ export default {
   font-size: 22px;
   line-height: 20px;
   letter-spacing: -0.28px;
-  color: #09454f;
+  color: var(--color_green);
   margin-bottom: 24px;
 }
 .basket-coin-block p {
@@ -793,7 +789,7 @@ export default {
   font-style: normal;
   font-size: 14px;
   line-height: 18px;
-  color: #09454f;
+  color: var(--color_green);
   text-align: center;
 }
 .basket-coin-block img {

@@ -1490,7 +1490,7 @@ export default {
 .checkout_dicoin button {
   border: none;
   border-radius: 12px;
-  border: 1px solid #09454f;
+  border: 1px solid var(--color_green);
   background: #e8faf5;
   padding-top: 14px;
   padding-bottom: 14px;

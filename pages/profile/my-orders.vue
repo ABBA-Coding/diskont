@@ -122,7 +122,7 @@ export default {
   font-weight: 510;
   font-size: 18px;
   line-height: 21px;
-  color: #09454f;
+  color: var(--color_green);
 }
 .orders-price-card-body {
   padding-top: 32px;
@@ -166,7 +166,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #09454f;
+  color: var(--color_green);
   cursor: pointer;
 }
 .orders-empty {

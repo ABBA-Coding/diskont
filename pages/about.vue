@@ -564,9 +564,12 @@ export default {
     };
   },
   mounted() {
-    this.scrollElement(
-      `${this.$route.hash ? this.$route.hash : "delivery"}`.replace("#", "")
-    );
+    let hash = this.$route.hash;
+    if (hash) {
+      this.scrollElement(`${this.$route.hash}`.replace("#", ""));
+    } else {
+      this.scrollElement("delivery");
+    }
   },
   methods: {
     chunkIntoN(arr, n) {

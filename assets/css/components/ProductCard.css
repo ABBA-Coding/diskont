@@ -98,7 +98,7 @@
   overflow: hidden;
   width: 100%;
   background: #ffffff;
-  border: 1px solid #09454f;
+  border: 1px solid var(--color_green);
   border-radius: 8px;
   cursor: pointer;
   display: flex;
@@ -111,7 +111,7 @@
   line-height: 21px;
   text-align: center;
   letter-spacing: -0.02em;
-  color: #09454f;
+  color: var(--color_green);
   height: 40px;
 }
 .to-basket-count {
@@ -162,7 +162,7 @@
   left: 0;
   width: 100%;
   height: 0%;
-  background: #09454f;
+  background: var(--color_green);
   transition: 0.3s;
 }
 .product-discount {

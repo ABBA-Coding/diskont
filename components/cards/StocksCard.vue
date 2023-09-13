@@ -128,7 +128,7 @@ export default {
   height: 10px;
 }
 .stocks-card-type-new {
-  /* background: #09454f;
+  /* background: var(--color_green);
   color: #fff; */
 }
 

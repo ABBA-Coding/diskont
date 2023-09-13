@@ -419,7 +419,7 @@ export default {
 .num {
   width: 10px;
   height: 10px;
-  background: #09454f;
+  background: var(--color_green);
   position: absolute;
   width: 50%;
   height: 50%;

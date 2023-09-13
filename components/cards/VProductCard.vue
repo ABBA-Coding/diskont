@@ -53,7 +53,7 @@ export default {};
   font-size: 14px;
   line-height: 17px;
   text-align: center;
-  color: #09454f;
+  color: var(--color_green);
   cursor: pointer;
 }
 
@@ -70,7 +70,7 @@ export default {};
 .v-product-card-btns div:first-child {
   background: #ffffff;
   border: 1px solid #ffffff;
-  /* color: #09454f; */
+  /* color: var(--color_green); */
   margin-bottom: 14px;
 }
 .v-product-card-btns div:last-child {

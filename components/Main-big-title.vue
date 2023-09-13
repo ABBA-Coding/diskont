@@ -15,7 +15,7 @@ export default {
   font-weight: 600;
   font-size: 40px;
   line-height: 48px;
-  color: #09454f;
+  color: var(--color_green);
 }
 .main-big-title {
   margin-bottom: 32px;

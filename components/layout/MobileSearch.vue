@@ -275,6 +275,7 @@ export default {
 .mobile-search {
   display: none;
   position: relative;
+  background-color: #fff;
 }
 .mobile-search .search_input_container {
   width: 100%;

@@ -286,7 +286,12 @@
                 </span>
               </div>
             </div>
-            <div v-for="attribit in attributes" :key="attribit.id">
+            <div
+              v-for="attribit in attributes.filter(
+                (item) => !item?.name?.includes('Цвет')
+              )"
+              :key="attribit.id"
+            >
               <h5 @click="atributDropAction(attribit.id)">
                 {{ attribit?.name }}<span v-html="arrow"></span>
               </h5>
@@ -319,6 +324,34 @@
                   @click="showAllAtributs(attribit.id)"
                   >{{ $store.state.translations["main.show-more"] }}</span
                 >
+              </div>
+            </div>
+            <div
+              v-for="attribit in attributes.filter((item) =>
+                item?.name?.includes('Цвет')
+              )"
+              :key="attribit.id"
+            >
+              <h5 @click="atributDropAction(attribit.id)">
+                {{ attribit?.name }}<span v-html="arrow"></span>
+              </h5>
+              <div
+                class="categories-checkbox-list filter-colors"
+                :class="{ 'height-auto': atributDrop.includes(attribit.id) }"
+              >
+                <button
+                  :class="{ active: filterOptions.find((item) => item.id == option.id) }"
+                  v-for="option in attribit.options"
+                  :key="option.id"
+                  @click="onChange(option.id)"
+                  :style="
+                    option?.name == '#ffffff'
+                      ? `border: 1px solid #EBEBEB`
+                      : `background-color: ${option?.name}`
+                  "
+                >
+                  <span :style="`background-color: ${option?.name}`"></span>
+                </button>
               </div>
             </div>
           </div>
@@ -526,9 +559,12 @@
           <!-- <span class="categories-list_show-more">{{ $store.state.translations["main.show-more"] }}</span> -->
         </div>
         <div class="categories-atribute-box">
-          <div v-for="attribit in attributes" :key="attribit.id">
+          <div
+            v-for="attribit in attributes.filter((item) => !item?.name?.includes('Цвет'))"
+            :key="attribit.id"
+          >
             <h5 @click="atributDropAction(attribit.id)">
-              {{ attribit?.name }} <span v-html="arrow"></span>
+              {{ attribit?.name }}<span v-html="arrow"></span>
             </h5>
             <div
               class="categories-checkbox-list"
@@ -559,6 +595,32 @@
                 @click="showAllAtributs(attribit.id)"
                 >{{ $store.state.translations["main.show-more"] }}</span
               >
+            </div>
+          </div>
+          <div
+            v-for="attribit in attributes.filter((item) => item?.name?.includes('Цвет'))"
+            :key="attribit.id"
+          >
+            <h5 @click="atributDropAction(attribit.id)">
+              {{ attribit?.name }}<span v-html="arrow"></span>
+            </h5>
+            <div
+              class="categories-checkbox-list filter-colors"
+              :class="{ 'height-auto': atributDrop.includes(attribit.id) }"
+            >
+              <button
+                :class="{ active: filterOptions.find((item) => item.id == option.id) }"
+                v-for="option in attribit.options"
+                :key="option.id"
+                @click="onChange(option.id)"
+                :style="
+                  option?.name == '#ffffff'
+                    ? `border: 1px solid #EBEBEB`
+                    : `background-color: ${option?.name}`
+                "
+              >
+                <span :style="`background-color: ${option?.name}`"></span>
+              </button>
             </div>
           </div>
           <button class="confirm" @click="filterHandle = false">
@@ -788,8 +850,6 @@ export default {
       this.totalPage = data?.products?.total;
       this.products = data?.products?.data;
       this.loading = false;
-
-      console.log(data);
     },
     // async __GET_CATEGORY() {
     //   this.loading = true;
@@ -840,6 +900,8 @@ export default {
           this.filterOptions.push(findItem);
         });
       }
+      console.log(this.filterOptions);
+      console.log(this.$route.query);
     },
     onChangeSlider(val) {},
 
@@ -990,13 +1052,13 @@ export default {
 .hidden__filter {
   transition: 0.4s;
   transform: translateX(-100%);
-  padding: 148px 16px 99px 16px;
+  padding: 27px 16px 99px 16px;
   position: fixed;
-  top: 0;
+  top: 61px;
   left: 0;
   width: 100%;
   background: white;
-  z-index: 9;
+  z-index: 1002;
   height: 100%;
   overflow: auto;
 }
@@ -1035,5 +1097,31 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.filter-colors {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.filter-colors button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background-color: transparent;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.filter-colors .active span {
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  left: 1px;
+  right: 1px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  display: flex;
 }
 </style>

@@ -245,7 +245,7 @@ body::-webkit-scrollbar-thumb {
   font-weight: 600;
   font-size: 18px;
   line-height: 24px;
-  color: #09454f;
+  color: var(--color_green);
   display: flex;
   justify-content: center;
   cursor: pointer;
@@ -270,7 +270,7 @@ body::-webkit-scrollbar-thumb {
   display: none !important;
 }
 .vmodal-btn {
-  background: #09454f;
+  background: var(--color_green);
   border-radius: 12px;
   font-family: var(--SB_600);
   font-style: normal;

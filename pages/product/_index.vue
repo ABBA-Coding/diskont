@@ -479,125 +479,128 @@
             </div>
           </div>
         </div>
+        
         <div class="col-md-3 col-xs-12 order">
-          <div class="cardo">
-            <div class="cardo__header">
-              <div class="discount" v-if="product?.discount">
-                <p class="tag">
-                  {{
-                    product?.discount?.pivot?.amount
-                      ? `-${(
-                          (product?.discount?.pivot?.amount * 100) /
-                          product?.real_price
-                        ).toFixed()}%`
-                      : `-${product?.discount?.pivot?.percent}%`
-                  }}
+          <!-- <a-affix :offset-bottom="78"> -->
+            <div class="cardo">
+              <div class="cardo__header">
+                <div class="discount" v-if="product?.discount">
+                  <p class="tag">
+                    {{
+                      product?.discount?.pivot?.amount
+                        ? `-${(
+                            (product?.discount?.pivot?.amount * 100) /
+                            product?.real_price
+                          ).toFixed()}%`
+                        : `-${product?.discount?.pivot?.percent}%`
+                    }}
+                  </p>
+                  <p class="dis__price" v-if="product?.discount_price">
+                    {{ `${product?.real_price}`.replace(/\B(?=(\d{3})+(?!\d))/g, " ") }}
+                    {{ $store.state.translations["main.som"] }}
+                  </p>
+                  <p class="dis__txt">
+                    {{ $store.state.translations["main.at-discount-price"] }}
+                  </p>
+                </div>
+                <p class="price" v-if="skeleton">
+                  <b-skeleton width="50%" height="100%"> </b-skeleton>
                 </p>
-                <p class="dis__price" v-if="product?.discount_price">
-                  {{ `${product?.real_price}`.replace(/\B(?=(\d{3})+(?!\d))/g, " ") }}
+                <p class="price" v-if="product?.price && !skeleton">
+                  {{
+                    `${
+                      product?.discount_price
+                        ? product?.discount_price
+                        : product?.real_price
+                    }`.replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+                  }}
                   {{ $store.state.translations["main.som"] }}
                 </p>
-                <p class="dis__txt">
-                  {{ $store.state.translations["main.at-discount-price"] }}
+
+                <p class="delivery">
+                  {{ $store.state.translations["main.depends-region"] }}
+                </p>
+
+                <p class="coin" v-if="skeleton">
+                  <b-skeleton width="150px" height="100%"> </b-skeleton>
+                </p>
+                <p v-else class="coin">
+                  <img src="@/assets/images/Group 1000005199.png" alt="" />
+                  +{{
+                    Math.floor(
+                      (product?.discount_price
+                        ? product?.discount_price
+                        : product?.real_price) /
+                        ($store.state.dicoin?.sum_to_dicoin
+                          ? $store.state.dicoin?.sum_to_dicoin
+                          : 1)
+                    )
+                  }}
+                  {{ $store.state.translations["main.dicoin"] }}
                 </p>
               </div>
-              <p class="price" v-if="skeleton">
-                <b-skeleton width="50%" height="100%"> </b-skeleton>
-              </p>
-              <p class="price" v-if="product?.price && !skeleton">
-                {{
-                  `${
-                    product?.discount_price
-                      ? product?.discount_price
-                      : product?.real_price
-                  }`.replace(/\B(?=(\d{3})+(?!\d))/g, " ")
-                }}
-                {{ $store.state.translations["main.som"] }}
-              </p>
 
-              <p class="delivery">
-                {{ $store.state.translations["main.depends-region"] }}
-              </p>
-
-              <p class="coin" v-if="skeleton">
-                <b-skeleton width="150px" height="100%"> </b-skeleton>
-              </p>
-              <p v-else class="coin">
-                <img src="@/assets/images/Group 1000005199.png" alt="" />
-                +{{
-                  Math.floor(
-                    (product?.discount_price
-                      ? product?.discount_price
-                      : product?.real_price) /
-                      ($store.state.dicoin?.sum_to_dicoin
-                        ? $store.state.dicoin?.sum_to_dicoin
-                        : 1)
-                  )
-                }}
-                {{ $store.state.translations["main.dicoin"] }}
-              </p>
-            </div>
-
-            <div class="buttons">
-              <button
-                v-if="!$store.state.cart.find((item) => item.id == product?.id)"
-                class="cart"
-                @click="
-                  $store.commit('addToCart', {
-                    obj: { id: product?.id, count: 1 },
-                    name: 'cart',
-                  })
-                "
-              >
-                <p>{{ $store.state.translations["main.add-to-cart"] }}</p>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="17"
-                  viewBox="0 0 18 17"
-                  fill="none"
+              <div class="buttons">
+                <button
+                  v-if="!$store.state.cart.find((item) => item.id == product?.id)"
+                  class="cart"
+                  @click="
+                    $store.commit('addToCart', {
+                      obj: { id: product?.id, count: 1 },
+                      name: 'cart',
+                    })
+                  "
                 >
-                  <path
-                    d="M1.29175 0.708252L3.02508 1.00825L3.82758 10.5691C3.89175 11.3499 4.54425 11.9491 5.32758 11.9466H14.4184C15.1659 11.9483 15.8001 11.3983 15.9059 10.6583L16.6967 5.19325C16.7851 4.58242 16.3609 4.01575 15.7509 3.92742C15.6976 3.91992 3.30341 3.91575 3.30341 3.91575"
-                    stroke="#09454f"
-                    stroke-width="1.4"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M10.7709 6.99552H13.0817"
-                    stroke="#09454f"
-                    stroke-width="1.4"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M4.96199 14.8354C5.21283 14.8354 5.41533 15.0388 5.41533 15.2888C5.41533 15.5396 5.21283 15.7429 4.96199 15.7429C4.71116 15.7429 4.50866 15.5396 4.50866 15.2888C4.50866 15.0388 4.71116 14.8354 4.96199 14.8354Z"
-                    fill="#09454f"
-                    stroke="#09454f"
-                    stroke-width="1.4"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M14.3623 14.8354C14.6131 14.8354 14.8164 15.0388 14.8164 15.2888C14.8164 15.5396 14.6131 15.7429 14.3623 15.7429C14.1114 15.7429 13.9089 15.5396 13.9089 15.2888C13.9089 15.0388 14.1114 14.8354 14.3623 14.8354Z"
-                    fill="#09454f"
-                    stroke="#09454f"
-                    stroke-width="1.4"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
-              <button class="click" @click="visibleOc = true">
-                {{ $store.state.translations["product.buy-now"] }}
-              </button>
+                  <p>{{ $store.state.translations["main.add-to-cart"] }}</p>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="17"
+                    viewBox="0 0 18 17"
+                    fill="none"
+                  >
+                    <path
+                      d="M1.29175 0.708252L3.02508 1.00825L3.82758 10.5691C3.89175 11.3499 4.54425 11.9491 5.32758 11.9466H14.4184C15.1659 11.9483 15.8001 11.3983 15.9059 10.6583L16.6967 5.19325C16.7851 4.58242 16.3609 4.01575 15.7509 3.92742C15.6976 3.91992 3.30341 3.91575 3.30341 3.91575"
+                      stroke="#09454f"
+                      stroke-width="1.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M10.7709 6.99552H13.0817"
+                      stroke="#09454f"
+                      stroke-width="1.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M4.96199 14.8354C5.21283 14.8354 5.41533 15.0388 5.41533 15.2888C5.41533 15.5396 5.21283 15.7429 4.96199 15.7429C4.71116 15.7429 4.50866 15.5396 4.50866 15.2888C4.50866 15.0388 4.71116 14.8354 4.96199 14.8354Z"
+                      fill="#09454f"
+                      stroke="#09454f"
+                      stroke-width="1.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M14.3623 14.8354C14.6131 14.8354 14.8164 15.0388 14.8164 15.2888C14.8164 15.5396 14.6131 15.7429 14.3623 15.7429C14.1114 15.7429 13.9089 15.5396 13.9089 15.2888C13.9089 15.0388 14.1114 14.8354 14.3623 14.8354Z"
+                      fill="#09454f"
+                      stroke="#09454f"
+                      stroke-width="1.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+                <button class="click" @click="visibleOc = true">
+                  {{ $store.state.translations["product.buy-now"] }}
+                </button>
+              </div>
             </div>
-          </div>
+          <!-- </a-affix> -->
 
           <!-- <div class="credit">
             <p>{{ $store.state.translations["main.installmentpayment"] }}</p>
@@ -1330,7 +1333,6 @@ export default {
     try {
       await this.$getLocation().then((coordinates) => {
         this.locations = coordinates;
-        console.log(this.locations);
       });
     } catch (e) {
       console.log(e);
@@ -1723,7 +1725,7 @@ export default {
 
 .mySwiper .swiper-slide-thumb-active {
   opacity: 1;
-  border: 1px solid #09454f;
+  border: 1px solid var(--color_green);
   border-radius: 10px;
 }
 .world {
@@ -2479,7 +2481,7 @@ tbody .img {
     line-height: normal;
   }
   .butns button.active {
-    background: #09454f;
+    background: var(--color_green);
   }
   .about::v-deep p {
     color: #414141;

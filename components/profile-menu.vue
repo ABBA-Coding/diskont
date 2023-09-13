@@ -117,7 +117,7 @@ export default {
 <style lang="css">
 .logout-btn {
   height: 59px;
-  background: #09454f;
+  background: var(--color_green);
   border-radius: 16px;
   font-family: var(--SB_500);
   font-style: normal;
@@ -140,7 +140,7 @@ export default {
   line-height: 150%;
   text-align: center;
   letter-spacing: -0.02em;
-  color: #09454f;
+  color: var(--color_green);
   display: flex;
   justify-content: center;
   margin-top: 31px;

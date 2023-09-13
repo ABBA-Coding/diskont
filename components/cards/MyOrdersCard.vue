@@ -177,11 +177,11 @@ export default {
   max-height: 42px;
 }
 .success-order {
-  color: #09454f;
+  color: var(--color_green);
   background: #fafafa;
 }
 .success-order::after {
-  background: #09454f;
+  background: var(--color_green);
 }
 .done-order::after {
   background: #18b3bd;

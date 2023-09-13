@@ -33,7 +33,7 @@
 .profile-menu a:hover,
 .profile-exit:hover {
   background: #f9f9fd;
-  color: #09454f;
+  color: var(--color_green);
 }
 .profile-menu-active {
   background: #f9f9fd;

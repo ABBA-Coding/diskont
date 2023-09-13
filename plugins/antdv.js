@@ -9,7 +9,7 @@ import {
   Rate,
   FormModel,
   Carousel,
-  // Button,
+  Button,
   // Table,
   // Upload,
   Modal,
@@ -24,17 +24,19 @@ import {
   // DatePicker,
   notification,
   message,
+  Affix,
   // InputNumber,
   // Skeleton,
   // Empty,
   // Alert,
   Spin,
-  BackTop
+  BackTop,
 } from "ant-design-vue";
 const { info, success, error, warning, confirm } = Modal;
 Vue.prototype.$notification = notification;
 Vue.prototype.$message = message;
 Vue.prototype.$confirm = confirm;
+Vue.use(Affix);
 Vue.use(Spin);
 Vue.use(BackTop);
 Vue.use(Checkbox);
@@ -54,7 +56,7 @@ Vue.use(Carousel);
 // Vue.use(InputNumber);
 Vue.use(FormModel);
 // Vue.use(Layout);
-// Vue.use(Button);
+Vue.use(Button);
 // Vue.use(Table);
 // Vue.use(Upload);
 Vue.use(Modal);

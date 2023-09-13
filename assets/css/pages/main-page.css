@@ -20,7 +20,7 @@
   line-height: 28px;
   text-align: right;
   text-decoration-line: underline;
-  color: #09454f;
+  color: var(--color_green);
   margin-bottom: 24px;
 }
 .v-card-products-grid {
@@ -49,7 +49,7 @@
   left: 0;
   width: 0%;
   height: 100%;
-  background: #09454f;
+  background: var(--color_green);
   transition: 0.3s;
 }
 .h-catalog-tab ul li span {
@@ -67,7 +67,7 @@
   overflow: hidden;
   position: relative;
   padding: 12px 25px;
-  border: 1px solid #09454f;
+  border: 1px solid var(--color_green);
   border-radius: 22px;
   margin-right: 20px;
   cursor: pointer;
@@ -78,7 +78,7 @@
   font-size: 14px;
   line-height: 17px;
   text-align: center;
-  color: #09454f;
+  color: var(--color_green);
   z-index: 10;
 }
 .h-catalog-tab ul li:hover {
