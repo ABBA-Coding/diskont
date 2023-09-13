@@ -27,8 +27,8 @@ export default {
   },
   mounted() {
     const swiper = new Swiper(".swiper-product2", {
-      slidesPerView: 6,
-      spaceBetween: 24,
+      slidesPerView: 2,
+      spaceBetween: 16,
       effect: "flip",
       flipEffect: {
         slideShadows: false,
@@ -38,13 +38,26 @@ export default {
       autoplay: {
         delay: 40000,
       },
+      breakpoints: {
+        1024: {
+          slidesPerView: 5,
+          spaceBetween: 24,
+        },
+        768: {
+          slidesPerView: 4,
+          spaceBetween: 24,
+        },
+        576: {
+          slidesPerView: 2,
+          spaceBetween: 16,
+        },
+      },
       navigation: {
         nextEl: ".swiper-button-next-product2",
         prevEl: ".swiper-button-prev-product2",
       },
     });
-    swiper.on("activeIndexChange", (swiper) => {
-    });
+    swiper.on("activeIndexChange", (swiper) => {});
   },
 };
 </script>

@@ -980,7 +980,7 @@ export default {
   color: var(--color_green) !important;
 }
 .text-test {
-  color: red;
+  /* color: red; */
 }
 .categories-atribute-box {
   display: flex;

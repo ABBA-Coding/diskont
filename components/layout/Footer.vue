@@ -18,17 +18,17 @@
               >
                 <div class="mt-3">
                   <li>
-                    <nuxt-link :to="localePath('/info/about-b2b')">{{
+                    <nuxt-link :to="localePath('/about#b2b')">{{
                       $store.state.translations["main.b2bsales"]
                     }}</nuxt-link>
                   </li>
                   <li>
-                    <nuxt-link :to="localePath('/info/about-us')">{{
+                    <nuxt-link :to="localePath('/about')">{{
                       $store.state.translations["main.aboutus"]
                     }}</nuxt-link>
                   </li>
                   <li>
-                    <nuxt-link :to="localePath('/')">{{
+                    <nuxt-link :to="localePath('/about')">{{
                       $store.state.translations["main.newsreviews"]
                     }}</nuxt-link>
                   </li>
@@ -52,7 +52,7 @@
               >
                 <div class="mt-3">
                   <li>
-                    <nuxt-link :to="localePath('/info/delivery')">
+                    <nuxt-link :to="localePath('/about#delivary')">
                       {{ $store.state.translations["main.delivery"] }}</nuxt-link
                     >
                   </li>
@@ -62,7 +62,7 @@
                     >
                   </li>
                   <li>
-                    <nuxt-link :to="localePath('/info/working')">
+                    <nuxt-link :to="localePath('/about#working')">
                       {{ $store.state.translations["main.workingdiskont"] }}</nuxt-link
                     >
                   </li>
@@ -86,24 +86,24 @@
               >
                 <div class="mt-3">
                   <li>
-                    <nuxt-link :to="localePath('/info/trade-nation')">
+                    <nuxt-link :to="localePath('/about#tradeNation')">
                       {{
                         $store.state.translations["main.installmentpayment"]
                       }}</nuxt-link
                     >
                   </li>
                   <li>
-                    <nuxt-link :to="localePath('/')">
+                    <nuxt-link :to="localePath('/about#returnProduct')">
                       {{ $store.state.translations["main.productreturn"] }}</nuxt-link
                     >
                   </li>
                   <li>
-                    <nuxt-link :to="localePath('/info/warranty')">
+                    <nuxt-link :to="localePath('/about#warrawarrantynty')">
                       {{ $store.state.translations["main.warrantyproducts"] }}</nuxt-link
                     >
                   </li>
                   <li>
-                    <nuxt-link :to="localePath('/')">
+                    <nuxt-link :to="localePath('/about#faqs')">
                       {{ $store.state.translations["main.faq"] }}</nuxt-link
                     >
                   </li>
@@ -138,17 +138,17 @@
             <h4>{{ $store.state.translations["main.company"] }}</h4>
             <ul>
               <li>
-                <nuxt-link :to="localePath('/info/about-b2b')">{{
+                <nuxt-link :to="localePath('/about#b2b')">{{
                   $store.state.translations["main.b2bsales"]
                 }}</nuxt-link>
               </li>
               <li>
-                <nuxt-link :to="localePath('/info/about-us')">{{
+                <nuxt-link :to="localePath('/about')">{{
                   $store.state.translations["main.aboutus"]
                 }}</nuxt-link>
               </li>
               <li>
-                <nuxt-link :to="localePath('/')">{{
+                <nuxt-link :to="localePath('/about')">{{
                   $store.state.translations["main.newsreviews"]
                 }}</nuxt-link>
               </li>
@@ -158,17 +158,17 @@
             <h4>{{ $store.state.translations["main.newsreviews"] }}</h4>
             <ul>
               <li>
-                <nuxt-link :to="localePath('/info/delivery')">
+                <nuxt-link :to="localePath('/about#delivery')">
                   {{ $store.state.translations["main.tohelp"] }}</nuxt-link
                 >
               </li>
               <li>
-                <nuxt-link :to="localePath('/')">
+                <nuxt-link :to="localePath('/about#delivery')">
                   {{ $store.state.translations["main.delivery"] }}</nuxt-link
                 >
               </li>
               <li>
-                <nuxt-link :to="localePath('/info/working')">
+                <nuxt-link :to="localePath('/about#working')">
                   {{ $store.state.translations["main.workingdiskont"] }}</nuxt-link
                 >
               </li>
@@ -178,22 +178,22 @@
             <h4>{{ $store.state.translations["main.customersupport"] }}</h4>
             <ul>
               <li>
-                <nuxt-link :to="localePath('/info/trade-nation')">
+                <nuxt-link :to="localePath('/about#tradeNation')">
                   {{ $store.state.translations["main.installmentpayment"] }}</nuxt-link
                 >
               </li>
               <li>
-                <nuxt-link :to="localePath('/')">
+                <nuxt-link :to="localePath('/about#returnProduct')">
                   {{ $store.state.translations["main.productreturn"] }}</nuxt-link
                 >
               </li>
               <li>
-                <nuxt-link :to="localePath('/info/warranty')">
+                <nuxt-link :to="localePath('/about#warranty')">
                   {{ $store.state.translations["main.warrantyproducts"] }}</nuxt-link
                 >
               </li>
               <li>
-                <nuxt-link :to="localePath('/')">
+                <nuxt-link :to="localePath('/about#faqs')">
                   {{ $store.state.translations["main.faq"] }}</nuxt-link
                 >
               </li>

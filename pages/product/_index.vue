@@ -383,7 +383,7 @@
               v-else
               class="colors"
               v-for="(atributColor, atributColorIndex) in productAttributes.filter(
-                (item) => item.title == 'Цвет'
+                (item) => item.title?.includes('Цвет') || item.title?.includes('Rang')
               )"
               :key="atributColorIndex"
             >
@@ -425,7 +425,7 @@
             <div
               class="variations"
               v-for="(atribut, atributIndex) in productAttributes.filter(
-                (item) => item.title != 'Цвет'
+                (item) => !item.title?.includes('Цвет') && !item.title?.includes('Rang')
               )"
               :key="atributIndex"
             >

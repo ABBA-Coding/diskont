@@ -9,11 +9,15 @@ export const state = () => ({
   translations: {},
   locations: {},
   siteInfo: {},
+  modal: false
 });
 
 export const mutations = {
   getTranslations(state, payload) {
     state.translations = payload;
+  },
+  openModal(state,payload) {
+    state.modal = payload;
   },
   getLocations(state, payload) {
     state.locations = payload;
@@ -36,6 +40,7 @@ export const mutations = {
     token ? (state.auth = true) : (state.auth = false);
   },
   authVisibleChange(state, payload) {
+    console.log(payload);
     state.authVisible = payload;
   },
   addToStore(state, payload) {

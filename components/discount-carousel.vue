@@ -120,6 +120,6 @@ export default {
 .banner {
   width: 100%;
   height: 286px;
-  background: red;
+  /* background: red; */
 }
 </style>

@@ -249,8 +249,10 @@
             </ul>
           </div>
           <div class="btns">
-            <button>Хочу работать в Diskont</button>
-            <a href="#">Telegram bot @diskont_jobs</a>
+            <a :href="`tel:${$store.state.siteInfo?.phone_number}`"
+              >Хочу работать в Diskont</a
+            >
+            <a :href="$store.state.siteInfo?.telegram">Telegram bot @diskont_jobs</a>
           </div>
         </div>
         <div class="right">
@@ -561,6 +563,11 @@ export default {
       faqs,
     };
   },
+  mounted() {
+    this.scrollElement(
+      `${this.$route.hash ? this.$route.hash : "delivery"}`.replace("#", "")
+    );
+  },
   methods: {
     chunkIntoN(arr, n) {
       const size = Math.ceil(arr.length / n);
@@ -568,6 +575,7 @@ export default {
     },
     scrollElement(id) {
       this.activeTab = id;
+      this.$router.push({ name: this.$route.name, hash: `#${id}` });
       const element = document.getElementById(id);
       element.scrollIntoView({ block: "center", behavior: "smooth" });
     },
@@ -595,7 +603,8 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
 }
-.tabs li {
+.tabs li,
+.tabs a {
   cursor: pointer;
   padding: 16px 32px;
   border-radius: 600px;
@@ -769,11 +778,11 @@ export default {
   line-height: 22.401px; /* 140.009% */
   border: none;
 }
-.block3 .btns button {
+.block3 .btns a:first-child {
   background: var(--yashil, #1f8a70);
   color: #fff;
 }
-.block3 .btns a {
+.block3 .btns a:last-child {
   color: var(--diskont-yashil, #06858c);
   border: 1px solid #ebebeb;
   background: #fcfffe;

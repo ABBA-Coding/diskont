@@ -280,7 +280,7 @@
           ><span class="nav_logo" v-html="navLogoMobile"></span
         ></nuxt-link>
       </div>
-      <div class="coin_btn " @click="$router.push(localePath('/d-coin/about'))">
+      <div class="coin_btn" @click="$router.push(localePath('/d-coin/about'))">
         <span><img src="../../assets/images/coin.png" alt="" /></span>
         {{ $store.state.profile?.dicoin?.quantity }}
         {{ $store.state.translations["main.dicoin"] }}
@@ -291,20 +291,28 @@
         <div class="position-relative w-100 inner">
           <div class="catalog-menu-left-bg"></div>
           <div class="container_xl d-flex position-relative" style="z-index: 2">
-            <div class="catalog-menu-content">
+            <div class="catalog-menu-content web_categories">
               <div class="catalog-menu-list">
                 <ul>
                   <li
                     v-for="category in categories"
                     :key="category?.id"
-                    @click="$router.push(`/categories/${category?.slug}`)"
+                    @click="$router.push(localePath(`/categories/${category?.slug}`))"
                     @mouseover="targetCategory(category)"
                     :class="{
                       'catalog-menu-list-active': activeCategory?.id == category?.id,
                     }"
                   >
-                    {{ category?.name
-                    }}<span v-if="activeCategory?.id == category?.id"
+                    <p class="category-name">
+                      <img v-if="category?.md_icon" :src="category?.md_icon" alt="" />
+                      <span
+                        class="mx-0"
+                        v-if="category?.icon_svg"
+                        v-html="category?.icon_svg"
+                      ></span
+                      >{{ category?.name }}
+                    </p>
+                    <span v-if="activeCategory?.id == category?.id"
                       ><svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="8"
@@ -401,466 +409,52 @@
                 </div>
               </div>
             </div>
+            <div class="catalog-menu-content mobile_categories">
+              <div
+                class="category_drop"
+                v-for="category in categories"
+                :key="category?.id"
+              >
+                <h4
+                  @click="dropAction(category?.id)"
+                  :class="{
+                    'catalog-menu-list-active': activeDrop.includes(category?.id),
+                  }"
+                >
+                  <p class="category-name">
+                    <img v-if="category?.md_icon" :src="category?.md_icon" alt="" />
+                    <span
+                      class="mx-0"
+                      v-if="category?.icon_svg"
+                      v-html="category?.icon_svg"
+                    ></span
+                    >{{ category?.name }}
+                  </p>
+                  <span
+                    v-html="dropArrow"
+                    :class="{ rotate180: activeDrop.includes(category?.id) }"
+                  ></span>
+                </h4>
+                <ul
+                  class="category-drop-board mt-0"
+                  :class="{ 'height-auto': activeDrop.includes(category?.id) }"
+                >
+                  <div class="mt-3">
+                    <li v-for="childCat in category.children" :key="childCat?.id">
+                      <nuxt-link :to="localePath(`/categories/${childCat?.slug}`)">{{
+                        childCat?.name
+                      }}</nuxt-link>
+                    </li>
+                  </div>
+                </ul>
+              </div>
+            </div>
             <div class="close-space" @click="catalogMenu = false"></div>
           </div>
         </div>
       </div>
     </Transition>
-    <!-- chech number -->
-    <a-modal
-      v-model="visibleCheck"
-      :body-style="{ padding: '32px', borderRadius: '14px' }"
-      centered
-      :closable="false"
-      width="670px"
-      @ok="handleOk"
-    >
-      <div class="vmodal-anim-header">
-        <img class="shadow-ell-1" src="../../assets/images/Ellipse 57.png" alt="" />
-        <img class="shadow-ell-2" src="../../assets/images/Ellipse 59.png" alt="" />
-        <h5>{{ $store.state.translations["main.login-register"] }}</h5>
-        <span @click="handleOk"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-          >
-            <path
-              d="M17.9958 1.98438L2.00391 17.9762"
-              stroke="#09454f"
-              stroke-width="3.28586"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M18.0003 17.9861L1.99512 1.97754"
-              stroke="#09454f"
-              stroke-width="3.28586"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            /></svg
-        ></span>
-      </div>
-      <div class="vmodal-body">
-        <a-form-model
-          :model="formCheckNumber"
-          ref="ruleFormCheckNumber"
-          :rules="rulesCheckNumber"
-          layout="vertical"
-        >
-          <a-form-model-item
-            class="form-item register-input mb-0 pb-0"
-            :label="$store.state.translations['main.your-phone-number']"
-            prop="phone_number"
-          >
-            <span class="position-relative d-flex align-items-center justify-content-end">
-              <!-- <span class="position-absolute number-error" v-if="checkNumberError"
-                >Raqam noto’g’ri kiritildi</span
-              > -->
-              <!-- <the-mask
-                @keyup.enter="submitCheckNumber()"
-                :mask="['+998 (##) ### ## ##', '+998 (##) ### ## ##']"
-                placeholder="+998 (__) ___ __ __"
-              /> -->
-              <input
-                type="text"
-                v-mask="'+998 ## ### ## ##'"
-                @keyup.enter="submitCheckNumber()"
-                v-model="formCheckNumber.phone_number"
-                placeholder="+998 (__) ___ __ __"
-              />
-            </span>
-            <!-- <a-input v-model="form.name" placeholder="Telefon raqamingiz" /> -->
-          </a-form-model-item>
-        </a-form-model>
-      </div>
-      <div
-        class="vmodal-btn vmodal-btn-height"
-        v-ripple="'rgba(255, 255, 255, 0.35)'"
-        @click="submitCheckNumber()"
-      >
-        {{ $store.state.translations["main.login-text"] }}
-      </div>
-      <!-- <div class="vmodal-btn-outline" @click="visibleLogin = true">Manzilni qo’shish</div> -->
-      <template slot="footer"> <h3></h3></template>
-    </a-modal>
-    <!-- chech number -->
-    <!-- check number forget password -->
-    <a-modal
-      v-model="visibleForgetPass"
-      :body-style="{ padding: '32px', borderRadius: '14px' }"
-      centered
-      :closable="false"
-      width="670px"
-      @ok="handleOkForgetPass"
-    >
-      <div class="vmodal-anim-header">
-        <img class="shadow-ell-1" src="../../assets/images/Ellipse 57.png" alt="" />
-        <img class="shadow-ell-2" src="../../assets/images/Ellipse 59.png" alt="" />
-        <h5>{{ $store.state.translations["main.login-register"] }}</h5>
-        <span @click="handleOkForgetPass"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-          >
-            <path
-              d="M17.9958 1.98438L2.00391 17.9762"
-              stroke="#09454f"
-              stroke-width="3.28586"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M18.0003 17.9861L1.99512 1.97754"
-              stroke="#09454f"
-              stroke-width="3.28586"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            /></svg
-        ></span>
-      </div>
-      <div class="vmodal-body">
-        <a-form-model
-          :model="formCheckNumber"
-          ref="ruleFormCheckNumber"
-          :rules="rulesCheckNumber"
-          layout="vertical"
-        >
-          <a-form-model-item
-            class="form-item register-input mb-0 pb-0"
-            :label="$store.state.translations['main.your-phone-number']"
-            prop="phone_number"
-          >
-            <span class="position-relative d-flex align-items-center justify-content-end">
-              <!-- <the-mask
-                @keyup.enter="submitForgetPass()"
-                :mask="['+998 (##) ### ## ##', '+998 (##) ### ## ##']"
-                placeholder="+998 (__) ___ __ __"
-                v-model="formCheckNumber.phone_number"
-              /> -->
-              <input
-                @keyup.enter="submitForgetPass()"
-                v-mask="'+998 ## ### ## ##'"
-                placeholder="+998 (__) ___ __ __"
-                v-model="formCheckNumber.phone_number"
-              />
-            </span>
-          </a-form-model-item>
-        </a-form-model>
-      </div>
-      <div class="vmodal-btn vmodal-btn-height" @click="submitForgetPass()">
-        {{ $store.state.translations["main.login-text"] }}
-      </div>
-      <!-- <div class="vmodal-btn-outline" @click="visibleLogin = true">Manzilni qo’shish</div> -->
-      <template slot="footer"> <h3></h3></template>
-    </a-modal>
-    <!-- check number forget password -->
-    <!-- login profile  -->
-    <a-modal
-      v-model="visibleLogin"
-      :body-style="{ padding: '32px', borderRadius: '14px' }"
-      centered
-      :closable="false"
-      width="670px"
-      @ok="handleOkLogin"
-    >
-      <div class="vmodal-header auth-modal">
-        <h5>{{ $store.state.translations["main.login-register"] }}</h5>
-        <span @click="handleOkLogin"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-          >
-            <path
-              d="M17.9958 1.98438L2.00391 17.9762"
-              stroke="#09454f"
-              stroke-width="3.28586"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M18.0003 17.9861L1.99512 1.97754"
-              stroke="#09454f"
-              stroke-width="3.28586"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            /></svg
-        ></span>
-      </div>
-      <div class="vmodal-body">
-        <a-form-model
-          :model="formLogin"
-          ref="ruleFormLogin"
-          :rules="rulesLogin"
-          layout="vertical"
-        >
-          <a-form-model-item
-            class="form-item register-input mb-3 pb-0"
-            :label="$store.state.translations['main.your-phone-number']"
-          >
-            <!-- <the-mask
-              class="disabled"
-              v-model="formLogin.phone_number"
-              :mask="['+998 (##) ### ## ##', '+998 (##) ### ## ##']"
-              placeholder="+998 (__) ___ __ __"
-            /> -->
-            <input
-              class="disabled"
-              v-mask="'+998 ## ### ## ##'"
-              v-model="formLogin.phone_number"
-              placeholder="+998 (__) ___ __ __"
-            />
-          </a-form-model-item>
-          <a-form-model-item
-            class="form-item register-input mb-0 pb-0"
-            label="Parol"
-            :class="{ sms_code_error: loginPassError }"
-            prop="password"
-          >
-            <a-input
-              v-model="formLogin.password"
-              type="password"
-              placeholder="Password"
-            />
-            <span class="sms_code_error_text" v-if="loginPassError">{{
-              $store.state.translations["main.pass-error"]
-            }}</span>
-          </a-form-model-item>
-        </a-form-model>
-      </div>
-      <div class="vmodal-btn vmodal-btn-height" @click="submitLogin()">
-        {{ $store.state.translations["main.login-text"] }}
-      </div>
-      <div class="vmodal-forget-password" @click="forgetPassword()">
-        {{ $store.state.translations["main.forget-pass"] }}
-      </div>
-      <template slot="footer"> <h3></h3></template>
-    </a-modal>
-    <!-- login profile  -->
-    <!-- login width sm  -->
-    <a-modal
-      v-model="visibleSms"
-      :body-style="{ padding: '32px', borderRadius: '14px' }"
-      centered
-      :closable="false"
-      width="670px"
-      @ok="handleOkSms"
-    >
-      <div class="vmodal-header auth-modal">
-        <h5>{{ $store.state.translations["main.login-register"] }}</h5>
-        <span @click="handleOkSms"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-          >
-            <path
-              d="M17.9958 1.98438L2.00391 17.9762"
-              stroke="#09454f"
-              stroke-width="3.28586"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M18.0003 17.9861L1.99512 1.97754"
-              stroke="#09454f"
-              stroke-width="3.28586"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            /></svg
-        ></span>
-      </div>
-      <div class="vmodal-body">
-        <a-form-model
-          :model="formSms"
-          ref="ruleFormSms"
-          :rules="rulesSms"
-          layout="vertical"
-        >
-          <a-form-model-item
-            class="form-item register-input mb-3 pb-0 sms_code_number"
-            :label="$store.state.translations['main.your-phone-number']"
-            @keyup.enter="submitSms()"
-          >
-            <!-- <the-mask
-              class="disabled"
-              @keyup.enter="submitSms()"
-              v-model="formSms.phone_number"
-              :mask="['+998 (##) ### ## ##', '+998 (##) ### ## ##']"
-              placeholder="+998 (__) ___ __ __"
-            /> -->
-            <input
-              class="disabled"
-              v-mask="'+998 ## ### ## ##'"
-              @keyup.enter="submitSms()"
-              v-model="formSms.phone_number"
-              placeholder="+998 (__) ___ __ __"
-            />
-            <span class="change_number" @click="replaceNumber()">{{
-              $store.state.translations["main.change"]
-            }}</span>
-          </a-form-model-item>
-          <a-form-model-item
-            class="form-item register-input mb-0 pb-0"
-            :class="{ sms_code_error: smsCodeError }"
-            :label="$store.state.translations['main.enter-sms-code']"
-            prop="sms_code"
-          >
-            <a-input
-              focus
-              @keyup.enter="submitSms()"
-              v-model="formSms.sms_code"
-              type="text"
-              placeholder="sms"
-            />
-            <span class="sms_code_error_text" v-if="smsCodeError">{{
-              $store.state.translations["main.code-incorrect"]
-            }}</span>
-          </a-form-model-item>
-        </a-form-model>
-      </div>
-      <div class="vmodal-btn vmodal-btn-height" @click="submitSms()">
-        {{ $store.state.translations["main.send-sms-code"] }}
-      </div>
-      <div class="vmodal-forget-password" @click="again_sms_code()">
-        {{ $store.state.translations["main.resend-code"] }}
-      </div>
-      <template slot="footer"> <h3></h3></template>
-    </a-modal>
-    <!-- login width sm  -->
-    <!-- profile user name  -->
-    <a-modal
-      v-model="visibleName"
-      :body-style="{ padding: '32px', borderRadius: '14px' }"
-      centered
-      :closable="false"
-      width="670px"
-      @ok="handleOkName"
-    >
-      <div class="vmodal-header auth-modal">
-        <h5>{{ $store.state.translations["main.login-register"] }}</h5>
-        <span @click="handleOkName"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-          >
-            <path
-              d="M17.9958 1.98438L2.00391 17.9762"
-              stroke="#09454f"
-              stroke-width="3.28586"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M18.0003 17.9861L1.99512 1.97754"
-              stroke="#09454f"
-              stroke-width="3.28586"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            /></svg
-        ></span>
-      </div>
-      <div class="vmodal-body">
-        <a-form-model
-          :model="formName"
-          ref="ruleFormName"
-          :rules="rulesName"
-          layout="vertical"
-        >
-          <a-form-model-item
-            class="form-item register-input mb-3 pb-0"
-            :label="$store.state.translations['main.enter-your-name']"
-            prop="name"
-          >
-            <a-input
-              v-model="formName.name"
-              type="text"
-              :placeholder="$store.state.translations['main.enter-your-name']"
-            />
-          </a-form-model-item>
-          <a-form-model-item
-            class="form-item register-input mb-0 pb-0"
-            :label="$store.state.translations['main.your-phone-number']"
-          >
-            <the-mask
-              class="disabled"
-              v-model="formName.phone_number"
-              :mask="['+998 (##) ### ## ##', '+998 (##) ### ## ##']"
-              placeholder="+998 (__) ___ __ __"
-            />
-            <input
-              class="disabled"
-              v-mask="'+998 ## ### ## ##'"
-              v-model="formName.phone_number"
-              placeholder="+998 (__) ___ __ __"
-            />
-          </a-form-model-item>
-        </a-form-model>
-      </div>
-      <div class="vmodal-btn vmodal-btn-height" @click="submitName()">
-        {{ $store.state.translations["main.login-text"] }}
-      </div>
-      <template slot="footer"> <h3></h3></template>
-    </a-modal>
-    <!-- profile user name  -->
-    <!-- access profile register  -->
-    <a-modal
-      v-model="visibleSuccess"
-      :body-style="{ padding: '32px', borderRadius: '14px' }"
-      centered
-      :closable="false"
-      width="671px"
-      @ok="handleOkSuccess"
-    >
-      <div class="vmodal-header">
-        <h5></h5>
-        <span @click="handleOkSuccess"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-          >
-            <path
-              d="M17.9958 1.98438L2.00391 17.9762"
-              stroke="#09454f"
-              stroke-width="3.28586"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M18.0003 17.9861L1.99512 1.97754"
-              stroke="#09454f"
-              stroke-width="3.28586"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            /></svg
-        ></span>
-      </div>
-      <div class="vmodal-body success-vmodal">
-        <img src="../../assets/images/modal-success.png" alt="" />
-        <p>{{ $store.state.translations["main.auth-success-text"] }}</p>
-      </div>
-      <div class="vmodal-btn" @click="handleOkSuccess()">
-        {{ $store.state.translations["main.continue-shopping"] }}
-      </div>
-      <template slot="footer"> <h3></h3></template>
-    </a-modal>
-    <!-- access profile register  -->
+    <AuthModals />
     <div
       class="seach-resoult-mask"
       v-if="searchBlockHide"
@@ -873,6 +467,7 @@
 <script>
 import MainTitle from "../Main-title.vue";
 import Vnotification from "../vnotification.vue";
+import AuthModals from "./AuthModals.vue";
 
 export default {
   name: "Navbar",
@@ -881,63 +476,7 @@ export default {
       searchLastResoults: true,
       searchBlockHide: false,
       catalogMenu: false,
-      visibleSuccess: false,
-      visibleCheck: false,
-      visibleLogin: false,
-      visibleSms: false,
-      visibleName: false,
       search: "",
-      formLogin: {
-        phone_number: "",
-        password: "",
-      },
-      formCheckNumber: {
-        phone_number: "",
-      },
-      formName: {
-        name: "",
-      },
-      formSms: {
-        phone_number: "",
-        sms_code: "",
-      },
-      rulesLogin: {
-        password: [
-          {
-            required: true,
-            message: "Password is required",
-            trigger: "change",
-          },
-        ],
-      },
-      rulesCheckNumber: {
-        phone_number: [
-          {
-            required: true,
-            message: "Number is required",
-            trigger: "change",
-          },
-          { min: 9, message: "Raqam noto’g’ri kiritildi", trigger: "blur" },
-        ],
-      },
-      rulesSms: {
-        sms_code: [
-          {
-            required: true,
-            message: "sms code is required",
-            trigger: "change",
-          },
-        ],
-      },
-      rulesName: {
-        name: [
-          {
-            required: true,
-            message: "Name is required",
-            trigger: "change",
-          },
-        ],
-      },
       navLogo: require("../../assets/svg/green-logo.svg?raw"),
       navLogoMobile: require("../../assets/svg/green-logo-mobile.svg?raw"),
       searchClock: require("../../assets/svg/searchClock.svg?raw"),
@@ -955,12 +494,20 @@ export default {
       searchCategories: [],
       activeCategory: null,
       targetPage: false,
-      smsCodeError: false,
-      loginPassError: false,
-      checkNumberError: false,
-      visibleForgetPass: false,
-      forgetPassStatus: false,
       searchResoults: [],
+      activeDrop: [],
+      dropArrow: `<svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="12"
+                    viewBox="0 0 20 12"
+                    fill="none"
+                  >
+                    <path
+                      d="M9.11612 10.8839C9.60427 11.372 10.3957 11.372 10.8839 10.8839L18.8388 2.92893C19.327 2.44078 19.327 1.64932 18.8388 1.16116C18.3507 0.67301 17.5592 0.67301 17.0711 1.16116L10 8.23223L2.92893 1.16117C2.44078 0.67301 1.64932 0.67301 1.16116 1.16117C0.67301 1.64932 0.67301 2.44078 1.16116 2.92893L9.11612 10.8839ZM8.75 9L8.75 10L11.25 10L11.25 9L8.75 9Z"
+                      fill="black"
+                    /></svg
+                >`,
     };
   },
   async fetch() {
@@ -975,12 +522,10 @@ export default {
     this.categories = categoriesData?.data;
     this.activeCategory = categoriesData?.data[0];
   },
+
   computed: {
     routerPath() {
       return this.$route.path;
-    },
-    authVisible() {
-      return this.$store.state.authVisible;
     },
   },
   mounted() {
@@ -991,6 +536,13 @@ export default {
     }
   },
   methods: {
+    dropAction(id) {
+      if (this.activeDrop.includes(id)) {
+        this.activeDrop = this.activeDrop.filter((item) => item != id);
+      } else {
+        this.activeDrop.push(id);
+      }
+    },
     clearSearchResoults() {
       localStorage.setItem("search_resoults", JSON.stringify([]));
       this.searchResoults = JSON.parse(localStorage.getItem("search_resoults"));
@@ -1021,13 +573,6 @@ export default {
       const size = Math.ceil(arr.length / n);
       return Array.from({ length: n }, (v, i) => arr.slice(i * size, i * size + size));
     },
-    handleOkForgetPass() {
-      this.visibleForgetPass = false;
-    },
-    replaceNumber() {
-      this.visibleSms = false;
-      this.visibleCheck = true;
-    },
     toProfile(name) {
       this.targetPage = name;
       if (this.$store.state.auth) {
@@ -1036,195 +581,11 @@ export default {
         this.$store.commit("authVisibleChange", true);
       }
     },
-    forgetPassword() {
-      this.formCheckNumber.phone_number = `998${this.formCheckNumber.phone_number}`;
-      this.visibleLogin = false;
-      this.visibleForgetPass = true;
-      this.forgetPassStatus = true;
-    },
+
     targetCategory(obj) {
       this.activeCategory = obj;
     },
-    handleOkSuccess() {
-      this.visibleSuccess = false;
-    },
-    handleOk() {
-      this.visibleCheck = false;
-    },
-    handleOkLogin() {
-      this.visibleLogin = false;
-      this.$store.commit("authVisibleChange", false);
-    },
-    handleOkSms() {
-      this.visibleSms = false;
-    },
-    handleOkName() {
-      this.visibleName = false;
-    },
-    submitCheckNumber() {
-      const data = {
-        phone_number: this.formCheckNumber.phone_number
-          .split(" ")
-          .join("")
-          .replace("+", ""),
-      };
-      this.$refs["ruleFormCheckNumber"].validate((valid) => {
-        valid ? this.__CHECK_NUMBER(data) : false;
-      });
-    },
-    submitForgetPass() {
-      const data = {
-        phone_number: this.formCheckNumber.phone_number
-          .split(" ")
-          .join("")
-          .replace("+", ""),
-      };
-      this.$refs["ruleFormCheckNumber"].validate((valid) => {
-        valid ? this.__FORGET_PASSWORD(data) : false;
-      });
-    },
-    submitSms() {
-      const data = {
-        ...this.formSms,
-        phone_number: this.formSms.phone_number.split(" ").join("").replace("+", ""),
-      };
-      this.formName.phone_number =
-        this.formSms.phone_number.length == 9
-          ? `998${this.formSms.phone_number}`
-          : this.formSms.phone_number;
-      this.$refs["ruleFormSms"].validate((valid) => {
-        valid ? this.__REGISTER_SMS(data) : false;
-      });
-    },
-    submitLogin() {
-      const data = {
-        phone_number: this.formLogin.phone_number.split(" ").join("").replace("+", ""),
-        password: this.formLogin.password,
-      };
-      this.$refs["ruleFormLogin"].validate((valid) => {
-        if (valid) {
-          this.__LOGIN(data);
-        } else {
-          return false;
-        }
-      });
-    },
-    submitName() {
-      const data = {
-        name: this.formName.name,
-      };
-      this.$refs["ruleFormName"].validate((valid) => {
-        if (valid) {
-          this.__PROFILE_NAME(data);
-        } else {
-          return false;
-        }
-      });
-    },
-    async __REGISTER_SMS(formData) {
-      try {
-        const data = await this.$store.dispatch(
-          "fetchAuth/postRegisterWithSms",
-          formData
-        );
-        localStorage.setItem("dis_auth_token", data.token);
-        // this.$store.commit("authHandler");
 
-        if (!this.forgetPassStatus) {
-          this.visibleName = true;
-        } else {
-          this.visibleName = false;
-          this.visibleSuccess = true;
-        }
-        this.forgetPassStatus = false;
-        this.visibleSms = false;
-
-        this.smsCodeError = false;
-      } catch (e) {
-        // console.log(e);
-        if (e.response.status == 422) this.smsCodeError = true;
-      }
-    },
-    // putProfileName
-    async __PROFILE_NAME(formData) {
-      try {
-        const data = await this.$store.dispatch("fetchAuth/putProfileName", formData);
-        this.$store.dispatch("profileInfo");
-        this.visibleName = false;
-        this.visibleSuccess = true;
-      } catch (e) {
-        // console.log(e);
-      }
-    },
-    again_sms_code() {
-      const data = {
-        phone_number: this.formCheckNumber.phone_number
-          .split(" ")
-          .join("")
-          .replace("+", ""),
-      };
-
-      this.__FORGET_PASSWORD(data);
-    },
-    async __FORGET_PASSWORD(formData) {
-      try {
-        const data = await this.$store.dispatch(
-          "fetchAuth/postCheckNumberForget",
-          formData
-        );
-        this.handleOkForgetPass();
-        this.visibleSms = true;
-        this.formLogin.phone_number =
-          this.formCheckNumber.phone_number.length == 9
-            ? `998${this.formCheckNumber.phone_number}`
-            : this.formCheckNumber.phone_number;
-        this.formSms.phone_number =
-          this.formCheckNumber.phone_number.length == 9
-            ? `998${this.formCheckNumber.phone_number}`
-            : this.formCheckNumber.phone_number;
-      } catch (e) {
-        // console.log(e);
-      }
-    },
-    async __CHECK_NUMBER(formData) {
-      try {
-        const data = await this.$store.dispatch("fetchAuth/postCheckNumber", formData);
-        if (data?.authorized) {
-          this.visibleLogin = true;
-        } else {
-          this.visibleSms = true;
-        }
-        this.formLogin.phone_number =
-          this.formCheckNumber.phone_number.length == 9
-            ? `998${this.formCheckNumber.phone_number}`
-            : this.formCheckNumber.phone_number;
-        this.formSms.phone_number =
-          this.formCheckNumber.phone_number.length == 9
-            ? `998${this.formCheckNumber.phone_number}`
-            : this.formCheckNumber.phone_number;
-      } catch (e) {
-        // console.log(e);
-      }
-    },
-    async __LOGIN(formData) {
-      try {
-        const data = await this.$store.dispatch("fetchAuth/postLogin", formData);
-        localStorage.setItem("dis_auth_token", data.token);
-        this.$store.dispatch("profileInfo");
-        this.$store.commit("authVisibleChange", false);
-        // if (this.$route.name != "basket" && this.targetPage) {
-        //   this.$router.push("/profile/personal-info");
-        // } else {
-        //   this.$router.push("/checkout");
-        // }
-        this.loginPassError = false;
-        this.visibleLogin = false;
-      } catch (e) {
-        if (e.response.status == 422) {
-          this.loginPassError = true;
-        }
-      }
-    },
     async __GET_SEARCH() {
       try {
         const data = await this.$store.dispatch("fetchSearch/getSearch", {
@@ -1238,36 +599,6 @@ export default {
     },
   },
   watch: {
-    // searchBlockHide(val) {
-    //   if (val) {
-    //     document.body.style.height = "100vh";
-    //     document.body.style.overflow = "hidden";
-    //   } else {
-    //     document.body.style.height = "auto";
-    //     document.body.style.overflow = "auto";
-    //   }
-    // },
-    authVisible(val) {
-      this.visibleCheck = val;
-    },
-    visibleSuccess(val) {
-      if (val) {
-        (this.formLogin = {
-          phone_number: "",
-          password: "",
-        }),
-          (this.formCheckNumber = {
-            phone_number: "",
-          }),
-          (this.formName = {
-            name: "",
-          }),
-          (this.formSms = {
-            phone_number: "",
-            sms_code: "",
-          });
-      }
-    },
     search(val) {
       if (val.length > 2) {
         this.__GET_SEARCH();
@@ -1279,37 +610,13 @@ export default {
     },
     routerPath() {
       this.searchBlockHide = false;
-      (this.formLogin = {
-        phone_number: "",
-        password: "",
-      }),
-        (this.formCheckNumber = {
-          phone_number: "",
-        }),
-        (this.formName = {
-          name: "",
-        }),
-        (this.formSms = {
-          phone_number: "",
-          sms_code: "",
-        }),
-        (this.targetPage = false);
+      this.targetPage = false;
       this.catalogMenu = false;
 
       document.body.style.height = "auto";
       document.body.style.overflow = "auto";
     },
-    visibleCheck(val) {
-      this.$store.commit("authVisibleChange", val);
-      if (val) this.visibleLogin = false;
-    },
-    visibleLogin(val) {
-      this.$store.commit("authVisibleChange", val);
-      if (val) this.visibleCheck = false;
-    },
-    visibleSms(val) {
-      if (val) this.visibleCheck = false;
-    },
+
     catalogMenu(val) {
       if (val) {
         document.body.style.height = "100vh";
@@ -1320,13 +627,60 @@ export default {
       }
     },
   },
-  components: { MainTitle, Vnotification },
+  components: { MainTitle, Vnotification, AuthModals },
 };
 </script>
 <style lang="css">
 /* .nav-icons svg path {
   fill: #09454f;
 } */
+.category-name {
+  display: flex;
+  gap: 7px;
+  white-space: initial;
+}
+.category-name span,
+.category-name img {
+  width: 23px;
+  height: 23px;
+}
+.height-auto.category-drop-board {
+  padding-bottom: 34px;
+}
+.category-drop-board {
+  max-height: 0;
+  overflow: hidden;
+  position: relative;
+  transition: max-height 0.25s ease-out;
+  /* padding-bottom: 34px; */
+}
+.category-drop-board div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.category-drop-board a {
+  color: #00162c;
+  font-family: var(--SB_400);
+  font-size: 16px;
+  font-style: normal;
+  line-height: 20px; /* 125% */
+  letter-spacing: 0.2px;
+}
+.category_drop h4 {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 13px 8px;
+  border-radius: 11.732px;
+  color: #5f5f5f;
+  font-family: var(--SB_400);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.554px; /* 122.21% */
+  letter-spacing: 0.196px;
+}
 .close-space {
   width: 33%;
 }
@@ -1349,7 +703,7 @@ export default {
   height: 100vh;
   top: 100%;
   background: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(2.5px);
+  /* backdrop-filter: blur(2.5px); */
   position: absolute;
 }
 .catalog-menu-content {
@@ -1747,17 +1101,15 @@ export default {
     white-space: nowrap;
   }
 }
-@media screen and (max-width: 1024px) {
+@media (max-width: 1200px) {
   .catalog-menu-content {
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    width: 100%;
-    gap: 32px;
+    min-width: 100%;
   }
+}
+@media screen and (max-width: 1024px) {
   .catalog-menu-items {
     gap: 0;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     overflow: hidden;
     height: auto;
     padding-bottom: 32px;
@@ -1777,6 +1129,24 @@ export default {
   }
   .catalog-menu-body {
     padding: 0 12px;
+  }
+}
+.mobile_categories {
+  display: none;
+}
+@media (max-width: 768px) {
+  .catalog-menu-content {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 14px;
+  }
+  .web_categories {
+    display: none;
+  }
+  .mobile_categories {
+    display: block;
   }
 }
 @media screen and (max-width: 576px) {

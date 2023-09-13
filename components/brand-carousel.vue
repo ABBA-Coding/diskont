@@ -26,8 +26,8 @@ export default {
   },
   mounted() {
     const swiper = new Swiper(`.brand-swiper`, {
-      slidesPerView: 6,
-      spaceBetween: 24,
+      slidesPerView: 2,
+      spaceBetween: 14,
       effect: "flip",
       flipEffect: {
         slideShadows: false,
@@ -37,12 +37,21 @@ export default {
       autoplay: {
         delay: 40000,
       },
+      breakpoints: {
+        1024: {
+          slidesPerView: 6,
+          spaceBetween: 24,
+        },
+        768: {
+          slidesPerView: 4,
+          spaceBetween: 24,
+        },
+      },
       navigation: {
         nextEl: ".swiper-button-next-brand",
         prevEl: ".swiper-button-prev-brand",
       },
     });
-
   },
 };
 </script>

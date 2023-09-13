@@ -6,13 +6,13 @@
       ><span v-html="profileInfo"></span>
       {{ $store.state.translations["profile.personal-info"] }}
     </nuxt-link>
-    <nuxt-link
+    <!-- <nuxt-link
       class="disabled"
       :to="localePath('/profile/my-pay')"
       :class="{ 'profile-menu-active': $route.name.includes('profile-my-pay') }"
       ><span v-html="piecePay"></span>
       {{ $store.state.translations["profile.pay-installments"] }}</nuxt-link
-    >
+    > -->
     <nuxt-link
       :to="localePath('/profile/my-orders')"
       :class="{ 'profile-menu-active': $route.name.includes('profile-my-orders') }"

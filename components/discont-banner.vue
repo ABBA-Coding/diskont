@@ -13,9 +13,9 @@
       </div>
     </div>
     <div class="discont-banner-footer">
-      <div class="cursor-pointer">
+      <a :href="`tel:${$store.state.siteInfo?.phone_number}`">
         {{ $store.state.translations["main.d-banner-contact"] }}
-      </div>
+      </a>
       <div class="cursor-pointer" @click="$router.push(localePath('/info/trade-nation'))">
         {{ $store.state.translations["main.d-banner-btn"] }}
       </div>
@@ -74,7 +74,8 @@ export default {};
 .discont-banner-footer {
   display: flex;
 }
-.discont-banner-footer div {
+.discont-banner-footer div,
+.discont-banner-footer a {
   padding: 10px 24px;
   font-family: "Inter";
   font-style: normal;
@@ -82,8 +83,9 @@ export default {};
   font-weight: 500;
   font-size: 13.8056px;
   line-height: 17px;
+  display: flex;
 }
-.discont-banner-footer div:first-child {
+.discont-banner-footer a:first-child {
   color: #333c4c;
   background: #fff;
   margin-right: 28px;

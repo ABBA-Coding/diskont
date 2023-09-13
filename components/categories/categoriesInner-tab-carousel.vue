@@ -130,7 +130,7 @@ export default {
 .categories-tab-carousel .c-inner {
   width: 100%;
   height: 354px !important;
-  background: red;
+  /* background: red; */
 }
 .swiper-pagination-c-inner-right {
   position: static;

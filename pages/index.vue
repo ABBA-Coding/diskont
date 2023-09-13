@@ -272,18 +272,28 @@
       <div class="last mb-120">
         <div class="products-grid-6">
           <ProductCard
-            v-if="howcases[5]?.products.length > 0"
+            v-if="showcases[5]?.products.length > 0"
             v-for="product in showcases[5]?.products"
             :key="product.id"
             :product="product"
           />
-
-          <span class="grid-banner-card-1">
+          <span
+            v-if="banners.filter((item) => item.type == 'promo').length > 0"
+            class="d-flex"
+            v-for="(img, index) in banners
+              .filter((item) => item.type == 'promo')
+              .slice(2, 4)"
+            :class="`grid-banner-card-${index + 1}`"
+            :key="img?.id"
+          >
+            <V2ProductCard :img="img" />
+          </span>
+          <!-- <span class="grid-banner-card-1">
             <VProductCard />
           </span>
           <span class="grid-banner-card-2">
             <VProductCard />
-          </span>
+          </span> -->
         </div>
       </div>
     </div>
@@ -357,6 +367,7 @@ export default {
     };
   },
   async asyncData({ $axios, store, i18n }) {
+    const showcasesLimit = 6;
     const [
       products,
       byCategory,
@@ -426,7 +437,6 @@ export default {
     const posts = posts1?.posts?.data;
     const showcases = showcasesData.showcases;
     const banners = bannersData?.banners?.data;
-    console.log(banners);
     return {
       bestsellersProducts,
       byCategoryProducts,
@@ -438,8 +448,23 @@ export default {
       banners,
     };
   },
+  methods: {
+    showmore() {
+      this.__GET_SHOWCASE(this.showcasesLimit + 6);
+    },
+    async __GET_SHOWCASE(limit) {
+      const data = await this.store.dispatch("fetchProducts/getShowcases", {
+        params: { limit: limit },
+        headers: {
+          lang: this.$i18n.locale,
+        },
+      });
+      this.showcases = data.showcases;
+    },
+  },
   mounted() {
     this.$store.dispatch("fetchProducts/getShowcases", {
+      params: { limit: 6 },
       headers: {
         lang: this.$i18n.locale,
       },
@@ -475,18 +500,14 @@ export default {
 .banner-carousel .banner {
   width: 100%;
   height: 354px !important;
-  background: red;
+  /* background: red; */
 }
 /* .home-banner-container .swiper-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 } */
-.products-grid-6 {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-gap: 20px;
-}
+
 .grid-banner-card-1 {
   grid-row-start: 1;
   grid-column-start: 1;

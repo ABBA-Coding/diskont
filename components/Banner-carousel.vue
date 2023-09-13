@@ -156,7 +156,7 @@ export default {
 .banner-carousel .banner {
   width: 100%;
   height: 354px !important;
-  background: red;
+  /* background: red; */
 }
 .swiper-pagination-banner {
   position: static;

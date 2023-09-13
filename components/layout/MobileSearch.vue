@@ -191,6 +191,7 @@ export default {
       searchCategories: [],
       searchProducts: [],
       searchResoults: [],
+      navMic: require("../../assets/svg/mic.svg?raw"),
     };
   },
   computed: {
