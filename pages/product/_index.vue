@@ -195,8 +195,57 @@
             >
           </div>
           <div class="buttons__mobile">
-            <button>
+            <button
+              @click="
+                $store.commit('addToStore', {
+                  id: product?.id,
+                  name: 'comparison',
+                })
+              "
+            >
               <svg
+                v-if="$store.state.comparison.includes(product?.id)"
+                xmlns="http://www.w3.org/2000/svg"
+                width="29"
+                height="29"
+                viewBox="0 0 29 29"
+                fill="none"
+              >
+                <rect
+                  x="2.35115"
+                  y="2.35091"
+                  width="11.6667"
+                  height="9.33333"
+                  rx="2"
+                  stroke="#09454f"
+                  fill="#09454f"
+                  stroke-width="2"
+                />
+                <rect
+                  x="14.0178"
+                  y="16.3509"
+                  width="11.6667"
+                  height="9.33333"
+                  rx="2"
+                  fill="#09454f"
+                  stroke="#09454f"
+                  stroke-width="2"
+                />
+                <path
+                  d="M23.8344 4.68425L25.3428 6.19263C25.7984 6.64824 25.7984 7.38693 25.3428 7.84254L23.8344 9.35092M18.6845 7.01758L25.0011 7.01758"
+                  stroke="#09454f"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M4.20123 18.6842L2.69286 20.1926C2.23725 20.6482 2.23725 21.3869 2.69286 21.8425L4.20123 23.3509M9.35115 21.0176L3.03457 21.0176"
+                  stroke="#09454f"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <svg
+                v-else
                 xmlns="http://www.w3.org/2000/svg"
                 width="29"
                 height="29"
@@ -235,8 +284,24 @@
                 />
               </svg>
             </button>
-            <button>
+            <button
+              @click="$store.commit('addToStore', { id: product?.id, name: 'like' })"
+            >
               <svg
+                v-if="$store.state.like.includes(product?.id)"
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 17 16"
+                fill="none"
+              >
+                <path
+                  d="M11.8528 0.5C11.1095 0.5 10.3991 0.67846 9.74137 1.03046C9.29363 1.27002 8.88232 1.58832 8.52941 1.96596C8.17647 1.58832 7.76519 1.27002 7.31745 1.03046C6.65969 0.67846 5.94931 0.5 5.20602 0.5C2.64357 0.5 0.558824 2.68349 0.558824 5.36734C0.558824 7.26827 1.51736 9.2872 3.40779 11.3681C4.9862 13.1056 6.91866 14.5539 8.26183 15.463L8.52941 15.6441L8.79699 15.463C10.1402 14.554 12.0726 13.1056 13.6511 11.3681C15.5415 9.2872 16.5 7.26827 16.5 5.36734C16.5 2.68349 14.4153 0.5 11.8528 0.5Z"
+                  fill="#09454f"
+                />
+              </svg>
+              <svg
+                v-else
                 xmlns="http://www.w3.org/2000/svg"
                 width="33"
                 height="33"
@@ -479,127 +544,127 @@
             </div>
           </div>
         </div>
-        
+
         <div class="col-md-3 col-xs-12 order">
           <!-- <a-affix :offset-bottom="78"> -->
-            <div class="cardo">
-              <div class="cardo__header">
-                <div class="discount" v-if="product?.discount">
-                  <p class="tag">
-                    {{
-                      product?.discount?.pivot?.amount
-                        ? `-${(
-                            (product?.discount?.pivot?.amount * 100) /
-                            product?.real_price
-                          ).toFixed()}%`
-                        : `-${product?.discount?.pivot?.percent}%`
-                    }}
-                  </p>
-                  <p class="dis__price" v-if="product?.discount_price">
-                    {{ `${product?.real_price}`.replace(/\B(?=(\d{3})+(?!\d))/g, " ") }}
-                    {{ $store.state.translations["main.som"] }}
-                  </p>
-                  <p class="dis__txt">
-                    {{ $store.state.translations["main.at-discount-price"] }}
-                  </p>
-                </div>
-                <p class="price" v-if="skeleton">
-                  <b-skeleton width="50%" height="100%"> </b-skeleton>
-                </p>
-                <p class="price" v-if="product?.price && !skeleton">
+          <div class="cardo">
+            <div class="cardo__header">
+              <div class="discount" v-if="product?.discount">
+                <p class="tag">
                   {{
-                    `${
-                      product?.discount_price
-                        ? product?.discount_price
-                        : product?.real_price
-                    }`.replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+                    product?.discount?.pivot?.amount
+                      ? `-${(
+                          (product?.discount?.pivot?.amount * 100) /
+                          product?.real_price
+                        ).toFixed()}%`
+                      : `-${product?.discount?.pivot?.percent}%`
                   }}
+                </p>
+                <p class="dis__price" v-if="product?.discount_price">
+                  {{ `${product?.real_price}`.replace(/\B(?=(\d{3})+(?!\d))/g, " ") }}
                   {{ $store.state.translations["main.som"] }}
                 </p>
-
-                <p class="delivery">
-                  {{ $store.state.translations["main.depends-region"] }}
-                </p>
-
-                <p class="coin" v-if="skeleton">
-                  <b-skeleton width="150px" height="100%"> </b-skeleton>
-                </p>
-                <p v-else class="coin">
-                  <img src="@/assets/images/Group 1000005199.png" alt="" />
-                  +{{
-                    Math.floor(
-                      (product?.discount_price
-                        ? product?.discount_price
-                        : product?.real_price) /
-                        ($store.state.dicoin?.sum_to_dicoin
-                          ? $store.state.dicoin?.sum_to_dicoin
-                          : 1)
-                    )
-                  }}
-                  {{ $store.state.translations["main.dicoin"] }}
+                <p class="dis__txt">
+                  {{ $store.state.translations["main.at-discount-price"] }}
                 </p>
               </div>
+              <p class="price" v-if="skeleton">
+                <b-skeleton width="50%" height="100%"> </b-skeleton>
+              </p>
+              <p class="price" v-if="product?.price && !skeleton">
+                {{
+                  `${
+                    product?.discount_price
+                      ? product?.discount_price
+                      : product?.real_price
+                  }`.replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+                }}
+                {{ $store.state.translations["main.som"] }}
+              </p>
 
-              <div class="buttons">
-                <button
-                  v-if="!$store.state.cart.find((item) => item.id == product?.id)"
-                  class="cart"
-                  @click="
-                    $store.commit('addToCart', {
-                      obj: { id: product?.id, count: 1 },
-                      name: 'cart',
-                    })
-                  "
-                >
-                  <p>{{ $store.state.translations["main.add-to-cart"] }}</p>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="17"
-                    viewBox="0 0 18 17"
-                    fill="none"
-                  >
-                    <path
-                      d="M1.29175 0.708252L3.02508 1.00825L3.82758 10.5691C3.89175 11.3499 4.54425 11.9491 5.32758 11.9466H14.4184C15.1659 11.9483 15.8001 11.3983 15.9059 10.6583L16.6967 5.19325C16.7851 4.58242 16.3609 4.01575 15.7509 3.92742C15.6976 3.91992 3.30341 3.91575 3.30341 3.91575"
-                      stroke="#09454f"
-                      stroke-width="1.4"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M10.7709 6.99552H13.0817"
-                      stroke="#09454f"
-                      stroke-width="1.4"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M4.96199 14.8354C5.21283 14.8354 5.41533 15.0388 5.41533 15.2888C5.41533 15.5396 5.21283 15.7429 4.96199 15.7429C4.71116 15.7429 4.50866 15.5396 4.50866 15.2888C4.50866 15.0388 4.71116 14.8354 4.96199 14.8354Z"
-                      fill="#09454f"
-                      stroke="#09454f"
-                      stroke-width="1.4"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M14.3623 14.8354C14.6131 14.8354 14.8164 15.0388 14.8164 15.2888C14.8164 15.5396 14.6131 15.7429 14.3623 15.7429C14.1114 15.7429 13.9089 15.5396 13.9089 15.2888C13.9089 15.0388 14.1114 14.8354 14.3623 14.8354Z"
-                      fill="#09454f"
-                      stroke="#09454f"
-                      stroke-width="1.4"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </button>
-                <button class="click" @click="visibleOc = true">
-                  {{ $store.state.translations["product.buy-now"] }}
-                </button>
-              </div>
+              <p class="delivery">
+                {{ $store.state.translations["main.depends-region"] }}
+              </p>
+
+              <p class="coin" v-if="skeleton">
+                <b-skeleton width="150px" height="100%"> </b-skeleton>
+              </p>
+              <p v-else class="coin">
+                <img src="@/assets/images/Group 1000005199.png" alt="" />
+                +{{
+                  Math.floor(
+                    (product?.discount_price
+                      ? product?.discount_price
+                      : product?.real_price) /
+                      ($store.state.dicoin?.sum_to_dicoin
+                        ? $store.state.dicoin?.sum_to_dicoin
+                        : 1)
+                  )
+                }}
+                {{ $store.state.translations["main.dicoin"] }}
+              </p>
             </div>
+
+            <div class="buttons">
+              <button
+                v-if="!$store.state.cart.find((item) => item.id == product?.id)"
+                class="cart"
+                @click="
+                  $store.commit('addToCart', {
+                    obj: { id: product?.id, count: 1 },
+                    name: 'cart',
+                  })
+                "
+              >
+                <p>{{ $store.state.translations["main.add-to-cart"] }}</p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="17"
+                  viewBox="0 0 18 17"
+                  fill="none"
+                >
+                  <path
+                    d="M1.29175 0.708252L3.02508 1.00825L3.82758 10.5691C3.89175 11.3499 4.54425 11.9491 5.32758 11.9466H14.4184C15.1659 11.9483 15.8001 11.3983 15.9059 10.6583L16.6967 5.19325C16.7851 4.58242 16.3609 4.01575 15.7509 3.92742C15.6976 3.91992 3.30341 3.91575 3.30341 3.91575"
+                    stroke="#09454f"
+                    stroke-width="1.4"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M10.7709 6.99552H13.0817"
+                    stroke="#09454f"
+                    stroke-width="1.4"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M4.96199 14.8354C5.21283 14.8354 5.41533 15.0388 5.41533 15.2888C5.41533 15.5396 5.21283 15.7429 4.96199 15.7429C4.71116 15.7429 4.50866 15.5396 4.50866 15.2888C4.50866 15.0388 4.71116 14.8354 4.96199 14.8354Z"
+                    fill="#09454f"
+                    stroke="#09454f"
+                    stroke-width="1.4"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M14.3623 14.8354C14.6131 14.8354 14.8164 15.0388 14.8164 15.2888C14.8164 15.5396 14.6131 15.7429 14.3623 15.7429C14.1114 15.7429 13.9089 15.5396 13.9089 15.2888C13.9089 15.0388 14.1114 14.8354 14.3623 14.8354Z"
+                    fill="#09454f"
+                    stroke="#09454f"
+                    stroke-width="1.4"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+              <button class="click" @click="visibleOc = true">
+                {{ $store.state.translations["product.buy-now"] }}
+              </button>
+            </div>
+          </div>
           <!-- </a-affix> -->
 
           <!-- <div class="credit">
@@ -1152,7 +1217,7 @@
       @ok="handleOkSuccess"
     >
       <div class="vmodal-header">
-        <h5>{{ $store.state.translations["main.new-comment"] }}</h5>
+        <h5>{{ $store.state.translations["product.oc-success-title"] }}</h5>
         <span @click="handleOkSuccess"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
@@ -1179,10 +1244,10 @@
       </div>
       <div class="vmodal-body comment-modal-success">
         <img src="../../assets/images/modal-success.png" alt="" />
-        <p>{{ $store.state.translations["product.send-comment"] }}</p>
+        <p>{{ $store.state.translations["product.oc-success-text"] }}</p>
       </div>
       <div class="vmodal-btn" @click="handleOkSuccess">
-        {{ $store.state.translations["oc-text"] }}
+        {{ $store.state.translations["product.oc-success-btn"] }}
       </div>
       <template slot="footer"> <h3></h3></template>
     </a-modal>

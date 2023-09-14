@@ -849,7 +849,7 @@
       @ok="handleOkSuccess"
     >
       <div class="vmodal-header">
-        <h5>{{ $store.state.translations["main.new-comment"] }}</h5>
+        <h5>{{ $store.state.translations["product.oc-success-title"] }}</h5>
         <span @click="handleOkSuccess"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
@@ -876,10 +876,10 @@
       </div>
       <div class="vmodal-body comment-modal-success">
         <img src="../../assets/images/modal-success.png" alt="" />
-        <p>{{ $store.state.translations["main.comment-succes-text"] }}</p>
+        <p>{{ $store.state.translations["product.oc-success-text"] }}</p>
       </div>
       <div class="vmodal-btn" @click="handleOkSuccess">
-        {{ $store.state.translations["main.comment-succes-btn"] }}
+        {{ $store.state.translations["product.oc-success-btn"] }}
       </div>
       <template slot="footer"> <h3></h3></template>
     </a-modal>

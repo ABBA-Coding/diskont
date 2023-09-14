@@ -33,7 +33,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 485px;
+  /* min-height: 485px; */
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;

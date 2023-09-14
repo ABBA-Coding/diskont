@@ -56,3 +56,9 @@
 .page-container-title .main-title {
   margin-bottom: 0;
 }
+@media (max-width: 576px) {
+  .swiper-button-prev-comparison,
+  .swiper-button-next-comparison {
+    display: none;
+  }
+}

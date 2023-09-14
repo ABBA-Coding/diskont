@@ -350,7 +350,13 @@
                       : `background-color: ${option?.name}`
                   "
                 >
-                  <span :style="`background-color: ${option?.name}`"></span>
+                  <span
+                    :style="
+                      option?.name == '#ffffff'
+                        ? `background-color: #EBEBEB`
+                        : `background-color: ${option?.name}`
+                    "
+                  ></span>
                 </button>
               </div>
             </div>
@@ -619,7 +625,13 @@
                     : `background-color: ${option?.name}`
                 "
               >
-                <span :style="`background-color: ${option?.name}`"></span>
+                <span
+                  :style="
+                    option?.name == '#ffffff'
+                      ? `background-color: #EBEBEB`
+                      : `background-color: ${option?.name}`
+                  "
+                ></span>
               </button>
             </div>
           </div>

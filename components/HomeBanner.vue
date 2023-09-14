@@ -1,9 +1,9 @@
 <template lang="html">
-  <div class="home-banner">
-    <a :href="banner[0]?.link">
+  <a :href="banner[0]?.link">
+    <div class="home-banner">
       <img :src="banner[0]?.lg_img" alt="" />
-    </a>
-  </div>
+    </div>
+  </a>
 </template>
 <script>
 export default {
@@ -13,9 +13,24 @@ export default {
 <style lang="css">
 .home-banner {
   width: 100%;
-  max-height: 250px;
+  height: 260px;
   border-radius: 20px;
   overflow: hidden;
   margin-bottom: 50px;
+}
+.home-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media (max-width: 576px) {
+  .home-banner {
+    height: 136px;
+  }
+  .home-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 </style>

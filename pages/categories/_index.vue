@@ -29,11 +29,11 @@
                 >
                   {{ childs?.name }}{{ `/categories-inner/${childs.slug}` }}</span
                 > -->
-                <nuxt-link
+                <a
                   v-for="childs in category?.children"
                   :key="childs.id"
-                  :to="localePath(`/categories-inner/${childs?.slug}`)"
-                  >{{ childs?.name }}</nuxt-link
+                  :href="localePath(`/categories-inner/${childs?.slug}`)"
+                  >{{ childs?.name }}</a
                 >
               </div>
             </li>
@@ -86,7 +86,7 @@
       <div class="categories-page-info" v-html="categoryChilds?.desc"></div>
     </div>
     <div class="categories-app-banner-container">
-        <!--<div class="container_xl">
+      <!--<div class="container_xl">
         <CategoriesAppCard />
       </div>-->
     </div>

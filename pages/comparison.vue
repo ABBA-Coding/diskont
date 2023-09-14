@@ -109,8 +109,8 @@ export default {
       await this.__GET_PRODUCTS_COMP({ products: compProductsStore });
     }
     const swiper = new Swiper(".swiper-comparison", {
-      slidesPerView: 4,
-      spaceBetween: 24,
+      slidesPerView: 2,
+      spaceBetween: 8,
       effect: "flip",
       flipEffect: {
         slideShadows: false,
@@ -119,6 +119,16 @@ export default {
       pagination: false,
       autoplay: {
         delay: 40000,
+      },
+      breakpoints: {
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 24,
+        },
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 16,
+        },
       },
       navigation: {
         nextEl: ".swiper-button-next-comparison",

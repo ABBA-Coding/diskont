@@ -56,6 +56,9 @@
               />
             </svg>
             {{ $store.state.translations["main.likes"] }}
+            <span class="count-index" v-if="$store.state.like.length > 0">{{
+              $store.state.like.length
+            }}</span>
           </NuxtLink>
         </li>
         <li>
@@ -154,6 +157,9 @@
               />
             </svg>
             {{ $store.state.translations["main.comparison"] }}
+            <span class="count-index" v-if="$store.state.comparison.length > 0">{{
+              $store.state.comparison.length
+            }}</span>
           </NuxtLink>
         </li>
         <li>

@@ -518,6 +518,10 @@ export default {
   grid-column-start: 1;
   grid-column-end: 2;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 768px) {
+  .grid-banner-card-1,
+  .grid-banner-card-2 {
+    display: none !important;
+  }
 }
 </style>
