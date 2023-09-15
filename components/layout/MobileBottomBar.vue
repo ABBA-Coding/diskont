@@ -163,7 +163,7 @@
           </NuxtLink>
         </li>
         <li>
-          <button @click="$store.commit('authVisibleChange', true)" class="link">
+          <button @click="toProfile(true)" class="link">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="29"
@@ -193,7 +193,18 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    toProfile(name) {
+      this.targetPage = name;
+      if (this.$store.state.auth) {
+        this.$router.push("/profile/personal-info");
+      } else {
+        this.$store.commit("authVisibleChange", true);
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>

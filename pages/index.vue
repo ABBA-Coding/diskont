@@ -366,8 +366,7 @@ export default {
       // posts: [],
     };
   },
-  async asyncData({ $axios, store, i18n }) {
-    const showcasesLimit = 6;
+  async asyncData({ store, i18n }) {
     const [
       products,
       byCategory,

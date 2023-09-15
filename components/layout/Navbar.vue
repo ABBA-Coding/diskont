@@ -1117,7 +1117,7 @@ export default {
     display: none;
   }
   .categories-page-title {
-    margin-bottom: 16px !important;
+    margin-bottom: 16px;
   }
   .catalog-menu-items ul {
     margin-bottom: 16px;

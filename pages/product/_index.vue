@@ -890,6 +890,7 @@
                 <!-- <img src="@/assets/images/cheat.png" alt="" /> -->
                 <div class="total_rating">
                   <div>
+                  
                     <a-rate
                       v-if="product?.info?.stars"
                       v-model="product.info.stars"
@@ -906,11 +907,11 @@
                 <div class="rating_list">
                   <div class="rating_row">
                     <a-rate :value="5" disabled /><span></span>
-                    <p>{{ commetItems[0] }}</p>
+                    <p>{{ commetItems[4] }}</p>
                   </div>
                   <div class="rating_row">
                     <a-rate :value="4" disabled /><span></span>
-                    <p>{{ commetItems[1] }}</p>
+                    <p>{{ commetItems[3] }}</p>
                   </div>
                   <div class="rating_row">
                     <a-rate :value="3" disabled /><span></span>
@@ -918,11 +919,11 @@
                   </div>
                   <div class="rating_row">
                     <a-rate :value="2" disabled /><span></span>
-                    <p>{{ commetItems[3] }}</p>
+                    <p>{{ commetItems[1] }}</p>
                   </div>
                   <div class="rating_row">
                     <a-rate :value="1" disabled /><span></span>
-                    <p>{{ commetItems[4] }}</p>
+                    <p>{{ commetItems[0] }}</p>
                   </div>
                 </div>
               </div>
@@ -1458,29 +1459,26 @@ export default {
     },
   },
   async mounted() {
-    // this.skeleton = true;
-    // try {
+    //  try {
     //   await this.$getLocation().then((coordinates) => {
     //     this.locations = coordinates;
     //   });
     // } catch (e) {
     //   console.log(e);
     // }
-
-    // const [productsData] = await Promise.all([
-    // this.$store.dispatch("fetchProducts/getProductsBySlug", {
-    //   id: this.$route.params.index,
-    //   params: {
+    // const [productData, productsData] = await Promise.all([
+    //   this.$store.dispatch("fetchProducts/getProductsBySlug", {
+    //     id: this.$route.params.index,
     //     params: {
-    //       lat: this.locations.lat,
-    //       lon: this.locations.lng,
+    //       params: {
+    //         lat: this.locations.lat,
+    //         lon: this.locations.lng,
+    //       },
+    //       headers: {
+    //         lang: this.$i18n.locale,
+    //       },
     //     },
-    //     headers: {
-    //       lang: this.$i18n.locale,
-    //     },
-    //   },
-    // }),
-
+    //   }),
     //   this.$store.dispatch("fetchProducts/getProducts", {
     //     params: { limit: 12 },
     //     headers: {
@@ -1488,9 +1486,6 @@ export default {
     //     },
     //   }),
     // ]);
-
-    // this.skeleton = false;
-    // this.productsOthers = productsData?.products?.data;
     // this.product = productData.product;
     // this.productCharacteristic = productData?.product?.characteristic_options.splice(
     //   0,
@@ -1500,6 +1495,8 @@ export default {
     // this.characteristics = productData?.characteristics;
     // this.branches = productData?.branches;
     // this.carouselImages = [...this.product.images];
+    // this.productsOthers = productsData?.products?.data;
+    // this.skeleton = false;
 
     setTimeout(() => {
       this.swiperReload();
@@ -2389,7 +2386,7 @@ tbody .img {
 .rating_row ul {
   background: white;
   position: relative;
-  z-index: 100;
+  z-index: 98;
   padding-right: 16px;
 }
 

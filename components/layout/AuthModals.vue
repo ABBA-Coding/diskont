@@ -563,6 +563,10 @@ export default {
     handleOkName() {
       this.visibleName = false;
     },
+    replaceNumber() {
+      this.visibleSms = false;
+      this.visibleCheck = true;
+    },
     submitCheckNumber() {
       const data = {
         phone_number: this.formCheckNumber.phone_number

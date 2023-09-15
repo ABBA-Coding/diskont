@@ -1515,7 +1515,7 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  align-items: start;
+  align-items: flex-start;
 }
 .product_badges_item {
   transform: rotate(-2.91deg);

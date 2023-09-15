@@ -32,7 +32,9 @@
             <p>
               {{ $store.state.translations["profile.order-empty-text"] }}
             </p>
-            <nuxt-link :to="localePath('/')">{{ $store.state.translations["profile.order-empty-btn"] }}</nuxt-link>
+            <nuxt-link :to="localePath('/')">{{
+              $store.state.translations["profile.order-empty-btn"]
+            }}</nuxt-link>
           </div>
         </div>
       </div>
@@ -212,5 +214,10 @@ export default {
   text-align: center;
   letter-spacing: 0.025em;
   color: #ffffff;
+}
+@media (max-width: 576px) {
+  .order-card-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

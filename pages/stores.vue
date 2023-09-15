@@ -169,4 +169,14 @@ export default {
   line-height: 16.8px; /* 120% */
   letter-spacing: -0.24px;
 }
+@media (max-width: 1024px) {
+  .stores-head {
+    display: none;
+  }
+  .stores-body-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 16px;
+  }
+}
 </style>

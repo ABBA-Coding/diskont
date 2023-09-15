@@ -1,19 +1,21 @@
 <template lang="html">
-  <div class="v2-product-card" :style="`background-image: url(${img?.md_img})`">
-    <div
-      class="v2-product-card-title d-flex align-items-center justify-content-start w-100"
-    >
-      <!-- <h4>Samsung QLED TV 48” Full</h4> -->
-    </div>
-    <div class="v2-product-card-img">
-      <!-- <img src="../../assets/images/i 1.png" alt="" /> -->
-    </div>
-    <a :href="img?.link">
-      <div class="v2-product-card-btns">
-        <div>{{ $store.state.translations["main.buy-now"] }}</div>
+  <a :href="img?.link" class="card-link">
+    <div class="v2-product-card" :style="`background-image: url(${img?.md_img})`">
+      <div
+        class="v2-product-card-title d-flex align-items-center justify-content-start w-100"
+      >
+        <!-- <h4>Samsung QLED TV 48” Full</h4> -->
       </div>
-    </a>
-  </div>
+      <div class="v2-product-card-img">
+        <!-- <img src="../../assets/images/i 1.png" alt="" /> -->
+      </div>
+      <a :href="img?.link">
+        <div class="v2-product-card-btns">
+          <div>{{ $store.state.translations["main.buy-now"] }}</div>
+        </div>
+      </a>
+    </div>
+  </a>
 </template>
 <script>
 export default {
@@ -21,6 +23,10 @@ export default {
 };
 </script>
 <style lang="css">
+.card-link {
+  height: 100%;
+  width: 100%;
+}
 .yellow-variant {
   background: radial-gradient(98.96% 220.15% at 98.96% 100%, #ffdd6a 0%, #fbc100 100%);
 }
@@ -37,6 +43,7 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
+  height: inherit;
 }
 .v2-product-card-img {
   height: 60%;

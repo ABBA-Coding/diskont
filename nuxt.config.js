@@ -1,6 +1,7 @@
 export default {
   server: {
     port: process.env.PORT || 3000,
+    host: process.env.HOST || "localhost",
   },
   head: {
     title: "Diskont",
@@ -36,26 +37,22 @@ export default {
 
   buildModules: ["@nuxtjs/svg", "@nuxt/image"],
 
-  modules: ["bootstrap-vue/nuxt", "@nuxtjs/axios", "@nuxtjs/i18n"],
-  // target: "static",
-  // server: {
-  //   port: 8000,
-  //   host: "localhost",
-  // },
+  modules: [
+    "bootstrap-vue/nuxt",
+    "@nuxtjs/axios",
+    "@nuxtjs/i18n",
+    "@nuxtjs/dotenv",
+  ],
+
   axios: {
     credentials: false,
     init(axios) {
       axios.defaults.withCredentials = true;
     },
-    baseURL: "https://api.e-shop.ndc.uz/api",
+    baseURL: process.env.BASE_URL,
   },
   image: {
     dir: "assets/images",
-  },
-  seoMeta: {
-    title: "My site title",
-    keywords: "keyword1, keyword2, keyword3",
-    description: "My site description",
   },
   i18n: {
     locales: ["uz", "en", "ru"],

@@ -661,6 +661,9 @@ body::-webkit-scrollbar-thumb {
   .reviews__right {
     min-width: 100% !important;
   }
+  .comments-empty img {
+    width: 180px;
+  }
 }
 .reviews__right {
   min-width: 390px;
