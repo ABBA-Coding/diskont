@@ -420,7 +420,7 @@
                 <img :src="item?.md_img" />
               </div>
               <div v-for="item in [1, 2, 3, 4]" v-else>
-                <img src="../../assets/images/empty-img.png" alt="" />
+                <nuxt-img format="webp" src="/empty-img.png" alt="" />
               </div>
             </a-carousel>
             <!-- <a-carousel arrows dots-class="slick-dots slick-thumb">
@@ -434,7 +434,7 @@
                 <img :src="item?.md_img" />
               </div>
               <div v-for="item in [1, 2, 3, 4]" v-else>
-                <img src="../../assets/images/empty-img.png" alt="" />
+                <nuxt-img format="webp" src="/empty-img.png" alt="" />
               </div>
             </a-carousel> -->
           </div>
@@ -875,7 +875,7 @@
         ></span>
       </div>
       <div class="vmodal-body comment-modal-success">
-        <img src="../../assets/images/modal-success.png" alt="" />
+        <nuxt-img format="webp" src="/modal-success.png" alt="" />
         <p>{{ $store.state.translations["product.oc-success-text"] }}</p>
       </div>
       <div class="vmodal-btn" @click="handleOkSuccess">

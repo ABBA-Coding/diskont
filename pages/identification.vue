@@ -14,7 +14,7 @@
       <div class="identification-page-body">
         <div class="identification-card">
           <div class="identification-card-img">
-            <img src="../assets/images/image 43.png" alt="" />
+             <nuxt-img format="webp" src="/image 43.png" alt="" />
           </div>
           <div class="identification-card-body">
             <span>
@@ -51,7 +51,7 @@
         </div>
         <div class="identification-card">
           <div class="identification-card-img">
-            <img src="../assets/images/pasport-img1.png" alt="" />
+             <nuxt-img format="webp" src="/pasport-img1.png" alt="" />
           </div>
           <div class="identification-card-body">
             <span>
@@ -87,7 +87,7 @@
         </div>
         <div class="identification-card">
           <div class="identification-card-img">
-            <img src="../assets/images/pasport-img2.png" alt="" />
+             <nuxt-img format="webp" src="/pasport-img2.png" alt="" />
           </div>
           <div class="identification-card-body">
             <span>

@@ -77,7 +77,7 @@
             />
           </div>
           <div class="comments-empty search-empty" v-else>
-            <img src="../../assets/images/search-empty.png" alt="" />
+            <nuxt-img format="webp" src="/search-empty.png" alt="" />
             <h4>{{ $store.state.translations["main.nothing-found"] }}</h4>
             <p>
               {{ $store.state.translations["main.search-by-categories"] }}

@@ -4,7 +4,7 @@
       ><span v-html="navLogo" class="nav_logo"></span
     ></nuxt-link>
     <div class="coin_btn" @click="$router.push(localePath('/d-coin/about'))">
-      <span><img src="../../assets/images/coin.png" alt="" /></span>
+      <span><nuxt-img format="webp" src="/coin.png" alt="" /></span>
       {{ $store.state.profile?.dicoin?.quantity }}
       {{ $store.state.translations["main.dicoin"] }}
     </div>

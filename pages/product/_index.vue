@@ -768,7 +768,7 @@
               </div>
             </div>
             <div class="comments-empty" v-if="characteristics.length == 0">
-              <img src="../../assets/images/comments-empty.png" alt="" />
+              <nuxt-img format="webp" src="/comments-empty.png" alt="" />
               <h4>{{ $store.state.translations["product.no-reting"] }}</h4>
             </div>
           </div>
@@ -872,7 +872,7 @@
                 </div>
               </div>
               <div class="comments-empty" v-if="product?.info?.comments.length == 0">
-                <img src="../../assets/images/comments-empty.png" alt="" />
+                <nuxt-img format="webp" src="/comments-empty.png" alt="" />
                 <h4>{{ $store.state.translations["product.no-reting"] }}</h4>
               </div>
             </div>
@@ -1243,7 +1243,7 @@
         ></span>
       </div>
       <div class="vmodal-body comment-modal-success">
-        <img src="../../assets/images/modal-success.png" alt="" />
+        <nuxt-img format="webp" src="/modal-success.png" alt="" />
         <p>{{ $store.state.translations["product.oc-success-text"] }}</p>
       </div>
       <div class="vmodal-btn" @click="handleOkSuccess">

@@ -14,7 +14,7 @@ export default {
       { hid: "description", name: "description", content: "" },
       { name: "csrf-token", content: "{{ csrf_token() }}" },
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon1.ico" }],
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
 
   css: [
@@ -34,15 +34,16 @@ export default {
 
   components: true,
 
-  buildModules: ["@nuxtjs/svg", "@nuxt/image"],
+  buildModules: ["@nuxtjs/svg"],
 
   modules: [
     "bootstrap-vue/nuxt",
     "@nuxtjs/axios",
     "@nuxtjs/i18n",
     "@nuxtjs/dotenv",
+    "@nuxt/image",
   ],
-
+  // target: 'static',
   axios: {
     credentials: false,
     init(axios) {

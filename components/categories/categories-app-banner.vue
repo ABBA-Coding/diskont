@@ -6,10 +6,10 @@
       <div class="app-btn-container app-btn-container-2">
         <div class="flexer">
           <span class="app-btns"
-            ><img src="../../assets/images/Store ggp.png" alt=""
+            ><nuxt-img format="webp" src="/Store ggp.png" alt=""
           /></span>
           <span class="app-btns"
-            ><img src="../../assets/images/Store as.png" alt=""
+            ><nuxt-img format="webp" src="/Store as.png" alt=""
           /></span>
         </div>
         <div class="div">
@@ -20,7 +20,7 @@
     </div>
     <div class="application-banner-images">
       <div class="application-banner-container application-banner-container-2">
-        <img src="../../assets/images/app-aimg.png" alt="" />
+        <nuxt-img format="webp" src="/app-aimg.png" alt="" />
       </div>
     </div>
   </div>

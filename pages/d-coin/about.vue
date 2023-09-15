@@ -51,8 +51,8 @@
       </div>
       <div class="d-coin__body">
         <div class="d-coin__image">
-          <img src="../../assets/images/Group 1000004239.png" alt="" />
-          <img src="../../assets/images/Group 1000004239.png" alt="" />
+          <nuxt-img format="webp" src="/Group 1000004239.png" alt="" />
+          <nuxt-img format="webp" src="/Group 1000004239.png" alt="" />
         </div>
         <div class="d-coin__info">
           <h4>{{ $store.state.translations["diCoin.about-di-coin"] }}</h4>

@@ -7,7 +7,7 @@
         <!-- <h4>Samsung QLED TV 48” Full</h4> -->
       </div>
       <div class="v2-product-card-img">
-        <!-- <img src="../../assets/images/i 1.png" alt="" /> -->
+        <!-- <nuxt-img format="webp" src="/i 1.png" alt="" /> -->
       </div>
       <a :href="img?.link">
         <div class="v2-product-card-btns">
@@ -19,6 +19,7 @@
 </template>
 <script>
 export default {
+  name: "V2ProductCard",
   props: ["variant", "img"],
 };
 </script>

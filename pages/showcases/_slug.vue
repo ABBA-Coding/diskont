@@ -111,7 +111,7 @@
             />
           </div>
           <div class="comments-empty" v-else>
-            <img src="../../assets/images/comments-empty.png" alt="" />
+            <nuxt-img format="webp" src="/comments-empty.png" alt="" />
             <h4>{{ $store.state.translations["category.product-not-found"] }}</h4>
           </div>
           <!-- <div

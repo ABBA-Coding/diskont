@@ -21,7 +21,7 @@
         <PostCard v-for="post in posts" :key="post.id" :post="post" />
       </div>
       <div class="empty-box-app" v-else>
-        <img src="../assets/images/comments-empty.png" alt="" />
+         <nuxt-img format="webp" src="/comments-empty.png" alt="" />
         <h2>{{ $store.state.translations["main.no-news"] }}</h2>
       </div>
       <div class="products-pagination" v-if="totalPage > params.pageSize">

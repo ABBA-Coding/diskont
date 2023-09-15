@@ -361,7 +361,7 @@
             </div>
           </div>
           <div class="basket-coin-block">
-            <img src="../assets/images/basket-2coin.png" alt="" />
+             <nuxt-img format="webp" src="/basket-2coin.png" alt="" />
             <h3>
               +
               {{
@@ -385,7 +385,7 @@
         </div>
       </div>
       <div class="empty-box-app" v-else>
-        <img src="../assets/images/packaging cancel.png" alt="" />
+         <nuxt-img format="webp" src="/packaging cancel.png" alt="" />
         <h2>{{ $store.state.translations["checkout.cart-empty-title"] }}</h2>
         <p>{{ $store.state.translations["checkout.cart-empty-text"] }}</p>
       </div>

@@ -2,7 +2,7 @@
   <div class="about-page">
     <div class="container_xl">
       <div class="banner">
-        <img src="../assets/images/Frame 1000006088.png" alt="" />
+        <nuxt-img format="webp" src="/Frame 1000006088.png" alt="" />
       </div>
       <ul class="tabs">
         <li
@@ -166,7 +166,7 @@
           </div>
         </div>
         <div class="right">
-          <img src="../assets/images/AdobeStock_366164734 1.png" alt="" />
+          <nuxt-img format="webp" src="/AdobeStock_366164734 1.png" alt="" />
         </div>
       </div>
       <div class="block2" id="b2b">
@@ -178,7 +178,7 @@
           qolish uchun ajoyib yondashuv bo'lishi mumkin.
         </p>
 
-        <img src="../assets/images/AdobeStock_573155258 1.png" alt="" />
+        <nuxt-img format="webp" src="/AdobeStock_573155258 1.png" alt="" />
         <p class="block-text">
           Mijozlar bilan ishlash hech qachon oson emas, ayniqsa B2B kontekstida; shuning
           uchun sizga moslama kerak bo'ladi B2B savdo huni. B2C-dan farqli o'laroq,
@@ -379,7 +379,7 @@
       <div class="blocks-grid">
         <div class="block4" id="warranty">
           <div class="left">
-            <img src="../assets/images/image 50959.png" alt="" />
+            <nuxt-img format="webp" src="/image 50959.png" alt="" />
           </div>
           <div class="right">
             <h2 class="block-title">Maxsulotlarga kafolat</h2>
@@ -416,12 +416,12 @@
             </p>
           </div>
           <div class="right">
-            <img src="../assets/images/BenefitsBlock_600-300-31102022 1.png" alt="" />
+            <nuxt-img format="webp" src="/BenefitsBlock_600-300-31102022 1.png" alt="" />
           </div>
         </div>
         <div class="block6" id="returnProduct">
           <div class="left">
-            <img src="../assets/images/image 50957.png" alt="" />
+            <nuxt-img format="webp" src="/image 50957.png" alt="" />
           </div>
           <div class="right">
             <h2 class="block-title">Maxsulotlarni qaytarish</h2>
@@ -564,12 +564,12 @@ export default {
     };
   },
   mounted() {
-    let hash = this.$route.hash;
-    if (hash) {
-      this.scrollElement(`${this.$route.hash}`.replace("#", ""));
-    } else {
-      this.scrollElement("delivery");
-    }
+    // let hash = this.$route.hash;
+    // if (hash) {
+    //   this.scrollElement(`${this.$route.hash}`.replace("#", ""));
+    // } else {
+    //   this.scrollElement("delivery");
+    // }
   },
   methods: {
     chunkIntoN(arr, n) {

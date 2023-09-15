@@ -27,7 +27,7 @@
             </div>
           </div>
           <div class="orders-empty" v-if="orders.length == 0 && !loading">
-            <img src="../../assets/images/orders-empty.png" alt="" />
+            <nuxt-img format="webp" src="/orders-empty.png" alt="" />
             <h4>{{ $store.state.translations["profile.order-empty-title"] }}</h4>
             <p>
               {{ $store.state.translations["profile.order-empty-text"] }}

@@ -204,22 +204,22 @@
             <p>{{ $store.state.translations["main.paymentsystem"] }}</p>
             <div class="payment-types">
               <!-- <span>
-                <img src="../../assets/images/apelsin.uz.png" alt="" />
+                <nuxt-img format="webp" src="/apelsin.uz.png" alt="" />
               </span> -->
               <!-- <span>
-                <img src="../../assets/images/uzcard.uz.png" alt="" />
+                <nuxt-img format="webp" src="/uzcard.uz.png" alt="" />
               </span> -->
               <span>
-                <img src="../../assets/images/click.uz.png" alt="" />
+                <nuxt-img format="webp" src="/click.uz.png" alt="" />
               </span>
               <span>
-                <img src="../../assets/images/payme.uz.png" alt="" />
+                <nuxt-img format="webp" src="/payme.uz.png" alt="" />
               </span>
               <span>
-                <img src="../../assets/images/uzum.png" alt="" />
+                <nuxt-img format="webp" src="/uzum.png" alt="" />
               </span>
               <!-- <span>
-                <img src="../../assets/images/humocard.uz.png" alt="" />
+                <nuxt-img format="webp" src="/humocard.uz.png" alt="" />
               </span> -->
             </div>
           </div>

@@ -411,7 +411,7 @@
             />
           </div>
           <div class="comments-empty" v-if="products.length == 0 && !loading">
-            <img src="../../assets/images/comments-empty.png" alt="" />
+            <nuxt-img format="webp" src="/comments-empty.png" alt="" />
             <h4>{{ $store.state.translations["category.product-not-found"] }}</h4>
           </div>
           <!-- <div class="categories-products-show-more" v-if="products.length > 30">

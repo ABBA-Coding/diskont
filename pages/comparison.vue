@@ -55,7 +55,7 @@
         </div>
       </div>
       <div v-else class="empty-box-app no">
-        <img src="../assets/images/parcel.png" alt="" />
+         <nuxt-img format="webp" src="/parcel.png" alt="" />
         <h2>{{ $store.state.translations["main.comp-empty-title"] }}</h2>
         <p>
           {{ $store.state.translations["main.comp-empty-text"] }}

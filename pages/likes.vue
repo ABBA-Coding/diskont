@@ -30,7 +30,7 @@
         />
       </div>
       <div class="empty-box-app" v-else>
-        <img src="../assets/images/packaging love.png" alt="" />
+         <nuxt-img format="webp" src="/packaging love.png" alt="" />
         <h2>{{ $store.state.translations["main.like-empty-title"] }}</h2>
         <p>
           {{ $store.state.translations["main.like-empty-text"] }}

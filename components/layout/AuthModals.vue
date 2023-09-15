@@ -442,7 +442,7 @@
         ></span>
       </div>
       <div class="vmodal-body success-vmodal">
-        <img src="../../assets/images/modal-success.png" alt="" />
+        <nuxt-img format="webp" src="/modal-success.png" alt="" />
         <p>{{ $store.state.translations["main.auth-success-text"] }}</p>
       </div>
       <div class="vmodal-btn" @click="handleOkSuccess()">

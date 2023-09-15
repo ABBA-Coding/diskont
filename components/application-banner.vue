@@ -6,10 +6,10 @@
       <div class="app-btn-container">
         <div class="flexer">
           <span class="app-btns"
-            ><img src="../assets/images/Store ggp black.png" alt=""
+            > <nuxt-img format="webp" src="/Store ggp black.png" alt=""
           /></span>
           <span class="app-btns"
-            ><img src="../assets/images/Store as black.png" alt=""
+            > <nuxt-img format="webp" src="/Store as black.png" alt=""
           /></span>
         </div>
         <div class="div">
@@ -20,8 +20,8 @@
     </div>
     <div class="categories-application-banner-images">
       <div class="categories-application-banner-container">
-        <img src="../assets/images/iPhone 14 Pro Mockup (1)@3x 1.png" alt="" />
-        <img src="../assets/images/ff 1.png" alt="" />
+         <nuxt-img format="webp" src="/iPhone 14 Pro Mockup (1)@3x 1.png" alt="" />
+         <nuxt-img format="webp" src="/ff 1.png" alt="" />
       </div>
     </div>
   </div>

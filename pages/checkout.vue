@@ -112,7 +112,7 @@
                         /></svg
                     ></span>
                     <span v-else></span>
-                    <img src="../assets/images/apelsin.uz.png" alt="" />
+                     <nuxt-img format="webp" src="/apelsin.uz.png" alt="" />
                   </div>
                   <div class="pay-card" @click="form.payment_method = 'cash'">
                     <span v-if="form.payment_method == 'cash'" class="step-active"
@@ -129,7 +129,7 @@
                         /></svg
                     ></span>
                     <span v-else></span>
-                    <img src="../assets/images/uzcard.uz.png" alt="" />
+                     <nuxt-img format="webp" src="/uzcard.uz.png" alt="" />
                   </div> -->
                   <div class="pay-card" @click="form.payment_method = 'click'">
                     <span v-if="form.payment_method == 'click'" class="step-active"
@@ -146,7 +146,7 @@
                         /></svg
                     ></span>
                     <span v-else></span>
-                    <img src="../assets/images/click.uz.png" alt="" />
+                     <nuxt-img format="webp" src="/click.uz.png" alt="" />
                   </div>
                   <div class="pay-card" @click="form.payment_method = 'payme'">
                     <span v-if="form.payment_method == 'payme'" class="step-active"
@@ -163,7 +163,7 @@
                         /></svg
                     ></span>
                     <span v-else></span>
-                    <img src="../assets/images/payme.uz.png" alt="" />
+                     <nuxt-img format="webp" src="/payme.uz.png" alt="" />
                   </div>
                   <!-- <div class="pay-card" @click="form.payment_method = 'payze'">
                     <span v-if="form.payment_method == 'payze'" class="step-active"
@@ -180,7 +180,7 @@
                         /></svg
                     ></span>
                     <span v-else></span>
-                    <img src="../assets/images/humocard.uz.png" alt="" />
+                     <nuxt-img format="webp" src="/humocard.uz.png" alt="" />
                   </div> -->
                   <!-- <div class="pay-card" @click="form.payment_method = 'uzum'">
                     <span v-if="form.payment_method == 'uzum'" class="step-active"
@@ -197,7 +197,7 @@
                         /></svg
                     ></span>
                     <span v-else></span>
-                    <img src="../assets/images/uzum.png" alt="" />
+                     <nuxt-img format="webp" src="/uzum.png" alt="" />
                   </div> -->
                 </div>
               </div>
@@ -428,7 +428,7 @@
               @click="sendDicoin = false"
             >
               <div class="d-flex">
-                <img src="../assets/images/d-coin.png" alt="" />
+                 <nuxt-img format="webp" src="/d-coin.png" alt="" />
                 <h6 class="active_dicoin">
                   <span>{{ dicoinSumm }}</span
                   >{{ $store.state.translations["main.dicoin"] }}
@@ -453,7 +453,7 @@
                 <p>
                   {{ $store.state.translations["checkout.total-count-dicoin"] }}:
                   <span
-                    ><img src="../assets/images/d-coin.png" alt="" />{{
+                    > <nuxt-img format="webp" src="/d-coin.png" alt="" />{{
                       $store.state.profile?.dicoin?.quantity
                     }}</span
                   >
@@ -482,7 +482,7 @@
               </div>
               <div class="checkout_dicoin_input">
                 <div>
-                  <img src="../assets/images/d-coin.png" alt="" />
+                   <nuxt-img format="webp" src="/d-coin.png" alt="" />
                   <input
                     class="dicoin-input"
                     type="number"

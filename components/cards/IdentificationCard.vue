@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="identification-card">
     <div class="identification-card-img">
-      <img src="../../assets/images/image 43.png" alt="" />
+      <nuxt-img format="webp" src="/image 43.png" alt="" />
     </div>
     <div class="identification-card-body">
       <span>
