@@ -76,7 +76,6 @@
                 <div class="basket-card-count">
                   <div class="basket-count-btn">
                     <span
-                      v-ripple="'rgba(9, 69, 79, 0.1)'"
                       @click="
                         $store.state.cart.find((item) => item.id == product.id)?.count > 1
                           ? $store.commit('productCountDown', {
@@ -99,7 +98,6 @@
 
                     {{ $store.state.cart.find((item) => item.id == product.id)?.count }}
                     <span
-                      v-ripple="'rgba(9, 69, 79, 0.1)'"
                       @click="
                         $store.state.cart.find((item) => item.id == product?.id)?.count <
                           product?.stock &&

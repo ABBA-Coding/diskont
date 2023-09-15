@@ -9,7 +9,7 @@
         loading="lazy"
       />
       <img v-if="post?.md_img" :src="post?.md_img" alt="" />
-      <img v-else src="../../assets/images/Rectangle 24083.png" alt="" />
+      <!-- <img v-else src="../../assets/images/Rectangle 24083.png" alt="" /> -->
     </div>
     <div class="post-card-body">
       <p v-if="post?.created_at">

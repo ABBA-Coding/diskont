@@ -70,11 +70,7 @@
           </a-form-model-item>
         </a-form-model>
       </div>
-      <div
-        class="vmodal-btn vmodal-btn-height"
-        v-ripple="'rgba(255, 255, 255, 0.35)'"
-        @click="submitCheckNumber()"
-      >
+      <div class="vmodal-btn vmodal-btn-height" @click="submitCheckNumber()">
         {{ $store.state.translations["main.login-text"] }}
       </div>
       <!-- <div class="vmodal-btn-outline" @click="visibleLogin = true">Manzilni qo’shish</div> -->

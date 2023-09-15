@@ -14,7 +14,7 @@ export default {
       { hid: "description", name: "description", content: "" },
       { name: "csrf-token", content: "{{ csrf_token() }}" },
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon1.ico" }],
   },
 
   css: [
@@ -29,7 +29,6 @@ export default {
     { src: "~plugins/antdv.js" },
     { src: "~plugins/v-mask.js", ssr: false },
     { src: "~plugins/aos.js", ssr: false },
-    { src: "~plugins/vue-ripple.js", ssr: false },
     { src: "~plugins/geolocation.js", ssr: false },
   ],
 

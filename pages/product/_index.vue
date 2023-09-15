@@ -887,7 +887,6 @@
                 </button>
               </div>
               <div class="rating">
-                <!-- <img src="@/assets/images/cheat.png" alt="" /> -->
                 <div class="total_rating">
                   <div>
                   

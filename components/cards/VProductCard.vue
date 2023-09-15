@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="v-product-card">
     <div class="v-product-card-img">
-      <img src="../../assets/images/i 1.png" alt="" />
+      <!-- <img src="../../assets/images/i 1.png" alt="" /> -->
     </div>
     <div
       class="v-product-card-title d-flex align-items-center justify-content-center w-100"

@@ -255,8 +255,7 @@
       <MainTitle :title="showcases[5]?.name" />
       <div class="v-card-products-grid mb-120">
         <div class="v-card-grid">
-          <VProductCard />
-          <VProductCard />
+        
         </div>
         <div class="products-grid-5">
           <ProductCard
@@ -288,12 +287,6 @@
           >
             <V2ProductCard :img="img" />
           </span>
-          <!-- <span class="grid-banner-card-1">
-            <VProductCard />
-          </span>
-          <span class="grid-banner-card-2">
-            <VProductCard />
-          </span> -->
         </div>
       </div>
     </div>
@@ -336,7 +329,6 @@
 import BannerCarousel from "../components/Banner-carousel.vue";
 import HomeCategoryCard from "../components/cards/HomeCategoryCard.vue";
 import ProductCard from "../components/cards/ProductCard.vue";
-import VProductCard from "../components/cards/VProductCard.vue";
 import V2ProductCard from "../components/cards/V2ProductCard.vue";
 import DiscountCarousel from "../components/discount-carousel.vue";
 import MainTitle from "../components/Main-title.vue";
@@ -475,7 +467,6 @@ export default {
     MainTitle,
     DiscountCarousel,
     HomeCategoryCard,
-    VProductCard,
     ProductCarousel,
     ProductCarousel2,
     MainBigTitle,

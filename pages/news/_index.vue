@@ -20,7 +20,7 @@
       <div class="post-page-body">
         <div class="post-page-img">
           <img v-if="post?.lg_img" :src="post?.lg_img" alt="" />
-          <img v-else src="../../assets/images/image 317.png" alt="" />
+          <!-- <img v-else src="../../assets/images/image 317.png" alt="" /> -->
         </div>
         <div class="post-page-info">
           <h1>{{ post?.title }}</h1>
