@@ -43,7 +43,7 @@ export default {
     "@nuxt/image",
     "nuxt-precompress",
   ],
-  target: 'static',
+  // target: 'static',
   axios: {
     credentials: false,
     init(axios) {
