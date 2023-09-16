@@ -31,7 +31,6 @@ export default {
     { src: "~plugins/aos.js", ssr: false },
     { src: "~plugins/geolocation.js", ssr: false },
   ],
-
   components: true,
 
   buildModules: ["@nuxtjs/svg"],
@@ -44,7 +43,7 @@ export default {
     "@nuxt/image",
     "nuxt-precompress",
   ],
-  // target: 'static',
+  target: 'static',
   axios: {
     credentials: false,
     init(axios) {
