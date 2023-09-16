@@ -42,6 +42,7 @@ export default {
     "@nuxtjs/i18n",
     "@nuxtjs/dotenv",
     "@nuxt/image",
+    "nuxt-precompress",
   ],
   // target: 'static',
   axios: {
@@ -59,6 +60,30 @@ export default {
     defaultLocale: "uz",
     vueI18n: {
       fallbackLocale: "uz",
+    },
+  },
+  nuxtPrecompress: {
+    enabled: true, // Enable in production
+    report: false, // set true to turn one console messages during module init
+    test: /\.(js|css|html|txt|xml|svg)$/, // files to compress on build
+    middleware: {
+      enabled: true,
+      enabledStatic: true,
+      encodingsPriority: ["br", "gzip"],
+    },
+    gzip: {
+      enabled: true,
+      filename: "[path].gz[query]",
+      threshold: 10240,
+      minRatio: 0.8,
+      compressionOptions: { level: 9 },
+    },
+    brotli: {
+      enabled: true,
+      filename: "[path].br[query]",
+      compressionOptions: { level: 11 },
+      threshold: 10240,
+      minRatio: 0.8,
     },
   },
   build: {
