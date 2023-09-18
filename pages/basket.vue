@@ -206,8 +206,21 @@
                   </div>
                 </div>
                 <div class="right">
-                  <button class="like">
+                  <button
+                    class="like"
+                    @click="
+                      $store.commit('addToStore', {
+                        id: product.id,
+                        name: 'like',
+                      })
+                    "
+                  >
+                    <span
+                      v-html="activeHeart"
+                      v-if="$store.state.like.includes(product.id)"
+                    ></span>
                     <svg
+                      v-else
                       xmlns="http://www.w3.org/2000/svg"
                       width="28"
                       height="28"
@@ -361,7 +374,7 @@
             </div>
           </div>
           <div class="basket-coin-block">
-             <nuxt-img format="webp" src="/basket-2coin.png" alt="" />
+            <nuxt-img format="webp" src="/basket-2coin.png" alt="" />
             <h3>
               +
               {{
@@ -385,7 +398,7 @@
         </div>
       </div>
       <div class="empty-box-app" v-else>
-         <nuxt-img format="webp" src="/packaging cancel.png" alt="" />
+        <nuxt-img format="webp" src="/packaging cancel.png" alt="" />
         <h2>{{ $store.state.translations["checkout.cart-empty-title"] }}</h2>
         <p>{{ $store.state.translations["checkout.cart-empty-text"] }}</p>
       </div>
@@ -859,6 +872,10 @@ export default {
   .mobile__card .trash {
     background: transparent;
     border: none;
+  }
+  .mobile__card .like svg {
+    width: 28px;
+    height: 28px;
   }
   .mobile__card .right {
     display: flex;

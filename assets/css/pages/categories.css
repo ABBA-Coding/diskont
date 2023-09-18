@@ -86,6 +86,7 @@
   letter-spacing: -0.24px;
   color: #8c959c;
   margin-left: 40px;
+  white-space: nowrap;
   margin-bottom: 9px;
 }
 .categories-card-grid {

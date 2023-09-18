@@ -30,7 +30,7 @@
         />
       </div>
       <div class="empty-box-app" v-else>
-         <nuxt-img format="webp" src="/packaging love.png" alt="" />
+        <nuxt-img format="webp" src="/packaging love.png" alt="" />
         <h2>{{ $store.state.translations["main.like-empty-title"] }}</h2>
         <p>
           {{ $store.state.translations["main.like-empty-text"] }}
@@ -126,5 +126,24 @@ export default {
 }
 .likes-delete span {
   margin-right: 13px;
+}
+@media (max-width: 1024px) {
+  .likes-page-body {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .likes-page-body {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (max-width: 576px) {
+  .likes-page-body {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 16px;
+  }
+  .likes-delete {
+    display: none;
+  }
 }
 </style>

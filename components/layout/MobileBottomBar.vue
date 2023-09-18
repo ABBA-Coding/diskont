@@ -184,7 +184,11 @@
                 stroke-linecap="round"
               />
             </svg>
-            {{ $store.state.translations["main.access"] }}
+            {{
+              $store.state.auth && $store.state.profile.name
+                ? $store.state.profile.name
+                : $store.state.translations["main.access"]
+            }}
           </button>
         </li>
       </ul>
