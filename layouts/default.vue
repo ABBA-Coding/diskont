@@ -32,70 +32,17 @@
       :body-style="{ padding: '0', borderRadius: '16px' }"
       centered
       :closable="false"
-      width="1200px"
+      width="900px"
       @ok="handleWheelModal"
     >
       <div class="wrapper">
         <div class="left">
-          <div class="arrow">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="56"
-              height="31"
-              viewBox="0 0 56 31"
-              fill="none"
-            >
-              <path
-                d="M2.10202 14.0722L53.3994 0.775295C53.6453 0.711669 53.9024 0.705098 54.1512 0.756094C54.4 0.80709 54.6338 0.914292 54.8348 1.06952C55.0358 1.22474 55.1987 1.42388 55.3109 1.65169C55.4232 1.87949 55.4818 2.12994 55.4824 2.38389V28.9778C55.4825 29.232 55.4243 29.4828 55.3123 29.711C55.2003 29.9392 55.0374 30.1386 54.8362 30.294C54.635 30.4493 54.4009 30.5565 54.1518 30.6072C53.9027 30.6579 53.6453 30.6508 53.3994 30.5864L2.10202 17.2895C1.74587 17.1969 1.43052 16.9887 1.20543 16.6976C0.980331 16.4064 0.858219 16.0488 0.858219 15.6809C0.858219 15.3129 0.980331 14.9553 1.20543 14.6642C1.43052 14.373 1.74587 14.1649 2.10202 14.0722Z"
-                fill="#E01717"
-              />
-            </svg>
-          </div>
-          <div id="wheel" class="wheel">
-            <div class="cover"></div>
-            <div class="numbers">
-              <div style="--i: 1" class="num">
-                <p>1</p>
-              </div>
-              <div style="--i: 2" class="num">
-                <p>2</p>
-              </div>
-              <div style="--i: 3" class="num">
-                <p>3</p>
-              </div>
-              <div style="--i: 4" class="num">
-                <p>4</p>
-              </div>
-              <div style="--i: 5" class="num">
-                <p>5</p>
-              </div>
-              <div style="--i: 6" class="num">
-                <p>6</p>
-              </div>
-              <div style="--i: 7" class="num">
-                <p>7</p>
-              </div>
-              <div style="--i: 8" class="num">
-                <p>8</p>
-              </div>
-              <div style="--i: 9" class="num">
-                <p>9</p>
-              </div>
-              <div style="--i: 10" class="num">
-                <p>10</p>
-              </div>
-              <div style="--i: 11" class="num">
-                <p>11</p>
-              </div>
-              <div style="--i: 12" class="num">
-                <p>12</p>
-              </div>
-            </div>
-            <div id="button" @click="rotate" class="button">
+          <div class="wheel-box">
+            <div id="button" class="button" @click="rotate">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="56"
-                height="56"
+                width="80"
+                height="80"
                 viewBox="0 0 56 56"
                 fill="none"
               >
@@ -117,6 +64,61 @@
                   </linearGradient>
                 </defs>
               </svg>
+            </div>
+            <div class="arrow">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="56"
+                height="31"
+                viewBox="0 0 56 31"
+                fill="none"
+              >
+                <path
+                  d="M2.10202 14.0722L53.3994 0.775295C53.6453 0.711669 53.9024 0.705098 54.1512 0.756094C54.4 0.80709 54.6338 0.914292 54.8348 1.06952C55.0358 1.22474 55.1987 1.42388 55.3109 1.65169C55.4232 1.87949 55.4818 2.12994 55.4824 2.38389V28.9778C55.4825 29.232 55.4243 29.4828 55.3123 29.711C55.2003 29.9392 55.0374 30.1386 54.8362 30.294C54.635 30.4493 54.4009 30.5565 54.1518 30.6072C53.9027 30.6579 53.6453 30.6508 53.3994 30.5864L2.10202 17.2895C1.74587 17.1969 1.43052 16.9887 1.20543 16.6976C0.980331 16.4064 0.858219 16.0488 0.858219 15.6809C0.858219 15.3129 0.980331 14.9553 1.20543 14.6642C1.43052 14.373 1.74587 14.1649 2.10202 14.0722Z"
+                  fill="#E01717"
+                />
+              </svg>
+            </div>
+            <div id="wheel" class="wheel">
+              <div class="cover"></div>
+              <div class="numbers">
+                <div style="--i: 1" class="num">
+                  <p>1</p>
+                </div>
+                <div style="--i: 2" class="num">
+                  <p>2</p>
+                </div>
+                <div style="--i: 3" class="num">
+                  <p>3</p>
+                </div>
+                <div style="--i: 4" class="num">
+                  <p>4</p>
+                </div>
+                <div style="--i: 5" class="num">
+                  <p>5</p>
+                </div>
+                <div style="--i: 6" class="num">
+                  <p>6</p>
+                </div>
+                <div style="--i: 7" class="num">
+                  <p>7</p>
+                </div>
+                <div style="--i: 8" class="num">
+                  <p>8</p>
+                </div>
+                <div style="--i: 9" class="num">
+                  <p>9</p>
+                </div>
+                <div style="--i: 10" class="num">
+                  <p>10</p>
+                </div>
+                <div style="--i: 11" class="num">
+                  <p>11</p>
+                </div>
+                <div style="--i: 12" class="num">
+                  <p>12</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -142,18 +144,18 @@
             sovgalar yutib olisng
           </p>
 
-          <form action="">
-            <input type="text" placeholder="Raqamingizni yozib qoldiring" />
+          <!-- <form action=""> -->
+          <!-- <input type="text" placeholder="Raqamingizni yozib qoldiring" /> -->
 
-            <p class="txt">
+          <!-- <p class="txt">
               Malumotlaringiz konfedintialnosti Discont administration tomonidan
               taminlanadi va sizga 10ta discoin taqdim etiladi
-            </p>
-            <div class="buttons">
-              <button class="send">Yuborish va 10 ta Discoin yutish</button>
-              <button class="share">Do’stlarga ulshish</button>
-            </div>
-          </form>
+            </p> -->
+          <div class="buttons">
+            <button class="send" @click="rotate">Aylantirish</button>
+            <button class="share" @click="wheelModal = false">Yopish</button>
+          </div>
+          <!-- </form> -->
         </div>
       </div>
       <template slot="footer"> <h3></h3></template>
@@ -203,7 +205,7 @@ export default {
       iconBuy: require("../assets/Buy.svg?raw"),
       iconLike: require("../assets/svg/toast-like.svg?raw"),
       iconComp: require("../assets/svg/toast-comparison.svg?raw"),
-      wheelModal: false,
+      wheelModal: true,
       city: "",
       region: "",
       country: "",
@@ -283,15 +285,14 @@ export default {
     },
     rotate() {
       let wheel = document.getElementById("wheel");
-      let button = document.getElementById("button");
       let value = Math.ceil(Math.random() * 3600);
-
-      wheel.style.transform = " translate(-50%, -50%) rotate( " + value + "deg  )";
+      wheel.style.transform = "rotate( " + value + "deg  )";
       this.detectRange(value);
     },
     detectRange(value) {
       let detectedValue = value % 360;
-      let finalValue = Math.ceil(detectedValue / 30) + 7;
+      let finalValue = Math.ceil(detectedValue / 30);
+      console.log(14 - finalValue);
     },
   },
   watch: {
@@ -376,25 +377,35 @@ export default {
   position: relative;
   z-index: 9;
 }
-.wheel {
+.wheel-box {
   width: 578px;
   height: 578px;
   position: absolute;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
   left: 27%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  overflow: hidden;
+  border: 8px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wheel {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
   background: #001f30;
   border-radius: 50%;
-  border: 8px solid white;
-  overflow: hidden;
   transition: 5s ease-in-out;
 }
 .arrow {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%) rotate(180deg);
+  top: auto;
+  transform: translateY(-56px) rotate(90deg);
   right: auto;
-  left: -132px;
+  left: auto;
   z-index: 9;
 }
 .cover {
@@ -415,6 +426,8 @@ export default {
   transform: translate(-50%, -50%);
   cursor: pointer;
   z-index: 99;
+  display: flex;
+  justify-content: center;
 }
 .num {
   width: 10px;
@@ -446,7 +459,7 @@ export default {
 }
 .wrapper {
   display: grid;
-  grid-template-columns: 4fr 6fr;
+  grid-template-columns: repeat(2, 1fr);
 }
 .right {
   max-width: 540px;
@@ -558,5 +571,64 @@ export default {
   height: 67px;
   box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.2);
   border-radius: 50%;
+}
+@media (max-width: 1024px) {
+  .wheel-box {
+    width: 450px;
+    height: 450px;
+    transform: translate(-50%, -50%);
+    left: -10px;
+  }
+  .wrapper {
+    grid-template-columns: 450px 1fr;
+  }
+}
+@media (max-width: 768px) {
+  .wheel-box {
+    left: calc(50% - 50px);
+    width: 450px;
+    height: 450px;
+    transform: translate(-50%, -50%);
+    top: 0;
+    position: relative;
+  }
+  .left {
+    height: 160px;
+    display: flex;
+    justify-content: center;
+  }
+  .wrapper {
+    grid-template-columns: 1fr;
+  }
+  .right {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .right .svg {
+    display: none;
+  }
+  .right {
+    padding: 64px 0 24px 0;
+  }
+}
+@media (max-width: 576px) {
+  .wheel-box {
+    width: 400px;
+    height: 400px;
+  }
+  .right {
+    padding: 64px 0 24px 0;
+  }
+}
+@media (max-width: 414px) {
+  .wheel-box {
+    width: 340px;
+    height: 340px;
+  }
+  .right {
+    padding: 32px 0 24px 0;
+  }
 }
 </style>
