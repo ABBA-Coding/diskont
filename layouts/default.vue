@@ -205,7 +205,7 @@ export default {
       iconBuy: require("../assets/Buy.svg?raw"),
       iconLike: require("../assets/svg/toast-like.svg?raw"),
       iconComp: require("../assets/svg/toast-comparison.svg?raw"),
-      wheelModal: true,
+      wheelModal: false,
       city: "",
       region: "",
       country: "",
