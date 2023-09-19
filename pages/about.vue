@@ -17,50 +17,51 @@
           :class="{ active: activeTab == 'b2b' }"
           @click="scrollElement('b2b')"
         >
-          B2B savdo haqida
+          {{ $store.state.translations["about.b2b"] }}
         </li>
         <li
           class="tab"
           :class="{ active: activeTab == 'working' }"
           @click="scrollElement('working')"
         >
-          Diskontda ishlash
+          {{ $store.state.translations["about.work-diskont"] }}
         </li>
         <li
           class="tab"
           :class="{ active: activeTab == 'tradeNation' }"
           @click="scrollElement('tradeNation')"
         >
-          Diskontda Nasiya savdo
+          {{ $store.state.translations["about.nation-trade"] }}
         </li>
         <li
           class="tab"
           :class="{ active: activeTab == 'warranty' }"
           @click="scrollElement('warranty')"
         >
-          Maxsulotlarga kafolat
+          {{ $store.state.translations["about.product-warranty"] }}
         </li>
         <li
           class="tab"
           :class="{ active: activeTab == 'returnProduct' }"
           @click="scrollElement('returnProduct')"
         >
-          Maxsulotlarni kaytarish
+          {{ $store.state.translations["about.returning-product"] }}
         </li>
         <li
           class="tab"
           :class="{ active: activeTab == 'faqs' }"
           @click="scrollElement('faqs')"
         >
-          Ko’p so'raladigan savollar
+          {{ $store.state.translations["about.faq"] }}
         </li>
       </ul>
       <div class="block1" id="delivery">
         <div class="left">
-          <h4 class="block-title">Yetkazib berish</h4>
+          <h4 class="block-title">
+            {{ $store.state.translations["about.block1-title"] }}
+          </h4>
           <p class="block-text">
-            Apple’da yangi maxsulotlarni kutib oling. Bu gal apple siz va bizga bir nechta
-            ushbu yangi devayslarni birinchilardan bo’lib sotib olishingiz mumkin
+            {{ $store.state.translations["about.block1-subtitle"] }}
           </p>
           <div class="grid">
             <div class="block1-card">
@@ -84,8 +85,7 @@
                 />
               </svg>
               <p>
-                Мы не тратим на рекламу огромные
-                {{ $store.state.translations["main.som"] }}мы, исключая лишнюю наценку
+                {{ $store.state.translations["about.block1-card1"] }}
               </p>
             </div>
             <div class="block1-card">
@@ -109,8 +109,7 @@
                 />
               </svg>
               <p>
-                Мы не тратим на рекламу огромные
-                {{ $store.state.translations["main.som"] }}мы, исключая лишнюю наценку
+                {{ $store.state.translations["about.block1-card2"] }}
               </p>
             </div>
             <div class="block1-card">
@@ -134,8 +133,7 @@
                 />
               </svg>
               <p>
-                Мы не тратим на рекламу огромные
-                {{ $store.state.translations["main.som"] }}мы, исключая лишнюю наценку
+                {{ $store.state.translations["about.block1-card3"] }}
               </p>
             </div>
             <div class="block1-card">
@@ -159,8 +157,7 @@
                 />
               </svg>
               <p>
-                Мы не тратим на рекламу огромные
-                {{ $store.state.translations["main.som"] }}мы, исключая лишнюю наценку
+                {{ $store.state.translations["about.block1-card4"] }}
               </p>
             </div>
           </div>
@@ -170,89 +167,60 @@
         </div>
       </div>
       <div class="block2" id="b2b">
-        <h2 class="block-title">B2B savdo haqida</h2>
+        <h2 class="block-title">{{ $store.state.translations["about.b2b"] }}</h2>
         <p class="block-text">
-          Texnologiya rivojlanib borar ekan, B2B munosabatlari o'sishda davom etadi va
-          biznes uchun yangi imkoniyatlar va muammolarni yaratadi. B2B savdo hunisini
-          tushunish mijozlarga yo'naltirilganlik va raqobatdosh ustunliklarni saqlab
-          qolish uchun ajoyib yondashuv bo'lishi mumkin.
+          {{ $store.state.translations["about.block2-text1"] }}
         </p>
 
         <nuxt-img format="webp" src="/AdobeStock_573155258 1.png" alt="" />
         <p class="block-text">
-          Mijozlar bilan ishlash hech qachon oson emas, ayniqsa B2B kontekstida; shuning
-          uchun sizga moslama kerak bo'ladi B2B savdo huni. B2C-dan farqli o'laroq,
-          mijozlar ko'proq emotsional murojaat qiladilar va B2B Sotish hunilari ancha
-          murakkabroq bo'lib, xarid qilish to'g'risida qaror qabul qilishda yanada oqilona
-          va qiymat va ROIga yo'naltirilgan bo'lishi mumkin.
+          {{ $store.state.translations["about.block2-text2"] }}
         </p>
         <p class="block-text">
-          Texnologiya rivojlanib borar ekan, B2B munosabatlari o'sishda davom etadi va
-          biznes uchun yangi imkoniyatlar va muammolarni yaratadi. B2B savdo hunisini
-          tushunish mijozlarga yo'naltirilganlik va raqobatdosh ustunliklarni saqlab
-          qolish uchun ajoyib yondashuv bo'lishi mumkin.
+          {{ $store.state.translations["about.block2-text3"] }}
         </p>
       </div>
       <div class="block3" id="working">
         <div class="left">
-          <h2 class="block-title">Diskontda ishlash</h2>
+          <h2 class="block-title">
+            {{ $store.state.translations["about.work-diskont"] }}
+          </h2>
           <p class="block-text">
-            Хотите быть частью команды Diskont? Расскажите почему вы нам подходите и
-            отправляйте свое резюме
+            {{ $store.state.translations["about.block3-subtitle"] }}
           </p>
           <div class="lists">
             <ul class="list">
-              <h6>Магазин вакансий</h6>
-              <li>
+              <h6>
+                {{ $store.state.translations["about-list.list1-title"] }}
+              </h6>
+              <li
+                v-for="listItem in Object.keys($store.state.translations).filter((item) =>
+                  item.includes('list1-itemlist')
+                )"
+              >
                 <span v-html="icon"></span>
-                <p class="block-text">Бухгалтерия и финансы</p>
-              </li>
-              <li>
-                <span v-html="icon"></span>
-                <p class="block-text">Бухгалтерия и финансы</p>
-              </li>
-              <li>
-                <span v-html="icon"></span>
-                <p class="block-text">Бухгалтерия и финансы</p>
-              </li>
-              <li>
-                <span v-html="icon"></span>
-                <p class="block-text">Бухгалтерия и финансы</p>
-              </li>
-              <li>
-                <span v-html="icon"></span>
-                <p class="block-text">Бухгалтерия и финансы</p>
+                <p class="block-text">{{ $store.state.translations[listItem] }}</p>
               </li>
             </ul>
             <ul class="list">
-              <h6>ИТ-вакансии</h6>
-              <li>
+              <h6>{{ $store.state.translations["about-list.list2-title"] }}</h6>
+              <li
+                v-for="listItem in Object.keys($store.state.translations).filter((item) =>
+                  item.includes('list2-itemlist')
+                )"
+              >
                 <span v-html="icon"></span>
-                <p class="block-text">Бухгалтерия и финансы</p>
-              </li>
-              <li>
-                <span v-html="icon"></span>
-                <p class="block-text">Бухгалтерия и финансы</p>
-              </li>
-              <li>
-                <span v-html="icon"></span>
-                <p class="block-text">Бухгалтерия и финансы</p>
-              </li>
-              <li>
-                <span v-html="icon"></span>
-                <p class="block-text">Бухгалтерия и финансы</p>
-              </li>
-              <li>
-                <span v-html="icon"></span>
-                <p class="block-text">Бухгалтерия и финансы</p>
+                <p class="block-text">{{ $store.state.translations[listItem] }}</p>
               </li>
             </ul>
           </div>
           <div class="btns">
-            <a :href="`tel:${$store.state.siteInfo?.phone_number}`"
-              >Хочу работать в Diskont</a
-            >
-            <a :href="$store.state.siteInfo?.telegram">Telegram bot @diskont_jobs</a>
+            <a :href="`tel:${$store.state.siteInfo?.phone_number}`">{{
+              $store.state.translations["about.block3-btn1"]
+            }}</a>
+            <a :href="$store.state.siteInfo?.telegram">{{
+              $store.state.translations["about.block3-btn2"]
+            }}</a>
           </div>
         </div>
         <div class="right">
@@ -301,8 +269,8 @@
               />
             </svg>
             <div>
-              <h1>7 млн+</h1>
-              <p>Количество рабочих</p>
+              <h1>{{ $store.state.translations["about.stat1-title"] }}</h1>
+              <p>{{ $store.state.translations["about.stat1-subtitle"] }}</p>
             </div>
           </div>
           <div class="block3-card">
@@ -343,8 +311,8 @@
               <circle cx="27" cy="8.33301" r="8" fill="#06858C" />
             </svg>
             <div>
-              <h1>7 млн+</h1>
-              <p>пользователей</p>
+              <h1>{{ $store.state.translations["about.stat2-title"] }}</h1>
+              <p>{{ $store.state.translations["about.stat2-subtitle"] }}</p>
             </div>
           </div>
           <div class="block3-card">
@@ -370,8 +338,8 @@
               />
             </svg>
             <div>
-              <h1>14+</h1>
-              <p>наши филиалы</p>
+              <h1>{{ $store.state.translations["about.stat3-title"] }}</h1>
+              <p>{{ $store.state.translations["about.stat3-subtitle"] }}</p>
             </div>
           </div>
         </div>
@@ -382,37 +350,27 @@
             <nuxt-img format="webp" src="/image 50959.png" alt="" />
           </div>
           <div class="right">
-            <h2 class="block-title">Maxsulotlarga kafolat</h2>
+            <h2 class="block-title">
+              {{ $store.state.translations["about.block4-title"] }}
+            </h2>
             <p class="block-text">
-              Mijozlar bilan ishlash hech qachon oson emas, ayniqsa B2B kontekstida;
-              shuning uchun sizga moslama kerak bo'ladi B2B savdo huni. B2C-dan farqli
-              o'laroq, mijozlar ko'proq emotsional murojaat qiladilar va B2B Sotish
-              hunilari ancha murakkabroq bo'lib, xarid qilish to'g'risida qaror qabul
-              qilishda yanada oqilona va qiymat va ROIga yo'naltirilgan bo'lishi mumkin.
+              {{ $store.state.translations["about.block4-text1"] }}
             </p>
             <p class="block-text">
-              Texnologiya rivojlanib borar ekan, B2B munosabatlari o'sishda davom etadi va
-              biznes uchun yangi imkoniyatlar va muammolarni yaratadi. B2B savdo hunisini
-              tushunish mijozlarga yo'naltirilganlik va raqobatdosh ustunliklarni saqlab
-              qolish uchun ajoyib yondashuv bo'lishi mumkin.
+              {{ $store.state.translations["about.block4-text2"] }}
             </p>
           </div>
         </div>
         <div class="block5" id="tradeNation">
           <div class="left">
-            <h2 class="block-title">Diskontda Nasiya savdo</h2>
+            <h2 class="block-title">
+              {{ $store.state.translations["about.block5-title"] }}
+            </h2>
             <p class="block-text">
-              Mijozlar bilan ishlash hech qachon oson emas, ayniqsa B2B kontekstida;
-              shuning uchun sizga moslama kerak bo'ladi B2B savdo huni. B2C-dan farqli
-              o'laroq, mijozlar ko'proq emotsional murojaat qiladilar va B2B Sotish
-              hunilari ancha murakkabroq bo'lib, xarid qilish to'g'risida qaror qabul
-              qilishda yanada oqilona va qiymat va ROIga yo'naltirilgan bo'lishi mumkin.
+              {{ $store.state.translations["about.block5-text1"] }}
             </p>
             <p class="block-text">
-              Texnologiya rivojlanib borar ekan, B2B munosabatlari o'sishda davom etadi va
-              biznes uchun yangi imkoniyatlar va muammolarni yaratadi. B2B savdo hunisini
-              tushunish mijozlarga yo'naltirilganlik va raqobatdosh ustunliklarni saqlab
-              qolish uchun ajoyib yondashuv bo'lishi mumkin.
+              {{ $store.state.translations["about.block5-text2"] }}
             </p>
           </div>
           <div class="right">
@@ -424,25 +382,20 @@
             <nuxt-img format="webp" src="/image 50957.png" alt="" />
           </div>
           <div class="right">
-            <h2 class="block-title">Maxsulotlarni qaytarish</h2>
+            <h2 class="block-title">
+              {{ $store.state.translations["about.block6-title"] }}
+            </h2>
             <p class="block-text">
-              Mijozlar bilan ishlash hech qachon oson emas, ayniqsa B2B kontekstida;
-              shuning uchun sizga moslama kerak bo'ladi B2B savdo huni. B2C-dan farqli
-              o'laroq, mijozlar ko'proq emotsional murojaat qiladilar va B2B Sotish
-              hunilari ancha murakkabroq bo'lib, xarid qilish to'g'risida qaror qabul
-              qilishda yanada oqilona va qiymat va ROIga yo'naltirilgan bo'lishi mumkin.
+              {{ $store.state.translations["about.block6-text1"] }}
             </p>
             <p class="block-text">
-              Texnologiya rivojlanib borar ekan, B2B munosabatlari o'sishda davom etadi va
-              biznes uchun yangi imkoniyatlar va muammolarni yaratadi. B2B savdo hunisini
-              tushunish mijozlarga yo'naltirilganlik va raqobatdosh ustunliklarni saqlab
-              qolish uchun ajoyib yondashuv bo'lishi mumkin.
+              {{ $store.state.translations["about.block6-text2"] }}
             </p>
           </div>
         </div>
       </div>
       <div class="faqs" id="faqs">
-        <h1>Ko’p so'raladigan savollar</h1>
+        <h1>{{ $store.state.translations["about.faq"] }}</h1>
         <div class="grid">
           <div>
             <div
