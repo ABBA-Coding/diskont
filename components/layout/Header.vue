@@ -16,7 +16,7 @@
             </li>
           </ul>
           <div class="d-flex header-top__right">
-            <a :href="`tel:${$store.state.siteInfo?.phone_number}`"
+            <a :href="`tel:${$store.state.siteInfo?.phone_number}`" v-if="$store.state.siteInfo?.phone_number"
               >+{{
                 `${$store.state.siteInfo?.phone_number}`
                   .match(/(\d{3})(\d{2})(\d{3})(\d{2})(\d{2})/)

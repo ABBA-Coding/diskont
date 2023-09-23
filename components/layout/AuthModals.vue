@@ -630,19 +630,25 @@ export default {
           formData
         );
         localStorage.setItem("dis_auth_token", data.token);
-        // this.$store.commit("authHandler");
-
-        if (!this.forgetPassStatus) {
+        try {
+          const info = await this.$axios.$get("/profile/me", {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("dis_auth_token")}`,
+            },
+          });
+          if (!this.forgetPassStatus && !info?.user?.name) {
+            this.visibleName = true;
+          } else {
+            this.$store.dispatch("profileInfo");
+            this.visibleName = false;
+            this.visibleSuccess = true;
+          }
+          this.forgetPassStatus = false;
+          this.visibleSms = false;
+          this.smsCodeError = false;
+        } catch (e) {
           this.visibleName = true;
-        } else {
-          this.$store.dispatch("profileInfo");
-          this.visibleName = false;
-          this.visibleSuccess = true;
         }
-        this.forgetPassStatus = false;
-        this.visibleSms = false;
-
-        this.smsCodeError = false;
       } catch (e) {
         // console.log(e);
         if (e.response.status == 422) this.smsCodeError = true;

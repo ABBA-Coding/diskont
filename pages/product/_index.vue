@@ -889,7 +889,6 @@
               <div class="rating">
                 <div class="total_rating">
                   <div>
-                  
                     <a-rate
                       v-if="product?.info?.stars"
                       v-model="product.info.stars"
@@ -1458,45 +1457,7 @@ export default {
     },
   },
   async mounted() {
-    //  try {
-    //   await this.$getLocation().then((coordinates) => {
-    //     this.locations = coordinates;
-    //   });
-    // } catch (e) {
-    //   console.log(e);
-    // }
-    // const [productData, productsData] = await Promise.all([
-    //   this.$store.dispatch("fetchProducts/getProductsBySlug", {
-    //     id: this.$route.params.index,
-    //     params: {
-    //       params: {
-    //         lat: this.locations.lat,
-    //         lon: this.locations.lng,
-    //       },
-    //       headers: {
-    //         lang: this.$i18n.locale,
-    //       },
-    //     },
-    //   }),
-    //   this.$store.dispatch("fetchProducts/getProducts", {
-    //     params: { limit: 12 },
-    //     headers: {
-    //       lang: this.$i18n.locale,
-    //     },
-    //   }),
-    // ]);
-    // this.product = productData.product;
-    // this.productCharacteristic = productData?.product?.characteristic_options.splice(
-    //   0,
-    //   4
-    // );
-    // this.productAttributes = productData?.attributes;
-    // this.characteristics = productData?.characteristics;
-    // this.branches = productData?.branches;
-    // this.carouselImages = [...this.product.images];
-    // this.productsOthers = productsData?.products?.data;
-    // this.skeleton = false;
-
+    this.swiperReload();
     setTimeout(() => {
       this.swiperReload();
     }, 1000);

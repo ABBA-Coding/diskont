@@ -115,7 +115,7 @@
             <span class="footer-logo" v-html="footerLogo"></span>
             <span class="footer-tel"
               ><p>{{ $store.state.translations["main.feedback"] }}</p>
-              <a :href="`tel:${$store.state.siteInfo?.phone_number}`"
+              <a v-if="$store.state.siteInfo?.phone_number" :href="`tel:${$store.state.siteInfo?.phone_number}`"
                 >+{{
                   `${$store.state.siteInfo?.phone_number}`
                     .match(/(\d{3})(\d{2})(\d{3})(\d{2})(\d{2})/)
