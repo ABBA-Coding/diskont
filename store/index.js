@@ -122,7 +122,7 @@ export const actions = {
       })
       .catch(() => {
         try {
-          this.$axios.$get("/auth/logout", {
+          this.$axios.$post("/auth/logout",{}, {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("dis_auth_token")}`,
             },
@@ -135,7 +135,7 @@ export const actions = {
   },
   logout({ commit }, payload) {
     try {
-      this.$axios.$get("/auth/logout", {
+      this.$axios.$post("/auth/logout",{}, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("dis_auth_token")}`,
         },
