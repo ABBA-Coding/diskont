@@ -510,14 +510,12 @@
                 </div>
               </div>
             </div>
-            <div
-              class="counter"
-              v-if="$store.state.cart.find((item) => item.id == product?.id)"
-            >
+            <div class="counter" v-if="!skeleton">
               <p class="lil">{{ $store.state.translations["product.count"] }}</p>
               <div class="grid">
                 <div class="number">
                   <button
+                    v-if="$store.state.cart.find((item) => item.id == product.id)"
                     @click="
                       $store.state.cart.find((item) => item.id == product.id)?.count >
                         1 && $store.commit('productCountDown', { id: product?.id })
@@ -525,14 +523,25 @@
                   >
                     <a-icon type="minus" />
                   </button>
-                  {{ $store.state.cart.find((item) => item.id == product?.id)?.count }}
+                  <button v-else @click="currentCount > 1 && currentCount--">
+                    <a-icon type="minus" />
+                  </button>
+                  {{
+                    $store.state.cart.find((item) => item.id == product?.id)
+                      ? $store.state.cart.find((item) => item.id == product?.id)?.count
+                      : currentCount
+                  }}
                   <button
+                    v-if="$store.state.cart.find((item) => item.id == product.id)"
                     @click="
                       $store.state.cart.find((item) => item.id == product?.id)?.count <
                         product?.stock &&
                         $store.commit('productCountUp', { id: product?.id })
                     "
                   >
+                    <a-icon type="plus" />
+                  </button>
+                  <button v-else @click="currentCount < product?.stock && currentCount++">
                     <a-icon type="plus" />
                   </button>
                 </div>
@@ -611,7 +620,7 @@
                 class="cart"
                 @click="
                   $store.commit('addToCart', {
-                    obj: { id: product?.id, count: 1 },
+                    obj: { id: product?.id, count: currentCount },
                     name: 'cart',
                   })
                 "
@@ -1317,6 +1326,7 @@ export default {
   // },
   data() {
     return {
+      currentCount: 1,
       fullRate: 5,
       imageModal: false,
       month: [
