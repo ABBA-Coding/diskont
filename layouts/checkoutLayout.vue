@@ -17,12 +17,12 @@ export default {
           lang: this.$i18n.locale,
         },
       }),
+      this.$store.dispatch("siteInfo", {
+        headers: {
+          lang: this.$i18n.locale,
+        },
+      }),
     ]);
-    this.$store.dispatch("siteInfo", {
-      headers: {
-        lang: this.$i18n.locale,
-      },
-    });
     this.$store.commit("getTranslations", translationsData?.translates);
   },
   mounted() {
