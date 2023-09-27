@@ -1252,7 +1252,7 @@
       </div>
       <div class="vmodal-body comment-modal-success">
         <nuxt-img format="webp" src="/modal-success.png" alt="" />
-        <p>{{ $store.state.translations["product.oc-success-text"] }}</p>
+        <p>{{ $store.state.translations["product.oc-text"] }}</p>
       </div>
       <div class="vmodal-btn" @click="handleOkSuccess">
         {{ $store.state.translations["product.oc-success-btn"] }}

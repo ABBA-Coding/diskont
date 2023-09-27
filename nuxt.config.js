@@ -14,7 +14,13 @@ export default {
       { hid: "description", name: "description", content: "" },
       { name: "csrf-token", content: "{{ csrf_token() }}" },
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    link: [{ rel: "icon", type: "image/x-icon", href: "/logo.png" }],
+    script: [
+      {
+        src:
+          "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js",
+      },
+    ],
   },
 
   css: [
@@ -30,6 +36,7 @@ export default {
     { src: "~plugins/v-mask.js", ssr: false },
     { src: "~plugins/aos.js", ssr: false },
     { src: "~plugins/geolocation.js", ssr: false },
+    { src: "~plugins/crips.js", mode: "client" },
   ],
   components: true,
 
@@ -56,9 +63,9 @@ export default {
   },
   i18n: {
     locales: ["uz", "en", "ru"],
-    defaultLocale: "uz",
+    defaultLocale: "ru",
     vueI18n: {
-      fallbackLocale: "uz",
+      fallbackLocale: "ru",
     },
   },
   nuxtPrecompress: {

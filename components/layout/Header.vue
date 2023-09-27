@@ -60,7 +60,7 @@ export default {
   data() {
     return {
       locales: [
-        { id: 1, code: "uz", name: "O'Z" },
+        { id: 1, code: "uz", name: "O'z" },
         // {
         //   id: 2,
         //   code: "en",

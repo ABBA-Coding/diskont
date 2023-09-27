@@ -547,7 +547,8 @@ export default {
   line-height: normal;
 }
 .ant-back-top {
-  bottom: 80px;
+  bottom: 108px;
+  right: 35px;
 }
 @media screen and (max-width: 1024px) {
   @keyframes bounce-toast-in {

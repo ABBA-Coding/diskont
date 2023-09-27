@@ -3,9 +3,11 @@
     <div class="container_xl header-navbar_web">
       <div class="d-flex header-navbar_container">
         <div class="d-flex align-items-center">
-          <nuxt-link :to="localePath('/')"
-            ><span v-html="navLogo" class="nav_logo"></span
-          ></nuxt-link>
+          <nuxt-link :to="localePath('/')">
+            <!-- <span v-html="navLogo" class="nav_logo"> </span
+          > -->
+            <span class="nav_logo"> <img :src="$store.state.siteInfo?.sm_logo" alt="" /></span>
+          </nuxt-link>
           <button class="catalog-btn" @click="catalogMenu = !catalogMenu">
             <span v-if="catalogMenu"
               ><svg
