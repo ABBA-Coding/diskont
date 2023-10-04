@@ -228,6 +228,7 @@ export default {
           content: this.$store.state.siteInfo.meta_desc,
         },
       ],
+      link: [{ rel: "icon", type: "image/x-icon", href: this.$store.state.siteInfo?.sm_favicon }],
     };
   },
   async fetch() {

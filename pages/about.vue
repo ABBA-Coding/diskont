@@ -10,7 +10,7 @@
           :class="{ active: activeTab == 'delivery' }"
           @click="scrollElement('delivery')"
         >
-          {{ $store.state.translations["main.delivery"] }}
+          {{ $store.state.translations["about.delivery"] }}
         </li>
         <li
           class="tab"
@@ -55,7 +55,14 @@
           {{ $store.state.translations["about.faq"] }}
         </li>
       </ul>
-      <div class="block1" id="delivery">
+      <div
+        class="block1"
+        id="delivery"
+        v-if="
+          $store.state.translations['about.block1-title'] &&
+          $store.state.translations['main.delivery']
+        "
+      >
         <div class="left">
           <h4 class="block-title">
             {{ $store.state.translations["about.block1-title"] }}
@@ -166,7 +173,7 @@
           <nuxt-img format="webp" src="/AdobeStock_366164734 1.png" alt="" />
         </div>
       </div>
-      <div class="block2" id="b2b">
+      <div class="block2" id="b2b" v-if="$store.state.translations['about.b2b']">
         <h2 class="block-title">{{ $store.state.translations["about.b2b"] }}</h2>
         <p class="block-text">
           {{ $store.state.translations["about.block2-text1"] }}
@@ -180,7 +187,11 @@
           {{ $store.state.translations["about.block2-text3"] }}
         </p>
       </div>
-      <div class="block3" id="working">
+      <div
+        class="block3"
+        id="working"
+        v-if="$store.state.translations['about.work-diskont']"
+      >
         <div class="left">
           <h2 class="block-title">
             {{ $store.state.translations["about.work-diskont"] }}
@@ -345,7 +356,14 @@
         </div>
       </div>
       <div class="blocks-grid">
-        <div class="block4" id="warranty">
+        <div
+          class="block4"
+          id="warranty"
+          v-if="
+            $store.state.translations['about.product-warranty'] &&
+            $store.state.translations['about.block4-title']
+          "
+        >
           <div class="left">
             <nuxt-img format="webp" src="/image 50959.png" alt="" />
           </div>
@@ -361,7 +379,14 @@
             </p>
           </div>
         </div>
-        <div class="block5" id="tradeNation">
+        <div
+          class="block5"
+          id="tradeNation"
+          v-if="
+            $store.state.translations['about.nation-trade'] &&
+            $store.state.translations['about.block5-title']
+          "
+        >
           <div class="left">
             <h2 class="block-title">
               {{ $store.state.translations["about.block5-title"] }}
@@ -377,7 +402,14 @@
             <nuxt-img format="webp" src="/BenefitsBlock_600-300-31102022 1.png" alt="" />
           </div>
         </div>
-        <div class="block6" id="returnProduct">
+        <div
+          class="block6"
+          id="returnProduct"
+          v-if="
+            $store.state.translations['about.returning-product'] &&
+            $store.state.translations['about.block6-title']
+          "
+        >
           <div class="left">
             <nuxt-img format="webp" src="/image 50957.png" alt="" />
           </div>
@@ -394,7 +426,7 @@
           </div>
         </div>
       </div>
-      <div class="faqs" id="faqs">
+      <div class="faqs" id="faqs" v-if="faqs?.length > 0">
         <h1>{{ $store.state.translations["about.faq"] }}</h1>
         <div class="grid">
           <div>
@@ -551,6 +583,7 @@ export default {
 <style lang="css" scoped>
 .about-page {
   padding-top: 40px;
+  padding-bottom: 120px;
 }
 .tabs {
   margin-top: 80px;
@@ -842,7 +875,7 @@ export default {
 }
 .faqs {
   margin-top: 120px;
-  margin-bottom: 120px;
+  /* margin-bottom: 120px; */
 }
 .faqs h1 {
   color: var(--diskont-toq-yashil, #09454f);

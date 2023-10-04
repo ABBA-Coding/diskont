@@ -20,12 +20,12 @@
         </div>
         <div class="stores-body">
           <div class="stores-body-row" v-for="branch in branches" :key="branch?.id">
-            <span>
+            <a :href="branch?.link" class="d-flex">
               <span v-html="location"></span>
               <h6>
                 {{ branch?.name }}
               </h6>
-            </span>
+            </a>
             <p>
               <span
                 ><svg
@@ -139,11 +139,13 @@ export default {
 .stores-body-row:last-child {
   border-bottom: none;
 }
-.stores-body-row > span {
+.stores-body-row > span,.stores-body-row > a {
   display: flex;
   gap: 24px;
+  align-items: center;
 }
-.stores-body-row p {
+.stores-body-row p,
+.stores-body-row a {
   color: #666;
   font-family: var(--SB_500);
   font-size: 14px;
@@ -157,7 +159,8 @@ export default {
   flex-direction: column;
   gap: 24px;
 }
-.stores-body-row p span {
+.stores-body-row p span,
+.stores-body-row span {
   margin-right: 12px;
 }
 .stores-body-row h6 {

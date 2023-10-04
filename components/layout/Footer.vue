@@ -222,6 +222,7 @@
                 <nuxt-img format="webp" src="/humocard.uz.png" alt="" />
               </span> -->
             </div>
+            
           </div>
         </div>
       </div>

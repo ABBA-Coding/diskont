@@ -6,7 +6,9 @@
           <nuxt-link :to="localePath('/')">
             <!-- <span v-html="navLogo" class="nav_logo"> </span
           > -->
-            <span class="nav_logo"> <img :src="$store.state.siteInfo?.sm_logo" alt="" /></span>
+            <span class="nav_logo">
+              <img :src="$store.state.siteInfo?.sm_logo" alt=""
+            /></span>
           </nuxt-link>
           <button class="catalog-btn" @click="catalogMenu = !catalogMenu">
             <span v-if="catalogMenu"
@@ -292,7 +294,10 @@
       <div class="catalog-menu-container outer" v-if="catalogMenu">
         <div class="position-relative w-100 inner">
           <div class="catalog-menu-left-bg"></div>
-          <div class="container_xl d-flex position-relative" style="z-index: 2">
+          <div
+            class="container_xl d-flex position-relative menu-scroll"
+            style="z-index: 2"
+          >
             <div class="catalog-menu-content web_categories">
               <div class="catalog-menu-list">
                 <ul>
@@ -453,6 +458,16 @@
             </div>
             <div class="close-space" @click="catalogMenu = false"></div>
           </div>
+          <div class="mobile_lang">
+            <div
+              v-for="locale in locales"
+              :class="{ active: $i18n.locale == locale.code }"
+              :key="locale.id"
+              @click="$router.push(switchLocalePath(locale.code))"
+            >
+              {{ locale.name }}
+            </div>
+          </div>
         </div>
       </div>
     </Transition>
@@ -474,6 +489,19 @@ export default {
   name: "Navbar",
   data() {
     return {
+      locales: [
+        { id: 1, code: "uz", name: "O'z" },
+        // {
+        //   id: 2,
+        //   code: "en",
+        //   name: "ENG",
+        // },
+        {
+          id: 3,
+          code: "ru",
+          name: "Ру",
+        },
+      ],
       searchLastResoults: true,
       searchBlockHide: false,
       catalogMenu: false,
@@ -799,6 +827,9 @@ export default {
   transition: all 0.25s ease-out;
   opacity: 0.001;
 }
+.mobile_lang {
+  display: none;
+}
 @keyframes menu-in {
   0% {
     transform: translateX(-100%);
@@ -1044,6 +1075,28 @@ export default {
   flex-direction: column;
   gap: 24px;
 }
+.mobile_lang {
+  grid-template-columns: repeat(2, 1fr);
+  position: fixed;
+  gap: 16px;
+  bottom: 0;
+  width: 100%;
+  padding: 0 30px;
+}
+.mobile_lang div {
+  padding: 12px 0;
+  color: var(--diskont-yashil, #06858c);
+  border: 1px solid #ebebeb;
+  background: #fcfffe;
+  display: flex;
+  justify-content: center;
+  border-radius: 12px;
+}
+.mobile_lang .active {
+  color: #fff;
+  border: 1px solid #06858c;
+  background: #06858c;
+}
 @media screen and (max-width: 1600px) {
   .coin_btn {
     padding: 0 12px 0 40px;
@@ -1125,8 +1178,13 @@ export default {
     margin-bottom: 16px;
   }
   .catalog-menu-container {
-    overflow: scroll;
+    /* overflow: scroll; */
+    /* height: 100%; */
     background: white;
+  }
+  .menu-scroll {
+    height: 60%;
+    overflow: scroll;
   }
   .catalog-menu-body {
     padding: 0 12px;
@@ -1148,6 +1206,9 @@ export default {
   }
   .mobile_categories {
     display: block;
+  }
+  .mobile_lang {
+    display: grid;
   }
 }
 @media screen and (max-width: 576px) {

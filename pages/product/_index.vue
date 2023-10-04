@@ -801,15 +801,22 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="branch in branches" :key="branch?.id">
+                <tr
+                  v-for="branch in branches"
+                  :key="branch?.id"
+                >
                   <td>
                     <div class="cyber">
                       <div class="img">
-                        <img src="@/assets/images/logo/map.svg" alt="" />
+                        <a :href="branch?.link">
+                          <img src="@/assets/images/logo/map.svg" alt="" />
+                        </a>
                       </div>
-                      <p>
-                        {{ branch?.name }}
-                      </p>
+                      <a :href="branch?.link">
+                        <p>
+                          {{ branch?.name }}
+                        </p>
+                      </a>
                     </div>
                   </td>
                   <td>
@@ -825,14 +832,14 @@
                       <div class="img">
                         <img src="@/assets/images/logo/call.svg" alt="" />
                       </div>
-                      <p style="white-space: nowrap">
+                      <!-- <p style="white-space: nowrap">
                         +{{
                           `${branch?.phone_number}`
                             .match(/(\d{3})(\d{2})(\d{3})(\d{4})/)
                             .filter((item, index) => index != 0)
                             .join(" ")
                         }}
-                      </p>
+                      </p> -->
                     </div>
                   </td>
                 </tr>
