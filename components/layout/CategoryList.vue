@@ -92,15 +92,14 @@
           </ul>
         </div>
         <div class="d-flex align-items-center" v-if="$store.state.auth">
-          <div
+          <!-- <div
             class="coin_btn web_coin_btn"
             @click="$router.push(localePath('/d-coin/about'))"
           >
             <span><nuxt-img format="webp" src="/coin.png" alt="" /></span>
             {{ $store.state.profile?.dicoin?.quantity }}
             {{ $store.state.translations["main.dicoin"] }}
-          </div>
-          <!-- <nuxt-link class="nav-info" :to="localePath('/d-coin/about')">?</nuxt-link> -->
+          </div> -->
         </div>
       </div>
     </div>

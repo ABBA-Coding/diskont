@@ -176,7 +176,7 @@
       :body-style="{
         padding: '24px',
         borderRadius: '14px',
-        minHeight: '613px',
+        minHeight: '672px',
       }"
       centered
       :closable="false"
@@ -298,13 +298,11 @@
                     {{ $store.state.translations["main.depends-region"] }}
                   </p>
 
-                  <!-- <p class="coin">
-                    <img src="@/assets/images/coin.svg" alt="" /> +5 ta dis coin
-                  </p> -->
-                  <p class="coin" v-if="skeleton">
+                
+                  <!-- <p class="coin" v-if="skeleton">
                     <b-skeleton width="150px" height="100%"> </b-skeleton>
                   </p>
-                  <p v-else class="coin">
+                  <p v-else class="coin" >
                     <img src="@/assets/images/coin.svg" alt="" />
                     {{
                       Math.floor(
@@ -315,16 +313,16 @@
                       )
                     }}
                     {{ $store.state.translations["main.cout-di-coin"] }}
-                  </p>
+                  </p> -->
+                  <p style="color: transparent">.</p>
                 </div>
 
                 <div class="buttons">
                   <button
                     class="cart"
                     :class="{
-                      'disabled-btn': $store.state.cart.find(
-                        (item) => item.id == product?.id
-                      ),
+                      disabled: $store.state.cart.find((item) => item.id == product?.id),
+                      'disabled disabled-btn': !product?.stock,
                     }"
                     @click="
                       $store.commit('addToCart', {
@@ -335,7 +333,13 @@
                   >
                     {{ $store.state.translations["main.add-to-cart"] }}
                   </button>
-                  <button class="click" @click="visibleOc = true">
+                  <button
+                    class="click"
+                    :class="{
+                      'disabled disabled-btn': !product?.stock,
+                    }"
+                    @click="visibleOc = true"
+                  >
                     {{ $store.state.translations["main.boc-title"] }}
                   </button>
                 </div>
@@ -383,7 +387,7 @@
       :body-style="{
         padding: '24px',
         borderRadius: '14px',
-        minHeight: '613px',
+        minHeight: '672px',
       }"
       centered
       :closable="false"
@@ -608,7 +612,7 @@
               </div>
               <span
                 :class="{
-                  'disabled-btn': $store.state.cart.find((item) => item.id == product.id),
+                  disabled: $store.state.cart.find((item) => item.id == product.id),
                 }"
                 @click="
                   $store.commit('addToCart', {
@@ -1013,10 +1017,15 @@ export default {
       // let element = document.getElementById("cart");
       // let x = element.offsetLeft;
       // let y = element.offsetTop;
-      this.$store.commit("addToCart", {
-        obj: { id: product?.id, count: this.productCount },
-        name: "cart",
-      });
+      if(product?.stock) {
+
+        this.$store.commit("addToCart", {
+          obj: { id: product?.id, count: this.productCount },
+          name: "cart",
+        });
+      } else {
+        this.$router.push(this.localePath(`/product/${product?.slug}`))
+      }
     },
   },
   watch: {

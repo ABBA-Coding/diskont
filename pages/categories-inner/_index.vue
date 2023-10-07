@@ -1011,33 +1011,7 @@ export default {
 </script>
 <style lang="css">
 @import "../../assets/css/pages/categories.css";
-.mobile-sorts {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  margin-top: 32px;
-}
-.sort-item {
-  padding: 16px 18px;
-  border-radius: 12px;
-  border: 1px solid #f1f1f1;
-  background: #fff;
-  color: #000;
-  font-family: var(--SB_500);
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  display: flex;
-  gap: 18px;
-  align-items: center;
-}
-.sort-item span {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 .comments-empty h4 {
   font-family: var(--SF_500);
   font-style: normal;
@@ -1061,55 +1035,10 @@ export default {
   flex-direction: column;
   gap: 24px;
 }
-.hidden__filter {
-  transition: 0.4s;
-  transform: translateX(-100%);
-  padding: 27px 16px 99px 16px;
-  position: fixed;
-  top: 61px;
-  left: 0;
-  width: 100%;
-  background: white;
-  z-index: 1002;
-  height: 100%;
-  overflow: auto;
-}
-.hidden__filter.show {
-  transform: translateX(0);
-}
-.hidden__filter h5 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: #1c1f22;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 20px; /* 111.111% */
-  letter-spacing: -0.28px;
-  margin-bottom: 12px;
-}
-.confirm {
-  color: #fff;
-  text-align: center;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  background: var(--color_green);
-  border-radius: 12px;
-  padding: 16px 0;
-  border: none;
-  margin-top: 32px;
-}
-.hidden__filter .filter-range {
-  margin: 32px 0 56px 0;
-}
-.filter__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+
+
+
+
 .filter-colors {
   display: flex;
   gap: 16px;

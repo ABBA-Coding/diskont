@@ -157,7 +157,7 @@
                     </p>
                   </span>
                   <div class="basket-card-price">
-                    <span
+                    <!-- <span
                       >{{
                         Math.floor(
                           (product?.discount_price
@@ -166,7 +166,7 @@
                         )
                       }}
                       {{ $store.state.translations["main.cout-di-coin"] }}</span
-                    >
+                    > -->
                     <h4>
                       {{ productTotalPrice(product) }}
                       {{ $store.state.translations["main.som"] }}
@@ -373,7 +373,7 @@
               <p v-html="$store.state.translations['checkout.cart-access-text']"></p>
             </div>
           </div>
-          <div class="basket-coin-block">
+          <!-- <div class="basket-coin-block">
             <nuxt-img format="webp" src="/basket-2coin.png" alt="" />
             <h3>
               +
@@ -394,7 +394,7 @@
               {{ $store.state.translations["main.cout-di-coin"] }}
             </h3>
             <p>{{ $store.state.translations["checkout.cart-text"] }}</p>
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="empty-box-app" v-else>

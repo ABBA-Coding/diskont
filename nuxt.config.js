@@ -36,7 +36,6 @@ export default {
     { src: "~plugins/v-mask.js", ssr: false },
     { src: "~plugins/aos.js", ssr: false },
     { src: "~plugins/geolocation.js", ssr: false },
-    { src: "~plugins/crips.js", mode: "client" },
   ],
   components: true,
 

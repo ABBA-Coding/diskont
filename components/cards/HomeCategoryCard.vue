@@ -90,4 +90,9 @@ export default {
     z-index: 2;
   }
 }
+@media (max-width: 576px) {
+  .h-category-card {
+  height: 83px;
+}
+}
 </style>

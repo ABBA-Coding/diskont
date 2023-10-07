@@ -25,11 +25,11 @@
           @change="filterChange"
         >
           <a-select-option
-            v-for="item in status"
-            :key="item?.value"
-            :label="item.label"
-            :value="item.value"
-            >{{ item.label }}
+            v-for="item in categories"
+            :key="item?.id"
+            :label="item.name"
+            :value="item.id"
+            >{{ item.name }}
           </a-select-option>
         </a-select>
       </div>
@@ -55,7 +55,7 @@
         </div>
       </div>
       <div v-else class="empty-box-app no">
-         <nuxt-img format="webp" src="/parcel.png" alt="" />
+        <nuxt-img format="webp" src="/parcel.png" alt="" />
         <h2>{{ $store.state.translations["main.comp-empty-title"] }}</h2>
         <p>
           {{ $store.state.translations["main.comp-empty-text"] }}
@@ -81,16 +81,7 @@ export default {
     return {
       arrow: require("../assets/svg/dropdown-icon.svg?raw"),
       arrowCarousel: require("../assets/svg/Arrow - Left.svg?raw"),
-      status: [
-        {
-          value: "all",
-          label: "Barchasi",
-        },
-        {
-          value: "phones",
-          label: "Telefonlar",
-        },
-      ],
+      categories: [],
       filterValue: "all",
       compProducts: [],
       comparisonData: [],
@@ -105,7 +96,6 @@ export default {
   async mounted() {
     let compProductsStore = JSON.parse(localStorage.getItem("comparison"));
     if (compProductsStore.length > 0) {
-      await this.__GET_PRODUCTS_BY_ID({ products: compProductsStore });
       await this.__GET_PRODUCTS_COMP({ products: compProductsStore });
     }
     const swiper = new Swiper(".swiper-comparison", {
@@ -138,16 +128,6 @@ export default {
     swiper.on("activeIndexChange", (swiper) => {});
   },
   methods: {
-    async __GET_PRODUCTS_BY_ID(dataForm) {
-      // getComparionsProductsById
-      const data = await this.$store.dispatch("fetchProducts/getProductsById", {
-        data: dataForm,
-        params: {
-          headers: { lang: this.$i18n.locale },
-        },
-      });
-      this.compProducts = data?.products;
-    },
     async filterChange(e) {
       if (e == "all") {
         await this.$router.replace({
@@ -156,33 +136,47 @@ export default {
         });
       } else {
         await this.$router.replace({
-          path: `comparison`,
+          path: this.$route.path,
           query: { category: e },
         });
       }
       let compProductsStore = JSON.parse(localStorage.getItem("comparison"));
       if (compProductsStore.length > 0) {
-        await this.__GET_PRODUCTS_BY_ID({ products: compProductsStore });
         await this.__GET_PRODUCTS_COMP({ products: compProductsStore });
       }
     },
     async __GET_PRODUCTS_COMP(dataForm) {
-      //
-      const data = await this.$store.dispatch("fetchProducts/getComparionsProductsById", {
-        data: dataForm,
-        params: {
-          params: { ...this.$route.query },
-          headers: { lang: this.$i18n.locale },
-        },
-      });
-      this.comparisonData = data?.data;
+      const [compData, productsData] = await Promise.all([
+        this.$store.dispatch("fetchProducts/getComparionsProductsById", {
+          data: dataForm,
+          params: {
+            params: { ...this.$route.query },
+            headers: { lang: this.$i18n.locale },
+          },
+        }),
+        this.$store.dispatch("fetchProducts/getProductsById", {
+          data: dataForm,
+          params: {
+            params: { ...this.$route.query },
+            headers: { lang: this.$i18n.locale },
+          },
+        }),
+      ]);
+      // this.compProducts = productsData?.products;
+      this.comparisonData = compData?.data;
+      this.categories = compData?.categories;
+      console.log(productsData?.products);
+      console.log(this.comparisonData);
+      this.compProducts = productsData?.products.filter((item) =>
+        this.comparisonData.find((elem) => elem.id == item.id)
+      );
     },
   },
   watch: {
     comparisonChange() {
       let compProducts = JSON.parse(localStorage.getItem("comparison"));
       if (compProducts.length > 0) {
-        this.__GET_PRODUCTS_BY_ID({ products: compProducts });
+        this.__GET_PRODUCTS_COMP({ products: compProducts });
       } else {
         this.compProducts = [];
       }

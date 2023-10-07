@@ -384,7 +384,7 @@
                   {{ $store.state.translations["main.som"] }}
                 </p></span
               >
-              <span
+              <!-- <span
                 ><p>{{ $store.state.translations["main.dicoin"] }}</p>
                 <p>
                   {{
@@ -394,7 +394,7 @@
                   }}
                   {{ $store.state.translations["main.som"] }}
                 </p></span
-              >
+              > -->
               <span
                 ><p>{{ $store.state.translations["main.delivery"] }}</p>
                 <p>
@@ -445,7 +445,7 @@
                 {{ $store.state.translations["main.som"] }}
               </p>
             </div>
-            <div
+            <!-- <div
               class="checkout_dicoin"
               v-if="$store.state.dicoin?.dicoin_to_sum && !sendDicoin"
             >
@@ -528,7 +528,7 @@
               >
                 {{ $store.state.translations["checkout.acceptance"] }}
               </button>
-            </div>
+            </div> -->
             <div class="checkout-info-products">
               <div
                 class="checkout-info-product-card"

@@ -6,6 +6,7 @@
       </div>
       <ul class="tabs">
         <li
+          v-if="$store.state.translations['about.delivery']"
           class="tab"
           :class="{ active: activeTab == 'delivery' }"
           @click="scrollElement('delivery')"
@@ -13,6 +14,7 @@
           {{ $store.state.translations["about.delivery"] }}
         </li>
         <li
+          v-if="$store.state.translations['about.b2b']"
           class="tab"
           :class="{ active: activeTab == 'b2b' }"
           @click="scrollElement('b2b')"
@@ -20,6 +22,7 @@
           {{ $store.state.translations["about.b2b"] }}
         </li>
         <li
+          v-if="$store.state.translations['about.work-diskont']"
           class="tab"
           :class="{ active: activeTab == 'working' }"
           @click="scrollElement('working')"
@@ -27,6 +30,7 @@
           {{ $store.state.translations["about.work-diskont"] }}
         </li>
         <li
+          v-if="$store.state.translations['about.nation-trade']"
           class="tab"
           :class="{ active: activeTab == 'tradeNation' }"
           @click="scrollElement('tradeNation')"
@@ -34,6 +38,7 @@
           {{ $store.state.translations["about.nation-trade"] }}
         </li>
         <li
+          v-if="$store.state.translations['about.product-warranty']"
           class="tab"
           :class="{ active: activeTab == 'warranty' }"
           @click="scrollElement('warranty')"
@@ -41,6 +46,7 @@
           {{ $store.state.translations["about.product-warranty"] }}
         </li>
         <li
+          v-if="$store.state.translations['about.returning-product']"
           class="tab"
           :class="{ active: activeTab == 'returnProduct' }"
           @click="scrollElement('returnProduct')"
@@ -48,6 +54,7 @@
           {{ $store.state.translations["about.returning-product"] }}
         </li>
         <li
+          v-if="$store.state.translations['about.faq']"
           class="tab"
           :class="{ active: activeTab == 'faqs' }"
           @click="scrollElement('faqs')"
@@ -623,6 +630,8 @@ export default {
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 27px */
+  position: relative;
+  z-index: 100;
 }
 .block1 {
   width: 100%;

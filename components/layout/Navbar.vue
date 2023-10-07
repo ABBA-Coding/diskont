@@ -1079,9 +1079,11 @@ export default {
   grid-template-columns: repeat(2, 1fr);
   position: fixed;
   gap: 16px;
-  bottom: 0;
+  bottom: 24px;
+  background-color: #fff;
   width: 100%;
   padding: 0 30px;
+  padding-top:8px;
 }
 .mobile_lang div {
   padding: 12px 0;
@@ -1183,7 +1185,7 @@ export default {
     background: white;
   }
   .menu-scroll {
-    height: 60%;
+    height: calc(100vh - 140px);
     overflow: scroll;
   }
   .catalog-menu-body {

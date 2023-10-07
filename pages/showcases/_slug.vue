@@ -54,8 +54,8 @@
           </div>
         </div>
       </div>
-      <div class="categories-page-inner-grid">
-        <div class="categories-filter-list">
+      <div class="">
+        <!-- <div class="categories-filter-list">
           <div class="filter-range">
             <h5>{{ $store.state.translations["category.price"] }}</h5>
             <a-slider
@@ -89,7 +89,7 @@
               </span>
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="categories-products showcases_products">
           <div class="categories-card-grid" v-if="loading">
             <div
@@ -101,7 +101,7 @@
             </div>
           </div>
           <div
-            class="categories-card-grid"
+            class="products-grid-6"
             v-if="showcases?.products?.length > 0 && !loading"
           >
             <ProductCard
@@ -457,12 +457,13 @@ export default {
 };
 </script>
 <style lang="css">
-@import "../../assets/css/pages/categories.css";
+@import "../../assets/css/pages/main-page.css";
+
 .showcases_top {
   margin-bottom: 32px;
 }
 .showcases_products {
-  padding-top: 64px;
+  /* padding-top: 64px; */
 }
 @media (max-width: 1024px) {
   .showcases_top {

@@ -115,7 +115,9 @@
             <span class="footer-logo" v-html="footerLogo"></span>
             <span class="footer-tel"
               ><p>{{ $store.state.translations["main.feedback"] }}</p>
-              <a v-if="$store.state.siteInfo?.phone_number" :href="`tel:${$store.state.siteInfo?.phone_number}`"
+              <a
+                v-if="$store.state.siteInfo?.phone_number"
+                :href="`tel:${$store.state.siteInfo?.phone_number}`"
                 >+{{
                   `${$store.state.siteInfo?.phone_number}`
                     .match(/(\d{3})(\d{2})(\d{3})(\d{2})(\d{2})/)
@@ -129,7 +131,10 @@
               ><span v-html="footerLocation"></span>
               {{ $store.state.translations["main.ourstores"] }}</nuxt-link
             >
-            <a :href="`mailto:${$store.state.siteInfo?.email}`" class="footer-links"
+            <a
+              v-if="$store.state.siteInfo?.email"
+              :href="`mailto:${$store.state.siteInfo?.email}`"
+              class="footer-links"
               ><span v-html="footerEmail" style="margin-right: 7px"></span
               >{{ $store.state.siteInfo?.email }}</a
             >
@@ -222,7 +227,6 @@
                 <nuxt-img format="webp" src="/humocard.uz.png" alt="" />
               </span> -->
             </div>
-            
           </div>
         </div>
       </div>

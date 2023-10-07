@@ -375,7 +375,7 @@
             </div>
           </div>
           <div class="available-sale">
-            <p>
+            <p v-if="product?.stock" :class="{ success: product?.stock }">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -389,6 +389,43 @@
                   fill="white"
                 /></svg
               >{{ $store.state.translations["product.available-sale"] }}
+            </p>
+            <p v-else :class="{ error: !product?.stock }">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                version="1.1"
+                id="Layer_1"
+                x="0px"
+                y="0px"
+                width="21px"
+                height="21px"
+                viewBox="0 0 450 450"
+                enable-background="new 0 0 450 450"
+                xml:space="preserve"
+              >
+                <circle fill="#ff3a55" cx="225" cy="225" r="225" />
+                <g>
+                  <line
+                    fill="#fff"
+                    stroke="#fff"
+                    stroke-width="70"
+                    x1="106.742"
+                    y1="110.083"
+                    x2="343.258"
+                    y2="346.599"
+                  />
+                  <line
+                    fill="#fff"
+                    stroke="#fff"
+                    stroke-width="70"
+                    x1="106.742"
+                    y1="346.599"
+                    x2="343.258"
+                    y2="110.084"
+                  />
+                </g></svg
+              >{{ $store.state.translations["product.not-available-sale"] }}
             </p>
             <span
               >{{ $store.state.translations["product.code"] }}: {{ product?.id }}</span
@@ -598,7 +635,7 @@
               <p class="coin" v-if="skeleton">
                 <b-skeleton width="150px" height="100%"> </b-skeleton>
               </p>
-              <p v-else class="coin">
+              <!-- <p v-else class="coin">
                 <img src="@/assets/images/Group 1000005199.png" alt="" />
                 +{{
                   Math.floor(
@@ -611,11 +648,12 @@
                   )
                 }}
                 {{ $store.state.translations["main.dicoin"] }}
-              </p>
+              </p> -->
             </div>
 
             <div class="buttons">
               <button
+                :class="{ 'disabled disabled-btn': !product?.stock }"
                 v-if="!$store.state.cart.find((item) => item.id == product?.id)"
                 class="cart"
                 @click="
@@ -669,7 +707,11 @@
                   />
                 </svg>
               </button>
-              <button class="click" @click="visibleOc = true">
+              <button
+                :class="{ 'disabled disabled-btn': !product?.stock }"
+                class="click"
+                @click="visibleOc = true"
+              >
                 {{ $store.state.translations["product.buy-now"] }}
               </button>
             </div>
@@ -801,10 +843,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr
-                  v-for="branch in branches"
-                  :key="branch?.id"
-                >
+                <tr v-for="branch in branches" :key="branch?.id">
                   <td>
                     <div class="cyber">
                       <div class="img">
@@ -1415,6 +1454,7 @@ export default {
       await this.$getLocation().then((coordinates) => {
         this.locations = coordinates;
       });
+      console.log(this.locations);
     } catch (e) {
       console.log(e);
     }
@@ -2277,7 +2317,6 @@ tbody .img {
   letter-spacing: -0.4px;
 }
 .available-sale p {
-  color: #16c67a;
   font-family: var(--SB_500);
   font-size: 14px;
   font-style: normal;
@@ -2286,7 +2325,14 @@ tbody .img {
   padding: 6px;
   padding-right: 10px;
   border-radius: 68.467px;
+}
+.available-sale .success {
+  color: #16c67a;
   background: #e7f9f1;
+}
+.available-sale .error {
+  color: #ff3a55;
+  background: rgba(255, 58, 85, 0.302);
 }
 .available-sale p svg {
   margin-right: 7px;
@@ -2300,7 +2346,7 @@ tbody .img {
 }
 .available-sale span {
   color: rgb(0, 0, 0, 0.4);
-  font-family: "Inter";
+  font-family: var(--SB_400);
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -2388,6 +2434,10 @@ tbody .img {
 .swiper_thumb::-webkit-scrollbar {
   display: none;
 }
+.disabled {
+  pointer-events: none;
+}
+
 @media screen and (max-width: 1024px) {
   .image-modal-container {
     max-width: 70%;
