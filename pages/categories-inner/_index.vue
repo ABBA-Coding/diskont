@@ -368,8 +368,22 @@
               <span
                 v-for="filterItem in filterOptions"
                 :key="filterItem.id"
+                v-if="!filterItem?.name.includes('#')"
                 @click="deleteFilterItem(filterItem.id)"
                 >{{ filterItem?.name }}<span v-html="filterX"></span
+              ></span>
+              <span
+                v-for="filterItem in filterOptions"
+                :key="filterItem.id"
+                v-if="filterItem?.name.includes('#')"
+                @click="deleteFilterItem(filterItem.id)"
+                ><div
+                  class="color-pic"
+                  :style="`color:${filterItem?.name};background-color:${filterItem?.name}`"
+                >
+                  {{ filterItem?.name }}
+                </div>
+                <span v-html="filterX"></span
               ></span>
               <div
                 class="clear-filter"
@@ -1035,9 +1049,6 @@ export default {
   flex-direction: column;
   gap: 24px;
 }
-
-
-
 
 .filter-colors {
   display: flex;

@@ -311,7 +311,7 @@
               @keyup.enter="submitSms()"
               v-model="formSms.sms_code"
               type="text"
-              placeholder="sms"
+              :placeholder="$store.state.translations['main.sms-code-place']"
             />
             <span class="sms_code_error_text" v-if="smsCodeError">{{
               $store.state.translations["main.code-incorrect"]

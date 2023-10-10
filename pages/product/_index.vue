@@ -1003,7 +1003,7 @@
           </div>
         </div>
       </div>
-      <div class="other pb-5">
+      <div class="other pb-5" v-if="productsOthers.length > 0"> 
         <h4>{{ $store.state.translations["product.similar-products"] }}</h4>
         <ProductCarousel>
           <div class="swiper-slide" v-for="product in productsOthers" :key="product.id">
@@ -1639,6 +1639,11 @@ export default {
         const data = await this.$store.dispatch("fetchProducts/postProductComment", {
           data: formData,
         });
+        this.$notification.success({
+          title: "Success",
+          message: `Спасибо!
+Ваш комментарий успешно отправлен.`,
+        });
         this.visibleComment = false;
       } catch (e) {
         // console.log(e);
@@ -1654,7 +1659,7 @@ export default {
         // console.log(e);
       }
     },
-   async swiperReload() {
+    async swiperReload() {
       new Swiper(`.product-inner-swiper`, {
         slidesPerView: 1,
         spaceBetween: 24,

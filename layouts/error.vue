@@ -61,7 +61,7 @@
           <span class="four" v-html="five" v-else></span>
         </div>
         <div class="image">
-          <nuxt-img format="webp" src="/Group 1000005610.png" alt="" />
+          <nuxt-img format="webp" src="/image 50960.png" alt="" />
         </div>
       </div>
       <div class="info">
@@ -75,7 +75,7 @@
 <script>
 export default {
   props: ["error"],
-  layout: "error",
+  layout: "empty",
   data() {
     return {
       five: `<svg xmlns="http://www.w3.org/2000/svg" width="243" height="243" viewBox="0 0 243 243" fill="none">
@@ -103,6 +103,8 @@ export default {
 <style lang="css" scoped>
 .error {
   padding: 32px 0;
+  padding-bottom: 100px;
+  height: 100vh;
   /* min-height: 100vh; */
   display: flex;
   align-items: center;
@@ -126,7 +128,7 @@ export default {
 }
 .image {
   position: relative;
-  min-height: 472px;
+  min-height: 300px;
 }
 .image img {
   position: absolute;

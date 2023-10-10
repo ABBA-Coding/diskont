@@ -101,7 +101,7 @@ export default {
 .stores-head,
 .stores-body-row {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 2fr;
   grid-gap: 150px;
 }
 .stores-head {

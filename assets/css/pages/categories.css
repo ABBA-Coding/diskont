@@ -371,6 +371,9 @@
   margin-right: 13px;
   color: #ffffff;
 }
+.color-pic {
+  border-radius: 4px;
+}
 .select-filters > span > span {
   margin-left: 16px;
   cursor: pointer;
