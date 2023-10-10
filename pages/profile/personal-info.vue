@@ -31,7 +31,9 @@
                     <b-skeleton v-if="skeleton" width="200px" height="20px"></b-skeleton>
                     <p v-else>
                       {{ $store.state.translations["profile.name"] }}:<span>{{
-                        profile?.name ? profile?.name : "-----"
+                        !profile?.name && !profile?.surname
+                          ? "-----"
+                          : `${profile?.surname} ${profile?.name}`
                       }}</span>
                     </p>
                     <b-skeleton v-if="skeleton" width="200px" height="20px"></b-skeleton>
@@ -200,8 +202,14 @@
                       :placeholder="$store.state.translations['profile.password']"
                     />
                   </a-form-model-item>
-                  <a-form-model-item class="form-item mb-0"  :label="$store.state.translations['profile.new-password']">
-                    <a-input-password v-model="form.password" :placeholder="$store.state.translations['profile.new-password']" />
+                  <a-form-model-item
+                    class="form-item mb-0"
+                    :label="$store.state.translations['profile.new-password']"
+                  >
+                    <a-input-password
+                      v-model="form.password"
+                      :placeholder="$store.state.translations['profile.new-password']"
+                    />
                   </a-form-model-item>
                   <a-form-model-item
                     class="form-item mb-0"
@@ -215,8 +223,14 @@
                   </a-form-model-item>
                 </div>
                 <div class="form-grid-3" v-else>
-                  <a-form-model-item class="form-item mb-0" :label="$store.state.translations['profile.new-password']">
-                    <a-input-password v-model="form.password" :placeholder="$store.state.translations['profile.new-password']" />
+                  <a-form-model-item
+                    class="form-item mb-0"
+                    :label="$store.state.translations['profile.new-password']"
+                  >
+                    <a-input-password
+                      v-model="form.password"
+                      :placeholder="$store.state.translations['profile.new-password']"
+                    />
                   </a-form-model-item>
                   <a-form-model-item
                     class="form-item mb-0"
@@ -331,10 +345,20 @@ export default {
       try {
         const data = await this.$store.dispatch("fetchAuth/putProfileInfo", dataForm);
         this.profileEdit = false;
+        this.$notification.success({
+          message: "Success",
+          description: "Successful changed",
+        });
         this.__GET_PROFILE_INFO();
       } catch (e) {}
     },
     submitForm() {
+      if (!this.form.password) {
+        this.$notification.error({
+          message: "Error",
+          description: "Password is required",
+        });
+      }
       if (
         !this.$store.state.profile.password_updated &&
         this.form.password != this.form.password_confirmation

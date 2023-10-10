@@ -228,7 +228,13 @@ export default {
           content: this.$store.state.siteInfo.meta_desc,
         },
       ],
-      link: [{ rel: "icon", type: "image/x-icon", href: this.$store.state.siteInfo?.sm_favicon }],
+      link: [
+        {
+          rel: "icon",
+          type: "image/x-icon",
+          href: this.$store.state.siteInfo?.sm_favicon,
+        },
+      ],
     };
   },
   async fetch() {
@@ -238,23 +244,28 @@ export default {
           lang: this.$i18n.locale,
         },
       }),
-      this.$store.dispatch("siteInfo", {
+      
+    ]);
+    this.$store.commit("getTranslations", translationsData?.translates);
+  },
+  async mounted() {
+    try {
+      await this.$getLocation().then((coordinates) => {
+        this.locations = coordinates;
+      });
+    } catch (e) {}
+    this.$store.dispatch("siteInfo", {
+        params: {
+          lat: this.locations.lat,
+          lon: this.locations.lng,
+        },
         headers: {
           lang: this.$i18n.locale,
         },
       }),
-    ]);
-
-    this.$store.commit("getTranslations", translationsData?.translates);
-  },
-  async mounted() {
-    this.$store.dispatch("profileInfo");
-    this.$store.dispatch("dicoinInfo");
+    this.$store.dispatch("profileInfo", this.$route.path);
     await this.$store.commit("reloadStore");
     this.afterReload = true;
-    this.$getLocation().then((coordinates) => {
-      this.$store.commit("getLocations", coordinates);
-    });
   },
   computed: {
     targetLang() {
@@ -307,6 +318,10 @@ export default {
         }),
       ]);
       this.$store.dispatch("siteInfo", {
+        params: {
+          lat: this.locations.lat,
+          lon: this.locations.lng,
+        },
         headers: {
           lang: this.$i18n.locale,
         },

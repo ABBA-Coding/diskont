@@ -29,7 +29,7 @@
             :key="item?.id"
             :label="item.name"
             :value="item.id"
-            >{{ item.name }}
+            >{{ `${item?.parent?.name} ${item.name}` }}
           </a-select-option>
         </a-select>
       </div>
@@ -129,12 +129,7 @@ export default {
   },
   methods: {
     async filterChange(e) {
-      if (e == "all") {
-        await this.$router.replace({
-          path: `comparison`,
-          query: {},
-        });
-      } else {
+      if (this.$route.query?.category * 1 !== e * 1) {
         await this.$router.replace({
           path: this.$route.path,
           query: { category: e },
@@ -146,30 +141,35 @@ export default {
       }
     },
     async __GET_PRODUCTS_COMP(dataForm) {
-      const [compData, productsData] = await Promise.all([
-        this.$store.dispatch("fetchProducts/getComparionsProductsById", {
+      const compData = await this.$store.dispatch(
+        "fetchProducts/getComparionsProductsById",
+        {
           data: dataForm,
           params: {
             params: { ...this.$route.query },
             headers: { lang: this.$i18n.locale },
           },
-        }),
-        this.$store.dispatch("fetchProducts/getProductsById", {
-          data: dataForm,
-          params: {
-            params: { ...this.$route.query },
-            headers: { lang: this.$i18n.locale },
-          },
-        }),
-      ]);
-      // this.compProducts = productsData?.products;
-      this.comparisonData = compData?.data;
-      this.categories = compData?.categories;
-      console.log(productsData?.products);
-      console.log(this.comparisonData);
-      this.compProducts = productsData?.products.filter((item) =>
-        this.comparisonData.find((elem) => elem.id == item.id)
+        }
       );
+      this.categories = await compData?.categories;
+      if (!this.$route.query?.category) {
+        await this.$router.replace({
+          path: this.$route.path,
+          query: { category: this.categories[0]?.id },
+        });
+        this.filterValue = this.categories[0]?.id;
+      } else {
+        this.filterValue = Number(this.$route.query?.category);
+      }
+      const productsData = await this.$store.dispatch("fetchProducts/getProductsById", {
+        data: dataForm,
+        params: {
+          params: { ...this.$route.query },
+          headers: { lang: this.$i18n.locale },
+        },
+      });
+      this.compProducts = productsData?.products;
+      this.comparisonData = compData?.data;
     },
   },
   watch: {

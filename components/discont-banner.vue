@@ -122,13 +122,15 @@ export default {
   /* background-position: ; */
   overflow: hidden;
   height: 329px;
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   padding: 36px;
   border-radius: 16px;
   /* background: linear-gradient(90deg, #09454f 0%, #068f96 100%); */
   justify-content: space-between;
   position: relative;
+  display: none;
+
 }
 .discont-banner-header h4 {
   font-family: var(--SB_600);

@@ -555,14 +555,7 @@ export default {
       faqs,
     };
   },
-  mounted() {
-    // let hash = this.$route.hash;
-    // if (hash) {
-    //   this.scrollElement(`${this.$route.hash}`.replace("#", ""));
-    // } else {
-    //   this.scrollElement("delivery");
-    // }
-  },
+
   methods: {
     chunkIntoN(arr, n) {
       const size = Math.ceil(arr.length / n);

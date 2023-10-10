@@ -1166,7 +1166,7 @@ export default {
 
         this.$notification.warning({
           message: "Required",
-          description: "Manzil kiritilmagan",
+          description: "Адрес не введен",
         });
       } else {
         this.required.address = false;

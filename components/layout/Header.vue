@@ -4,9 +4,9 @@
       <div class="container_xl w-100">
         <div class="d-flex justify-content-between">
           <ul class="d-flex align-items-center">
-            <li>
+            <li v-if="$store.state.siteInfo['currentLocation']">
               <span v-html="location" class="nav-location"></span>
-              {{ $store.state.translations["main.tashkent"] }}
+              {{ $store.state.siteInfo["currentLocation"] }}
             </li>
             <li @click="$router.push(localePath('/stores'))">
               {{ $store.state.translations["main.store-address"] }}
@@ -16,7 +16,9 @@
             </li>
           </ul>
           <div class="d-flex header-top__right">
-            <a :href="`tel:${$store.state.siteInfo?.phone_number}`" v-if="$store.state.siteInfo?.phone_number"
+            <a
+              :href="`tel:${$store.state.siteInfo?.phone_number}`"
+              v-if="$store.state.siteInfo?.phone_number"
               >+{{
                 `${$store.state.siteInfo?.phone_number}`
                   .match(/(\d{3})(\d{2})(\d{3})(\d{2})(\d{2})/)

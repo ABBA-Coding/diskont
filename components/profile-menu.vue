@@ -26,7 +26,7 @@
       >{{ $store.state.translations["main.my-comments"] }}</nuxt-link
     >
     <div class="profile-exit" @click="visibleLogOut = true">
-      <span v-html="logout"></span>Chiqish
+      <span v-html="logout"></span>{{ $store.state.translations["profile.exit"] }}
     </div>
     <a-modal
       v-model="visibleLogOut"

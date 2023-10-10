@@ -9,14 +9,14 @@ export const state = () => ({
   translations: {},
   locations: {},
   siteInfo: {},
-  modal: false
+  modal: false,
 });
 
 export const mutations = {
   getTranslations(state, payload) {
     state.translations = payload;
   },
-  openModal(state,payload) {
+  openModal(state, payload) {
     state.modal = payload;
   },
   getLocations(state, payload) {
@@ -121,25 +121,37 @@ export const actions = {
         commit("authHandler", res?.user);
       })
       .catch(() => {
-        try {
-          this.$axios.$post("/auth/logout",{}, {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("dis_auth_token")}`,
-            },
-          });
-          commit("logout");
-        } catch (e) {
-          commit("logout");
+        if (payload.includes("profile")) {
+          try {
+            this.$axios.$post(
+              "/auth/logout",
+              {},
+              {
+                headers: {
+                  Authorization: `Bearer ${localStorage.getItem(
+                    "dis_auth_token"
+                  )}`,
+                },
+              }
+            );
+            commit("logout");
+          } catch (e) {
+            commit("logout");
+          }
         }
       });
   },
   logout({ commit }, payload) {
     try {
-      this.$axios.$post("/auth/logout",{}, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("dis_auth_token")}`,
-        },
-      });
+      this.$axios.$post(
+        "/auth/logout",
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("dis_auth_token")}`,
+          },
+        }
+      );
       commit("logout");
     } catch (e) {
       commit("logout");

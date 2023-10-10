@@ -453,14 +453,14 @@ export default {
       this.showcases = data.showcases;
     },
   },
-  mounted() {
-    this.$store.dispatch("fetchProducts/getShowcases", {
-      params: { limit: 6 },
-      headers: {
-        lang: this.$i18n.locale,
-      },
-    });
-  },
+  // mounted() {
+  //   this.$store.dispatch("fetchProducts/getShowcases", {
+  //     params: { limit: 6 },
+  //     headers: {
+  //       lang: this.$i18n.locale,
+  //     },
+  //   });
+  // },
   components: {
     BannerCarousel,
     ProductCard,

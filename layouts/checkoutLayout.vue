@@ -10,6 +10,11 @@ import CheckOutFooter from "../components/layout/CheckOutFooter.vue";
 import Header from "../components/layout/Header.vue";
 
 export default {
+  data() {
+    return {
+      locations: {}
+    }
+  },
   async fetch() {
     const [translationsData] = await Promise.all([
       this.$store.dispatch("fetchTranslations/getTranslations", {
@@ -25,11 +30,20 @@ export default {
     ]);
     this.$store.commit("getTranslations", translationsData?.translates);
   },
-  mounted() {
+  async mounted() {
+    try {
+      await this.$getLocation().then((coordinates) => {
+        this.locations = coordinates;
+      });
+    } catch (e) {}
     this.$store.commit("reloadStore");
-    this.$store.dispatch("dicoinInfo");
-    this.$store.dispatch("profileInfo");
+    // this.$store.dispatch("dicoinInfo");
+    this.$store.dispatch("profileInfo", this.$route.path);
     this.$store.dispatch("siteInfo", {
+      params: {
+        lat: this.locations.lat,
+        lon: this.locations.lng,
+      },
       headers: {
         lang: this.$i18n.locale,
       },

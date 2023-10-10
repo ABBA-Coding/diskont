@@ -539,6 +539,7 @@ export default {
                 >`,
     };
   },
+
   async fetch() {
     const [categoriesData] = await Promise.all([
       this.$store.dispatch("fetchCategories/getCategories", {
@@ -546,8 +547,8 @@ export default {
           lang: this.$i18n.locale,
         },
       }),
+    
     ]);
-
     this.categories = categoriesData?.data;
     this.activeCategory = categoriesData?.data[0];
   },
@@ -557,7 +558,8 @@ export default {
       return this.$route.path;
     },
   },
-  mounted() {
+  async mounted() {
+ 
     if (!localStorage.getItem("search_resoults")) {
       localStorage.setItem("search_resoults", JSON.stringify([]));
     } else {
@@ -1083,7 +1085,7 @@ export default {
   background-color: #fff;
   width: 100%;
   padding: 0 30px;
-  padding-top:8px;
+  padding-top: 8px;
 }
 .mobile_lang div {
   padding: 12px 0;
