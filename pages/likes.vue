@@ -70,6 +70,7 @@ export default {
   mounted() {
     let likesProducts = JSON.parse(localStorage.getItem("like"));
     if (likesProducts?.length > 0) this.__GET_PRODUCTS_BY_ID({ products: likesProducts });
+    console.log("asdsadasd");
   },
   methods: {
     async deleteAll() {
