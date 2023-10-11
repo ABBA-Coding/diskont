@@ -43,9 +43,13 @@
         <b-skeleton v-for="elem in [1, 2, 3, 4]" :key="elem" width="100%" height="60vh">
         </b-skeleton>
       </div>
-      <div class="yes" v-if="compProducts.length > 0 && !loading">
+      <div class="yes" v-show="compProducts.length > 0 && !loading">
         <div class="page-container-body">
-          <div class="swiper-comparison mySwiper" v-if="compProducts.length" style="overflow: hidden">
+          <div
+            class="swiper-comparison mySwiper"
+            v-show="compProducts.length"
+            style="overflow: hidden"
+          >
             <div class="swiper-wrapper">
               <div class="swiper-slide" v-for="(product, index) in compProducts">
                 <ComparisonCard
@@ -84,7 +88,7 @@ import ComparisonCard from "../components/cards/ComparisonCard.vue";
 import MainTitle from "../components/Main-title.vue";
 import CategoriesAppCard from "../components/categories/categories-app-banner.vue";
 
-import { Swiper, Navigation, Pagination, EffectCards, Autoplay } from "swiper";
+import { Swiper } from "swiper";
 import "swiper/swiper-bundle.min.css";
 export default {
   data() {
@@ -103,12 +107,16 @@ export default {
     comparisonChange() {
       return this.$store.state.comparison?.length;
     },
+    changeCategory() {
+      return this.$route.query?.category;
+    },
   },
   async mounted() {
     let compProductsStore = JSON.parse(localStorage.getItem("comparison"));
     if (compProductsStore.length > 0) {
       await this.__GET_PRODUCTS_COMP({ products: compProductsStore });
     }
+    console.log(new Swiper());
     const swiper = new Swiper(".swiper-comparison", {
       slidesPerView: 2,
       spaceBetween: 8,
@@ -116,7 +124,7 @@ export default {
       flipEffect: {
         slideShadows: false,
       },
-      modules: [Navigation, Pagination, EffectCards, Autoplay],
+      // modules: [Navigation, Pagination, EffectCards, Autoplay],
       pagination: false,
       autoplay: {
         delay: 40000,
@@ -136,7 +144,9 @@ export default {
         prevEl: ".swiper-button-prev-comparison",
       },
     });
-    swiper.on("activeIndexChange", (swiper) => {});
+    swiper.on("activeIndexChange", (swiper) => {
+      console.log("asdsadsad3qw432432432");
+    });
   },
   methods: {
     async deleteAll() {
@@ -144,7 +154,7 @@ export default {
       await this.$store.commit("reloadStore");
       this.compProducts = [];
       this.comparisonData = [];
-      this.filterValue = undefined
+      this.filterValue = undefined;
     },
     async filterChange(e) {
       if (this.$route.query?.category * 1 !== e * 1) {
@@ -193,6 +203,41 @@ export default {
     },
   },
   watch: {
+    changeCategory(val) {
+      if (this.compProducts.length > 0) {
+        // setTimeout(() => {
+        if (new Swiper()) {
+          const swiper = new Swiper(".swiper-comparison", {
+            slidesPerView: 2,
+            spaceBetween: 8,
+            effect: "flip",
+            flipEffect: {
+              slideShadows: false,
+            },
+            pagination: false,
+            autoplay: {
+              delay: 40000,
+            },
+            breakpoints: {
+              1024: {
+                slidesPerView: 4,
+                spaceBetween: 24,
+              },
+              768: {
+                slidesPerView: 3,
+                spaceBetween: 16,
+              },
+            },
+            navigation: {
+              nextEl: ".swiper-button-next-comparison",
+              prevEl: ".swiper-button-prev-comparison",
+            },
+          });
+          console.log(new Swiper(), "watcg");
+        }
+        // },5000)
+      }
+    },
     comparisonChange() {
       let compProducts = JSON.parse(localStorage.getItem("comparison"));
       if (compProducts.length > 0) {
@@ -239,8 +284,8 @@ export default {
 .ant-select-selection__rendered {
   width: 100%;
 }
-.comparison-title .categories-filter-select .ant-select-selection{
-width: 100%;
+.comparison-title .categories-filter-select .ant-select-selection {
+  width: 100%;
 }
 @media (max-width: 768px) {
   .comparison-empty {

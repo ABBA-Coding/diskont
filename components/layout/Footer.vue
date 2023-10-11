@@ -279,9 +279,9 @@
               <span>
                 <nuxt-img format="webp" src="/payme.uz.png" alt="" />
               </span>
-              <span>
+              <!-- <span>
                 <nuxt-img format="webp" src="/uzum.png" alt="" />
-              </span>
+              </span> -->
               <!-- <span>
                 <nuxt-img format="webp" src="/humocard.uz.png" alt="" />
               </span> -->
@@ -360,6 +360,7 @@ export default {
 .footer-messangers {
   display: flex;
   gap: 24px;
+  margin-top: 16px;
 }
 .footer-messangers a svg {
   height: 20px;

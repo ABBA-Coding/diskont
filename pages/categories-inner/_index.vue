@@ -13,12 +13,12 @@
             {{ categoryChilds?.parent?.parent?.name }}
           </nuxt-link>
 
-          <nuxt-link
-            v-if="categoryChilds?.parent?.slug"
-            :to="localePath(`/categories-inner/${categoryChilds?.parent?.slug}`)"
-          >
-            {{ categoryChilds?.parent?.name }}
-          </nuxt-link>
+            <nuxt-link
+              v-if="categoryChilds?.parent?.slug"
+              :to="localePath(`/categories-inner/${categoryChilds?.parent?.slug}`)"
+            >
+              {{ categoryChilds?.parent?.name }}
+            </nuxt-link>
 
           <nuxt-link :to="localePath('/')">
             {{ categoryChilds?.name }}

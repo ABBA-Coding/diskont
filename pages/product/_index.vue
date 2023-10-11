@@ -46,6 +46,34 @@
           <b-skeleton width="40%" height="100%"></b-skeleton>
         </h4>
         <h4 class="title" v-else>{{ product?.name }}</h4>
+        <div class="page-breadcrumb" v-if="!skeleton">
+          <nuxt-link :to="localePath('/')">{{
+            $store.state.translations["main.home-page"]
+          }}</nuxt-link>
+          <nuxt-link
+          v-if="product?.info?.category?.parent?.parent?.slug"
+            :to="localePath(`/categories-inner/${product?.info?.category?.parent?.parent?.slug}`)"
+          >
+            {{ product?.info?.category?.parent?.parent?.name }}
+          </nuxt-link>
+          <nuxt-link
+          v-if="product?.info?.category?.parent?.slug"
+            :to="localePath(`/categories-inner/${product?.info?.category?.parent?.slug}`)"
+          >
+            {{ product?.info?.category?.parent?.name }}
+          </nuxt-link>
+          <nuxt-link
+            :to="localePath(`/categories-inner/${product?.info?.category?.slug}`)"
+          >
+            {{ product?.info?.category?.name }}
+          </nuxt-link>
+          <!-- <nuxt-link :to="localePath(`/product/${product?.slug}`)">
+            {{ product?.name }}
+          </nuxt-link> -->
+        </div>
+        <div v-else>
+          <b-skeleton width="50%"></b-skeleton>
+        </div>
         <div class="flexer">
           <div class="left">
             <div class="stars">
@@ -330,8 +358,8 @@
       </div>
       <div class="row">
         <div class="col-md-5 col-xs-12 images">
-          <div class="world" v-if="skeleton">
-            <div thumbsSlider="" class="swiper mySwiper">
+          <div class="world" v-show="skeleton">
+            <div thumbsSlider="" class="swiper mySwiper11">
               <div class="swiper-wrapper flex-column">
                 <div class="swiper-slide" v-for="img in [1, 2, 3, 4]" :key="img">
                   <b-skeleton height="100%" width="100%"></b-skeleton>
@@ -340,7 +368,7 @@
             </div>
             <div
               style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
-              class="swiper mySwiper2"
+              class="swiper mySwiper22"
             >
               <div class="swiper-wrapper">
                 <div class="swiper-slide" v-for="img in [1, 2, 3, 4]" :key="img">
@@ -350,7 +378,7 @@
             </div>
           </div>
 
-          <div class="world" v-else>
+          <div class="world" v-show="!skeleton">
             <div thumbsSlider="" class="swiper mySwiper">
               <div class="swiper-wrapper flex-column swiper_thumb">
                 <div class="swiper-slide" v-for="img in product?.images" :key="img.id">
@@ -851,13 +879,13 @@
               <thead>
                 <tr>
                   <th>
-                    <p>{{ $store.state.translations["product.address"] }}</p>
+                    <p>{{ $store.state.translations["product.stores"] }}</p>
                   </th>
                   <th>
                     <p>{{ $store.state.translations["product.working-time"] }}</p>
                   </th>
                   <th>
-                    <p>{{ $store.state.translations["product.phone-number"] }}</p>
+                    <p>{{ $store.state.translations["product.address"] }}</p>
                   </th>
                 </tr>
               </thead>
@@ -887,17 +915,9 @@
                   </td>
                   <td>
                     <div class="cyber">
-                      <div class="img">
-                        <img src="@/assets/images/logo/call.svg" alt="" />
-                      </div>
-                      <!-- <p style="white-space: nowrap">
-                        +{{
-                          `${branch?.phone_number}`
-                            .match(/(\d{3})(\d{2})(\d{3})(\d{4})/)
-                            .filter((item, index) => index != 0)
-                            .join(" ")
-                        }}
-                      </p> -->
+                      <p style="white-space: wrap">
+                        {{ branch?.phone_number }}
+                      </p>
                     </div>
                   </td>
                 </tr>
@@ -1003,7 +1023,7 @@
           </div>
         </div>
       </div>
-      <div class="other pb-5" v-if="productsOthers.length > 0"> 
+      <div class="other pb-5" v-if="productsOthers.length > 0">
         <h4>{{ $store.state.translations["product.similar-products"] }}</h4>
         <ProductCarousel>
           <div class="swiper-slide" v-for="product in productsOthers" :key="product.id">
@@ -1557,11 +1577,9 @@ export default {
     },
   },
   async mounted() {
-    // this.swiperReload();
-    if (this.product?.images?.length > 0)
-      setTimeout(() => {
-        this.swiperReload();
-      }, 2000);
+    setTimeout(() => {
+      this.swiperReload();
+    }, 1000);
   },
 
   methods: {
@@ -1660,42 +1678,65 @@ export default {
       }
     },
     async swiperReload() {
-      new Swiper(`.product-inner-swiper`, {
-        slidesPerView: 1,
-        spaceBetween: 24,
-        flipEffect: {
-          slideShadows: false,
-        },
-        pagination: false,
-        autoplay: {
-          delay: 40000,
-        },
-        navigation: {
-          nextEl: ".swiper-button-next-product-inner",
-          prevEl: ".swiper-button-prev-product-inner",
-        },
-      });
-      var swiper = await new Swiper(".mySwiper", {
-        slidesPerView: 5,
-        spaceBetween: 12,
-        freeMode: true,
-        watchSlidesProgress: true,
-        direction: "horizontal",
-        breakoints: {
-          1024: {
-            direction: "vertical",
-            spaceBetween: 16,
-            slidesPerView: 4,
+      if (new Swiper()) {
+        new Swiper(`.product-inner-swiper`, {
+          slidesPerView: 1,
+          spaceBetween: 24,
+          flipEffect: {
+            slideShadows: false,
           },
-        },
-      });
-      var swiper2 = new Swiper(".mySwiper2", {
-        loop: true,
-        spaceBetween: 10,
-        thumbs: {
-          swiper: swiper,
-        },
-      });
+          pagination: false,
+          autoplay: {
+            delay: 40000,
+          },
+          navigation: {
+            nextEl: ".swiper-button-next-product-inner",
+            prevEl: ".swiper-button-prev-product-inner",
+          },
+        });
+        var swiper = new Swiper(".mySwiper", {
+          slidesPerView: 5,
+          spaceBetween: 12,
+          freeMode: true,
+          watchSlidesProgress: true,
+          direction: "horizontal",
+          breakoints: {
+            1024: {
+              direction: "vertical",
+              spaceBetween: 16,
+              slidesPerView: 4,
+            },
+          },
+        });
+        var swiper2 = new Swiper(".mySwiper2", {
+          loop: true,
+          spaceBetween: 10,
+          thumbs: {
+            swiper: swiper,
+          },
+        });
+        var swiper = new Swiper(".mySwiper11", {
+          slidesPerView: 5,
+          spaceBetween: 12,
+          freeMode: true,
+          watchSlidesProgress: true,
+          direction: "horizontal",
+          breakoints: {
+            1024: {
+              direction: "vertical",
+              spaceBetween: 16,
+              slidesPerView: 4,
+            },
+          },
+        });
+        var swiper2 = new Swiper(".mySwiper22", {
+          loop: true,
+          spaceBetween: 10,
+          thumbs: {
+            swiper: swiper,
+          },
+        });
+      }
     },
   },
   watch: {
@@ -1827,16 +1868,19 @@ export default {
   background-position: center;
 }
 
-.mySwiper2 {
+.mySwiper2,
+.mySwiper22 {
   height: 515px;
   width: 80%;
 }
-.mySwiper2 .swiper-slide {
+.mySwiper2 .swiper-slide,
+.mySwiper22 .swiper-slide {
   border-radius: 20px;
   overflow: hidden;
   cursor: grab;
 }
-.mySwiper {
+.mySwiper,
+.mySwiper11 {
   width: 20%;
   height: 480px;
   box-sizing: border-box;
@@ -1844,14 +1888,16 @@ export default {
   padding: 0;
 }
 
-.mySwiper .swiper-slide {
+.mySwiper .swiper-slide,
+.mySwiper11 .swiper-slide {
   height: 25%;
   width: 100px;
   opacity: 0.4;
   padding: 8px 0;
 }
 
-.mySwiper .swiper-slide-thumb-active {
+.mySwiper .swiper-slide-thumb-active,
+.mySwiper11 .swiper-slide-thumb-active {
   opacity: 1;
   border: 1px solid var(--color_green);
   border-radius: 10px;
@@ -2502,14 +2548,16 @@ tbody .img {
     margin-bottom: 24px;
     color: black;
   }
-  .mySwiper2 {
+  .mySwiper2,
+  .mySwiper22 {
     height: 340px;
     width: 100%;
   }
   .flexer {
     display: none;
   }
-  .mySwiper {
+  .mySwiper,
+  .mySwiper11 {
     width: 100%;
     height: auto;
   }
