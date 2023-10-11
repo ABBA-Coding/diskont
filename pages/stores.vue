@@ -86,7 +86,6 @@ export default {
       },
     });
     const branches = branchesData.branches;
-    console.log(branches);
     return {
       branches,
     };

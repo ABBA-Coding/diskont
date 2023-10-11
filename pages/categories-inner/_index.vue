@@ -749,7 +749,7 @@ export default {
       sortItems: [
         {
           value: "all",
-          label: "Barchasi",
+          label: "Все товары",
         },
         {
           value: "popular",
@@ -829,6 +829,24 @@ export default {
 
   mounted() {
     this.getFirstData("__GET_PRODUCTS");
+    this.sortItems = [
+      {
+        value: "all",
+        label: this.$store.state.translations["category.all"],
+      },
+      {
+        value: "popular",
+        label: this.$store.state.translations["category.popular"],
+      },
+      {
+        value: "cheap",
+        label: this.$store.state.translations["category.cheap"],
+      },
+      {
+        value: "expensive",
+        label: this.$store.state.translations["category.expensive"],
+      },
+    ];
     if (this.$route.query.min_price) {
       this.sliderValue[0] = Number(this.$route.query.min_price);
     }

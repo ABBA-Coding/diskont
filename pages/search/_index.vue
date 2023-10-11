@@ -172,7 +172,7 @@ export default {
       sortItems: [
         {
           value: "all",
-          label: "Barchasi",
+          label: "Все товары",
         },
         {
           value: "popular",
@@ -204,6 +204,24 @@ export default {
   // },
   async mounted() {
     this.__GET_PRODUCTS();
+    this.sortItems = [
+      {
+        value: "all",
+        label: this.$store.state.translations["category.all"],
+      },
+      {
+        value: "popular",
+        label: this.$store.state.translations["category.popular"],
+      },
+      {
+        value: "cheap",
+        label: this.$store.state.translations["category.cheap"],
+      },
+      {
+        value: "expensive",
+        label: this.$store.state.translations["category.expensive"],
+      },
+    ];
   },
   methods: {
     async __GET_PRODUCTS() {

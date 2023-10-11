@@ -45,7 +45,7 @@
       </div>
       <div class="yes" v-if="compProducts.length > 0 && !loading">
         <div class="page-container-body">
-          <div class="swiper-comparison mySwiper" style="overflow: hidden">
+          <div class="swiper-comparison mySwiper" v-if="compProducts.length" style="overflow: hidden">
             <div class="swiper-wrapper">
               <div class="swiper-slide" v-for="(product, index) in compProducts">
                 <ComparisonCard
@@ -83,7 +83,8 @@
 import ComparisonCard from "../components/cards/ComparisonCard.vue";
 import MainTitle from "../components/Main-title.vue";
 import CategoriesAppCard from "../components/categories/categories-app-banner.vue";
-import Swiper from "swiper/swiper-bundle.js";
+
+import { Swiper, Navigation, Pagination, EffectCards, Autoplay } from "swiper";
 import "swiper/swiper-bundle.min.css";
 export default {
   data() {
@@ -115,6 +116,7 @@ export default {
       flipEffect: {
         slideShadows: false,
       },
+      modules: [Navigation, Pagination, EffectCards, Autoplay],
       pagination: false,
       autoplay: {
         delay: 40000,
@@ -134,6 +136,7 @@ export default {
         prevEl: ".swiper-button-prev-comparison",
       },
     });
+    swiper.on("activeIndexChange", (swiper) => {});
   },
   methods: {
     async deleteAll() {
@@ -141,7 +144,7 @@ export default {
       await this.$store.commit("reloadStore");
       this.compProducts = [];
       this.comparisonData = [];
-      this.filterValue = undefined;
+      this.filterValue = undefined
     },
     async filterChange(e) {
       if (this.$route.query?.category * 1 !== e * 1) {
@@ -186,7 +189,6 @@ export default {
       });
       this.compProducts = productsData?.products;
       this.comparisonData = compData?.data;
-
       this.loading = false;
     },
   },
@@ -234,11 +236,11 @@ export default {
 .comparison-title .categories-filter-select {
   margin-bottom: 0;
 }
-.comparison-title .categories-filter-select .ant-select-selection__rendered {
+.ant-select-selection__rendered {
   width: 100%;
 }
-.comparison-title .categories-filter-select .ant-select-selection {
-  width: 100%;
+.comparison-title .categories-filter-select .ant-select-selection{
+width: 100%;
 }
 @media (max-width: 768px) {
   .comparison-empty {

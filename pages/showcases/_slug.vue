@@ -100,10 +100,7 @@
               <b-skeleton width="100%" height="100%"></b-skeleton>
             </div>
           </div>
-          <div
-            class="products-grid-6"
-            v-if="showcases?.products?.length > 0 && !loading"
-          >
+          <div class="products-grid-6" v-if="showcases?.products?.length > 0 && !loading">
             <ProductCard
               v-for="product in products"
               :key="product.id"
@@ -256,7 +253,7 @@ export default {
       sortItems: [
         {
           value: "all",
-          label: "Barchasi",
+          label: "Все товары",
         },
         {
           value: "popular",
@@ -304,6 +301,24 @@ export default {
   },
   mounted() {
     this.getFirstData("__GET_PRODUCTS");
+    this.sortItems = [
+      {
+        value: "all",
+        label: this.$store.state.translations["category.all"],
+      },
+      {
+        value: "popular",
+        label: this.$store.state.translations["category.popular"],
+      },
+      {
+        value: "cheap",
+        label: this.$store.state.translations["category.cheap"],
+      },
+      {
+        value: "expensive",
+        label: this.$store.state.translations["category.expensive"],
+      },
+    ];
   },
   computed: {
     filterAtributs() {
