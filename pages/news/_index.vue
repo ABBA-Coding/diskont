@@ -5,13 +5,13 @@
         <nuxt-link :to="localePath('/')">{{
           $store.state.translations["main.home-page"]
         }}</nuxt-link>
-        <nuxt-link :to="localePath('/')">
-          {{ $store.state.translations["main.news-title"] }}
+        <nuxt-link :to="localePath('/all-news')">
+          {{ $store.state.translations["main.all-posts"] }}
         </nuxt-link>
       </div>
       <div class="d-flex page-container-title">
         <div class="d-flex align-items-end">
-          <MainTitle :title="$store.state.translations['main.news-title']" />
+          <MainTitle :title="post?.title" />
           <span class="d-flex align-items-end">{{
             moment(post?.created_at).format("DD.MM.YYYY")
           }}</span>
@@ -23,7 +23,7 @@
           <!-- <img v-else src="../../assets/images/image 317.png" alt="" /> -->
         </div>
         <div class="post-page-info">
-          <h1>{{ post?.title }}</h1>
+          <!-- <h1>{{ post?.title }}</h1> -->
           <p v-html="post?.desc"></p>
         </div>
       </div>

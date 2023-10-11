@@ -13,6 +13,25 @@
                 {{ $store.state.translations["main.promotions"] }}</nuxt-link
               >
             </li>
+         
+            <li v-for="topBar in topBars" :key="topBar?.id">
+              <nuxt-link
+                :style="`background: linear-gradient(90deg, ${topBar?.color1} 0%, ${topBar?.color2} 100%);color: ${topBar?.text_color}`"
+                class="winter_discount"
+                :class="{ stock__active: $route.params.index == 'seasonal-discounts' }"
+                :to="
+                  localePath(
+                    topBar?.category?.slug
+                      ? `/categories-inner/${topBar?.category?.slug}`
+                      : `/stock/${topBar?.promotion?.slug}`
+                  )
+                "
+                ><img :src="topBar?.icon_svg" v-if="topBar?.icon_svg" alt="" />
+
+                <!-- <span v-html="topBar?.icon_svg"></span> -->
+                {{ topBar?.name }}</nuxt-link
+              >
+            </li>
             <li>
               <nuxt-link :to="localePath(`/showcases/${showcases[0]?.slug}`)"
                 ><span
@@ -59,24 +78,6 @@
                     /></svg
                 ></span>
                 {{ showcases[1]?.name }}</nuxt-link
-              >
-            </li>
-            <li v-for="topBar in topBars" :key="topBar?.id">
-              <nuxt-link
-                :style="`background: linear-gradient(90deg, ${topBar?.color1} 0%, ${topBar?.color2} 100%);color: ${topBar?.text_color}`"
-                class="winter_discount"
-                :class="{ stock__active: $route.params.index == 'seasonal-discounts' }"
-                :to="
-                  localePath(
-                    topBar?.category?.slug
-                      ? `/categories-inner/${topBar?.category?.slug}`
-                      : `/stock/${topBar?.promotion?.slug}`
-                  )
-                "
-                ><img :src="topBar?.icon_svg" alt="" />
-
-                <!-- <span v-html="topBar?.icon_svg"></span> -->
-                {{ topBar?.name }}</nuxt-link
               >
             </li>
             <!-- <li>

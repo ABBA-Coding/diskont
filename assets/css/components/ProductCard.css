@@ -39,7 +39,7 @@
   text-align: start;
 }
 .product-card-body p {
-  margin-top: 28px;
+  margin-top: 8px;
   font-family: var(--SB_400);
   font-style: normal;
   font-weight: 400;
@@ -58,7 +58,7 @@
 }
 .product-card-price {
   display: flex;
-  margin-top: 28px;
+  margin-top: 18px;
   align-items: center;
 }
 .product-card-price span {
@@ -167,8 +167,8 @@
 }
 .product-discount {
   height: 10px;
-  margin-top: 14px;
-  margin-bottom: 28px;
+  margin-bottom: 12px;
+  margin-top: 0;
 }
 .product-discount p {
   font-family: var(--SB_400);
@@ -191,7 +191,7 @@
     margin-top: 8px;
   }
   .product-card-body p {
-    margin-top: 16px;
+    margin-top: 8px;
   }
   .product-card-price {
     margin-top: 16px;

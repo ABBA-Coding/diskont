@@ -97,12 +97,12 @@
         <img :src="product?.images[0]?.md_img" alt="" />
       </div>
       <div class="comparison-card-head-body">
-        <h5>{{ product?.info?.name }}</h5>
+        <nuxt-link :to="localePath(`/product/${product?.slug}`)">{{ product?.info?.name }}</nuxt-link>
         <h4>
           {{ `${product?.real_price}`.replace(/\B(?=(\d{3})+(?!\d))/g, " ") }}
           {{ $store.state.translations["main.som"] }}
         </h4>
-        <p><span v-html="star"></span>{{ product?.info?.stars }}</p>
+        <p><span v-html="star"></span>{{ product?.info?.stars ? product?.info?.stars.toFixed(1):fullStar.toFixed(1) }}</p>
       </div>
     </div>
     <div class="comparison-card-body">
@@ -127,6 +127,7 @@ export default {
   props: ["product", "comparison", "indexId"],
   data() {
     return {
+      fullStar: 5,
       star: require("../../assets/svg/product-star.svg?raw"),
       x: require("../../assets/svg/comparisonX.svg?raw"),
     };
@@ -168,7 +169,7 @@ export default {
   align-items: center;
   flex-direction: column;
 }
-.comparison-card-head-body h5 {
+.comparison-card-head-body a {
   font-family: var(--SB_400);
   font-style: normal;
   font-weight: 400;

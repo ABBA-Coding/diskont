@@ -281,8 +281,9 @@ export default {
 .comparison-title .categories-filter-select {
   margin-bottom: 0;
 }
-.ant-select-selection__rendered {
+.comparison-title .ant-select-selection__rendered {
   width: 100%;
+  padding-right: 40px;
 }
 .comparison-title .categories-filter-select .ant-select-selection {
   width: 100%;

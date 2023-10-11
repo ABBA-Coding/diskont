@@ -298,7 +298,6 @@
                     {{ $store.state.translations["main.depends-region"] }}
                   </p>
 
-                
                   <!-- <p class="coin" v-if="skeleton">
                     <b-skeleton width="150px" height="100%"> </b-skeleton>
                   </p>
@@ -1017,14 +1016,13 @@ export default {
       // let element = document.getElementById("cart");
       // let x = element.offsetLeft;
       // let y = element.offsetTop;
-      if(product?.stock) {
-
+      if (product?.stock) {
         this.$store.commit("addToCart", {
           obj: { id: product?.id, count: this.productCount },
           name: "cart",
         });
       } else {
-        this.$router.push(this.localePath(`/product/${product?.slug}`))
+        this.$router.push(this.localePath(`/product/${product?.slug}`));
       }
     },
   },
@@ -1556,12 +1554,21 @@ export default {
 .default-thumb li:last-child {
   display: none;
 }
+@media (max-width: 1440px) {
+  .product-card-header:hover .fast_show {
+    bottom: 33%;
+  }
+  .fast_show {
+    font-size: 12px;
+    padding: 10px 12px;
+  }
+}
 @media screen and (max-width: 1024px) {
   .product-card-header {
     height: 150px;
   }
   .product-card-body p {
-    margin-top: 14px;
+    margin-top: 8px;
   }
   .product-card-price h4 {
     font-size: 14px !important;

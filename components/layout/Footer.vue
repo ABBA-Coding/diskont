@@ -127,7 +127,7 @@
                 }}</a
               >
               <div class="footer-messangers">
-                <a :href="$store.state.siteInfo?.telegram" v-if="$store.state.siteInfo?.telegram"
+                <a target="_blank" :href="$store.state.siteInfo?.telegram" v-if="$store.state.siteInfo?.telegram"
                   ><span
                     ><svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -141,7 +141,7 @@
                         fill="#9BA2C3"
                       ></path></svg></span
                 ></a>
-                <a  :href="$store.state.siteInfo?.facebook" v-if="$store.state.siteInfo?.facebook"
+                <a  target="_blank" :href="$store.state.siteInfo?.facebook" v-if="$store.state.siteInfo?.facebook"
                   ><span
                     ><svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -155,7 +155,7 @@
                         fill="#9BA2C3"
                       ></path></svg></span
                 ></a>
-                <a :href="$store.state.siteInfo?.twitter" v-if="$store.state.siteInfo?.twitter"
+                <a target="_blank" :href="$store.state.siteInfo?.twitter" v-if="$store.state.siteInfo?.twitter"
                   ><span
                     ><svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -169,7 +169,7 @@
                         fill="#9BA2C3"
                       ></path></svg></span
                 ></a>
-                <a :href="$store.state.siteInfo?.instagram" v-if="$store.state.siteInfo?.instagram"
+                <a target="_blank" :href="$store.state.siteInfo?.instagram" v-if="$store.state.siteInfo?.instagram"
                   ><span
                     ><svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -360,7 +360,7 @@ export default {
 .footer-messangers {
   display: flex;
   gap: 24px;
-  margin-top: 16px;
+  margin-top: 4px;
 }
 .footer-messangers a svg {
   height: 20px;

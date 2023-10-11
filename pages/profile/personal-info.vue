@@ -53,12 +53,12 @@
                         profile?.login ? `${profile?.login}` : "-----"
                       }}</span>
                     </p>
-                    <b-skeleton v-if="skeleton" width="200px" height="20px"></b-skeleton>
+                    <!-- <b-skeleton v-if="skeleton" width="200px" height="20px"></b-skeleton>
                     <p v-else>
                       {{ $store.state.translations["profile.address"] }}:<span>{{
                         profile?.address ? profile?.address : "-----"
                       }}</span>
-                    </p>
+                    </p> -->
                   </div>
                 </div>
               </div>

@@ -5,7 +5,9 @@
         <nuxt-link :to="localePath('/')">{{
           $store.state.translations["main.home-page"]
         }}</nuxt-link>
-        <nuxt-link :to="localePath('/')"> {{ promotion?.name }} </nuxt-link>
+        <nuxt-link :to="localePath('/stocks/discounts')">
+          {{ $store.state.translations["main.promotions"] }}</nuxt-link
+        >
       </div>
       <div class="d-flex page-container-title">
         <MainTitle :title="promotion?.name" />
@@ -24,7 +26,10 @@
               {{ $store.state.translations["main.until"] }}</span
             >
           </p>
-          <p>{{ $store.state.translations["main.promotions-stores"] }}: <span>{{ $store.state.translations["main.all-stores"] }}</span></p>
+          <p>
+            {{ $store.state.translations["main.promotions-stores"] }}:
+            <span>{{ $store.state.translations["main.all-stores"] }}</span>
+          </p>
         </div>
         <div class="stock-page__info" v-html="promotion?.desc"></div>
       </div>

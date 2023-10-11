@@ -580,9 +580,9 @@ export default {
       right: 16px;
     }
   }
-  .antd-to-top {
+  /* .antd-to-top {
     display: none !important;
-  }
+  } */
 }
 .ant-back-top-inner {
   width: 67px;

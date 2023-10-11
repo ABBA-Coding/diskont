@@ -169,7 +169,7 @@ export default {
 .discont-banner-footer button,
 .discont-banner-footer div {
   padding: 10px 24px;
-  font-family: "Inter";
+  font-family: var(--SB_500);
   font-style: normal;
   border-radius: 11.0445px;
   font-weight: 500;

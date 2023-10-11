@@ -23,7 +23,7 @@
         </div>
         <div class="stores-body">
           <div class="stores-body-row" v-for="branch in branches" :key="branch?.id">
-            <a :href="branch?.link" class="d-flex">
+            <a target="_blank" :href="branch?.link" class="d-flex">
               <span v-html="location"></span>
               <h6>
                 {{ branch?.name }}
