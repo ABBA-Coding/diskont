@@ -18,7 +18,7 @@
           >
         </div>
         <div class="likes-delete" @click="deleteAll" v-if="likeProducts.length > 0">
-          <span v-html="deleteIcon"></span>
+          <!-- <span v-html="deleteIcon"></span> -->
           {{ $store.state.translations["main.delete-all"] }}
         </div>
       </div>
@@ -70,7 +70,6 @@ export default {
   mounted() {
     let likesProducts = JSON.parse(localStorage.getItem("like"));
     if (likesProducts?.length > 0) this.__GET_PRODUCTS_BY_ID({ products: likesProducts });
-    console.log("asdsadasd");
   },
   methods: {
     async deleteAll() {
@@ -111,7 +110,7 @@ export default {
   margin-bottom: 60px;
 }
 .likes-delete {
-  background: #f8f8f8;
+  /* background: #f8f8f8; */
   border-radius: 9px;
   padding: 0 12px;
   height: 42px;
@@ -124,6 +123,7 @@ export default {
   line-height: 20px;
   color: #fc4141;
   cursor: pointer;
+  text-decoration: underline;
 }
 .likes-delete span {
   margin-right: 13px;

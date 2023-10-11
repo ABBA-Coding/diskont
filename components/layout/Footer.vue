@@ -127,7 +127,7 @@
                 }}</a
               >
               <div class="footer-messangers">
-                <a href="https://t.me/ishonchuz_official"
+                <a :href="$store.state.siteInfo?.telegram" v-if="$store.state.siteInfo?.telegram"
                   ><span
                     ><svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -141,7 +141,7 @@
                         fill="#9BA2C3"
                       ></path></svg></span
                 ></a>
-                <a href="https://www.facebook.com/ishonchofficial.uz"
+                <a  :href="$store.state.siteInfo?.facebook" v-if="$store.state.siteInfo?.facebook"
                   ><span
                     ><svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -155,7 +155,7 @@
                         fill="#9BA2C3"
                       ></path></svg></span
                 ></a>
-                <a href="https://twitter.com/ishonch1991"
+                <a :href="$store.state.siteInfo?.twitter" v-if="$store.state.siteInfo?.twitter"
                   ><span
                     ><svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -169,7 +169,7 @@
                         fill="#9BA2C3"
                       ></path></svg></span
                 ></a>
-                <a href="https://instagram.com/ishonchuz.rasmiy"
+                <a :href="$store.state.siteInfo?.instagram" v-if="$store.state.siteInfo?.instagram"
                   ><span
                     ><svg
                       xmlns="http://www.w3.org/2000/svg"
