@@ -34,7 +34,7 @@
               :key="item?.id"
               :label="item.name"
               :value="item.id"
-              >{{ `${item?.parent?.name} ${item.name}` }}
+              >{{ item.name }}
             </a-select-option>
           </a-select>
         </div>
@@ -88,7 +88,7 @@ import ComparisonCard from "../components/cards/ComparisonCard.vue";
 import MainTitle from "../components/Main-title.vue";
 import CategoriesAppCard from "../components/categories/categories-app-banner.vue";
 
-import { Swiper } from "swiper";
+import { Swiper,Navigation } from "swiper";
 import "swiper/swiper-bundle.min.css";
 export default {
   data() {
@@ -124,7 +124,7 @@ export default {
       flipEffect: {
         slideShadows: false,
       },
-      // modules: [Navigation, Pagination, EffectCards, Autoplay],
+      modules: [Navigation],
       pagination: false,
       autoplay: {
         delay: 40000,

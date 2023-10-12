@@ -153,7 +153,7 @@
       </div>
       <div class="comparison-card-head-body">
         <nuxt-link :to="localePath(`/product/${product?.slug}`)">{{
-          product?.info?.name
+          product?.name
         }}</nuxt-link>
         <h4>
           {{ `${product?.real_price}`.replace(/\B(?=(\d{3})+(?!\d))/g, " ") }}

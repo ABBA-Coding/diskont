@@ -261,6 +261,11 @@
                   {{ $store.state.translations["main.faq"] }}</nuxt-link
                 >
               </li>
+              <li>
+                <nuxt-link :to="localePath('/sitemap')">
+                  {{ $store.state.translations["about.sitemap"] }}</nuxt-link
+                >
+              </li>
             </ul>
           </div>
           <div class="footer_menu footer-payment">

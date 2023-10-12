@@ -319,8 +319,8 @@ export default {
       ]);
       this.$store.dispatch("siteInfo", {
         params: {
-          lat: this.locations.lat,
-          lon: this.locations.lng,
+          lat: this.locations?.lat,
+          lon: this.locations?.lng,
         },
         headers: {
           lang: this.$i18n.locale,
