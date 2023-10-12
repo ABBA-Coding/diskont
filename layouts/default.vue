@@ -244,7 +244,6 @@ export default {
           lang: this.$i18n.locale,
         },
       }),
-      
     ]);
     this.$store.commit("getTranslations", translationsData?.translates);
   },
@@ -254,16 +253,17 @@ export default {
         this.locations = coordinates;
       });
     } catch (e) {}
+
     this.$store.dispatch("siteInfo", {
-        params: {
-          lat: this.locations.lat,
-          lon: this.locations.lng,
-        },
-        headers: {
-          lang: this.$i18n.locale,
-        },
-      }),
-    this.$store.dispatch("profileInfo", this.$route.path);
+      params: {
+        lat: this.locations?.lat,
+        lon: this.locations?.lng,
+      },
+      headers: {
+        lang: this.$i18n.locale,
+      },
+    }),
+      this.$store.dispatch("profileInfo", this.$route.path);
     await this.$store.commit("reloadStore");
     this.afterReload = true;
   },
