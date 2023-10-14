@@ -702,7 +702,7 @@
       <div class="vmodal-body">
         <div class="oc-product">
           <div class="oc-product-img" v-if="product?.images?.length > 0">
-            <img :src="product?.images[0]?.md_img" alt="" />
+            <img v-if="product?.images[0]" :src="product?.images[0]?.md_img" alt="" />
           </div>
 
           <div class="oc-product-body">

@@ -126,10 +126,7 @@
           <!-- <ProductCard
             v-for="product in promotion?.products"
             :key="product.id"
-            :product="{
-              ...product,
-              ...product?.default_product,
-            }"
+            :product="product"
           /> -->
         </div>
         <div class="comments-empty" v-else>
