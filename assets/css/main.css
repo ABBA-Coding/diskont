@@ -80,11 +80,11 @@ body::-webkit-scrollbar-thumb {
   margin-bottom: 120px;
 }
 .layout-back {
-  margin-top: 170px;
+  margin-top: calc(170px + 29px);
 }
 @media (max-width: 768px) {
   .layout-back {
-    margin-top: 181px;
+    margin-top: calc(181px + 29px);
   }
 }
 .page-breadcrumb {
@@ -706,6 +706,7 @@ body::-webkit-scrollbar-thumb {
   }
   .banner-slider img {
     border-radius: 12px;
+    object-fit: contain;
   }
   .home-categories .container_xl {
     padding: 0;

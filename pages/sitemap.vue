@@ -116,4 +116,15 @@ export default {
 .sitemap-categories__title:hover {
   color: var(--color_green);
 }
+@media (max-width: 576px) {
+  .sitemap-categories {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .head h1 {
+    font-size: 20px;
+  }
+  .sitemap-categories__item-subtitle {
+    font-size: 18px;
+
+  }}
 </style>

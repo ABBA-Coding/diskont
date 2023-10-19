@@ -1393,6 +1393,7 @@ export default {
   head() {
     return {
       title: this.product.name,
+
       meta: [
         {
           name: "title",
@@ -1834,7 +1835,10 @@ export default {
   },
   watch: {
     visibleOc(val) {
-      if (!val) this.count = 1;
+      if (!val) {
+        this.count = 1;
+        this.callBox = false;
+      }
     },
     compToast(val) {
       if (val) {

@@ -165,7 +165,7 @@ export default {
   }
 
   100% {
-    transform: translate(-130%, 0);
+    transform: translate(-110%, 0);
   }
 }
 .nav_scroll {

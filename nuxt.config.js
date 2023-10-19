@@ -20,6 +20,11 @@ export default {
         src:
           "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js",
       },
+      {
+        src:
+        "https://www.googletagmanager.com/gtag/js?id=G-8DLJ722N8S",
+        async: true
+      },
     ],
   },
 
@@ -36,6 +41,8 @@ export default {
     { src: "~plugins/v-mask.js", ssr: false },
     { src: "~plugins/aos.js", ssr: false },
     { src: "~plugins/geolocation.js", ssr: false },
+    { src: "~plugins/google-analitics.js", ssr: false },
+    { src: "~plugins/yandex-analitics.js", ssr: false },
   ],
   components: true,
 
