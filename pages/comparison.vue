@@ -18,7 +18,7 @@
           >
         </div>
         <div class="comparison-sort">
-          <div class="likes-delete" @click="deleteAll" v-if="compProducts.length > 0">
+          <div class="comp-delete" @click="deleteAll" v-if="compProducts.length > 0">
             <!-- <span v-html="deleteIcon"></span> -->
             {{ $store.state.translations["main.delete-all"] }}
           </div>
@@ -88,7 +88,7 @@ import ComparisonCard from "../components/cards/ComparisonCard.vue";
 import MainTitle from "../components/Main-title.vue";
 import CategoriesAppCard from "../components/categories/categories-app-banner.vue";
 
-import { Swiper,Navigation } from "swiper";
+import { Swiper, Navigation } from "swiper";
 import "swiper/swiper-bundle.min.css";
 export default {
   data() {
@@ -257,7 +257,7 @@ export default {
   gap: 32px;
   align-items: center;
 }
-.likes-delete {
+.comp-delete {
   /* background: #f8f8f8; */
   border-radius: 9px;
   padding: 0 12px;
@@ -288,6 +288,7 @@ export default {
 .comparison-title .categories-filter-select .ant-select-selection {
   width: 100%;
 }
+
 @media (max-width: 768px) {
   .comparison-empty {
     grid-template-columns: repeat(3, 1fr);

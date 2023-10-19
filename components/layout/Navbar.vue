@@ -689,6 +689,7 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  margin-left: 12px;
 }
 .category-drop-board a {
   color: #00162c;
@@ -705,7 +706,7 @@ export default {
   padding: 13px 8px;
   border-radius: 11.732px;
   color: #5f5f5f;
-  font-family: var(--SB_400);
+  font-family: var(--SB_600);
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -1001,8 +1002,8 @@ export default {
   font-size: 10px;
   line-height: 120%;
   color: #ffffff;
-  right: 2px;
-  top: -6px;
+  right: 8px;
+  top: -4px;
   position: absolute;
 }
 .auth-modal {

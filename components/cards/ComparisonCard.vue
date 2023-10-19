@@ -47,12 +47,111 @@
           />
         </svg>
       </button>
-
+      <a-tooltip placement="top" >
+        <template slot="title">
+          <span>{{ $store.state.translations["product.not-available-sale"] }}</span>
+        </template>
+        <button
+          v-if="!product?.stock"
+          class="m-comp-cart"
+          :class="{
+            'comp-disabled': !product?.stock,
+          }"
+        >
+          <svg
+            v-if="!$store.state.cart.find((item) => item.id == product.id)"
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            viewBox="0 0 30 30"
+            fill="none"
+          >
+            <path
+              d="M3.89941 4.49902L6.39541 4.93102L7.55101 18.6986C7.64341 19.823 8.58301 20.6858 9.71101 20.6822H22.8018C23.8782 20.6846 24.7914 19.8926 24.9438 18.827L26.0826 10.9574C26.2098 10.0778 25.599 9.26182 24.7206 9.13462C24.6438 9.12382 6.79621 9.11782 6.79621 9.11782"
+              stroke="#1F8A70"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M17.5498 13.5531H20.8774"
+              stroke="#1F8A70"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M9.18503 24.8418C9.54623 24.8418 9.83783 25.1346 9.83783 25.4946C9.83783 25.8558 9.54623 26.1486 9.18503 26.1486C8.82383 26.1486 8.53223 25.8558 8.53223 25.4946C8.53223 25.1346 8.82383 24.8418 9.18503 24.8418Z"
+              fill="black"
+              stroke="#1F8A70"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M22.7212 24.8418C23.0824 24.8418 23.3752 25.1346 23.3752 25.4946C23.3752 25.8558 23.0824 26.1486 22.7212 26.1486C22.36 26.1486 22.0684 25.8558 22.0684 25.4946C22.0684 25.1346 22.36 24.8418 22.7212 24.8418Z"
+              fill="black"
+              stroke="#1F8A70"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <svg
+            v-else
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            viewBox="0 0 30 30"
+            fill="none"
+          >
+            <path
+              d="M3.89941 4.49902L6.39541 4.93102L7.55101 18.6986C7.64341 19.823 8.58301 20.6858 9.71101 20.6822H22.8018C23.8782 20.6846 24.7914 19.8926 24.9438 18.827L26.0826 10.9574C26.2098 10.0778 25.599 9.26182 24.7206 9.13462C24.6438 9.12382 6.79621 9.11782 6.79621 9.11782"
+              stroke="white"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M17.5498 13.5531H20.8774"
+              stroke="white"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M9.18503 24.8418C9.54623 24.8418 9.83783 25.1346 9.83783 25.4946C9.83783 25.8558 9.54623 26.1486 9.18503 26.1486C8.82383 26.1486 8.53223 25.8558 8.53223 25.4946C8.53223 25.1346 8.82383 24.8418 9.18503 24.8418Z"
+              fill="#1F8A70"
+              stroke="white"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M22.7212 24.8418C23.0824 24.8418 23.3752 25.1346 23.3752 25.4946C23.3752 25.8558 23.0824 26.1486 22.7212 26.1486C22.36 26.1486 22.0684 25.8558 22.0684 25.4946C22.0684 25.1346 22.36 24.8418 22.7212 24.8418Z"
+              fill="#1F8A70"
+              stroke="white"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+      </a-tooltip>
       <button
+        v-if="Boolean(product?.stock)"
         class="m-comp-cart"
         :class="{
           active: $store.state.cart.find((item) => item.id == product.id),
-          disabled: !product?.stock,
+          'comp-disabled': !product?.stock,
         }"
         @click="
           $store.commit('addToCart', {
@@ -189,6 +288,7 @@ export default {
   props: ["product", "comparison", "indexId"],
   data() {
     return {
+      toolpitVal: false,
       fullStar: 5,
       star: require("../../assets/svg/product-star.svg?raw"),
       x: require("../../assets/svg/comparisonX.svg?raw"),
@@ -287,7 +387,12 @@ export default {
   margin-bottom: 22px;
   border-bottom: 1px solid #ebebeb;
 }
-
+.comp-disabled svg path {
+  stroke: rgba(175, 173, 173, 0.712);
+}
+.comp-disabled {
+  cursor: auto !important;
+}
 .comparison-card-characteristic p {
   font-family: var(--SB_400);
   font-style: normal;

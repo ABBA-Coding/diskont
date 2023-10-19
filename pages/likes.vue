@@ -144,7 +144,7 @@ export default {
     grid-gap: 16px;
   }
   .likes-delete {
-    display: none;
+    display: none !important;
   }
 }
 </style>

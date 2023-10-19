@@ -1503,9 +1503,7 @@ export default {
   justify-content: center;
   cursor: pointer;
 }
-.disabled-btn {
-  pointer-events: none;
-}
+
 .product_badges {
   position: absolute;
   bottom: 5px;

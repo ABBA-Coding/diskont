@@ -1,5 +1,8 @@
 <template lang="html">
   <div ref="navScroll" class="nav_scroll">
+    <div class="test-model" ref="test_mode">
+      <p>Сайт работает в тестовом режиме!</p>
+    </div>
     <div class="header-top d-flex" ref="header_top">
       <div class="container_xl w-100">
         <div class="d-flex justify-content-between">
@@ -87,13 +90,14 @@ export default {
     var header2 = this.$refs.navScroll2;
     var header3 = this.$refs.navScroll3;
     var headerTop = this.$refs.header_top;
+    var testMode = this.$refs.test_mode;
     var searchBlock = this.$refs.navScrollSearch;
 
     window.addEventListener("scroll", () => {
       let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       if (scrollTop > this.lastScrollTop) {
         if (window.innerWidth > 576) {
-          header.style.top = `-${headerTop.offsetHeight}px`;
+          header.style.top = `-${headerTop.offsetHeight + testMode.offsetHeight}px`;
         }
         // headerTop.style.marginTop = "-100%";
         // header2.style.marginTop = `-${header2.offsetHeight}px`;
@@ -135,6 +139,35 @@ export default {
 };
 </script>
 <style lang="css">
+.test-model {
+  /* background-color: red; */
+  background-color: var(--color_green);
+  padding: 4px 0;
+  display: flex;
+  justify-content: center;
+  height: 29px;
+  /* position: relative; */
+  align-items: center;
+}
+.test-model p {
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  animation: text 5s infinite linear;
+  padding-left: 100%;
+  font-family: var(--SB_400);
+  animation: testmode 20s linear infinite;
+  white-space: nowrap;
+}
+@keyframes testmode {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(-130%, 0);
+  }
+}
 .nav_scroll {
   transition: all 0.5s !important;
   height: auto;
