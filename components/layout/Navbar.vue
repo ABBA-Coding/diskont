@@ -284,11 +284,11 @@
           ><span class="nav_logo" v-html="navLogoMobile"></span
         ></nuxt-link>
       </div>
-      <div class="coin_btn" @click="$router.push(localePath('/d-coin/about'))">
+      <!-- <div class="coin_btn" @click="$router.push(localePath('/d-coin/about'))">
         <span><nuxt-img format="webp" src="/coin.png" alt="" /></span>
         {{ $store.state.profile?.dicoin?.quantity }}
         {{ $store.state.translations["main.dicoin"] }}
-      </div>
+      </div> -->
     </div>
     <Transition duration="550" name="nested">
       <div class="catalog-menu-container outer" v-if="catalogMenu">
@@ -1086,6 +1086,7 @@ export default {
   width: 100%;
   padding: 0 30px;
   padding-top: 8px;
+  z-index: 1000;
 }
 .mobile_lang div {
   padding: 12px 0;

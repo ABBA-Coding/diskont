@@ -659,7 +659,7 @@
               <button
                 :class="{
                   'disabled disabled-btn':
-                    !product?.stock &&
+                    !product?.stock ||
                     $store.state.cart.find((item) => item.id == product?.id),
                 }"
                 class="cart"
@@ -670,7 +670,9 @@
                   })
                 "
               >
-                <p>{{ $store.state.translations["main.add-to-cart"] }}</p>
+                <p>
+                  {{ $store.state.translations["main.add-to-cart"] }}{{ !product?.stock }}
+                </p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="18"
@@ -715,7 +717,7 @@
                 </svg>
               </button>
               <button
-                :class="{ 'disabled disabled-btn': product?.stock }"
+                :class="{ 'disabled disabled-btn': !product?.stock }"
                 class="click"
                 @click="visibleOc = true"
               >
@@ -1309,7 +1311,7 @@
 
 <script>
 import Swiper from "swiper/swiper-bundle.js";
-// import "swiper/swiper-bundle.min.css";
+import "swiper/swiper-bundle.min.css";
 import ProductCardVue from "../../components/cards/ProductCard.vue";
 import applicationBannerVue from "../../components/application-banner.vue";
 import ProductCarousel from "../../components/product-carousel.vue";
@@ -1471,7 +1473,68 @@ export default {
       },
     };
   },
-
+  async mounted() {
+    new Swiper(`.product-inner-swiper`, {
+      slidesPerView: 1,
+      spaceBetween: 24,
+      flipEffect: {
+        slideShadows: false,
+      },
+      pagination: false,
+      autoplay: {
+        delay: 40000,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next-product-inner",
+        prevEl: ".swiper-button-prev-product-inner",
+      },
+    });
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 5,
+      spaceBetween: 12,
+      freeMode: true,
+      watchSlidesProgress: true,
+      direction: "horizontal",
+      breakoints: {
+        1024: {
+          direction: "vertical",
+          spaceBetween: 16,
+          slidesPerView: 4,
+        },
+      },
+    });
+    var swiper2 = new Swiper(".mySwiper2", {
+      loop: true,
+      spaceBetween: 10,
+      thumbs: {
+        swiper: swiper,
+      },
+    });
+    var swiper1 = new Swiper(".mySwiper11", {
+      slidesPerView: 5,
+      spaceBetween: 12,
+      freeMode: true,
+      watchSlidesProgress: true,
+      direction: "horizontal",
+      breakoints: {
+        1024: {
+          direction: "vertical",
+          spaceBetween: 16,
+          slidesPerView: 4,
+        },
+      },
+    });
+    var swiper2 = new Swiper(".mySwiper22", {
+      loop: true,
+      spaceBetween: 10,
+      thumbs: {
+        swiper: swiper1,
+      },
+    });
+    setTimeout(() => {
+      this.swiperReload();
+    }, 1000);
+  },
   async fetch() {
     try {
       await this.$getLocation().then((coordinates) => {
@@ -1535,11 +1598,6 @@ export default {
           }));
       return rates;
     },
-  },
-  async mounted() {
-    setTimeout(() => {
-      this.swiperReload();
-    }, 1000);
   },
 
   methods: {
@@ -1643,65 +1701,63 @@ export default {
       }
     },
     async swiperReload() {
-      if (new Swiper()) {
-        new Swiper(`.product-inner-swiper`, {
-          slidesPerView: 1,
-          spaceBetween: 24,
-          flipEffect: {
-            slideShadows: false,
+      new Swiper(`.product-inner-swiper`, {
+        slidesPerView: 1,
+        spaceBetween: 24,
+        flipEffect: {
+          slideShadows: false,
+        },
+        pagination: false,
+        autoplay: {
+          delay: 40000,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next-product-inner",
+          prevEl: ".swiper-button-prev-product-inner",
+        },
+      });
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 5,
+        spaceBetween: 12,
+        freeMode: true,
+        watchSlidesProgress: true,
+        direction: "horizontal",
+        breakoints: {
+          1024: {
+            direction: "vertical",
+            spaceBetween: 16,
+            slidesPerView: 4,
           },
-          pagination: false,
-          autoplay: {
-            delay: 40000,
+        },
+      });
+      var swiper2 = new Swiper(".mySwiper2", {
+        loop: true,
+        spaceBetween: 10,
+        thumbs: {
+          swiper: swiper,
+        },
+      });
+      var swiper1 = new Swiper(".mySwiper11", {
+        slidesPerView: 5,
+        spaceBetween: 12,
+        freeMode: true,
+        watchSlidesProgress: true,
+        direction: "horizontal",
+        breakoints: {
+          1024: {
+            direction: "vertical",
+            spaceBetween: 16,
+            slidesPerView: 4,
           },
-          navigation: {
-            nextEl: ".swiper-button-next-product-inner",
-            prevEl: ".swiper-button-prev-product-inner",
-          },
-        });
-        var swiper = new Swiper(".mySwiper", {
-          slidesPerView: 5,
-          spaceBetween: 12,
-          freeMode: true,
-          watchSlidesProgress: true,
-          direction: "horizontal",
-          breakoints: {
-            1024: {
-              direction: "vertical",
-              spaceBetween: 16,
-              slidesPerView: 4,
-            },
-          },
-        });
-        var swiper2 = new Swiper(".mySwiper2", {
-          loop: true,
-          spaceBetween: 10,
-          thumbs: {
-            swiper: swiper,
-          },
-        });
-        var swiper = new Swiper(".mySwiper11", {
-          slidesPerView: 5,
-          spaceBetween: 12,
-          freeMode: true,
-          watchSlidesProgress: true,
-          direction: "horizontal",
-          breakoints: {
-            1024: {
-              direction: "vertical",
-              spaceBetween: 16,
-              slidesPerView: 4,
-            },
-          },
-        });
-        var swiper2 = new Swiper(".mySwiper22", {
-          loop: true,
-          spaceBetween: 10,
-          thumbs: {
-            swiper: swiper,
-          },
-        });
-      }
+        },
+      });
+      var swiper2 = new Swiper(".mySwiper22", {
+        loop: true,
+        spaceBetween: 10,
+        thumbs: {
+          swiper: swiper,
+        },
+      });
     },
   },
   watch: {
@@ -2506,6 +2562,9 @@ tbody .img {
 }
 
 @media screen and (max-width: 1024px) {
+  .spec__wrap_item {
+    grid-template-columns: repeat(1, 1fr);
+  }
   .image-modal-container {
     max-width: 70%;
   }
