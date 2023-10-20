@@ -597,7 +597,7 @@
 
         <div class="col-md-3 col-xs-12 order">
           <!-- <a-affix :offset-bottom="78"> -->
-          <div class="cardo">
+          <div class="cardo" ref="priceBox">
             <div class="cardo__header">
               <div class="discount" v-if="product?.discount">
                 <p class="tag">
@@ -1547,6 +1547,17 @@ export default {
     };
   },
   async mounted() {
+    var header = this.$refs.priceBox;
+    window.addEventListener("scroll", () => {
+      let documentHeight = document.body.scrollHeight;
+      let currentScroll = window.scrollY + window.innerHeight;
+      let modifier = 200;
+      if (currentScroll + modifier > documentHeight) {
+        header.style.display = `none`;
+      } else {
+        header.style.display = `flex`;
+      }
+    });
     new Swiper(`.product-inner-swiper`, {
       slidesPerView: 1,
       spaceBetween: 24,

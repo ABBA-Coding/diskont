@@ -1135,8 +1135,8 @@ export default {
     padding: 10px 22px;
   }
   .count-index {
-    top: -3px;
-    right: 14px;
+    top: -2px;
+    right: 18px;
   }
   .user_profile p {
     width: unset;

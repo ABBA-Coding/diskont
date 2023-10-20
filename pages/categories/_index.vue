@@ -108,19 +108,23 @@ export default {
     };
   },
   async asyncData({ $axios, params, store, i18n }) {
-    const [categoriesData, categoryChildsData, productsData] = await Promise.all([
+    const [categoriesData, productsData] = await Promise.all([
       $axios.$get(`/categories`, {
         params: {
           limit: 10,
         },
       }),
-      $axios.$get(`/categories/${params.index}`),
       store.dispatch("fetchProducts/getProducts", {
         params: { limit: 12 },
         headers: {
           lang: i18n.locale,
         },
       }),
+    ]);
+    const [categoryChildsData] = await Promise.all([
+      $axios.$get(
+        `/categories/${params.index == 1 ? categoriesData?.data[0]?.slug : params.index}`
+      ),
     ]);
     const categories = categoriesData?.data;
     const categoryChilds = categoryChildsData?.category;

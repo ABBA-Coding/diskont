@@ -3,7 +3,7 @@
     <div class="container p-0">
       <ul>
         <li>
-          <NuxtLink to="/categories/telefony" class="link">
+          <NuxtLink to="/categories/1" class="link">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="28"

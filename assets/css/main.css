@@ -588,7 +588,7 @@ body::-webkit-scrollbar-thumb {
   transform: translateX(-100%);
   padding: 27px 16px 99px 16px;
   position: fixed;
-  top: 61px;
+  top: calc(61px + 29px);
   left: 0;
   width: 100%;
   background: white;

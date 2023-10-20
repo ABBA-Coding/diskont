@@ -1690,4 +1690,12 @@ export default {
   z-index: 10;
   transition: 0.3s;
 }
+@media (max-width: 576px) {
+  .hover-btns:first-child {
+    top: 0;
+  }
+  .hover-btns:nth-child(2) {
+  top: 36px;
+}
+}
 </style>
