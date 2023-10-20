@@ -1552,10 +1552,12 @@ export default {
       let documentHeight = document.body.scrollHeight;
       let currentScroll = window.scrollY + window.innerHeight;
       let modifier = 200;
-      if (currentScroll + modifier > documentHeight) {
-        header.style.display = `none`;
-      } else {
-        header.style.display = `flex`;
+      if (window.innerWidth <= 576) {
+        if (currentScroll + modifier > documentHeight) {
+          header.style.display = `none`;
+        } else {
+          header.style.display = `flex`;
+        }
       }
     });
     new Swiper(`.product-inner-swiper`, {

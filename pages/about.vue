@@ -624,7 +624,7 @@ export default {
   font-weight: 400;
   line-height: 150%; /* 27px */
   position: relative;
-  z-index: 100;
+  z-index: 10;
 }
 .block1 {
   width: 100%;
@@ -728,6 +728,9 @@ export default {
   display: grid;
   grid-template-columns: 64px 1fr;
   grid-gap: 24px;
+}
+.block3-card svg {
+  width: 100%;
 }
 .block3-card h1 {
   color: var(--diskont-yashil, #06858c);
@@ -910,6 +913,9 @@ export default {
 }
 
 @media (max-width: 768px) {
+  .about-page {
+    padding-bottom: 32px;
+  }
   .tabs {
     margin-top: 24px;
     gap: 24px;
@@ -1053,6 +1059,9 @@ export default {
   }
   .block4 .left img {
     width: 90%;
+  }
+  .block4 {
+    margin-top: 32px;
   }
   .block5 {
     grid-gap: 24px;
