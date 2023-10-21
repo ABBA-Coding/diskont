@@ -1082,12 +1082,13 @@ export default {
   grid-template-columns: repeat(2, 1fr);
   position: fixed;
   gap: 16px;
-  bottom: 24px;
+  bottom: 0;
   background-color: #fff;
   width: 100%;
   padding: 0 30px;
   padding-top: 8px;
   z-index: 1000;
+  padding-bottom: 24px;
 }
 .mobile_lang div {
   padding: 12px 0;
@@ -1102,6 +1103,9 @@ export default {
   color: #fff;
   border: 1px solid #06858c;
   background: #06858c;
+}
+.mobile_categories {
+  height: 100%;
 }
 @media screen and (max-width: 1600px) {
   .coin_btn {
@@ -1189,7 +1193,7 @@ export default {
     background: white;
   }
   .menu-scroll {
-    height: calc(100vh - 140px);
+    height: calc(100vh - 164px);
     overflow: scroll;
   }
   .catalog-menu-body {

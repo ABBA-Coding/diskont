@@ -103,6 +103,9 @@ export default {
 </script>
 <style lang="css">
 @import "../assets/css/pages/comparison.css";
+.page-container-title span {
+  white-space: nowrap;
+}
 .likes-page-body {
   display: grid;
   grid-template-columns: repeat(6, 1fr);

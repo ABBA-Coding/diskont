@@ -309,11 +309,15 @@ export default {
   .comparison-title .categories-filter-select .ant-select-selection {
     width: 100%;
   }
-  .page-container-title span {
-    margin-bottom: 0;
-  }
+
   .comparison-title .main-title {
     margin-bottom: 0 !important;
+  }
+  .comp-delete {
+    display: none;
+  }
+  .page-container-title span {
+    margin-bottom: 2px !important;
   }
 }
 .comparison-filter {

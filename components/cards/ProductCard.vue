@@ -1124,7 +1124,7 @@ export default {
   overflow: hidden;
   cursor: pointer;
   top: 0;
-  margin-top: 16px;
+  /* margin-top: 16px; */
 }
 
 .product-card-header:hover .pc-img-container {
@@ -1692,10 +1692,10 @@ export default {
 }
 @media (max-width: 576px) {
   .hover-btns:first-child {
-    top: 0;
+    top: 10px;
   }
   .hover-btns:nth-child(2) {
-  top: 36px;
+  top: 46px;
 }
 }
 </style>
