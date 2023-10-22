@@ -11,7 +11,7 @@
 
       <div class="profile-comment-card-header">
         <div>
-          <h4 @click="$router.push(`/product/${comment?.product_info?.slug}`)">
+          <h4 @click="$router.push(`/product/${comment?.product_info?.products[0]?.slug}`)">
             {{ comment?.product_info?.name?.ru }}
           </h4>
           <a-rate

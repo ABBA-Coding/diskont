@@ -38,7 +38,7 @@
                     </p>
                     <b-skeleton v-if="skeleton" width="200px" height="20px"></b-skeleton>
                     <p v-else>
-                      {{ $store.state.translations["profile.email"] }}:>><span>{{
+                      {{ $store.state.translations["profile.email"] }}:<span>{{
                         profile?.email ? profile?.email : "-----"
                       }}</span>
                     </p>

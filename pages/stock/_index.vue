@@ -20,10 +20,10 @@
           <p>
             {{ $store.state.translations["main.promotion-duration"] }}:
             <span
-              >{{ moment(promotion?.start_date).format("DD.MM") }}
-              {{ $store.state.translations["main.from"] }}
+              >{{ $store.state.translations["main.from"] }} {{ moment(promotion?.start_date).format("DD.MM") }}
+              {{ $store.state.translations["main.until"] }}
               {{ moment(promotion?.end_date).format("DD.MM") }}
-              {{ $store.state.translations["main.until"] }}</span
+             </span
             >
           </p>
           <p>
@@ -61,7 +61,7 @@
                   class="first-category"
                   >{{ firstCategory?.name }}</nuxt-link
                 >
-                <ul
+                <!-- <ul
                   class="categories-list-inner"
                   v-if="
                     (firstCategory?.children.length > 0 &&
@@ -115,7 +115,7 @@
                       >
                     </div>
                   </li>
-                </ul>
+                </ul> -->
               </div>
             </div>
 
@@ -192,20 +192,12 @@ export default {
       return this.$route.query?.category;
     },
   },
-  mounted() {
-    this.$store.dispatch("fetchPromotions/getPromotionsBySlug", {
-      slug: this.$route.params.index,
-      params: {
-        headers: {
-          lang: this.$i18n.locale,
-        },
-      },
-    });
-  },
+ 
 
   watch: {
-    async currentQuery(val) {
-      const [promotionsData] = await Promise.all([
+    async currentQuery(val,last) {
+      if(val != last) {
+        const [promotionsData] = await Promise.all([
         this.$store.dispatch("fetchPromotions/getPromotionsBySlug", {
           slug: this.$route.params.index,
           params: {
@@ -220,6 +212,8 @@ export default {
       ]);
       this.promotion = promotionsData?.promotion;
       this.allCategories = promotionsData?.categories;
+      }
+    
     },
   },
   methods: {
@@ -235,6 +229,9 @@ export default {
 @import "../../assets/css/pages/comparison.css";
 @import "../../assets/css/pages/main-page.css";
 @import "../../assets/css/pages/categories.css";
+.active-category {
+  color: var(--color_green) !important;
+}
 
 .stock-page__container {
   width: 85%;
