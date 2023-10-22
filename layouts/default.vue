@@ -1,8 +1,8 @@
 <template lang="html">
   <div class="layout-back">
-    <Header />
+    <Header :categoryVisible="categoryVisible"/>
     <Nuxt />
-    <MobileBottomBar />
+    <MobileBottomBar @openCategory="openCategory"/>
     <Footer />
     <Transition name="bounce-toast">
       <Vnotification
@@ -198,6 +198,7 @@ import MobileBottomBar from "../components/layout/MobileBottomBar.vue";
 export default {
   data() {
     return {
+      categoryVisible: false,
       buyToast: false,
       likeToast: false,
       compToast: false,
@@ -291,6 +292,9 @@ export default {
     },
   },
   methods: {
+    openCategory() {
+      this.categoryVisible = !this.categoryVisible
+    },
     toastClose() {
       this.buyToast = false;
       this.likeToast = false;

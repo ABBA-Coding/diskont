@@ -479,4 +479,12 @@
   .categories-page-info {
     width: 100%;
   }
+  .categories-page-title span {
+    margin-left: 0;
+  }
+  .categories-page-title {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
 }

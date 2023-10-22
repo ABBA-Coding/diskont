@@ -1092,4 +1092,9 @@ export default {
   border: 5px solid #fff;
   display: flex;
 }
+@media (max-width: 576px) {
+  .categories-atribute-box {
+ margin-top: 24px;
+}
+}
 </style>

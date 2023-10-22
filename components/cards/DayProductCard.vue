@@ -163,4 +163,9 @@ export default {
     font-size: 12px;
   }
 }
+@media screen and (max-width: 576px) {
+  .day-product-card-head {
+   display: none;
+  }
+}
 </style>

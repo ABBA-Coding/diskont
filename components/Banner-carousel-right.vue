@@ -165,7 +165,7 @@ export default {
 }
 @media (max-width: 576px) {
   .banner-carousel-right-box {
-    height: 140px;
+    height: 140px !important;
   }
 }
 </style>

@@ -706,7 +706,7 @@ body::-webkit-scrollbar-thumb {
   }
   .banner-slider img {
     border-radius: 12px;
-    object-fit: contain;
+    object-fit: cover;
   }
   .home-categories .container_xl {
     padding: 0;
@@ -746,6 +746,11 @@ body::-webkit-scrollbar-thumb {
   }
   .comments-empty img {
     width: 180px;
+  }
+}
+@media (max-width: 576px) {
+  .swiper-pagination-banner,.swiper-pagination-banner-right {
+    display: none !important;
   }
 }
 .reviews__right {

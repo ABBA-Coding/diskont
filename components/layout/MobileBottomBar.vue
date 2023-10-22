@@ -2,8 +2,8 @@
   <div class="wrap">
     <div class="container p-0">
       <ul>
-        <li>
-          <NuxtLink to="/categories/1" class="link">
+        <li @click="$emit('openCategory')">
+          <button class="link">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="28"
@@ -29,7 +29,7 @@
               />
             </svg>
             {{ $store.state.translations["main.category"] }}
-          </NuxtLink>
+          </button>
         </li>
         <li>
           <NuxtLink to="/likes" class="link">

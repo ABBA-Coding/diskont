@@ -44,7 +44,7 @@
     </div>
     <div class="position-relative">
       <span style="z-index: 3; position: relative" ref="navScroll3">
-        <Navbar />
+        <Navbar :categoryVisible="categoryVisible"/>
       </span>
       <span style="z-index: 1; position: relative" ref="navScrollSearch">
         <MobileSearch />
@@ -62,6 +62,7 @@ import Navbar from "./Navbar.vue";
 import MobileSearch from "./MobileSearch.vue";
 
 export default {
+  props: ['categoryVisible'],
   data() {
     return {
       locales: [

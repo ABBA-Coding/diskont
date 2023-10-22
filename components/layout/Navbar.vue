@@ -487,6 +487,7 @@ import Vnotification from "../vnotification.vue";
 import AuthModals from "./AuthModals.vue";
 export default {
   name: "Navbar",
+  props: ['categoryVisible'],
   data() {
     return {
       locales: [
@@ -630,6 +631,10 @@ export default {
     },
   },
   watch: {
+    categoryVisible() {
+this.catalogMenu = true;
+console.log('siuuuuu');
+    },
     search(val) {
       if (val.length > 2) {
         this.__GET_SEARCH();

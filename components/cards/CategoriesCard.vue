@@ -51,4 +51,24 @@ export default {
   text-align: center;
   color: #1c1f22;
 }
+@media (max-width: 576px) {
+  .categories-list {
+    display: none;
+  }
+  .categoies-card {
+    border-radius: 8px;
+    height: auto;
+    padding: 22px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  .categoies-card-img img {
+    max-height: 90px;
+  }
+  .categoies-card-title {
+    margin-top: 20px;
+  }
+}
 </style>
