@@ -62,7 +62,7 @@
   letter-spacing: -0.174px;
 }
 .coin-tab__active {
-  background: var(--color_dark_green);
+  background: var(--color_green);
 }
 .coin-tab__active p,
 .coin-tab__active h5,

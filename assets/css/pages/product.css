@@ -64,6 +64,7 @@
   gap: 8px;
 }
 .cart {
+  border: none;
   background: var(--color_green);
   color: white;
   border-radius: 10px;

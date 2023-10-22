@@ -944,8 +944,6 @@ export default {
           this.filterOptions.push(findItem);
         });
       }
-      console.log(this.filterOptions);
-      console.log(this.$route.query);
     },
     onChangeSlider(val) {},
 

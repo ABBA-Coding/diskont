@@ -308,7 +308,6 @@ export default {
     detectRange(value) {
       let detectedValue = value % 360;
       let finalValue = Math.ceil(detectedValue / 30);
-      console.log(14 - finalValue);
     },
   },
   watch: {

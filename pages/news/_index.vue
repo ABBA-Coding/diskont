@@ -105,8 +105,14 @@ export default {
 .post-page-info {
   width: 90%;
   margin-bottom: 64px;
+  margin-top: 32px;
 }
-.post-page-info h1 {
+.post-page-info h1,
+.post-page-info h2,
+.post-page-info h3,
+.post-page-info h4,
+.post-page-info h5,
+.post-page-info h6 {
   font-family: var(--SB_500);
   font-style: normal;
   font-weight: 500;

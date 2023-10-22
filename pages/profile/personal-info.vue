@@ -33,12 +33,12 @@
                       {{ $store.state.translations["profile.name"] }}:<span>{{
                         !profile?.name && !profile?.surname
                           ? "-----"
-                          : `${profile?.surname} ${profile?.name}`
+                          : `${profile?.surname ? profile?.surname : ""} ${profile?.name}`
                       }}</span>
                     </p>
                     <b-skeleton v-if="skeleton" width="200px" height="20px"></b-skeleton>
                     <p v-else>
-                      {{ $store.state.translations["profile.email"] }}:<span>{{
+                      {{ $store.state.translations["profile.email"] }}:>><span>{{
                         profile?.email ? profile?.email : "-----"
                       }}</span>
                     </p>
@@ -50,7 +50,12 @@
                     <b-skeleton v-if="skeleton" width="200px" height="20px"></b-skeleton>
                     <p v-else>
                       {{ $store.state.translations["profile.phone"] }}:<span>{{
-                        profile?.login ? `${profile?.login}` : "-----"
+                        profile?.login
+                          ? `+${`${profile?.login}`
+                              .match(/(\d{3})(\d{2})(\d{3})(\d{2})(\d{2})/)
+                              .filter((item, index) => index != 0)
+                              .join(" ")}`
+                          : "-----"
                       }}</span>
                     </p>
                     <!-- <b-skeleton v-if="skeleton" width="200px" height="20px"></b-skeleton>

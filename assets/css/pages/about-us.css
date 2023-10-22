@@ -64,7 +64,7 @@
   flex-direction: column;
 }
 .about-us__body ul li a {
-  color: var(--color_dark_green);
+  color: var(--color_green);
 }
 .about-us__body ul li span {
   color: #000;

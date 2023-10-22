@@ -88,7 +88,7 @@ export default {
 }
 
 .stocks-card-body h2:hover {
-  color: var(--color_dark_green);
+  color: var(--color_green);
 }
 
 .stocks-card-body p {

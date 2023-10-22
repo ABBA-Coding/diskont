@@ -1,6 +1,10 @@
 <template lang="html">
   <div class="wrap product-page">
-    <div class="image-modal" :class="{ hideModal: !imageModal }">
+    <div
+      class="image-modal"
+      :class="{ hideModal: !imageModal }"
+      @click="imageModal = false"
+    >
       <div class="image-modal-container">
         <div class="product-inner-swiper">
           <div class="swiper-wrapper">
@@ -1023,7 +1027,7 @@
                       disabled
                     />
                     <a-rate v-else disabled />
-                    <p>5 оценок</p>
+                    <p>{{ product?.info?.comments.length }} оценок</p>
                   </div>
                   <p>
                     <span>{{ product?.info?.stars ? product?.info?.stars : 0 }}</span
@@ -1578,8 +1582,8 @@ export default {
     var swiper = new Swiper(".mySwiper", {
       slidesPerView: 5,
       spaceBetween: 12,
-      freeMode: true,
-      watchSlidesProgress: true,
+      // freeMode: true,
+      // watchSlidesProgress: true,
       direction: "horizontal",
       breakoints: {
         1024: {
@@ -1599,8 +1603,8 @@ export default {
     var swiper1 = new Swiper(".mySwiper11", {
       slidesPerView: 5,
       spaceBetween: 12,
-      freeMode: true,
-      watchSlidesProgress: true,
+      // freeMode: true,
+      // watchSlidesProgress: true,
       direction: "horizontal",
       breakoints: {
         1024: {
@@ -1626,7 +1630,6 @@ export default {
       await this.$getLocation().then((coordinates) => {
         this.locations = coordinates;
       });
-      console.log(this.locations);
     } catch (e) {
       console.log(e);
     }
@@ -1756,6 +1759,23 @@ export default {
     handleOkName() {
       this.visibleOc = false;
     },
+    async __GET_PRODUCT() {
+      const [productData] = await Promise.all([
+        this.$store.dispatch("fetchProducts/getProductsBySlug", {
+          id: this.$route.params.index,
+          params: {
+            params: {
+              lat: this.locations.lat,
+              lon: this.locations.lng,
+            },
+            headers: {
+              lang: this.$i18n.locale,
+            },
+          },
+        }),
+      ]);
+      this.product = productData.product;
+    },
     async __POST_COMMENT(formData) {
       try {
         const data = await this.$store.dispatch("fetchProducts/postProductComment", {
@@ -1772,6 +1792,7 @@ export default {
           comment: "",
           stars: 5,
         };
+        this.__GET_PRODUCT();
       } catch (e) {
         // console.log(e);
       }
@@ -1851,6 +1872,12 @@ export default {
       if (!val) {
         this.count = 1;
         this.callBox = false;
+        this.formOc = {
+          name: "",
+          phone_number: "",
+          product_id: null,
+          count: 1,
+        };
       }
     },
     compToast(val) {
@@ -1871,6 +1898,9 @@ export default {
 
 <style scoped>
 @import "../../assets/css/pages/product.css";
+.swiper_thumb {
+  transform: translate3d(0px, 0px, 0px) !important;
+}
 .last-character {
   border-bottom: 0 !important;
 }
@@ -2282,14 +2312,14 @@ export default {
   font-family: var(--SB_500);
   font-size: 14px;
   line-height: 18px;
-  color: var(--color_dark_green);
+  color: var(--color_green);
   padding: 12px 34px;
   border: 1px solid #f1f1f1;
   border-radius: 77px;
   background-color: #fff;
 }
 .butns button.active {
-  background: var(--color_dark_green);
+  background: var(--color_green);
   color: white;
 }
 .paragraph {
@@ -2457,7 +2487,7 @@ tbody .img {
   align-items: center;
   text-align: center;
   justify-content: center;
-  color: var(--color_dark_green);
+  color: var(--color_green);
   background: #e7faf5;
   border-radius: 10px;
   padding: 12px 0;
@@ -2501,7 +2531,7 @@ tbody .img {
   white-space: nowrap;
 }
 .comment-btn-close {
-  color: var(--color_dark_green);
+  color: var(--color_green);
   background: #eaeaea;
 }
 .comment-modal-header {

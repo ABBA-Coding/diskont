@@ -326,7 +326,7 @@
                           $store.state.cart.find((elem) => elem.id == item.id)?.count
                       );
                     }, 0)
-                    .toFixed(2)}`.replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+                    .toFixed()}`.replace(/\B(?=(\d{3})+(?!\d))/g, " ")
                 }}
                 {{ $store.state.translations["main.som"] }}
               </h3>
@@ -348,7 +348,7 @@
                             $store.state.cart.find((elem) => elem.id == item.id)?.count
                         );
                       }, 0)
-                      .toFixed(2)}`.replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+                      .toFixed()}`.replace(/\B(?=(\d{3})+(?!\d))/g, " ")
                   }}
                   {{ $store.state.translations["main.som"] }}
                 </p></span

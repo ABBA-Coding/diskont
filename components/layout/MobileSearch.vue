@@ -241,7 +241,6 @@ export default {
         });
         this.searchProducts = data?.products;
         this.searchCategories = data?.categories;
-        console.log(this.searchCategories);
       } catch (e) {}
     },
   },

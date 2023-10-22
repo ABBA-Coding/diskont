@@ -508,7 +508,7 @@ body::-webkit-scrollbar-thumb {
   animation: bounce-in2 0.3s reverse;
 }
 .ant-spin-dot-item {
-  background-color: var(--color_dark_green) !important;
+  background-color: var(--color_green) !important;
 }
 .empty-card {
   height: 484px;
@@ -557,7 +557,7 @@ body::-webkit-scrollbar-thumb {
   height: 143px;
 }
 .comment-modal-success p {
-  color: var(--color_dark_green);
+  color: var(--color_green);
   text-align: center;
   font-family: var(--SB_500);
   font-size: 18px;
@@ -574,12 +574,12 @@ body::-webkit-scrollbar-thumb {
   cursor: pointer;
 }
 .checkout-form input:focus {
-  border-color: var(--color_dark_green) !important;
+  border-color: var(--color_green) !important;
   outline: 0;
   box-shadow: 0 0 0 2px rgba(9, 69, 79, 0.2) !important;
 }
 .checkout-form .ant-input:focus {
-  border-color: var(--color_dark_green) !important;
+  border-color: var(--color_green) !important;
   outline: 0;
   box-shadow: 0 0 0 2px rgba(9, 69, 79, 0.2) !important;
 }

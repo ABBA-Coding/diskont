@@ -547,7 +547,6 @@ export default {
           lang: this.$i18n.locale,
         },
       }),
-    
     ]);
     this.categories = categoriesData?.data;
     this.activeCategory = categoriesData?.data[0];
@@ -557,9 +556,11 @@ export default {
     routerPath() {
       return this.$route.path;
     },
+    langChange() {
+      return this.$i18n.locale;
+    },
   },
   async mounted() {
- 
     if (!localStorage.getItem("search_resoults")) {
       localStorage.setItem("search_resoults", JSON.stringify([]));
     } else {
@@ -625,7 +626,6 @@ export default {
         });
         this.searchProducts = data?.products;
         this.searchCategories = data?.categories;
-        console.log(this.searchCategories);
       } catch (e) {}
     },
   },
@@ -639,7 +639,18 @@ export default {
         this.searchCategories = [];
       }
     },
-    routerPath(val) {
+    async langChange() {
+      const [categoriesData] = await Promise.all([
+        this.$store.dispatch("fetchCategories/getCategories", {
+          headers: {
+            lang: this.$i18n.locale,
+          },
+        }),
+      ]);
+      this.categories = categoriesData?.data;
+      this.activeCategory = categoriesData?.data[0];
+    },
+    async routerPath(val) {
       if (val == "/") this.search = "";
       this.searchBlockHide = false;
       this.targetPage = false;
@@ -796,7 +807,7 @@ export default {
 }
 .catalog-menu-list-active {
   background: #f7f7f7;
-  color: #09454f !important;
+  color: var(--color_green) !important;
 }
 .catalog-menu-list ul li:hover {
   background: #f7f7f7;
@@ -874,7 +885,7 @@ export default {
   transition: 0.3s;
 }
 .catalog-menu-items ul h4:hover {
-  color: var(--color_dark_green);
+  color: var(--color_green);
 }
 .catalog-menu-items ul a {
   font-family: var(--SB_400);
@@ -1104,9 +1115,7 @@ export default {
   border: 1px solid #06858c;
   background: #06858c;
 }
-.mobile_categories {
-  height: 100%;
-}
+
 @media screen and (max-width: 1600px) {
   .coin_btn {
     padding: 0 12px 0 40px;
@@ -1152,7 +1161,7 @@ export default {
   }
   .user_profile {
     border-radius: 41px;
-    background: var(--color_dark_green);
+    background: var(--color_green);
   }
   .header-category_container ul li a {
     margin-right: 8px;

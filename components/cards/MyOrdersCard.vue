@@ -6,7 +6,7 @@
         <p>
           {{ $store.state.translations["main.updated"] }}
           {{ moment(order?.updated_at).format("DD") }}
-          {{ month[moment(order?.updated_at).format("M") - 1] }}
+          {{ $store.state.translations[month[moment(order?.updated_at).format("M") - 1]] }}
           {{ moment(order?.updated_at).format("YYYY") }} y.,
           {{ moment(order?.updated_at).format("HH:mm") }}
         </p>
@@ -74,20 +74,20 @@
       <div>
         <p>{{$store.state.translations["checkout.order-date"]}}</p>
         <span>
-          {{ weekDay[moment(order?.created_at).weekday()] }},
+          {{ $store.state.translations[weekDay[moment(order?.created_at).weekday()]] }},
           {{ moment(order?.created_at).format("DD") }}
-          {{ month[moment(order?.created_at).format("M") - 1] }}
+          {{ $store.state.translations[month[moment(order?.created_at).format("M") - 1]] }}
           {{ moment(order?.created_at).format("YYYY") }} y.,
           {{ moment(order?.created_at).format("HH:mm") }}</span
         >
       </div>
       <div>
         <p>{{$store.state.translations["checkout.type-delivery"]}}</p>
-        <span>{{ pickupMethod[order?.delivery_method] }}</span>
+        <span>{{ $store.state.translations[`profile.${order?.delivery_method}`] }}</span>
       </div>
       <div>
         <p>{{$store.state.translations["checkout.payment-type"]}}</p>
-        <span>{{ order?.payment_method }}</span>
+        <span>{{ order?.payment_method == 'cash' ?  $store.state.translations[`profile.cash`]:order?.payment_method}}</span>
       </div>
 
       <div>
@@ -104,8 +104,24 @@
 import moment from "moment";
 export default {
   props: ["order"],
+  name: "MyOrdersCard",
   data() {
     return {
+      options: [
+        {
+          value: 0,
+          label: "All",
+        },
+        {
+          value: "active",
+          label: "Активный",
+        },
+        {
+          value: "inactive",
+          label: "Неактивный",
+        },
+      ],
+      value: "",
       arrow: require("../../assets/svg/dropdown-icon.svg?raw"),
       productDrop: false,
       pickupMethod: {
@@ -113,27 +129,27 @@ export default {
         courier: "Yetkazib berish",
       },
       weekDay: [
-        "yakshanba",
-        "dushanba",
-        "seshanba",
-        "chorshanba",
-        "payshanba",
-        "juma",
-        "shanba",
+        "options.sunday",
+        "options.monday",
+        "options.tuesday",
+        "options.wednesday",
+        "options.thursday",
+        "options.friday",
+        "options.saturday",
       ],
       month: [
-        "Yanvar",
-        "Fevral",
-        "Mart",
-        "Aprel",
-        "May",
-        "Iyun",
-        "Iyul",
-        "Avgust",
-        "Sentabr",
-        "Oktabr",
-        "Noyabr",
-        "Dekabr",
+        "options.january",
+        "options.february",
+        "options.march",
+        "options.april",
+        "options.may",
+        "options.june",
+        "options.july",
+        "options.august",
+        "options.september",
+        "options.october",
+        "options.november",
+        "options.december",
       ],
     };
   },

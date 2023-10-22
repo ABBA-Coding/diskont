@@ -116,7 +116,6 @@ export default {
     if (compProductsStore.length > 0) {
       await this.__GET_PRODUCTS_COMP({ products: compProductsStore });
     }
-    console.log(new Swiper());
     const swiper = new Swiper(".swiper-comparison", {
       slidesPerView: 2,
       spaceBetween: 8,
@@ -145,7 +144,6 @@ export default {
       },
     });
     swiper.on("activeIndexChange", (swiper) => {
-      console.log("asdsadsad3qw432432432");
     });
   },
   methods: {
@@ -233,7 +231,6 @@ export default {
               prevEl: ".swiper-button-prev-comparison",
             },
           });
-          console.log(new Swiper(), "watcg");
         }
         // },5000)
       }

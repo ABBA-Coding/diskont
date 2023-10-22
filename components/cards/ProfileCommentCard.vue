@@ -11,7 +11,9 @@
 
       <div class="profile-comment-card-header">
         <div>
-          <h4>{{ comment?.product_info?.name?.ru }}</h4>
+          <h4 @click="$router.push(`/product/${comment?.product_info?.slug}`)">
+            {{ comment?.product_info?.name?.ru }}
+          </h4>
           <a-rate
             v-if="comment?.stars"
             disabled
@@ -65,6 +67,7 @@ export default {
   line-height: 21px;
   color: #000000;
   margin-bottom: 14px;
+  cursor: pointer;
 }
 .profile-comment-card-img {
   width: 73px;

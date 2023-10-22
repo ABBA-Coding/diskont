@@ -146,7 +146,7 @@
                         /></svg
                     ></span>
                     <span v-else></span>
-                     <nuxt-img format="webp" src="/click.uz.png" alt="" />
+                    <nuxt-img format="webp" src="/click.uz.png" alt="" />
                   </div>
                   <div class="pay-card" @click="form.payment_method = 'payme'">
                     <span v-if="form.payment_method == 'payme'" class="step-active"
@@ -163,7 +163,7 @@
                         /></svg
                     ></span>
                     <span v-else></span>
-                     <nuxt-img format="webp" src="/payme.uz.png" alt="" />
+                    <nuxt-img format="webp" src="/payme.uz.png" alt="" />
                   </div>
                   <!-- <div class="pay-card" @click="form.payment_method = 'payze'">
                     <span v-if="form.payment_method == 'payze'" class="step-active"
@@ -333,11 +333,14 @@
               <span>
                 <a-checkbox
                   @change="onChange"
+                  :checked="checkboxVal"
                   :class="{ checkboxRequiredClass: required.checkbox }"
                 >
                 </a-checkbox>
                 <p>
-                  {{ $store.state.translations["checkout.check-text1"] }},
+                  <button @click="checkboxVal = !checkboxVal">
+                    {{ $store.state.translations["checkout.check-text1"] }}</button
+                  >,
                   <span>{{ $store.state.translations["checkout.check-text2"] }}</span>
                   {{ $store.state.translations["checkout.check-text3"] }}
                   <span @click="visibleConsent = true">{{
@@ -428,7 +431,7 @@
               @click="sendDicoin = false"
             >
               <div class="d-flex">
-                 <nuxt-img format="webp" src="/d-coin.png" alt="" />
+                <nuxt-img format="webp" src="/d-coin.png" alt="" />
                 <h6 class="active_dicoin">
                   <span>{{ dicoinSumm }}</span
                   >{{ $store.state.translations["main.dicoin"] }}
@@ -1173,6 +1176,9 @@ export default {
       }
       if (!this.checkboxVal) {
         this.required.checkbox = true;
+        this.$notification.error({
+          message: "Все поля должны быть заполнены",
+        });
       } else {
         this.required.checkbox = false;
       }
@@ -1436,7 +1442,7 @@ export default {
   margin-bottom: 12px;
 }
 .checkout-problems a {
-  color: var(--color_dark_green);
+  color: var(--color_green);
   font-family: var(--SB_700);
   font-size: 24px;
   font-style: normal;
@@ -1459,7 +1465,7 @@ export default {
   line-height: normal;
 }
 .checkout-consent p {
-  color: var(--color_dark_green);
+  color: var(--color_green);
   font-family: var(--SB_400);
   font-size: 16px;
   font-style: normal;
@@ -1473,7 +1479,7 @@ export default {
   width: 100%;
   padding-top: 13px;
   padding-bottom: 14px;
-  color: var(--color_dark_green);
+  color: var(--color_green);
   font-family: var(--SB_700);
   font-size: 14px;
   font-style: normal;
@@ -1495,7 +1501,7 @@ export default {
   padding-top: 14px;
   padding-bottom: 14px;
   width: 100%;
-  color: var(--color_dark_green);
+  color: var(--color_green);
   font-family: var(--SB_600);
   font-size: 16px;
   font-style: normal;
@@ -1552,7 +1558,7 @@ export default {
   outline: none;
 }
 .checkout_dicoin_input p {
-  color: var(--color_dark_green);
+  color: var(--color_green);
   text-align: right;
   font-family: var(--SB_400);
   font-size: 18px;

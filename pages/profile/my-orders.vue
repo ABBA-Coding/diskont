@@ -47,7 +47,7 @@ import moment from "moment";
 import ProfileMenu from "../../components/profile-menu.vue";
 export default {
   middleware: "auth",
-
+  name: "my-orders",
   data() {
     return {
       empty: true,

@@ -20,7 +20,7 @@
   transition: 0.2s;
 }
 .header-top ul li:hover {
-  color: var(--color_dark_green);
+  color: var(--color_green);
 }
 .header-top__right p:last-child {
   margin-left: 16px;
@@ -36,7 +36,7 @@
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
-  color: var(--color_dark_green);
+  color: var(--color_green);
 }
 .header-top__right a:hover {
   color: #04babe;
@@ -61,7 +61,7 @@
 .search_input_container {
   max-width: 728px;
   background: #f6f7f9;
-  border: 1px solid var(--color_dark_green);
+  border: 1px solid var(--color_green);
   border-radius: 143px;
   height: 43px;
   display: flex;
@@ -154,7 +154,7 @@
   flex-direction: row;
   padding: 6px 15px;
   align-items: center;
-  background: var(--color_dark_green);
+  background: var(--color_green);
 }
 
 .nav_profile svg {
@@ -175,7 +175,7 @@
   background-color: #e3fcf5;
 }
 .user_profile p {
-  color: var(--color_dark_green);
+  color: var(--color_green);
   overflow: hidden;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
@@ -185,11 +185,11 @@
 }
 .user_profile svg path,
 .user_profile svg circle {
-  stroke: var(--color_dark_green);
+  stroke: var(--color_green);
 }
 .catalog-btn {
   height: 42px;
-  background: var(--color_dark_green);
+  background: var(--color_green);
   border-radius: 9px;
   padding: 10px 22px;
   font-family: var(--SB_400);
@@ -501,7 +501,7 @@
   line-height: 20px; /* 142.857% */
 }
 .search-tt button {
-  color: var(--color_dark_green);
+  color: var(--color_green);
   font-family: var(--SB_400);
   font-size: 14px;
   font-style: normal;
@@ -535,7 +535,7 @@
 }
 .search-resoults a:hover,
 .last_search_resoults:hover {
-  color: var(--color_dark_green);
+  color: var(--color_green);
 }
 .search-resoults a svg path,
 .last_search_resoults svg path {
@@ -543,14 +543,14 @@
 }
 .search-resoults a:hover svg path,
 .last_search_resoults:hover svg path {
-  stroke: var(--color_dark_green);
+  stroke: var(--color_green);
 }
 .search-resoults button {
   border: none;
   background-color: transparent;
 }
 .search-popular h6 {
-  color: var(--color_dark_green);
+  color: var(--color_green);
   font-family: var(--SB_400);
   font-size: 14px;
   font-style: normal;
@@ -613,7 +613,7 @@
     height: 26px;
     left: -3px;
     top: -3px;
-    background-color: var(--color_dark_green);
+    background-color: var(--color_green);
     display: flex;
     align-items: center;
     justify-content: center;

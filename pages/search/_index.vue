@@ -228,6 +228,9 @@ export default {
       this.loading = true;
       const data = await this.$store.dispatch("fetchSearch/getSearch", {
         params: { ...this.$route.query, search: this.$route.params.index },
+        headers: {
+          lang: this.$i18n.locale,
+        },
       });
       this.products = data?.products;
       this.loading = false;

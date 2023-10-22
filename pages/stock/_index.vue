@@ -66,11 +66,11 @@
                   v-if="
                     (firstCategory?.children.length > 0 &&
                       firstCategory?.slug == $route.query?.category) ||
-                    firstCategory.children.find(
+                    firstCategory.children?.find(
                       (item) => item.slug == $route.query?.category
                     ) ||
-                    firstCategory.children.find((item) =>
-                      item.children.find((elem) => elem.slug == $route.query?.category)
+                    firstCategory.children?.find((item) =>
+                      item.children?.find((elem) => elem.slug == $route.query?.category)
                     )
                   "
                 >
@@ -93,7 +93,7 @@
                       class="child-categories-list"
                       v-if="
                         middCategory?.slug == $route.query?.category ||
-                        middCategory?.children.find(
+                        middCategory?.children?.find(
                           (item) => item.slug == $route.query?.category
                         )
                       "

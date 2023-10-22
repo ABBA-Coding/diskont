@@ -40,7 +40,6 @@ export const mutations = {
     token ? (state.auth = true) : (state.auth = false);
   },
   authVisibleChange(state, payload) {
-    console.log(payload);
     state.authVisible = payload;
   },
   addToStore(state, payload) {
@@ -120,8 +119,8 @@ export const actions = {
         commit("getProfileInfo", res?.user);
         commit("authHandler", res?.user);
       })
-      .catch(() => {
-        if (payload.includes("profile")) {
+      .catch((e) => {
+        if (e.response.status == 401) {
           try {
             this.$axios.$post(
               "/auth/logout",
