@@ -123,11 +123,11 @@
           </div>
         </div>
         <div class="categories-card-grid" v-if="promotion?.products.length > 0">
-          <!-- <ProductCard
+          <ProductCard
             v-for="product in promotion?.products"
             :key="product.id"
             :product="product"
-          /> -->
+          />
         </div>
         <div class="comments-empty" v-else>
           <nuxt-img format="webp" src="/comments-empty.png" alt="" />
