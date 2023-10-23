@@ -352,4 +352,53 @@ export default {
     opacity: 1;
   }
 } */
+@media (max-width: 1320px) {
+  .stocks-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 1320px) {
+  .stocks-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 992px) {
+  .stocks-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 576px) {
+  .stocks-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .stock-page__container {
+    width: 100%;
+  }
+  .stocks-banner {
+    max-height: 160px;
+    height: 160px;
+    border-radius: 20px;
+  }
+  .stock-page__static p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 130%;
+    gap: 5px;
+  }
+  .stock-page__static p span {
+    font-size: 16px;
+    line-height: 130%;
+  }
+  .stock-page__static {
+    margin-top: 32px;
+  }
+  .stock-page__info {
+    margin-top: 32px;
+  }
+  .stock-page__info p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 130%;
+  }
+}
 </style>

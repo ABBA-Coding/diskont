@@ -290,25 +290,8 @@ export default {
 .stock-page__products {
   margin-bottom: 300px;
 }
-@media (max-width: 1320px) {
-  .stocks-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-@media (max-width: 1320px) {
-  .stocks-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-@media (max-width: 992px) {
-  .stocks-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 @media (max-width: 576px) {
-  .stocks-grid {
-    grid-template-columns: repeat(1, 1fr);
-  }
+
   .stock-page__container {
     width: 100%;
   }
