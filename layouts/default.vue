@@ -231,6 +231,10 @@ export default {
           name: "description",
           content: this.$store.state.siteInfo.meta_desc,
         },
+        {
+          name: "theme-color",
+          content: '#09454f',
+        },
       ],
       link: [
         {
