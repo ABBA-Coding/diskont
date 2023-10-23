@@ -100,25 +100,15 @@ export default {
         if (window.innerWidth > 576) {
           header.style.top = `-${headerTop.offsetHeight + testMode.offsetHeight}px`;
         }
-        // headerTop.style.marginTop = "-100%";
-        // header2.style.marginTop = `-${header2.offsetHeight}px`;
         header2.style.display = "none";
         header3.style.boxShadow = " 0 0.5rem 1rem rgb(0 0 0 / 15%)";
         searchBlock.style.display = "none";
-
-        // header.style.background = "#04babe";
         header.style.marginTop = "0";
-      } else if (document.documentElement.scrollTop == 0) {
+      } else if (document.documentElement.scrollTop <= 300) {
         header.style.boxShadow = "none";
         header2.style.display = "block";
         searchBlock.style.display = "block";
-        // header.style.marginTop = "0";
-        // header3.style.boxShadow = "none";
-        // header.style.background = "#04babe";
       } else {
-        // header2.style.display = "block";
-
-        // header2.style.marginTop = "0";
         header.style.top = "0";
         header.style.boxShadow = " 0 0.3rem 0.5rem rgb(0 0 0 / 15%)";
         header3.style.boxShadow = " 0 0.3rem 0.5rem rgb(0 0 0 / 15%)";

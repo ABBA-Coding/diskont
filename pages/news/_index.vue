@@ -10,9 +10,11 @@
         </nuxt-link>
       </div>
       <div class="d-flex page-container-title">
-        <div class="d-flex align-items-end">
+        <div
+          class="d-flex align-items-start align-items-md-end flex-column flex-md-row justify-content-start"
+        >
           <MainTitle :title="post?.title" />
-          <span class="d-flex align-items-end">{{
+          <span class="d-flex align-items-end news-date">{{
             moment(post?.created_at).format("DD.MM.YYYY")
           }}</span>
         </div>
@@ -22,10 +24,7 @@
           <img v-if="post?.lg_img" :src="post?.lg_img" alt="" />
           <!-- <img v-else src="../../assets/images/image 317.png" alt="" /> -->
         </div>
-        <div class="post-page-info">
-          <!-- <h1>{{ post?.title }}</h1> -->
-          <p v-html="post?.desc"></p>
-        </div>
+        <div class="post-page-info" v-html="post?.desc"></div>
       </div>
       <div class="last-news">
         <h2>{{ $store.state.translations["main.last-news"] }}</h2>
@@ -138,5 +137,26 @@ export default {
   line-height: 130%;
   color: #000000;
   margin-bottom: 24px;
+}
+@media (max-width: 1200px) {
+  .post-page-img {
+    width: 100%;
+  }
+}
+@media (max-width: 576px) {
+  .post-page-info {
+    width: 100%;
+    margin-bottom: 56px;
+  }
+  .post-page-img {
+    height: 170px;
+
+    border-radius: 12px;
+    margin-bottom: 6px;
+  }
+  .news-date {
+    margin-left: 0 !important;
+    margin-top: 5px;
+  }
 }
 </style>

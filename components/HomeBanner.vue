@@ -26,11 +26,14 @@ export default {
 @media (max-width: 576px) {
   .home-banner {
     height: 136px;
+  border-radius: 16px;
+
   }
   .home-banner img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
+    
   }
 }
 </style>
