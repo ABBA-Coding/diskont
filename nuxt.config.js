@@ -68,7 +68,19 @@ export default {
     dir: "assets/images",
   },
   i18n: {
-    locales: ["uz", "en", "ru"],
+    locales: [{
+      code: 'en',
+      iso: 'en-US' // Will be used as catchall locale by default
+    },
+    {
+      code: 'uz',
+      iso: 'uz-UZ'
+    }, {
+      code: 'ru',
+      iso: 'ru-RU'
+    }],
+    baseURL: process.env.BASE_URL,
+    seo: true,
     defaultLocale: "ru",
     vueI18n: {
       fallbackLocale: "ru",

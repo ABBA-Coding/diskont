@@ -218,6 +218,7 @@ export default {
     };
   },
   head() {
+    const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true })
     return {
       htmlAttrs: {
         lang: this.$i18n.locale,
@@ -247,6 +248,15 @@ export default {
           href: this.$store.state.siteInfo?.sm_favicon,
         },
       ],
+      link: [
+        {
+          hid: 'apple-touch-icon',
+          rel: 'apple-touch-icon',
+          sizes: '180x180',
+          href: '/apple-touch-icon.png'
+        },
+        ...i18nHead.link
+     ]
     };
   },
   async fetch() {
