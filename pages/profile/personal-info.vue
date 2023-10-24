@@ -67,6 +67,9 @@
                   </div>
                 </div>
               </div>
+              <button class="profile-edit-btn" @click="profileEdit = true">
+                {{ $store.state.translations["main.change"] }}
+              </button>
             </div>
             <div class="personal-info-card">
               <div class="personal-info-card-header2">
@@ -92,7 +95,7 @@
                 class="personal-info-card-header2 d-flex align-items-center justify-content-between"
               >
                 <h3>{{ $store.state.translations["profile.change-info"] }}</h3>
-                <div class="d-flex">
+                <div class="d-flex web_edit_btns">
                   <span class="personal-info-colse-btn" @click="profileEdit = false"
                     ><span v-html="close"></span>
                     {{ $store.state.translations["product.close"] }}</span
@@ -248,6 +251,16 @@
                     />
                   </a-form-model-item>
                 </div>
+              </div>
+              <div class="mobile_edit_btns">
+                <span class="personal-info-colse-btn" @click="profileEdit = false"
+                  ><span v-html="close"></span>
+                  {{ $store.state.translations["product.close"] }}</span
+                >
+                <span class="personal-info-save-btn" @click="submitForm()"
+                  ><span v-html="save"></span>
+                  {{ $store.state.translations["profile.save"] }}</span
+                >
               </div>
             </div>
           </a-form-model>

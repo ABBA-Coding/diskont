@@ -2,11 +2,16 @@
   <div class="my-orders-card">
     <div class="my-orders-card-header">
       <div class="d-flex flex-column">
-        <h4>{{ $store.state.translations["diCoin.order"] }} #{{ order?.id }}</h4>
+        <div class="d-flex justify-content-between" @click="productDrop = !productDrop">
+          <h4>{{ $store.state.translations["diCoin.order"] }} #{{ order?.id }}</h4>
+          <span class="drop" v-html="arrow" :class="{ rotate180: productDrop }"></span>
+        </div>
         <p>
           {{ $store.state.translations["main.updated"] }}
           {{ moment(order?.updated_at).format("DD") }}
-          {{ $store.state.translations[month[moment(order?.updated_at).format("M") - 1]] }}
+          {{
+            $store.state.translations[month[moment(order?.updated_at).format("M") - 1]]
+          }}
           {{ moment(order?.updated_at).format("YYYY") }} y.,
           {{ moment(order?.updated_at).format("HH:mm") }}
         </p>
@@ -36,7 +41,7 @@
       >
     </div>
     <div class="my-orders-card-body" @click="productDrop = !productDrop">
-      <div class="order-products">
+      <div class="order-products order-products_web">
         <div
           class="order-product"
           v-for="product in order?.products.filter((item, index) => index == 0)"
@@ -54,7 +59,7 @@
       </div>
       <span v-html="arrow" :class="{ rotate180: productDrop }"></span>
     </div>
-    <div class="order-products" v-if="productDrop == true">
+    <div class="order-products order-products_web" v-if="productDrop == true">
       <div
         class="order-product"
         v-for="product in order?.products.filter((item, index) => index != 0)"
@@ -70,28 +75,50 @@
         </div>
       </div>
     </div>
+    <div class="order-products order-products_mobile" v-if="productDrop == true">
+      <div
+        class="order-product"
+        v-for="product in order?.products"
+        :key="product?.product_id"
+      >
+        <div class="order-product-img">
+          <img :src="product?.product?.images[0]?.md_img" alt="" />
+        </div>
+        <div class="order-product-body">
+          <p>
+            {{ product?.product?.info?.name?.ru }}
+          </p>
+        </div>
+      </div>
+    </div>
     <div class="my-orders-card-footer">
       <div>
-        <p>{{$store.state.translations["checkout.order-date"]}}</p>
+        <p>{{ $store.state.translations["checkout.order-date"] }}</p>
         <span>
           {{ $store.state.translations[weekDay[moment(order?.created_at).weekday()]] }},
           {{ moment(order?.created_at).format("DD") }}
-          {{ $store.state.translations[month[moment(order?.created_at).format("M") - 1]] }}
+          {{
+            $store.state.translations[month[moment(order?.created_at).format("M") - 1]]
+          }}
           {{ moment(order?.created_at).format("YYYY") }} y.,
           {{ moment(order?.created_at).format("HH:mm") }}</span
         >
       </div>
       <div>
-        <p>{{$store.state.translations["checkout.type-delivery"]}}</p>
+        <p>{{ $store.state.translations["checkout.type-delivery"] }}</p>
         <span>{{ $store.state.translations[`profile.${order?.delivery_method}`] }}</span>
       </div>
       <div>
-        <p>{{$store.state.translations["checkout.payment-type"]}}</p>
-        <span>{{ order?.payment_method == 'cash' ?  $store.state.translations[`profile.cash`]:order?.payment_method}}</span>
+        <p>{{ $store.state.translations["checkout.payment-type"] }}</p>
+        <span>{{
+          order?.payment_method == "cash"
+            ? $store.state.translations[`profile.cash`]
+            : order?.payment_method
+        }}</span>
       </div>
 
       <div>
-        <p>{{$store.state.translations["checkout.order-price"]}}</p>
+        <p>{{ $store.state.translations["checkout.order-price"] }}</p>
         <span
           >{{ `${order?.amount}`.replace(/\B(?=(\d{3})+(?!\d))/g, " ") }}
           {{ $store.state.translations["main.som"] }}</span
@@ -251,6 +278,9 @@ export default {
   color: #727474;
   margin-top: 10px;
 }
+.order-products_mobile {
+  display: none;
+}
 .my-orders-card-body {
   display: flex;
   justify-content: space-between;
@@ -280,15 +310,20 @@ export default {
   margin-top: 4px;
   text-transform: capitalize;
 }
-.my-orders-card-body > span svg {
+.my-orders-card-body > span svg,
+.my-orders-card-header .drop svg {
   width: 20px;
   height: 10px;
+}
+.my-orders-card-header .drop {
+  display: none;
 }
 .my-orders-card-body > span {
   display: flex;
   align-items: center;
   margin-right: 4px;
 }
+
 .order-product {
   display: grid;
   grid-template-columns: 80px auto;
@@ -327,5 +362,31 @@ export default {
   font-size: 14px;
   line-height: 160%;
   color: rgba(114, 116, 116, 0.6);
+}
+@media (max-width: 576px) {
+  .my-orders-card-footer {
+    margin-top: 16px !important;
+  }
+  .my-orders-card-header {
+    margin-bottom: 16px;
+  }
+  .my-orders-card-body {
+    display: none;
+  }
+  .my-orders-card-header > div {
+    width: 100%;
+  }
+  .order-products_mobile {
+    display: grid;
+  }
+  .order-products_web {
+    display: none !important;
+  }
+  .my-orders-card-header .drop {
+    display: block;
+  }
+  .my-orders-card-body > span {
+    display: none;
+  }
 }
 </style>

@@ -88,6 +88,7 @@ export default {
     color: #000000;
     position: relative;
     z-index: 2;
+    text-align: center;
   }
 }
 @media (max-width: 576px) {

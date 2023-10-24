@@ -632,4 +632,7 @@
     color: var(--color_green);
     padding: 0 17px 0 33px;
   }
+  .footer {
+    padding-bottom: 56px;
+  }
 }

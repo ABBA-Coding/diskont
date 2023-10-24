@@ -224,6 +224,21 @@
 .personal-info-save-btn span {
   margin-right: 17px;
 }
+.profile-edit-btn {
+  border-radius: 4px;
+  border: 1px solid #1f8a70;
+  height: 48px;
+  background-color: #fff;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--SF_500);
+  font-size: 15px;
+  font-style: normal;
+  line-height: 16px;
+  color: #1f8a70;
+}
 @media screen and (max-width: 1024px) {
   .personal-info {
     padding-bottom: 64px;
@@ -270,5 +285,51 @@
     grid-template-columns: repeat(1, 1fr);
     gap: 16px;
     margin-top: 10px;
+  }
+}
+.mobile_edit_btns {
+  display: none !important;
+}
+@media (max-width: 576px) {
+  .personal-info-card {
+    border: none;
+  }
+  .personal-info-card-header {
+    padding: 0;
+    border-bottom: 0;
+  }
+  .personal-info-card-body {
+    padding-left: 0;
+    padding-right: 0;
+    grid-gap: 40px;
+    padding-top: 26px;
+  }
+  .personal-info-card-header2 {
+    border-bottom: none;
+    padding: 0;
+  }
+  .personal-info-card-body2 {
+    padding: 0;
+  }
+  .personal-info-edit-btn {
+    display: none;
+  }
+  .personal-info-card-header h3,
+  .personal-info-card-header2 h3 {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .personal-info-grid {
+    grid-gap: 64px;
+  }
+  .personal-info-card-header2 h3 {
+padding-bottom: 16px;
+  }
+  .web_edit_btns {
+    display: none !important;
+  }
+  .mobile_edit_btns {
+    margin-top: 24px;
+    display: flex !important;
   }
 }

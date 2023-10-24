@@ -104,7 +104,7 @@ export default {
         header3.style.boxShadow = " 0 0.5rem 1rem rgb(0 0 0 / 15%)";
         searchBlock.style.display = "none";
         header.style.marginTop = "0";
-      } else if (document.documentElement.scrollTop <= 300 || document.documentElement.scrollTop == 0) {
+      } else if (document.documentElement.scrollTop <= 100 || document.documentElement.scrollTop == 0) {
         header.style.boxShadow = "none";
         header2.style.display = "block";
         searchBlock.style.display = "block";

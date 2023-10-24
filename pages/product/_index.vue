@@ -592,7 +592,7 @@
                 </div>
                 <p>
                   {{ $store.state.translations["main.available-sale"] }}
-                  {{ product?.stock }}
+                  {{ product?.stock > 0 ? product?.stock:0 }}
                 </p>
               </div>
             </div>
@@ -671,7 +671,7 @@
                   :class="{
                     'disabled-btn':
                       !product?.stock ||
-                      $store.state.cart.find((item) => item.id == product?.id),
+                      $store.state.cart.find((item) => item.id == product?.id) || product?.stock < 0
                   }"
                   class="cart"
                 >
@@ -726,7 +726,7 @@
                 :class="{
                   'disabled disabled-btn':
                     !product?.stock ||
-                    $store.state.cart.find((item) => item.id == product?.id),
+                    $store.state.cart.find((item) => item.id == product?.id) || product?.stock < 0
                 }"
                 class="cart"
                 @click="

@@ -25,7 +25,7 @@
           <a-select
             v-model="filterValue"
             class="categories-filter-select comparison-filter"
-            placeholder="Sort"
+            :placeholder="$store.state.translations['main.sorting']"
             style="width: 252px"
             @change="filterChange"
           >
@@ -143,8 +143,7 @@ export default {
         prevEl: ".swiper-button-prev-comparison",
       },
     });
-    swiper.on("activeIndexChange", (swiper) => {
-    });
+    swiper.on("activeIndexChange", (swiper) => {});
   },
   methods: {
     async deleteAll() {

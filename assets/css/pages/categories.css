@@ -106,7 +106,8 @@
   font-size: 16px;
   line-height: 24px;
   color: #353437;
-  /* margin-bottom: 24px; */
+
+  margin-bottom: 24px;
 }
 .categories-page-info p,
 .categories-page-info span {

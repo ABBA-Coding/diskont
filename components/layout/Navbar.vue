@@ -417,38 +417,50 @@
               </div>
             </div>
             <div class="catalog-menu-content mobile_categories">
-              <div
-                v-if="currentCategory"
-                class="category_drop cuurent-box"
-                v-for="category in categories.filter(
-                  (item) => item.id == currentCategory
-                )"
-                :key="category?.id"
-              >
+              <div v-if="currentCategory" class="category_drop cuurent-box">
                 <h4
-                  @click="dropAction(category?.id)"
+                  @click="
+                    dropAction(
+                      categories.find((elem) => elem?.id == currentCategory?.parent_id)
+                    )
+                  "
                   class="current-category"
-                  :class="{
-                    'catalog-menu-list-active': activeDrop.includes(category?.id),
-                  }"
                 >
                   <span v-html="dropArrow" class="rotate90 back-svg"></span>
                   <p class="category-name">
-                    <img v-if="category?.md_icon" :src="category?.md_icon" alt="" />
+                    <img
+                      v-if="currentCategory?.md_icon"
+                      :src="currentCategory?.md_icon"
+                      alt=""
+                    />
                     <span
                       class="mx-0"
-                      v-if="category?.icon_svg"
-                      v-html="category?.icon_svg"
+                      v-if="currentCategory?.icon_svg"
+                      v-html="currentCategory?.icon_svg"
                     ></span
-                    >{{ category?.name }}
+                    >{{ currentCategory?.name }}
                   </p>
                 </h4>
                 <ul class="category-drop-board mt-0" :class="{ 'height-auto': true }">
                   <div class="mt-3">
-                    <li v-for="childCat in category.children" :key="childCat?.id">
-                      <nuxt-link :to="localePath(`/categories/${childCat?.slug}`)">{{
-                        childCat?.name
-                      }}</nuxt-link>
+                    <li v-for="childCat in currentCategory.children" :key="childCat?.id">
+                      <h5
+                        @click="dropAction(childCat)"
+                        v-if="childCat?.children?.length > 0"
+                      >
+                        {{ childCat?.name }}
+                      </h5>
+                      <nuxt-link
+                        v-else
+                        :to="
+                          localePath(
+                            currentCategory?.parent_id
+                              ? `/categories-inner/${childCat?.slug}`
+                              : `/categories/${childCat?.slug}`
+                          )
+                        "
+                        >{{ childCat?.name }}</nuxt-link
+                      >
                     </li>
                   </div>
                 </ul>
@@ -459,14 +471,11 @@
                 v-for="category in categories"
                 :key="category?.id"
               >
-                <h4
-                  @click="dropAction(category?.id)"
-             
-                >
+                <h4 @click="dropAction(category)">
                   <p class="category-name">
                     <img v-if="category?.md_icon" :src="category?.md_icon" alt="" />
                     <span
-                      class="mx-0 "
+                      class="mx-0"
                       v-if="category?.icon_svg"
                       v-html="category?.icon_svg"
                     ></span
@@ -590,12 +599,13 @@ export default {
     }
   },
   methods: {
-    dropAction(id) {
-      if (this.currentCategory != id) {
-        this.currentCategory = id;
+    dropAction(obj) {
+      if (this.currentCategory?.id != obj?.id && obj?.id) {
+        this.currentCategory = { ...obj };
       } else {
         this.currentCategory = null;
       }
+      console.log("val", this.currentCategory);
     },
     clearSearchResoults() {
       localStorage.setItem("search_resoults", JSON.stringify([]));
@@ -689,7 +699,7 @@ export default {
         document.body.style.height = "100vh";
         document.body.style.overflow = "hidden";
       } else {
-      this.currentCategory = null
+        this.currentCategory = null;
 
         document.body.style.height = "auto";
         document.body.style.overflow = "auto";
@@ -711,8 +721,8 @@ export default {
   position: absolute;
   left: 10px;
 }
-.back-svg svg{
-width: 15px;
+.back-svg svg {
+  width: 15px;
 }
 .rotate90 {
   transform: rotate(90deg);
@@ -746,7 +756,8 @@ width: 15px;
   gap: 20px;
   margin-left: 12px;
 }
-.category-drop-board a {
+.category-drop-board a,
+.category-drop-board h5 {
   color: #00162c;
   font-family: var(--SB_400);
   font-size: 16px;
@@ -1249,6 +1260,7 @@ width: 15px;
   .menu-scroll {
     height: calc(100vh - 164px);
     overflow: scroll;
+    background-color: #fff;
   }
   .catalog-menu-body {
     padding: 0 12px;

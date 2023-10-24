@@ -34,7 +34,7 @@
         <div class="stock-page__info" v-html="promotion?.desc"></div>
       </div>
       <div class="d-flex justify-content-between align-items-end">
-        <ProductListTitle title="Aksiyadagi mahsulotlar" />
+        <ProductListTitle :title="$store.state.translations['main.promotion-products']" />
       </div>
       <div class="categories-products categories-page-inner-grid">
         <div class="categories-filter-list d-block">
@@ -153,7 +153,7 @@ import moment from "moment";
 export default {
   data() {
     return {
-      activeDrop: false,
+      activeDrop: true,
       dropArrow: `<svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="14"
@@ -182,6 +182,7 @@ export default {
     ]);
     const promotion = promotionsData?.promotion;
     const allCategories = promotionsData?.categories;
+    console.log(promotion);
     setTimeout(() => {
       store.commit("loaderHandler", false);
     },0)

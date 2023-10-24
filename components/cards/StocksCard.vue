@@ -98,6 +98,7 @@ export default {
   font-size: 14px;
   line-height: 17px;
   margin-top: 7px;
+  white-space: nowrap;
 }
 
 .stocks-card-type {

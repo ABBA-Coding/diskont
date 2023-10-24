@@ -445,8 +445,8 @@ export default {
     align-items: center;
     justify-content: center;
   }
-  .payment-types img {
+  /* .payment-types img {
     width: 80px !important;
-  }
+  } */
 }
 </style>
