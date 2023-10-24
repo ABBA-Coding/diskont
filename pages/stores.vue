@@ -80,12 +80,16 @@ export default {
     };
   },
   async asyncData({ store, i18n }) {
+    store.commit("loaderHandler", true);
     const branchesData = await store.dispatch("fetchBranches/getBranches", {
       headers: {
         lang: i18n.locale,
       },
     });
     const branches = branchesData.branches;
+    setTimeout(() => {
+      store.commit("loaderHandler", false);
+    },0)
     return {
       branches,
     };

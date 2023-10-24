@@ -360,6 +360,8 @@ export default {
     };
   },
   async asyncData({ store, i18n }) {
+    store.commit("loaderHandler", true);
+
     const [
       products,
       byCategory,
@@ -429,6 +431,10 @@ export default {
     const posts = posts1?.posts?.data;
     const showcases = showcasesData.showcases;
     const banners = bannersData?.banners?.data;
+    setTimeout(() => {
+      store.commit("loaderHandler", false);
+    },0)
+
     return {
       bestsellersProducts,
       byCategoryProducts,

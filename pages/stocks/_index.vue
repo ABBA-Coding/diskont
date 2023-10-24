@@ -178,6 +178,7 @@ export default {
     };
   },
   async asyncData({ store, route, i18n }) {
+    store.commit("loaderHandler", true);
     const [promotionsData, bannersData] = await Promise.all([
       store.dispatch("fetchPromotions/getPromotions", {
         headers: {
@@ -192,7 +193,9 @@ export default {
     ]);
     const promotions = promotionsData?.promotions?.data;
     const banners = bannersData?.banners?.data;
-
+    setTimeout(() => {
+      store.commit("loaderHandler", false);
+    },0)
     return {
       promotions,
       banners,

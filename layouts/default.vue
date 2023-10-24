@@ -187,6 +187,9 @@
         </svg>
       </div>
     </a-back-top>
+    <div class="loader-container d-flex justify-content-center align-items-center" v-if="$store.state.loader">
+      <span class="loader"></span>
+    </div>
   </div>
 </template>
 
@@ -211,6 +214,7 @@ export default {
       region: "",
       country: "",
       errorMessage: "",
+      loader: false
     };
   },
   head() {
@@ -320,6 +324,7 @@ export default {
   },
   watch: {
     async targetLang() {
+      this.loader = true
       const [translationsData] = await Promise.all([
         this.$store.dispatch("fetchTranslations/getTranslations", {
           headers: {
@@ -327,7 +332,7 @@ export default {
           },
         }),
       ]);
-      this.$store.dispatch("siteInfo", {
+      await this.$store.dispatch("siteInfo", {
         params: {
           lat: this.locations?.lat,
           lon: this.locations?.lng,
@@ -337,6 +342,8 @@ export default {
         },
       });
       this.$store.commit("getTranslations", translationsData?.translates);
+      this.loader = false
+
     },
     buyToast(val) {
       if (val) {
@@ -380,6 +387,60 @@ export default {
 };
 </script>
 <style lang="css" scoped>
+.loader-container {
+  height: 100vh;
+  width: 100%;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+}
+.loader {
+  width: 48px;
+  height: 48px;
+  display: block;
+  margin:15px auto;
+  position: relative;
+  color: #FFF;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after,
+.loader::before {
+  content: '';  
+  box-sizing: border-box;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 0;
+  background-color: #1F8A70;
+  border-radius: 50%;
+  animation: scale50 1s infinite ease-in-out;
+}
+.loader::before {
+  top: auto;
+  bottom: 0;
+  background-color: var(--color_green);
+  animation-delay: 0.5s;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
+@keyframes scale50 {
+  0%, 100% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+} 
 .bounce-toast-enter-active {
   animation: bounce-toast-in 0.5s;
 }

@@ -57,6 +57,7 @@ export default {
     };
   },
   async asyncData({ store, params, i18n }) {
+    store.commit("loaderHandler", true);
     const [postData] = await Promise.all([
       store.dispatch("fetchPosts/getPostsBySlug", {
         id: params.index,
@@ -69,6 +70,9 @@ export default {
     ]);
     const post = postData?.post;
     const posts = postData?.other_posts;
+    setTimeout(() => {
+      store.commit("loaderHandler", false);
+    },0)
     return {
       post,
       posts,

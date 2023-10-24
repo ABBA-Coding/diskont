@@ -48,6 +48,7 @@
 <script>
 export default {
   async asyncData({ store, i18n }) {
+    store.commit("loaderHandler", true);
     const [categoriesData] = await Promise.all([
       store.dispatch("fetchCategories/getCategories", {
         headers: {
@@ -56,6 +57,9 @@ export default {
       }),
     ]);
     const categories = categoriesData?.data;
+    setTimeout(() => {
+      store.commit("loaderHandler", false);
+    },0)
     return {
       categories,
     };

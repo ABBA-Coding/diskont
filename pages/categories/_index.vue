@@ -14,7 +14,7 @@
               <div
                 class="child-categories-list"
                 v-if="
-                  category?.slug == $route.params.index && category?.children.length > 0
+                  category?.slug == $route.params.index && category?.children?.length > 0
                 "
               >
                 <!-- <span
@@ -104,10 +104,12 @@ export default {
       arrow: require("../../assets/svg/dropdown-icon.svg?raw"),
       loading: false,
       allCategories: false,
+      categories: [],
       //   categoryChilds: [],
     };
   },
   async asyncData({ $axios, params, store, i18n }) {
+    store.commit("loaderHandler", true);
     const [categoriesData, productsData] = await Promise.all([
       $axios.$get(`/categories`, {
         params: {
@@ -134,6 +136,9 @@ export default {
     const categories = categoriesData?.data;
     const categoryChilds = categoryChildsData?.category;
     const products = productsData?.products?.data;
+    setTimeout(() => {
+      store.commit("loaderHandler", false);
+    },0)
     return {
       categories,
       categoryChilds,

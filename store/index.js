@@ -10,6 +10,7 @@ export const state = () => ({
   locations: {},
   siteInfo: {},
   modal: false,
+  loader: false,
 });
 
 export const mutations = {
@@ -18,6 +19,9 @@ export const mutations = {
   },
   openModal(state, payload) {
     state.modal = payload;
+  },
+  loaderHandler(state, payload) {
+    state.loader = payload;
   },
   getLocations(state, payload) {
     state.locations = payload;

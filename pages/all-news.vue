@@ -55,6 +55,7 @@ export default {
     };
   },
   async asyncData({ store, i18n, query }) {
+    store.commit("loaderHandler", true);
     const [posts1] = await Promise.all([
       store.dispatch("fetchPosts/getPosts", {
         params: {
@@ -67,6 +68,9 @@ export default {
     ]);
     const posts = posts1?.posts?.data;
     const totalPage = posts1?.posts?.total;
+    setTimeout(() => {
+      store.commit("loaderHandler", false);
+    },0)
     return {
       posts,
       totalPage,

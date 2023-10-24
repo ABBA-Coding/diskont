@@ -54,10 +54,14 @@ export default {
     };
   },
   async asyncData({ store, params, i18n }) {
+    store.commit("loaderHandler", true);
     const [brandsData] = await Promise.all([store.dispatch("fetchBrands/getBrands")]);
     let brands = [...brandsData.brands];
     let brandsAll = brandsData.brands;
     brands = [...brandsData.brands];
+    setTimeout(() => {
+      store.commit("loaderHandler", false);
+    },0)
     return {
       brandsAll,
       brands,

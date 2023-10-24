@@ -283,6 +283,7 @@ export default {
     };
   },
   async asyncData({ params, query, store, i18n }) {
+    store.commit("loaderHandler", true);
     const [showcasesData] = await Promise.all([
       store.dispatch("fetchShowcases/getShowcasesBySlug", {
         slug: params.slug,
@@ -295,6 +296,9 @@ export default {
       }),
     ]);
     const showcases = showcasesData?.showcase;
+    setTimeout(() => {
+      store.commit("loaderHandler", false);
+    },0)
     return {
       showcases,
     };

@@ -543,6 +543,7 @@ export default {
     };
   },
   async asyncData({ $axios, store, i18n }) {
+    store.commit("loaderHandler", true);
     const [faqData] = await Promise.all([
       store.dispatch("fetchFaqs/getFaq", {
         headers: {
@@ -551,6 +552,9 @@ export default {
       }),
     ]);
     const faqs = faqData?.faq;
+    setTimeout(() => {
+      store.commit("loaderHandler", false);
+    },0)
     return {
       faqs,
     };

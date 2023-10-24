@@ -767,6 +767,7 @@ export default {
     };
   },
   async asyncData({ $axios, params, query, store, i18n }) {
+    store.commit("loaderHandler", true);
     const [
       productsData,
       allCategoriesData,
@@ -794,6 +795,9 @@ export default {
       }),
       $axios.$get(`/categories/${params.index}`, {
         params: { ...query, limit: 1 },
+        headers: {
+          lang: i18n.locale,
+        },
       }),
     ]);
     const productsOthers = productsData?.products?.data;
@@ -815,6 +819,9 @@ export default {
       });
     }
     const allInfo = categoryData;
+    setTimeout(() => {
+      store.commit("loaderHandler", false);
+    },0)
     return {
       productsOthers,
       allCategories,

@@ -432,7 +432,7 @@
                     'catalog-menu-list-active': activeDrop.includes(category?.id),
                   }"
                 >
-                  <span v-html="dropArrow" class="rotate90"></span>
+                  <span v-html="dropArrow" class="rotate90 back-svg"></span>
                   <p class="category-name">
                     <img v-if="category?.md_icon" :src="category?.md_icon" alt="" />
                     <span
@@ -654,7 +654,6 @@ export default {
   watch: {
     categoryVisible() {
       this.catalogMenu = true;
-      console.log("siuuuuu");
     },
     search(val) {
       if (val.length > 2) {
@@ -690,6 +689,8 @@ export default {
         document.body.style.height = "100vh";
         document.body.style.overflow = "hidden";
       } else {
+      this.currentCategory = null
+
         document.body.style.height = "auto";
         document.body.style.overflow = "auto";
       }
@@ -709,6 +710,9 @@ export default {
 .current-category span {
   position: absolute;
   left: 10px;
+}
+.back-svg svg{
+width: 15px;
 }
 .rotate90 {
   transform: rotate(90deg);

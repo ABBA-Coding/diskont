@@ -221,6 +221,7 @@ export default {
     };
   },
   async asyncData({ store, params, i18n }) {
+    store.commit("loaderHandler", true);
     const [brandsData, brandData] = await Promise.all([
       store.dispatch("fetchBrands/getBrands"),
       store.dispatch("fetchBrands/getBrandsBySlug", {
@@ -237,6 +238,9 @@ export default {
     brands = [...brandsData.brands];
     brands = [...brands.splice(0, 6)];
     let brand = brandData.brand;
+    setTimeout(() => {
+      store.commit("loaderHandler", false);
+    },0)
     return {
       brandsAll,
       brands,
