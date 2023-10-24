@@ -230,7 +230,7 @@
   height: 48px;
   background-color: #fff;
   width: 100%;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   font-family: var(--SF_500);
@@ -293,6 +293,9 @@
 @media (max-width: 576px) {
   .personal-info-card {
     border: none;
+  }
+  .profile-edit-btn {
+    display: flex;
   }
   .personal-info-card-header {
     padding: 0;
