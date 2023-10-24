@@ -1,8 +1,8 @@
 <template lang="html">
   <div class="layout-back">
-    <Header :categoryVisible="categoryVisible"/>
+    <Header :categoryVisible="categoryVisible" />
     <Nuxt />
-    <MobileBottomBar @openCategory="openCategory"/>
+    <MobileBottomBar @openCategory="openCategory" />
     <Footer />
     <Transition name="bounce-toast">
       <Vnotification
@@ -233,7 +233,7 @@ export default {
         },
         {
           name: "theme-color",
-          content: '#09454f',
+          content: "#09454f",
         },
       ],
       link: [
@@ -297,7 +297,7 @@ export default {
   },
   methods: {
     openCategory() {
-      this.categoryVisible = !this.categoryVisible
+      this.categoryVisible = !this.categoryVisible;
     },
     toastClose() {
       this.buyToast = false;

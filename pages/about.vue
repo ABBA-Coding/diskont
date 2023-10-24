@@ -581,6 +581,10 @@ export default {
 };
 </script>
 <style lang="css" scoped>
+.block1-card svg {
+  width: 24px;
+  min-width: 24px;
+}
 .about-page {
   padding-top: 40px;
   padding-bottom: 120px;
@@ -921,6 +925,7 @@ export default {
     gap: 24px;
     flex-wrap: nowrap;
     overflow-x: scroll;
+    justify-content: start;
   }
   .banner {
     height: 124px;

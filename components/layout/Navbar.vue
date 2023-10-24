@@ -418,16 +418,21 @@
             </div>
             <div class="catalog-menu-content mobile_categories">
               <div
-                class="category_drop"
-                v-for="category in categories"
+                v-if="currentCategory"
+                class="category_drop cuurent-box"
+                v-for="category in categories.filter(
+                  (item) => item.id == currentCategory
+                )"
                 :key="category?.id"
               >
                 <h4
                   @click="dropAction(category?.id)"
+                  class="current-category"
                   :class="{
                     'catalog-menu-list-active': activeDrop.includes(category?.id),
                   }"
                 >
+                  <span v-html="dropArrow" class="rotate90"></span>
                   <p class="category-name">
                     <img v-if="category?.md_icon" :src="category?.md_icon" alt="" />
                     <span
@@ -437,15 +442,8 @@
                     ></span
                     >{{ category?.name }}
                   </p>
-                  <span
-                    v-html="dropArrow"
-                    :class="{ rotate180: activeDrop.includes(category?.id) }"
-                  ></span>
                 </h4>
-                <ul
-                  class="category-drop-board mt-0"
-                  :class="{ 'height-auto': activeDrop.includes(category?.id) }"
-                >
+                <ul class="category-drop-board mt-0" :class="{ 'height-auto': true }">
                   <div class="mt-3">
                     <li v-for="childCat in category.children" :key="childCat?.id">
                       <nuxt-link :to="localePath(`/categories/${childCat?.slug}`)">{{
@@ -454,6 +452,28 @@
                     </li>
                   </div>
                 </ul>
+              </div>
+              <div
+                v-if="!currentCategory"
+                class="category_drop"
+                v-for="category in categories"
+                :key="category?.id"
+              >
+                <h4
+                  @click="dropAction(category?.id)"
+             
+                >
+                  <p class="category-name">
+                    <img v-if="category?.md_icon" :src="category?.md_icon" alt="" />
+                    <span
+                      class="mx-0 "
+                      v-if="category?.icon_svg"
+                      v-html="category?.icon_svg"
+                    ></span
+                    >{{ category?.name }}
+                  </p>
+                  <span v-html="dropArrow" class="rotatem90"></span>
+                </h4>
               </div>
             </div>
             <div class="close-space" @click="catalogMenu = false"></div>
@@ -487,7 +507,7 @@ import Vnotification from "../vnotification.vue";
 import AuthModals from "./AuthModals.vue";
 export default {
   name: "Navbar",
-  props: ['categoryVisible'],
+  props: ["categoryVisible"],
   data() {
     return {
       locales: [
@@ -523,6 +543,7 @@ export default {
       searchProducts: [],
       searchCategories: [],
       activeCategory: null,
+      currentCategory: null,
       targetPage: false,
       searchResoults: [],
       activeDrop: [],
@@ -570,10 +591,10 @@ export default {
   },
   methods: {
     dropAction(id) {
-      if (this.activeDrop.includes(id)) {
-        this.activeDrop = this.activeDrop.filter((item) => item != id);
+      if (this.currentCategory != id) {
+        this.currentCategory = id;
       } else {
-        this.activeDrop.push(id);
+        this.currentCategory = null;
       }
     },
     clearSearchResoults() {
@@ -632,8 +653,8 @@ export default {
   },
   watch: {
     categoryVisible() {
-this.catalogMenu = true;
-console.log('siuuuuu');
+      this.catalogMenu = true;
+      console.log("siuuuuu");
     },
     search(val) {
       if (val.length > 2) {
@@ -681,6 +702,20 @@ console.log('siuuuuu');
 /* .nav-icons svg path {
   fill: var(--color_green);
 } */
+.cuurent-box {
+  padding-left: 16px;
+}
+
+.current-category span {
+  position: absolute;
+  left: 10px;
+}
+.rotate90 {
+  transform: rotate(90deg);
+}
+.rotatem90 {
+  transform: rotate(-90deg);
+}
 .category-name {
   display: flex;
   gap: 7px;
@@ -715,6 +750,7 @@ console.log('siuuuuu');
   line-height: 20px; /* 125% */
   letter-spacing: 0.2px;
 }
+
 .category_drop h4 {
   display: flex;
   justify-content: space-between;
@@ -1238,6 +1274,13 @@ console.log('siuuuuu');
 @media screen and (max-width: 576px) {
   .search_input_container {
     width: 100%;
+  }
+  .vmodal-anim-header h5 {
+    font-size: 24px;
+    width: 100%;
+  }
+  .vmodal-anim-header {
+    height: 200px;
   }
 }
 </style>

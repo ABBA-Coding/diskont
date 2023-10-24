@@ -103,7 +103,7 @@
     bottom: 78px;
     left: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 120;
     margin-bottom: 0;
   }
   .tag {
@@ -116,5 +116,10 @@
   }
   .dis__txt {
     display: none;
+  }
+}
+@media (max-width: 576px) {
+  .cardo {
+    padding: 14px 16px;
   }
 }

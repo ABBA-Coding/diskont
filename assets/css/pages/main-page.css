@@ -6,11 +6,6 @@
 .product_container {
   padding-bottom: 118px;
 }
-.category-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-gap: 21px;
-}
 
 .to-page-underline {
   font-family: var(--SB_400);
@@ -196,6 +191,9 @@
 @media (max-width: 576px) {
   .home-banner-container {
     grid-template-columns: 1fr;
+  }
+  .home-categories {
+    margin-bottom: 40px !important;
   }
   .product-grid {
     grid-template-columns: repeat(2, 1fr);

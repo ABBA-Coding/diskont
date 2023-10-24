@@ -25,7 +25,7 @@
       </div>
       <div class="home-categories mb-120">
         <MainTitle :title="$store.state.translations[`main.categories`]" />
-        <div>
+        <div class="category-grid-web">
           <HomeCategoryCarousel>
             <div
               class="swiper-slide"
@@ -35,13 +35,14 @@
               <HomeCategoryCard :category="category" /></div
           ></HomeCategoryCarousel>
         </div>
-        <!-- <div class="category-grid">
+        <div class="category-grid">
           <HomeCategoryCard
+            class="mobile-categories-items"
             v-for="(category, index) in categories"
             :key="category.id"
             :category="category"
           />
-        </div> -->
+        </div>
       </div>
     </div>
     <div class="container_xl product_container" v-if="showcases[0]">
@@ -486,6 +487,19 @@ export default {
 </script>
 <style>
 @import "../assets/css/pages/main-page.css";
+.category-grid {
+  display: none;
+  justify-content: start;
+  gap: 12px;
+  overflow-x: scroll;
+}
+.category-grid::-webkit-scrollbar {
+  display: none;
+}
+.mobile-categories-items {
+  width: 110px;
+  min-width: 110px;
+}
 
 .banner-carousel .banner {
   width: 100%;
@@ -512,6 +526,15 @@ export default {
   .grid-banner-card-1,
   .grid-banner-card-2 {
     display: none !important;
+  }
+}
+@media (max-width: 576px) {
+
+  .category-grid {
+    display: flex;
+  }
+  .category-grid-web {
+    display: none;
   }
 }
 </style>

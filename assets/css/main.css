@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Lato:wght@300;400;700;900&family=Mulish:wght@200;300;400;500;600;700;800&display=swap");
+@import "./components/form.css";
+@import "@/assets/css/layouts/layout.css";
+
 @font-face {
   font-family: "SB_400";
   src: url("../fonts/SB_SANS/SB SANS TEXT.TTF"); /* IE9*/
@@ -711,9 +714,7 @@ body::-webkit-scrollbar-thumb {
   .home-categories .container_xl {
     padding: 0;
   }
-  .home-categories {
-    margin-bottom: 40px;
-  }
+
   .posts-carousel .swiper-button-prev-posts,
   .posts-carousel .swiper-button-next-posts {
     display: none !important;
@@ -741,9 +742,7 @@ body::-webkit-scrollbar-thumb {
     font-size: 20px;
     line-height: 150%;
   }
-  .reviews__right {
-    min-width: 100% !important;
-  }
+
   .comments-empty img {
     width: 180px;
   }
@@ -753,6 +752,4 @@ body::-webkit-scrollbar-thumb {
     display: none !important;
   }
 }
-.reviews__right {
-  min-width: 390px;
-}
+

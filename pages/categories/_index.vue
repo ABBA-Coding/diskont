@@ -113,6 +113,9 @@ export default {
         params: {
           limit: 10,
         },
+        headers: {
+          lang: i18n.locale,
+        },
       }),
       store.dispatch("fetchProducts/getProducts", {
         params: { limit: 12 },
@@ -122,9 +125,11 @@ export default {
       }),
     ]);
     const [categoryChildsData] = await Promise.all([
-      $axios.$get(
-        `/categories/${params.index == 1 ? categoriesData?.data[0]?.slug : params.index}`
-      ),
+      $axios.$get(`/categories/${params.index}`, {
+        headers: {
+          lang: i18n.locale,
+        },
+      }),
     ]);
     const categories = categoriesData?.data;
     const categoryChilds = categoryChildsData?.category;

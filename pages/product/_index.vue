@@ -374,7 +374,7 @@
           <div class="world" v-show="skeleton">
             <div thumbsSlider="" class="swiper mySwiper11">
               <div class="swiper-wrapper flex-column">
-                <div class="swiper-slide" v-for="img in [1, 2, 3, 4]" :key="img">
+                <div class="swiper-slide w-100" v-for="img in [1, 2, 3, 4]" :key="img">
                   <b-skeleton height="100%" width="100%"></b-skeleton>
                 </div>
               </div>
@@ -2730,8 +2730,13 @@ tbody .img {
   pointer-events: none;
   border: none;
 }
-
+.reviews__right {
+  min-width: 390px;
+}
 @media screen and (max-width: 1024px) {
+  .reviews__right {
+    min-width: 100% !important;
+  }
   .spec__wrap_item {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -2816,6 +2821,7 @@ tbody .img {
     font-weight: 500;
     line-height: 16px;
     margin: 0;
+    color: #020105;
   }
   .delivery,
   .coin {
@@ -2829,7 +2835,7 @@ tbody .img {
   .buttons {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
   }
   .cart {
     margin-bottom: 0;
@@ -2852,6 +2858,7 @@ tbody .img {
     font-size: 14px;
     background-color: var(--color_green);
     color: #fff;
+    font-family: var(--SB_400);
   }
   .order {
     padding: 0;
@@ -2942,7 +2949,11 @@ tbody .img {
   .comment-modal-btns_web {
     display: none
   }
-  .image-modal-container {
+  .cardo .price {
+    font-size: 13px;
+font-family: var(--SB_500);
+    color: #020105;
+  }  .image-modal-container {
     max-width: 100%;
   }
 }

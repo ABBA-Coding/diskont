@@ -44,7 +44,7 @@
     </div>
     <div class="position-relative">
       <span style="z-index: 3; position: relative" ref="navScroll3">
-        <Navbar :categoryVisible="categoryVisible"/>
+        <Navbar :categoryVisible="categoryVisible" />
       </span>
       <span style="z-index: 1; position: relative" ref="navScrollSearch">
         <MobileSearch />
@@ -62,7 +62,7 @@ import Navbar from "./Navbar.vue";
 import MobileSearch from "./MobileSearch.vue";
 
 export default {
-  props: ['categoryVisible'],
+  props: ["categoryVisible"],
   data() {
     return {
       locales: [
@@ -96,7 +96,7 @@ export default {
 
     window.addEventListener("scroll", () => {
       let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      if (scrollTop > this.lastScrollTop) {
+      if (scrollTop > this.lastScrollTop && document.documentElement.scrollTop >= 300) {
         if (window.innerWidth > 576) {
           header.style.top = `-${headerTop.offsetHeight + testMode.offsetHeight}px`;
         }

@@ -29,7 +29,7 @@ export default {
   },
 
   css: [
-    "@/assets/css/app.css",
+    // "@/assets/css/app.css",
     "ant-design-vue/dist/antd.css",
     "@/assets/css/main.css",
     "aos/dist/aos.css",
