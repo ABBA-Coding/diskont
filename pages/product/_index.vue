@@ -1342,37 +1342,37 @@
           <p>{{ $store.state.translations["product.your-rating"] }}:</p>
           <div class="d-flex justify-content-center">
             <a-rate v-model="formComment.stars">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="13"
-              height="12"
-              viewBox="0 0 13 12"
-              fill="none"
-            >
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M6.80942 0.293887L8.35342 3.39989C8.43075 3.55655 8.58009 3.66589 8.75342 3.69122L12.2101 4.19055C12.3501 4.20922 12.4761 4.28255 12.5621 4.39455C12.7234 4.60455 12.6988 4.90189 12.5054 5.08255L10.0001 7.50522C9.87275 7.62522 9.81609 7.80122 9.84942 7.97255L10.4494 11.3912C10.4914 11.6746 10.2981 11.9399 10.0148 11.9859C9.89742 12.0039 9.77742 11.9852 9.67075 11.9326L6.59209 10.3186C6.43742 10.2346 6.25209 10.2346 6.09742 10.3186L2.99609 11.9412C2.73675 12.0732 2.41942 11.9752 2.27809 11.7212C2.22409 11.6186 2.20542 11.5019 2.22409 11.3879L2.82409 7.96922C2.85409 7.79855 2.79742 7.62322 2.67342 7.50255L0.154753 5.08055C-0.0505808 4.87655 -0.0519141 4.54455 0.152753 4.33922C0.153419 4.33855 0.154086 4.33722 0.154753 4.33655C0.239419 4.25989 0.343419 4.20855 0.456086 4.18855L3.91342 3.68922C4.08609 3.66189 4.23475 3.55389 4.31342 3.39722L5.85609 0.293887C5.91809 0.167887 6.02809 0.0712201 6.16142 0.0272201C6.29542 -0.0174466 6.44209 -0.00677988 6.56809 0.0565534C6.67142 0.107887 6.75609 0.19122 6.80942 0.293887Z"
-                solid="red"
-                fill="red"
-                stroke="red"
-              />
-            </svg>
-          </a-rate>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="13"
+                height="12"
+                viewBox="0 0 13 12"
+                fill="none"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M6.80942 0.293887L8.35342 3.39989C8.43075 3.55655 8.58009 3.66589 8.75342 3.69122L12.2101 4.19055C12.3501 4.20922 12.4761 4.28255 12.5621 4.39455C12.7234 4.60455 12.6988 4.90189 12.5054 5.08255L10.0001 7.50522C9.87275 7.62522 9.81609 7.80122 9.84942 7.97255L10.4494 11.3912C10.4914 11.6746 10.2981 11.9399 10.0148 11.9859C9.89742 12.0039 9.77742 11.9852 9.67075 11.9326L6.59209 10.3186C6.43742 10.2346 6.25209 10.2346 6.09742 10.3186L2.99609 11.9412C2.73675 12.0732 2.41942 11.9752 2.27809 11.7212C2.22409 11.6186 2.20542 11.5019 2.22409 11.3879L2.82409 7.96922C2.85409 7.79855 2.79742 7.62322 2.67342 7.50255L0.154753 5.08055C-0.0505808 4.87655 -0.0519141 4.54455 0.152753 4.33922C0.153419 4.33855 0.154086 4.33722 0.154753 4.33655C0.239419 4.25989 0.343419 4.20855 0.456086 4.18855L3.91342 3.68922C4.08609 3.66189 4.23475 3.55389 4.31342 3.39722L5.85609 0.293887C5.91809 0.167887 6.02809 0.0712201 6.16142 0.0272201C6.29542 -0.0174466 6.44209 -0.00677988 6.56809 0.0565534C6.67142 0.107887 6.75609 0.19122 6.80942 0.293887Z"
+                  solid="red"
+                  fill="red"
+                  stroke="red"
+                />
+              </svg>
+            </a-rate>
           </div>
         </div>
-      <div class="comment-btn-container">
-        <div class="comment-btn comment-btn-close" @click="visibleComment = false">
-          {{ $store.state.translations["product.close"] }}
+        <div class="comment-btn-container">
+          <div class="comment-btn comment-btn-close" @click="visibleComment = false">
+            {{ $store.state.translations["product.close"] }}
+          </div>
+          <div
+            class="comment-btn"
+            :class="{ disabled: !formComment.stars }"
+            @click="submitComment()"
+          >
+            {{ $store.state.translations["product.send-comment"] }}
+          </div>
         </div>
-        <div
-          class="comment-btn"
-          :class="{ disabled: !formComment.stars }"
-          @click="submitComment()"
-        >
-          {{ $store.state.translations["product.send-comment"] }}
-        </div>
-      </div>
       </div>
       <template slot="footer"> <h3></h3></template>
     </a-modal>
@@ -1432,6 +1432,7 @@ import moment from "moment";
 export default {
   name: "DiscontSlug",
   head() {
+    const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true });
     return {
       title: this.product.name,
 
@@ -1452,7 +1453,7 @@ export default {
         {
           hid: "og-description",
           property: "og:description",
-          content: this.product.info?.desc,
+          content: this.product.info?.desc?.replaceAll("<p>", "")?.replaceAll("</p>", ""),
         },
         { hid: "og-type", property: "og:type", content: "website" },
         {
@@ -1465,6 +1466,15 @@ export default {
           property: "og:image",
           content: this.product?.images ? this.product?.images[0]?.md_img : "",
         },
+        ...i18nHead.meta,
+      ],
+      link: [
+        {
+          rel: "icon",
+          type: "image/x-icon",
+          href: this.$store.state.siteInfo?.sm_favicon,
+        },
+        ...i18nHead.link,
       ],
     };
   },
@@ -1935,18 +1945,18 @@ export default {
 
 <style scoped>
 @import "../../assets/css/pages/product.css";
-.comment-modal-btns_mobile{
-display: none
+.comment-modal-btns_mobile {
+  display: none;
 }
 .comment-modal-btns_mobile .comment-rate {
-display: flex;
-flex-direction: column;
-align-items: start;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
 }
 .comment-btn-container {
   display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 15px;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
 }
 .swiper_thumb {
   transform: translate3d(0px, 0px, 0px) !important;
@@ -2947,13 +2957,14 @@ tbody .img {
     flex-direction: column;
   }
   .comment-modal-btns_web {
-    display: none
+    display: none;
   }
   .cardo .price {
     font-size: 13px;
-font-family: var(--SB_500);
+    font-family: var(--SB_500);
     color: #020105;
-  }  .image-modal-container {
+  }
+  .image-modal-container {
     max-width: 100%;
   }
 }

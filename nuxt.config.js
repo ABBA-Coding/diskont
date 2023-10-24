@@ -70,14 +70,14 @@ export default {
   i18n: {
     locales: [{
       code: 'en',
-      iso: 'en-US' // Will be used as catchall locale by default
+      iso: 'en' // Will be used as catchall locale by default
     },
     {
       code: 'uz',
-      iso: 'uz-UZ'
+      iso: 'uz'
     }, {
       code: 'ru',
-      iso: 'ru-RU'
+      iso: 'ru'
     }],
     baseURL: process.env.BASE_URL,
     seo: true,
