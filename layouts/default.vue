@@ -187,7 +187,10 @@
         </svg>
       </div>
     </a-back-top>
-    <div class="loader-container d-flex justify-content-center align-items-center" v-if="$store.state.loader">
+    <div
+      class="loader-container d-flex justify-content-center align-items-center"
+      v-if="$store.state.loader"
+    >
       <span class="loader"></span>
     </div>
   </div>
@@ -214,14 +217,15 @@ export default {
       region: "",
       country: "",
       errorMessage: "",
-      loader: false
+      loader: false,
     };
   },
   head() {
-    const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true })
+    const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true });
     return {
       htmlAttrs: {
         lang: this.$i18n.locale,
+        ...i18nHead.htmlAttrs,
       },
       meta: [
         {
@@ -240,6 +244,7 @@ export default {
           name: "theme-color",
           content: "#09454f",
         },
+        ...i18nHead.meta,
       ],
       link: [
         {
@@ -247,16 +252,8 @@ export default {
           type: "image/x-icon",
           href: this.$store.state.siteInfo?.sm_favicon,
         },
+        ...i18nHead.link,
       ],
-      link: [
-        {
-          hid: 'apple-touch-icon',
-          rel: 'apple-touch-icon',
-          sizes: '180x180',
-          href: '/apple-touch-icon.png'
-        },
-        ...i18nHead.link
-     ]
     };
   },
   async fetch() {
@@ -334,7 +331,7 @@ export default {
   },
   watch: {
     async targetLang() {
-      this.loader = true
+      this.loader = true;
       const [translationsData] = await Promise.all([
         this.$store.dispatch("fetchTranslations/getTranslations", {
           headers: {
@@ -352,8 +349,7 @@ export default {
         },
       });
       this.$store.commit("getTranslations", translationsData?.translates);
-      this.loader = false
-
+      this.loader = false;
     },
     buyToast(val) {
       if (val) {
@@ -410,21 +406,21 @@ export default {
   width: 48px;
   height: 48px;
   display: block;
-  margin:15px auto;
+  margin: 15px auto;
   position: relative;
-  color: #FFF;
+  color: #fff;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
 }
 .loader::after,
 .loader::before {
-  content: '';  
+  content: "";
   box-sizing: border-box;
   position: absolute;
   width: 24px;
   height: 24px;
   top: 0;
-  background-color: #1F8A70;
+  background-color: #1f8a70;
   border-radius: 50%;
   animation: scale50 1s infinite ease-in-out;
 }
@@ -442,15 +438,16 @@ export default {
   100% {
     transform: rotate(360deg);
   }
-} 
+}
 @keyframes scale50 {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(0);
   }
   50% {
     transform: scale(1);
   }
-} 
+}
 .bounce-toast-enter-active {
   animation: bounce-toast-in 0.5s;
 }

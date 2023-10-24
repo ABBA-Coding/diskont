@@ -112,9 +112,6 @@ export default {
     store.commit("loaderHandler", true);
     const [categoriesData, productsData] = await Promise.all([
       $axios.$get(`/categories`, {
-        params: {
-          limit: 10,
-        },
         headers: {
           lang: i18n.locale,
         },
