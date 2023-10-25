@@ -133,12 +133,12 @@
           <nuxt-img format="webp" src="/comments-empty.png" alt="" />
           <h4>{{ $store.state.translations["category.product-not-found"] }}</h4>
         </div>
-        <div class="categories-products-show-more" v-if="promotion?.products.length > 30">
+        <!-- <div class="categories-products-show-more" v-if="promotion?.products.length > 30">
           {{ $store.state.translations["main.show-more"] }} 44
-        </div>
-        <div class="products-pagination" v-if="promotion?.products.length > 30">
+        </div> -->
+        <!-- <div class="products-pagination" v-if="promotion?.products.length > 30">
           <a-pagination size="small" :default-current="6" :total="500" />
-        </div>
+        </div> -->
       </div>
       <!-- <div class="product-grid stock-page__products">
         <ProductCard v-for="product in products" :key="product.id" :product="product" />
@@ -182,6 +182,7 @@ export default {
     ]);
     const promotion = promotionsData?.promotion;
     const allCategories = promotionsData?.categories;
+    console.log(promotion);
     console.log(promotion);
     setTimeout(() => {
       store.commit("loaderHandler", false);
