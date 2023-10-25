@@ -20,11 +20,11 @@
           <p>
             {{ $store.state.translations["main.promotion-duration"] }}:
             <span
-              >{{ $store.state.translations["main.from"] }} {{ moment(promotion?.start_date).format("DD.MM") }}
+              >{{ $store.state.translations["main.from"] }}
+              {{ moment(promotion?.start_date).format("DD.MM") }}
               {{ $store.state.translations["main.until"] }}
               {{ moment(promotion?.end_date).format("DD.MM") }}
-             </span
-            >
+            </span>
           </p>
           <p>
             {{ $store.state.translations["main.promotions-stores"] }}:
@@ -186,7 +186,7 @@ export default {
     console.log(promotion);
     setTimeout(() => {
       store.commit("loaderHandler", false);
-    },0)
+    }, 0);
     return {
       promotion,
       allCategories,
@@ -197,28 +197,26 @@ export default {
       return this.$route.query?.category;
     },
   },
- 
 
   watch: {
-    async currentQuery(val,last) {
-      if(val != last) {
+    async currentQuery(val, last) {
+      if (val != last) {
         const [promotionsData] = await Promise.all([
-        this.$store.dispatch("fetchPromotions/getPromotionsBySlug", {
-          slug: this.$route.params.index,
-          params: {
+          this.$store.dispatch("fetchPromotions/getPromotionsBySlug", {
+            slug: this.$route.params.index,
             params: {
-              ...this.$route.query,
+              params: {
+                ...this.$route.query,
+              },
+              headers: {
+                lang: this.$i18n.locale,
+              },
             },
-            headers: {
-              lang: this.$i18n.locale,
-            },
-          },
-        }),
-      ]);
-      this.promotion = promotionsData?.promotion;
-      this.allCategories = promotionsData?.categories;
+          }),
+        ]);
+        this.promotion = promotionsData?.promotion;
+        this.allCategories = promotionsData?.categories;
       }
-    
     },
   },
   methods: {
@@ -296,7 +294,6 @@ export default {
   margin-bottom: 300px;
 }
 @media (max-width: 576px) {
-
   .stock-page__container {
     width: 100%;
   }
@@ -325,6 +322,10 @@ export default {
     font-size: 14px;
     font-weight: 400;
     line-height: 130%;
+  }
+  .stock-page__image {
+    height: 200px;
+    border-radius: 16px;
   }
 }
 @media (max-width: 512px) {
