@@ -86,6 +86,7 @@ export default {
         lang: i18n.locale,
       },
     });
+    // for server 
     const branches = branchesData.branches;
     setTimeout(() => {
       store.commit("loaderHandler", false);
