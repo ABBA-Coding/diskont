@@ -309,11 +309,17 @@ export default {
   .comparison-title .main-title {
     margin-bottom: 0 !important;
   }
-  .comp-delete {
-    display: none;
-  }
+
   .page-container-title span {
     margin-bottom: 2px !important;
+  }
+  .comparison-sort {
+    flex-direction: column;
+    align-items: start;
+    gap: 8px;
+  }
+  .comp-delete {
+    display: flex !important;
   }
 }
 .comparison-filter {
