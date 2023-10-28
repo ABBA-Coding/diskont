@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      TARGET_FOLDER: "/home/front/diskont"
+      TARGET_FOLDER: "/var/www/diskont/beta"
 
     steps:
     - uses: actions/checkout@v1
@@ -19,24 +19,24 @@ jobs:
     - name: GIT pulling from github repository
       uses: appleboy/scp-action@master
       with:
-        HOST: ${{ secrets.HOST }}
-        USERNAME: ${{ secrets.USERNAME }}
-        PORT: ${{ secrets.PORT }}
-        KEY: ${{ secrets.KEY }}
+        HOST: ${{ secrets.DISKONT_HOST }}
+        USERNAME: ${{ secrets.DISKONT_USERNAME }}
+        PORT: ${{ secrets.DISKONT_PORT }}
+        KEY: ${{ secrets.DISKONT_SECRET }}
         source: "."
         target: "${{ env.TARGET_FOLDER }}"
 
     - name: Command using from script
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.HOST }}
-        USERNAME: ${{ secrets.USERNAME }}
-        PORT: ${{ secrets.PORT }}
-        KEY: ${{ secrets.KEY }}
+        host: ${{ secrets.DISKONT_HOST }}
+        USERNAME: ${{ secrets.DISKONT_USERNAME }}
+        PORT: ${{ secrets.DISKONT_PORT }}
+        KEY: ${{ secrets.DISKONT_SECRET }}
         script_stop: true
         script: |
           git --work-tree="${{ env.TARGET_FOLDER }}" --git-dir="${{ env.TARGET_FOLDER }}/.git" clean -f .
           yarn --cwd "${{ env.TARGET_FOLDER }}"
           yarn --cwd "${{ env.TARGET_FOLDER }}" run build
-          pm2 reload diskont.uz
+          pm2 reload beta
           sh /home/devops/deploy.sh "${{ github.event.head_commit.message }}" "Beta.diskont.uz deploy"
