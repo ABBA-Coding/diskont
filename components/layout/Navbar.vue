@@ -289,6 +289,33 @@
         {{ $store.state.profile?.dicoin?.quantity }}
         {{ $store.state.translations["main.dicoin"] }}
       </div> -->
+      <a-dropdown :trigger="['click']">
+        <span class="mobile-lang ant-dropdown-link" @click="(e) => e.preventDefault()"
+          >Eng
+          <!-- <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="12"
+          height="12"
+          viewBox="0 0 20 12"
+          fill="none"
+        >
+          <path
+            d="M9.11612 10.8839C9.60427 11.372 10.3957 11.372 10.8839 10.8839L18.8388 2.92893C19.327 2.44078 19.327 1.64932 18.8388 1.16116C18.3507 0.67301 17.5592 0.67301 17.0711 1.16116L10 8.23223L2.92893 1.16117C2.44078 0.67301 1.64932 0.67301 1.16116 1.16117C0.67301 1.64932 0.67301 2.44078 1.16116 2.92893L9.11612 10.8839ZM8.75 9L8.75 10L11.25 10L11.25 9L8.75 9Z"
+            fill="black"
+          ></path></svg
+      >--></span
+        >
+        <a-menu slot="overlay" class="lang-menu">
+          <a-menu-item
+            v-for="locale in locales"
+            :class="{ active: $i18n.locale == locale.code }"
+            :key="locale.id"
+            @click="$router.push(switchLocalePath(locale.code))"
+          >
+            {{ locale.name }}
+          </a-menu-item>
+        </a-menu>
+      </a-dropdown>
     </div>
     <Transition duration="550" name="nested">
       <div class="catalog-menu-container outer" v-if="catalogMenu">
@@ -487,7 +514,7 @@
             </div>
             <div class="close-space" @click="catalogMenu = false"></div>
           </div>
-          <div class="mobile_lang">
+          <!-- <div class="mobile_lang">
             <div
               v-for="locale in locales"
               :class="{ active: $i18n.locale == locale.code }"
@@ -496,7 +523,7 @@
             >
               {{ locale.name }}
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </Transition>
@@ -710,6 +737,24 @@ export default {
 };
 </script>
 <style lang="css">
+.mobile-lang {
+  color: var(--color_green);
+  font-size: 16px;
+  font-family: var(--SB_600);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-right: 16px;
+}
+.lang-menu {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+.lang-menu .active {
+  color: var(--color_green) !important;
+  pointer-events: none;
+}
 /* .nav-icons svg path {
   fill: var(--color_green);
 } */

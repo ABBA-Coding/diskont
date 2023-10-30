@@ -17,8 +17,8 @@ import {
   // Radio,
   Icon,
   // Spin,
-  // Dropdown,
-  // Menu,
+  Dropdown,
+  Menu,
   // Layout,
   // TimePicker,
   // DatePicker,
@@ -67,5 +67,5 @@ Vue.use(Modal);
 Vue.use(Icon);
 Vue.use(Input);
 // Vue.use(Spin);
-// Vue.use(Dropdown);
-// Vue.use(Menu);
+Vue.use(Dropdown);
+Vue.use(Menu);
