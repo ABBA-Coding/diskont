@@ -538,8 +538,9 @@
                 v-for="product in products"
                 :key="product.id"
               >
-                <div class="checkout-info-product-card-img">
-                  <img :src="product.images[0].sm_img" alt="" />
+                <div class="checkout-info-product-card-img " >
+                  <img v-if="product.images[0]?.sm_img" :src="product.images[0]?.sm_img" alt="" />
+                  <nuxt-img v-else format="webp" src="/empty-img.png" alt="" />
                 </div>
                 <div class="checkout-info-product-card-body">
                   <p>{{ product?.info?.name }}</p>
@@ -1607,6 +1608,34 @@ export default {
   .chekout-footer-head p {
     margin: 0;
   }
+}
+@media (max-width: 576px) {
+  .os-vmodal {
+  padding: 0;
+  padding-top: 30px;
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  background-color: #fff;
+}
+.os-vmodal-btns {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 8px;
+    margin-top: 16px;
+}
+.so-modal-header {
+  padding: 0;
+  background-color: transparent;
+}
+.os-vmodal p {
+    font-size: 14px;
+    width: 80%;
+    margin-top: 16px;
+}
 }
 .max-dicoin-sum {
   display: flex;
