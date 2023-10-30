@@ -34,7 +34,8 @@ export default {};
   background: #f9f9f9;
   border-radius: 24px;
   padding: 72px 96px;
-  display: flex;
+  /* display: flex; */
+  display: none;
 }
 .categories-application-banner-info h2 {
   font-family: var(--SB_500);

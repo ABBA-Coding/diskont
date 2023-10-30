@@ -12,7 +12,7 @@
           {{
             $store.state.translations[month[moment(order?.updated_at).format("M") - 1]]
           }}
-          {{ moment(order?.updated_at).format("YYYY") }} y.,
+          {{ moment(order?.updated_at).format("YYYY") }} {{ $store.state.translations[`profile.year`] }}.,
           {{ moment(order?.updated_at).format("HH:mm") }}
         </p>
       </div>
@@ -100,7 +100,7 @@
           {{
             $store.state.translations[month[moment(order?.created_at).format("M") - 1]]
           }}
-          {{ moment(order?.created_at).format("YYYY") }} y.,
+          {{ moment(order?.created_at).format("YYYY") }} {{ $store.state.translations[`profile.year`] }}.,
           {{ moment(order?.created_at).format("HH:mm") }}</span
         >
       </div>
