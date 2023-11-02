@@ -37,14 +37,14 @@
         >
           {{ $store.state.translations["about.nation-trade"] }}
         </li> -->
-        <li
+        <!-- <li
           v-if="$store.state.translations['about.product-warranty']"
           class="tab"
           :class="{ active: activeTab == 'warranty' }"
           @click="scrollElement('warranty')"
         >
           {{ $store.state.translations["about.product-warranty"] }}
-        </li>
+        </li> -->
         <!-- <li
           v-if="$store.state.translations['about.returning-product']"
           class="tab"
@@ -363,7 +363,7 @@
         </div>
       </div>
       <div class="blocks-grid">
-        <div
+        <!-- <div
           class="block4"
           id="warranty"
           v-if="
@@ -385,7 +385,7 @@
               {{ $store.state.translations["about.block4-text2"] }}
             </p>
           </div>
-        </div>
+        </div> -->
         <!-- <div
           class="block5"
           id="tradeNation"
