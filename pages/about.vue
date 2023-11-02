@@ -29,14 +29,14 @@
         >
           {{ $store.state.translations["about.work-diskont"] }}
         </li>
-        <li
+        <!-- <li
           v-if="$store.state.translations['about.nation-trade']"
           class="tab"
           :class="{ active: activeTab == 'tradeNation' }"
           @click="scrollElement('tradeNation')"
         >
           {{ $store.state.translations["about.nation-trade"] }}
-        </li>
+        </li> -->
         <li
           v-if="$store.state.translations['about.product-warranty']"
           class="tab"
@@ -45,22 +45,22 @@
         >
           {{ $store.state.translations["about.product-warranty"] }}
         </li>
-        <li
+        <!-- <li
           v-if="$store.state.translations['about.returning-product']"
           class="tab"
           :class="{ active: activeTab == 'returnProduct' }"
           @click="scrollElement('returnProduct')"
         >
           {{ $store.state.translations["about.returning-product"] }}
-        </li>
-        <li
+        </li> -->
+        <!-- <li
           v-if="$store.state.translations['about.faq']"
           class="tab"
           :class="{ active: activeTab == 'faqs' }"
           @click="scrollElement('faqs')"
         >
           {{ $store.state.translations["about.faq"] }}
-        </li>
+        </li> -->
       </ul>
       <div
         class="block1"
@@ -386,7 +386,7 @@
             </p>
           </div>
         </div>
-        <div
+        <!-- <div
           class="block5"
           id="tradeNation"
           v-if="
@@ -408,8 +408,8 @@
           <div class="right">
             <nuxt-img format="webp" src="/BenefitsBlock_600-300-31102022 1.png" alt="" />
           </div>
-        </div>
-        <div
+        </div> -->
+        <!-- <div
           class="block6"
           id="returnProduct"
           v-if="
@@ -431,9 +431,9 @@
               {{ $store.state.translations["about.block6-text2"] }}
             </p>
           </div>
-        </div>
+        </div> -->
       </div>
-      <div class="faqs" id="faqs" v-if="faqs?.length > 0">
+      <!-- <div class="faqs" id="faqs" v-if="faqs?.length > 0">
         <h1>{{ $store.state.translations["about.faq"] }}</h1>
         <div class="grid">
           <div>
@@ -511,7 +511,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

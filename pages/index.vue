@@ -412,7 +412,7 @@ export default {
         },
       }),
       store.dispatch("fetchProducts/getShowcases", {
-        params: { limit: 6 },
+        params: { limit: 12 },
         headers: {
           lang: i18n.locale,
         },
