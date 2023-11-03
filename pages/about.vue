@@ -757,6 +757,7 @@ text-transform: uppercase;
   display: grid;
   grid-template-columns: 64px 1fr;
   grid-gap: 24px;
+  align-items: center;
 }
 .block3-card svg {
   width: 100%;

@@ -279,7 +279,7 @@ export default {
   margin-top: 10px;
 }
 .order-products_mobile {
-  display: none;
+  display: none !important;
 }
 .my-orders-card-body {
   display: flex;
@@ -377,7 +377,7 @@ export default {
     width: 100%;
   }
   .order-products_mobile {
-    display: grid;
+    display: grid !important;
   }
   .order-products_web {
     display: none !important;

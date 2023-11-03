@@ -1316,9 +1316,19 @@ export default {
   display: flex;
   align-items: center;
   color: #00b2a9;
+  transition: 0.3s;
 }
 .product-modal-show-more svg {
   margin-left: 9.7px;
+}
+.product-modal-show-more svg path {
+  transition: 0.3s;
+}
+.product-modal-show-more:hover {
+  color: var(--color_green);
+}
+.product-modal-show-more:hover svg path {
+  fill: var(--color_green);
 }
 .product-show-modal-header2 {
   display: flex;
@@ -1695,7 +1705,7 @@ export default {
     top: 10px;
   }
   .hover-btns:nth-child(2) {
-  top: 46px;
-}
+    top: 46px;
+  }
 }
 </style>

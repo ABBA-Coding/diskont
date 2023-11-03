@@ -50,7 +50,7 @@ export default {
 }
 
 .stocks-card-img {
-  height: 292px;
+  height: 210px;
   width: 100%;
   border-radius: 17.0888px;
   overflow: hidden;

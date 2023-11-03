@@ -166,37 +166,43 @@ export default {
       }
     },
     async __GET_PRODUCTS_COMP(dataForm) {
-      this.loading = await true;
-      const compData = await this.$store.dispatch(
-        "fetchProducts/getComparionsProductsById",
-        {
+      try {
+        this.loading = await true;
+        const compData = await this.$store.dispatch(
+          "fetchProducts/getComparionsProductsById",
+          {
+            data: dataForm,
+            params: {
+              params: { ...this.$route.query },
+              headers: { lang: this.$i18n.locale },
+            },
+          }
+        );
+        this.categories = await compData?.categories;
+        if (!this.$route.query?.category) {
+          await this.$router.replace({
+            path: this.$route.path,
+            query: { category: this.categories[0]?.id },
+          });
+          this.filterValue = this.categories[0]?.id;
+        } else {
+          this.filterValue = Number(this.$route.query?.category);
+        }
+        const productsData = await this.$store.dispatch("fetchProducts/getProductsById", {
           data: dataForm,
           params: {
             params: { ...this.$route.query },
             headers: { lang: this.$i18n.locale },
           },
-        }
-      );
-      this.categories = await compData?.categories;
-      if (!this.$route.query?.category) {
-        await this.$router.replace({
-          path: this.$route.path,
-          query: { category: this.categories[0]?.id },
         });
-        this.filterValue = this.categories[0]?.id;
-      } else {
-        this.filterValue = Number(this.$route.query?.category);
+        this.compProducts = productsData?.products;
+        this.comparisonData = compData?.data;
+        this.loading = false;
+      } catch (e) {
+        if (e.response.status == 404) {
+          location.href = "comparison";
+        }
       }
-      const productsData = await this.$store.dispatch("fetchProducts/getProductsById", {
-        data: dataForm,
-        params: {
-          params: { ...this.$route.query },
-          headers: { lang: this.$i18n.locale },
-        },
-      });
-      this.compProducts = productsData?.products;
-      this.comparisonData = compData?.data;
-      this.loading = false;
     },
   },
   watch: {
@@ -234,8 +240,9 @@ export default {
         // },5000)
       }
     },
-    comparisonChange() {
+    async comparisonChange() {
       let compProducts = JSON.parse(localStorage.getItem("comparison"));
+
       if (compProducts.length > 0) {
         this.__GET_PRODUCTS_COMP({ products: compProducts });
       } else {

@@ -203,6 +203,7 @@ body::-webkit-scrollbar-thumb {
   width: 18px;
   height: 18px;
   justify-content: center;
+  transform: translateY(-3px);
 }
 .categories-filter-select .ant-select-arrow i {
   color: black;
