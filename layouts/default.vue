@@ -317,8 +317,10 @@ export default {
       headers: {
         lang: this.$i18n.locale,
       },
-    }),
-      this.$store.dispatch("profileInfo", this.$route.path);
+    });
+    try {
+      await this.$store.dispatch("profileInfo", this.$route.path);
+    } catch (e) {}
     await this.$store.commit("reloadStore");
     this.afterReload = true;
   },

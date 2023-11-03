@@ -113,36 +113,38 @@ export const mutations = {
 };
 export const actions = {
   profileInfo({ commit }, payload) {
-    this.$axios
-      .$get("/profile/me", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("dis_auth_token")}`,
-        },
-      })
-      .then((res) => {
-        commit("getProfileInfo", res?.user);
-        commit("authHandler", res?.user);
-      })
-      .catch((e) => {
-        if (e.response.status == 401) {
-          try {
-            this.$axios.$post(
-              "/auth/logout",
-              {},
-              {
-                headers: {
-                  Authorization: `Bearer ${localStorage.getItem(
-                    "dis_auth_token"
-                  )}`,
-                },
-              }
-            );
-            commit("logout");
-          } catch (e) {
-            commit("logout");
+    if (localStorage.getItem("dis_auth_token")) {
+      this.$axios
+        .$get("/profile/me", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("dis_auth_token")}`,
+          },
+        })
+        .then((res) => {
+          commit("getProfileInfo", res?.user);
+          commit("authHandler", res?.user);
+        })
+        .catch((e) => {
+          if (e.response.status == 401) {
+            try {
+              this.$axios.$post(
+                "/auth/logout",
+                {},
+                {
+                  headers: {
+                    Authorization: `Bearer ${localStorage.getItem(
+                      "dis_auth_token"
+                    )}`,
+                  },
+                }
+              );
+              commit("logout");
+            } catch (e) {
+              commit("logout");
+            }
           }
-        }
-      });
+        });
+    }
   },
   logout({ commit }, payload) {
     try {
