@@ -160,7 +160,7 @@
       </div>
       <template slot="footer"> <h3></h3></template>
     </a-modal>
-    <a-back-top class="antd-to-top">
+    <!-- <a-back-top class="antd-to-top">
       <div class="ant-back-top-inner">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -186,7 +186,34 @@
           </defs>
         </svg>
       </div>
-    </a-back-top>
+    </a-back-top> -->
+    <div class="antd-to-top up" @click="scrollToTop">
+      <div class="ant-back-top-inner">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="67"
+          height="67"
+          viewBox="0 0 67 67"
+          fill="none"
+        >
+          <g clip-path="url(#clip0_2993_1967)">
+            <path
+              d="M67 33.5C67 14.9985 52.0015 0 33.5 0C14.9985 0 0 14.9985 0 33.5C0 52.0015 14.9985 67 33.5 67C52.0015 67 67 52.0015 67 33.5Z"
+              fill="white"
+            />
+            <path
+              d="M35.0607 21.9393C34.4749 21.3536 33.5251 21.3536 32.9393 21.9393L23.3934 31.4853C22.8076 32.0711 22.8076 33.0208 23.3934 33.6066C23.9792 34.1924 24.9289 34.1924 25.5147 33.6066L34 25.1213L42.4853 33.6066C43.0711 34.1924 44.0208 34.1924 44.6066 33.6066C45.1924 33.0208 45.1924 32.0711 44.6066 31.4853L35.0607 21.9393ZM35.5 44L35.5 23L32.5 23L32.5 44L35.5 44Z"
+              fill="#1F8A70"
+            />
+          </g>
+          <defs>
+            <clipPath id="clip0_2993_1967">
+              <rect width="67" height="67" fill="white" />
+            </clipPath>
+          </defs>
+        </svg>
+      </div>
+    </div>
     <div
       class="loader-container d-flex justify-content-center align-items-center"
       v-if="$store.state.loader"
@@ -267,6 +294,15 @@ export default {
     this.$store.commit("getTranslations", translationsData?.translates);
   },
   async mounted() {
+    function scrollUp() {
+      const navbar = document.querySelector(".up");
+      if (this.scrollY >= 50) {
+        navbar.classList.add("scroll");
+      } else {
+        navbar.classList.remove("scroll");
+      }
+    }
+    window.addEventListener("scroll", scrollUp);
     try {
       await this.$getLocation().then((coordinates) => {
         this.locations = coordinates;
@@ -307,6 +343,12 @@ export default {
     },
   },
   methods: {
+    scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    },
     openCategory() {
       this.categoryVisible = !this.categoryVisible;
     },
@@ -393,6 +435,17 @@ export default {
 };
 </script>
 <style lang="css" scoped>
+.up {
+  transition: 0.3s;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.up.scroll {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: initial;
+}
 .loader-container {
   height: 100vh;
   width: 100%;
@@ -661,6 +714,13 @@ export default {
   /* .antd-to-top {
     display: none !important;
   } */
+}
+.antd-to-top {
+  position: fixed;
+  z-index: 1000;
+  bottom: 108px;
+  right: 35px;
+  cursor: pointer;
 }
 .ant-back-top-inner {
   width: 67px;

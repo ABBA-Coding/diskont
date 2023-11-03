@@ -112,7 +112,9 @@
             </div>
           </div>
           <div class="main_info d-flex flex-column">
-            <span class="footer-logo" v-html="footerLogo"></span>
+            <nuxt-link :to="localePath('/')">
+              <span class="footer-logo" v-html="footerLogo"></span
+            ></nuxt-link>
             <span class="footer-tel"
               ><p>{{ $store.state.translations["main.feedback"] }}</p>
               <a
@@ -127,7 +129,10 @@
                 }}</a
               >
               <div class="footer-messangers">
-                <a target="_blank" :href="$store.state.siteInfo?.telegram" v-if="$store.state.siteInfo?.telegram"
+                <a
+                  target="_blank"
+                  :href="$store.state.siteInfo?.telegram"
+                  v-if="$store.state.siteInfo?.telegram"
                   ><span
                     ><svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -141,7 +146,10 @@
                         fill="#9BA2C3"
                       ></path></svg></span
                 ></a>
-                <a  target="_blank" :href="$store.state.siteInfo?.facebook" v-if="$store.state.siteInfo?.facebook"
+                <a
+                  target="_blank"
+                  :href="$store.state.siteInfo?.facebook"
+                  v-if="$store.state.siteInfo?.facebook"
                   ><span
                     ><svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -155,7 +163,10 @@
                         fill="#9BA2C3"
                       ></path></svg></span
                 ></a>
-                <a target="_blank" :href="$store.state.siteInfo?.twitter" v-if="$store.state.siteInfo?.twitter"
+                <a
+                  target="_blank"
+                  :href="$store.state.siteInfo?.twitter"
+                  v-if="$store.state.siteInfo?.twitter"
                   ><span
                     ><svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -169,7 +180,10 @@
                         fill="#9BA2C3"
                       ></path></svg></span
                 ></a>
-                <a target="_blank" :href="$store.state.siteInfo?.instagram" v-if="$store.state.siteInfo?.instagram"
+                <a
+                  target="_blank"
+                  :href="$store.state.siteInfo?.instagram"
+                  v-if="$store.state.siteInfo?.instagram"
                   ><span
                     ><svg
                       xmlns="http://www.w3.org/2000/svg"

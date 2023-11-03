@@ -2,7 +2,8 @@
   <div class="about-page">
     <div class="container_xl">
       <div class="banner">
-        <nuxt-img format="webp" src="/Frame 1000006088.png" alt="" />
+        <h1 class="banner-text" v-html="$store.state.translations['about.banner-text']"></h1>
+        <nuxt-img format="webp" src="/Web Banner 1632x276.png" alt="" />
       </div>
       <ul class="tabs">
         <li
@@ -554,7 +555,7 @@ export default {
     const faqs = faqData?.faq;
     setTimeout(() => {
       store.commit("loaderHandler", false);
-    },0)
+    }, 0);
     return {
       faqs,
     };
@@ -585,6 +586,26 @@ export default {
 };
 </script>
 <style lang="css" scoped>
+.banner {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  border-radius: 40px;
+  height: 276px;
+}
+.banner-text {
+  position: absolute;
+  color: #fff;
+  font-family: var(--SB_500);
+  color: #FFF;
+
+text-align: center;
+font-size: 48px;
+font-style: normal;
+font-weight: 700;
+line-height: 120%; /* 57.6px */
+text-transform: uppercase;
+}
 .block1-card svg {
   width: 24px;
   min-width: 24px;
@@ -936,6 +957,7 @@ export default {
     width: 100%;
     border-radius: 24px;
     overflow: hidden;
+    position: relative;
   }
   .banner img {
     height: 100%;

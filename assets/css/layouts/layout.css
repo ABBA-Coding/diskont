@@ -68,6 +68,7 @@
   align-items: center;
   padding: 4px 6px 4px 16px;
   position: relative;
+  overflow: hidden;
 }
 .search_input_container input {
   border: none;
@@ -75,7 +76,9 @@
   font-size: 16px;
   line-height: 19px;
   background: #f6f7f9;
-
+  margin-top: -10px;
+  margin-bottom: -10px;
+height: 100%;
   color: #000000;
 }
 .search_input_container input::placeholder {
