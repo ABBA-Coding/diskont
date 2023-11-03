@@ -291,7 +291,7 @@
       </div> -->
       <a-dropdown :trigger="['click']">
         <span class="mobile-lang ant-dropdown-link" @click="(e) => e.preventDefault()"
-          >Eng
+          >{{locales.find(item => item.code ==$i18n.locale ).name}}
           <!-- <svg
           xmlns="http://www.w3.org/2000/svg"
           width="12"
