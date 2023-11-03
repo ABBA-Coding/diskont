@@ -596,7 +596,7 @@ export default {
 .banner-text {
   position: absolute;
   color: #fff;
-  font-family: var(--SB_500);
+  font-family: var(--HB_700);
   color: #FFF;
 
 text-align: center;

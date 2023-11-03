@@ -18,7 +18,10 @@
   font-family: "SB_700";
   src: url("../fonts/SB_SANS/SB SANS TEXT BOLD.TTF"); /* IE9*/
 }
-
+@font-face {
+  font-family: "Halvar Breit";
+  src: url("../fonts/HalvarBreit-XBd.woff"); /* IE9*/
+}
 * {
   margin: 0;
   padding: 0;
@@ -35,6 +38,7 @@ body {
   --SB_500: "SB_500";
   --SB_600: "SB_600";
   --SB_700: "SB_700";
+  --HB_700: "Halvar Breit";
   --TT_neue_400: "SF_400";
   --color_green: #09454f;
   --color_dark_green: #09454f;
@@ -748,8 +752,8 @@ body::-webkit-scrollbar-thumb {
   }
 }
 @media (max-width: 576px) {
-  .swiper-pagination-banner,.swiper-pagination-banner-right {
+  .swiper-pagination-banner,
+  .swiper-pagination-banner-right {
     display: none !important;
   }
 }
-
