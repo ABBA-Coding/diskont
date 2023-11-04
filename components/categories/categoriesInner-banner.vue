@@ -2,7 +2,7 @@
   <div class="categories-inner-banner">
     <a :href="banner?.link">
       <img class="web_img" :src="banner?.lg_img" alt="" />
-      <img class="mobile_img" :src="banner?.lg_m_img" alt="" />
+      <img class="mobile_img" :src="banner?.lg_m_img || banner?.lg_img" alt="" />
 
     </a>
   </div>

@@ -1,7 +1,7 @@
 <template lang="html">
   <a :href="banner?.link">
     <div class="day-product-card">
-      <img class="day-product-card-bg mobile_img" :src="banner?.lg_m_img" alt="" />
+      <img class="day-product-card-bg mobile_img" :src="banner?.lg_m_img || banner?.lg_img" alt="" />
       <img class="day-product-card-bg web_img" :src="banner?.lg_img" alt="" />
       <div class="day-product-card-head">
         <h3>{{ $store.state.translations["main.daily-discounts"] }}</h3>

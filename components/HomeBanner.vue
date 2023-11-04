@@ -2,7 +2,7 @@
   <a :href="banner[0]?.link">
     <div class="home-banner">
       <img class="web_img" :src="banner[0]?.lg_img" alt="" />
-      <img class="mobile_img" :src="banner[0]?.lg_m_img" alt="" />
+      <img class="mobile_img" :src="banner[0]?.lg_m_img || banner[0]?.lg_img" alt="" />
     </div>
   </a>
 </template>
