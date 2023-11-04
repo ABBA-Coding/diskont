@@ -592,7 +592,7 @@
                 </div>
                 <p>
                   {{ $store.state.translations["main.available-sale"] }}
-                  {{ product?.stock > 0 ? product?.stock:0 }}
+                  {{ product?.stock > 0 ? product?.stock : 0 }}
                 </p>
               </div>
             </div>
@@ -671,7 +671,8 @@
                   :class="{
                     'disabled-btn':
                       !product?.stock ||
-                      $store.state.cart.find((item) => item.id == product?.id) || product?.stock < 0
+                      $store.state.cart.find((item) => item.id == product?.id) ||
+                      product?.stock < 0,
                   }"
                   class="cart"
                 >
@@ -726,7 +727,8 @@
                 :class="{
                   'disabled disabled-btn':
                     !product?.stock ||
-                    $store.state.cart.find((item) => item.id == product?.id) || product?.stock < 0
+                    $store.state.cart.find((item) => item.id == product?.id) ||
+                    product?.stock < 0,
                 }"
                 class="cart"
                 @click="
@@ -1694,7 +1696,7 @@ export default {
         },
       }),
       this.$store.dispatch("fetchProducts/getProducts", {
-        params: { limit: 12 },
+        params: { limit: 24, similar: this.$route.params.index },
         headers: {
           lang: this.$i18n.locale,
         },
