@@ -89,6 +89,9 @@ body::-webkit-scrollbar-thumb {
 .layout-back {
   margin-top: calc(170px + 29px);
 }
+.mobile_img {
+  display: none;
+}
 @media (max-width: 768px) {
   .layout-back {
     margin-top: calc(181px + 29px);
@@ -756,5 +759,11 @@ body::-webkit-scrollbar-thumb {
   .swiper-pagination-banner,
   .swiper-pagination-banner-right {
     display: none !important;
+  }
+  .mobile_img {
+    display: block;
+  }
+  .web_img {
+    display: none;
   }
 }

@@ -9,7 +9,8 @@
             :key="banner?.id"
           >
             <a :href="banner?.link">
-              <img :src="banner?.lg_img" alt="" />
+              <img class="web_img" :src="banner?.lg_img" alt="" />
+              <img class="mobile_img" :src="banner?.lg_m_img" alt="" />
             </a>
           </div>
         </BannerCarousel>
@@ -431,6 +432,7 @@ export default {
     const posts = posts1?.posts?.data;
     const showcases = showcasesData.showcases;
     const banners = bannersData?.banners?.data;
+    console.log(banners);
     setTimeout(() => {
       store.commit("loaderHandler", false);
     },0)
