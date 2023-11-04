@@ -1946,7 +1946,7 @@ export default {
 <style scoped>
 @import "../../assets/css/pages/product.css";
 .comment-modal-btns_mobile {
-  display: none;
+  display: none !important;
 }
 .comment-modal-btns_mobile .comment-rate {
   display: flex;
@@ -2953,7 +2953,7 @@ tbody .img {
 }
 @media screen and (max-width: 576px) {
   .comment-modal-btns_mobile {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
   }
   .comment-modal-btns_web {
