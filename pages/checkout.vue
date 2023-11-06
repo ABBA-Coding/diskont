@@ -329,7 +329,7 @@
                 {{ $store.state.translations["checkout.add-new-address"] }}
               </div>
             </div>
-            <div class="bottom-text web_blocks" >
+            <div class="bottom-text web_blocks">
               <span>
                 <a-checkbox
                   @change="onChange"
@@ -368,8 +368,15 @@
             </div>
             <div class="checkout-info-header checkout-total">
               <h4>{{ $store.state.translations["main.total"] }}</h4>
-              <h5 class="cursor-pointer" @click="$router.push(localePath('/basket'))">
-                {{ `${totalRealPrice}`.replace(/\B(?=(\d{3})+(?!\d))/g, " ") }} {{ $store.state.translations["main.som"] }}
+              <h5 class="cursor-pointer">
+                {{
+                  `${
+                    (sendDicoin
+                      ? reduceTotalPrice - dicoinSumm * $store.state.dicoin?.dicoin_to_sum
+                      : reduceTotalPrice) + deliveryCost
+                  }`.replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+                }}
+                {{ $store.state.translations["main.som"] }}
               </h5>
             </div>
             <div class="checkout-info-body">
@@ -416,7 +423,7 @@
                   {{ $store.state.translations["main.som"] }}
                 </p></span
               >
-              <span
+              <span class="web_blocks"
                 ><p>{{ $store.state.translations["checkout.total-sum"] }}</p>
                 <p>
                   {{
@@ -544,8 +551,12 @@
                 v-for="product in products"
                 :key="product.id"
               >
-                <div class="checkout-info-product-card-img " >
-                  <img v-if="product.images[0]?.sm_img" :src="product.images[0]?.sm_img" alt="" />
+                <div class="checkout-info-product-card-img">
+                  <img
+                    v-if="product.images[0]?.sm_img"
+                    :src="product.images[0]?.sm_img"
+                    alt=""
+                  />
                   <nuxt-img v-else format="webp" src="/empty-img.png" alt="" />
                 </div>
                 <div class="checkout-info-product-card-body">
@@ -648,16 +659,20 @@
                 {{ $store.state.translations["checkout.check-text5"] }}
               </p></span
             >
-            <span class="checkout-prob checkout-prob-web" @click="visibleCheckoutProblem = true">{{
-              $store.state.translations["checkout.problem-buy"]
-            }}</span>
+            <span
+              class="checkout-prob checkout-prob-web"
+              @click="visibleCheckoutProblem = true"
+              >{{ $store.state.translations["checkout.problem-buy"] }}</span
+            >
           </div>
           <div class="checkout-btn" @click="submit()">
             {{ $store.state.translations["checkout.purchase-formalization"] }}
           </div>
-          <span class="checkout-prob checkout-prob-mobile" @click="visibleCheckoutProblem = true">{{
-              $store.state.translations["checkout.problem-buy"]
-            }}</span>
+          <span
+            class="checkout-prob checkout-prob-mobile"
+            @click="visibleCheckoutProblem = true"
+            >{{ $store.state.translations["checkout.problem-buy"] }}</span
+          >
         </div>
       </div>
     </div>
@@ -1623,31 +1638,31 @@ export default {
 }
 @media (max-width: 576px) {
   .os-vmodal {
-  padding: 0;
-  padding-top: 30px;
-  margin-top: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* justify-content: center; */
-  background-color: #fff;
-}
-.os-vmodal-btns {
+    padding: 0;
+    padding-top: 30px;
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    background-color: #fff;
+  }
+  .os-vmodal-btns {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 8px;
     margin-top: 16px;
-}
-.so-modal-header {
-  padding: 0;
-  background-color: transparent;
-}
-.os-vmodal p {
+  }
+  .so-modal-header {
+    padding: 0;
+    background-color: transparent;
+  }
+  .os-vmodal p {
     font-size: 14px;
     width: 80%;
     margin-top: 16px;
-}
+  }
 }
 .max-dicoin-sum {
   display: flex;
