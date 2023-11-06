@@ -699,7 +699,9 @@ body::-webkit-scrollbar-thumb {
   }
   .wrap .mySwiper .swiper-slide {
     padding: 8px !important;
-    height: 70px !important;
+    height: 62px !important;
+    width: 62px !important;
+    max-width: 62px;
   }
   .mySwiper .swiper-slide-thumb-active {
     border-radius: 6px !important;
