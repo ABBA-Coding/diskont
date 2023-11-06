@@ -234,12 +234,12 @@
             </ul>
           </div>
           <div class="btns">
-            <a :href="`tel:${$store.state.siteInfo?.phone_number}`">{{
+            <a href="https://t.me/Diskontuz_jbot">{{
               $store.state.translations["about.block3-btn1"]
             }}</a>
-            <a :href="$store.state.siteInfo?.telegram">{{
+            <!-- <a href="https://t.me/Diskontuz_jbot">{{
               $store.state.translations["about.block3-btn2"]
-            }}</a>
+            }}</a> -->
           </div>
         </div>
         <div class="right">
@@ -806,11 +806,11 @@ text-transform: uppercase;
   background: var(--yashil, #1f8a70);
   color: #fff;
 }
-.block3 .btns a:last-child {
+/* .block3 .btns a:last-child {
   color: var(--diskont-yashil, #06858c);
   border: 1px solid #ebebeb;
   background: #fcfffe;
-}
+} */
 .block4 {
   display: grid;
   grid-template-columns: 1fr 2fr;
