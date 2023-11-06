@@ -100,7 +100,7 @@
               <b-skeleton width="100%" height="100%"></b-skeleton>
             </div>
           </div>
-          <div class="products-grid-6" v-if="showcases?.products?.length > 0 && !loading">
+          <div class="showcases_products showcases_products-grid" v-if="showcases?.products?.length > 0 && !loading">
             <ProductCard
               v-for="product in products"
               :key="product.id"
@@ -298,7 +298,7 @@ export default {
     const showcases = showcasesData?.showcase;
     setTimeout(() => {
       store.commit("loaderHandler", false);
-    },0)
+    }, 0);
     return {
       showcases,
     };
@@ -481,8 +481,19 @@ export default {
 .showcases_top {
   margin-bottom: 32px;
 }
-.showcases_products {
-  /* padding-top: 64px; */
+.showcases_products .product-card {
+  display: grid !important;
+}
+.showcases_products-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 20px;
+}
+@media screen and (max-width: 1600px) {
+  .showcases_products-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
 }
 @media (max-width: 1024px) {
   .showcases_top {
@@ -490,6 +501,16 @@ export default {
   }
   .showcases_products {
     padding-top: 24px;
+  }
+  .showcases_products-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+}
+@media (max-width: 576px) {
+  .showcases_products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 16px;
   }
 }
 </style>
