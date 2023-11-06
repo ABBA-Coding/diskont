@@ -329,7 +329,7 @@
                 {{ $store.state.translations["checkout.add-new-address"] }}
               </div>
             </div>
-            <div class="bottom-text">
+            <div class="bottom-text web_blocks" >
               <span>
                 <a-checkbox
                   @change="onChange"
@@ -353,7 +353,7 @@
                 $store.state.translations["checkout.problem-buy"]
               }}</span>
             </div>
-            <div class="checkout-btn" @click="submit()">
+            <div class="checkout-btn web_blocks" @click="submit()">
               {{ $store.state.translations["checkout.purchase-formalization"] }}
             </div>
           </div>
@@ -364,6 +364,12 @@
               <h4>{{ $store.state.translations["checkout.your-order"] }}</h4>
               <h5 class="cursor-pointer" @click="$router.push(localePath('/basket'))">
                 {{ $store.state.translations["checkout.to-cart"] }}
+              </h5>
+            </div>
+            <div class="checkout-info-header checkout-total">
+              <h4>{{ $store.state.translations["main.total"] }}</h4>
+              <h5 class="cursor-pointer" @click="$router.push(localePath('/basket'))">
+                {{ `${totalRealPrice}`.replace(/\B(?=(\d{3})+(?!\d))/g, " ") }} {{ $store.state.translations["main.som"] }}
               </h5>
             </div>
             <div class="checkout-info-body">
@@ -566,7 +572,7 @@
           </div>
         </div>
         <div class="what adress-space">
-          <div v-if="form.delivery_method == 'courier'">
+          <!-- <div v-if="form.delivery_method == 'courier'">
             <h6>{{ $store.state.translations["checkout.address-list"] }}</h6>
             {{ $store.state.profile.address }}
             <div
@@ -623,7 +629,7 @@
               ></span>
               {{ $store.state.translations["checkout.add-new-address"] }}
             </div>
-          </div>
+          </div> -->
           <div class="bottom-text">
             <span>
               <a-checkbox
@@ -642,13 +648,16 @@
                 {{ $store.state.translations["checkout.check-text5"] }}
               </p></span
             >
-            <span class="checkout-prob" @click="visibleCheckoutProblem = true">{{
+            <span class="checkout-prob checkout-prob-web" @click="visibleCheckoutProblem = true">{{
               $store.state.translations["checkout.problem-buy"]
             }}</span>
           </div>
           <div class="checkout-btn" @click="submit()">
             {{ $store.state.translations["checkout.purchase-formalization"] }}
           </div>
+          <span class="checkout-prob checkout-prob-mobile" @click="visibleCheckoutProblem = true">{{
+              $store.state.translations["checkout.problem-buy"]
+            }}</span>
         </div>
       </div>
     </div>
@@ -1584,8 +1593,11 @@ export default {
   display: none;
 }
 @media screen and (max-width: 1024px) {
-  .adress-space {
+  /* .adress-space {
     display: none;
+  } */
+  .web_blocks {
+    display: none !important;
   }
   .what {
     display: block;
