@@ -367,20 +367,18 @@ export default {
           message: "Success",
           description: "Successful changed",
         });
+        localStorage.setItem("dis_auth_token", data?.new_token);
         this.__GET_PROFILE_INFO();
       } catch (e) {}
     },
     submitForm() {
-      if (!this.form.password) {
-        this.$notification.error({
-          message: "Error",
-          description: "Password is required",
-        });
-      }
-      if (
-        !this.$store.state.profile.password_updated &&
-        this.form.password != this.form.password_confirmation
-      ) {
+      // if (!this.form.password) {
+      //   this.$notification.error({
+      //     message: "Error",
+      //     description: "Password is required",
+      //   });
+      // }
+      if (this.form.password != this.form.password_confirmation) {
         this.passwordConfirmationError = true;
       } else {
         const data = {

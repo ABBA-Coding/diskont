@@ -182,7 +182,6 @@ export default {
     ]);
     const promotion = promotionsData?.promotion;
     const allCategories = promotionsData?.categories;
-    console.log("test");
     setTimeout(() => {
       store.commit("loaderHandler", false);
     }, 0);

@@ -432,7 +432,6 @@ export default {
     const posts = posts1?.posts?.data;
     const showcases = showcasesData.showcases;
     const banners = bannersData?.banners?.data;
-    console.log(banners);
     setTimeout(() => {
       store.commit("loaderHandler", false);
     },0)

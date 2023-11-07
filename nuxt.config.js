@@ -22,7 +22,7 @@ export default {
       },
       {
         src:
-        "https://www.googletagmanager.com/gtag/js?id=G-8DLJ722N8S",
+        "https://www.googletagmanager.com/gtag/js?id=G-GR6G58Y9Z3",
         async: true
       },
     ],
