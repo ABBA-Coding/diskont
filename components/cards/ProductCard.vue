@@ -1168,7 +1168,7 @@ export default {
   transition: 0.3s;
 }
 .hover-btns:hover > svg path {
-  fill: var(--color_green);
+  /* fill: var(--color_green); */
 }
 .active-comparison > svg path {
   fill: var(--color_green);

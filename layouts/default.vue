@@ -740,6 +740,9 @@ export default {
   .wrapper {
     grid-template-columns: 450px 1fr;
   }
+  .layout-back {
+    padding-bottom: 80px;
+  }
 }
 @media (max-width: 768px) {
   .wheel-box {
@@ -778,6 +781,18 @@ export default {
   }
   .right {
     padding: 64px 0 24px 0;
+  }
+  .ant-back-top-inner {
+    width: 50px;
+    height: 50px;
+  }
+  .ant-back-top-inner svg {
+    height: 100%;
+    width: 100%;
+  }
+  .antd-to-top {
+    bottom: 146px;
+    right: 16px;
   }
 }
 @media (max-width: 414px) {

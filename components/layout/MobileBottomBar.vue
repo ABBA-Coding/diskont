@@ -32,7 +32,11 @@
           </button>
         </li>
         <li>
-          <NuxtLink to="/likes" class="link">
+          <NuxtLink
+            to="/likes"
+            class="link"
+            :class="{ active: $route.name.includes('likes__') }"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="27"
@@ -62,7 +66,11 @@
           </NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/basket" class="link">
+          <NuxtLink
+            to="/basket"
+            class="link"
+            :class="{ active: $route.name.includes('basket__') }"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -112,7 +120,11 @@
           </NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/comparison" class="link">
+          <NuxtLink
+            to="/comparison"
+            class="link"
+            :class="{ active: $route.name.includes('comparison__') }"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="28"
@@ -163,7 +175,11 @@
           </NuxtLink>
         </li>
         <li>
-          <button @click="toProfile(true)" class="link">
+          <button
+            @click="toProfile(true)"
+            class="link"
+            :class="{ active: $route.name.includes('profile-') }"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="29"
@@ -207,6 +223,9 @@ export default {
         this.$store.commit("authVisibleChange", true);
       }
     },
+  },
+  mounted() {
+    console.log(this.$route);
   },
 };
 </script>
@@ -252,5 +271,11 @@ export default {
   background: transparent;
   border: none;
   width: 100%;
+}
+.wrap .active {
+  color: #1f8a70;
+}
+.wrap .active svg path {
+  fill: #1f8a70;
 }
 </style>

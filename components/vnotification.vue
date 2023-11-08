@@ -111,4 +111,26 @@ export default {
     width: 90%;
   }
 }
+@media screen and (max-width: 576px) {
+  .v-notification {
+    padding: 16px;
+    border-radius: 12px;
+    grid-template-columns: 85px auto;
+  }
+  .v-notification-body h4 {
+    font-family: var(--SB_600);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 150%;
+    color: #000000;
+  }
+  .v-notification-body p {
+    display: none;
+  }
+  .v-notification-icon svg {
+    width: 64px;
+    height: 64px;
+  }
+}
 </style>

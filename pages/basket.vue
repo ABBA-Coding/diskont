@@ -285,7 +285,12 @@
                         /></svg
                     ></span>
                     {{ $store.state.cart.find((item) => item.id == product.id)?.count }}
-                    <span @click="$store.commit('productCountUp', { id: product.id })"
+                    <span
+                      @click="
+                        $store.state.cart.find((item) => item.id == product?.id)?.count <
+                          product?.stock &&
+                          $store.commit('productCountUp', { id: product.id })
+                      "
                       ><svg
                         width="11"
                         height="11"
@@ -841,9 +846,12 @@ export default {
   .mobile__card {
     display: block;
   }
+  .mobile__card .content {
+    width: 100%;
+  }
   .mobile__card .top {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+grid-template-columns: 6fr 1fr;
     margin-bottom: 18px;
   }
   .mobile__card .left {
@@ -881,6 +889,7 @@ export default {
     display: flex;
     flex-direction: column;
     gap: 22px;
+    align-items: flex-end;
   }
   .mobile__card .bottom {
     display: flex;

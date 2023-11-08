@@ -293,6 +293,9 @@
   display: none !important;
 }
 @media (max-width: 576px) {
+  .main-title h2 {
+    margin-bottom: 0;
+  }
   .personal-info-card {
     border: none;
   }
@@ -328,7 +331,7 @@
     grid-gap: 64px;
   }
   .personal-info-card-header2 h3 {
-padding-bottom: 16px;
+    padding-bottom: 16px;
   }
   .web_edit_btns {
     display: none !important;

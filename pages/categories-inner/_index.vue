@@ -13,12 +13,12 @@
             {{ categoryChilds?.parent?.parent?.name }}
           </nuxt-link>
 
-            <nuxt-link
-              v-if="categoryChilds?.parent?.slug"
-              :to="localePath(`/categories-inner/${categoryChilds?.parent?.slug}`)"
-            >
-              {{ categoryChilds?.parent?.name }}
-            </nuxt-link>
+          <nuxt-link
+            v-if="categoryChilds?.parent?.slug"
+            :to="localePath(`/categories-inner/${categoryChilds?.parent?.slug}`)"
+          >
+            {{ categoryChilds?.parent?.name }}
+          </nuxt-link>
 
           <nuxt-link :to="localePath('/')">
             {{ categoryChilds?.name }}
@@ -398,6 +398,7 @@
               class="categories-filter-select"
               placeholder="Select good person"
               style="width: 252px"
+              @change="($event) => sortAction($event)"
             >
               <a-select-option
                 v-for="item in sortItems"
@@ -821,7 +822,7 @@ export default {
     const allInfo = categoryData;
     setTimeout(() => {
       store.commit("loaderHandler", false);
-    },0)
+    }, 0);
     return {
       productsOthers,
       allCategories,
@@ -869,6 +870,9 @@ export default {
       }
       return arr.length;
     },
+    filterClear() {
+      return Object.keys(this.$route.query).length;
+    },
   },
   methods: {
     showAllAtributs(id) {
@@ -885,13 +889,14 @@ export default {
       }
     },
     clearFilter() {
-      this.$router.replace({
-        path: `/categories-inner/${this.$route.params.index}`,
-        query: {
-          page: this.$route.query.page,
-        },
-      });
-      this.filterOptions = [];
+      try {
+        this.$router.replace({
+          query: {
+            page: this.$route.query.page,
+          },
+        });
+        this.filterOptions = [];
+      } catch (e) {}
     },
     async __GET_PRODUCTS() {
       this.loading = true;
@@ -985,9 +990,7 @@ export default {
         this.__GET_PRODUCTS();
       }
     },
-  },
-  watch: {
-    async sort(val) {
+    async sortAction(val) {
       let filterObj = {
         ...this.$route.query,
         sort: val,
@@ -1008,9 +1011,15 @@ export default {
         this.__GET_PRODUCTS({ ...this.$route.query });
       }
     },
-
+  },
+  watch: {
     async current(val) {
       this.changePagination(val, "__GET_PRODUCTS");
+    },
+    filterClear(val) {
+      if (val == 1) {
+        this.sort = "all";
+      }
     },
     filterAtributs(val) {
       if (val == 0) this.filterOptions = [];
@@ -1101,7 +1110,7 @@ export default {
 }
 @media (max-width: 576px) {
   .categories-atribute-box {
- margin-top: 24px;
-}
+    margin-top: 24px;
+  }
 }
 </style>

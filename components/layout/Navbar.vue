@@ -291,7 +291,7 @@
       </div> -->
       <a-dropdown :trigger="['click']">
         <span class="mobile-lang ant-dropdown-link" @click="(e) => e.preventDefault()"
-          >{{locales.find(item => item.code ==$i18n.locale ).name}}
+          >{{ locales.find((item) => item.code == $i18n.locale).name }}
           <!-- <svg
           xmlns="http://www.w3.org/2000/svg"
           width="12"
@@ -1175,6 +1175,7 @@ export default {
   text-align: right;
   letter-spacing: 0.05em;
   color: #ff4f2d;
+  pointer-events: none;
 }
 .seach-resoult-mask {
   position: absolute;
@@ -1342,6 +1343,30 @@ export default {
   }
   .vmodal-anim-header {
     height: 200px;
+  }
+  .vmodal-anim-header span {
+    top: 16px;
+    right: 16px;
+  }
+  .vmodal-anim-header {
+    height: 150px;
+  }
+  .vmodal-anim-header h5 {
+    font-size: 20px;
+    width: 85%;
+    z-index: 2;
+  }
+  .vmodal-anim-header .shadow-ell-1,
+  .vmodal-anim-header .shadow-ell-2 {
+    z-index: 1;
+    pointer-events: none;
+  }
+  .register-input .ant-form-explain,
+  .sms_code_error .sms_code_error_text {
+    right: 12px;
+    font-family: var(--SB_400);
+    font-size: 12px;
+    line-height: 16px;
   }
 }
 </style>

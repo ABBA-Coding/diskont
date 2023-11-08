@@ -35,7 +35,7 @@
           </a-select>
         </div>
         <div>
-          <div class="mobile__filter">
+          <div class="mobile__filter showcase_filter">
             <button class="sort" @click="sortHande = true">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -511,6 +511,9 @@ export default {
   .showcases_products-grid {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 16px;
+  }
+  .showcase_filter {
+    margin-top: 16px;
   }
 }
 </style>

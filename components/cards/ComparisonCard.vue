@@ -503,5 +503,19 @@ export default {
   .comp-delete {
     display: none;
   }
+  .comparison-card-body {
+    border: 0;
+    padding: 8px 0;
+  }
+  .comparison-card-characteristic {
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+  }
+  .comparison-card-characteristic p {
+    font-size: 12px;
+  }
+  .comparison-card-characteristic p span {
+    font-size: 14px;
+  }
 }
 </style>

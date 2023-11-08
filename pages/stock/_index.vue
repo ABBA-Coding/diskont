@@ -170,16 +170,18 @@ export default {
   },
   async asyncData({ store, params, i18n }) {
     store.commit("loaderHandler", true);
-    const [promotionsData] = await Promise.all([
-      store.dispatch("fetchPromotions/getPromotionsBySlug", {
-        slug: params.index,
-        params: {
-          headers: {
-            lang: i18n.locale,
+    try {
+      const [promotionsData] = await Promise.all([
+        store.dispatch("fetchPromotions/getPromotionsBySlug", {
+          slug: params.index,
+          params: {
+            headers: {
+              lang: i18n.locale,
+            },
           },
-        },
-      }),
-    ]);
+        }),
+      ]);
+    } catch (e) {}
     const promotion = promotionsData?.promotion;
     const allCategories = promotionsData?.categories;
     setTimeout(() => {

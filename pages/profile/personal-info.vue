@@ -293,7 +293,7 @@ export default {
       arrow: require("../../assets/svg/dropdown-icon.svg?raw"),
       save: require("../../assets/svg/Stroke 3.svg?raw"),
       close: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <path d="M6.66699 6.64648L17.333 17.3105M6.66699 17.3105L17.333 6.64648" stroke="url(#paint0_linear_2584_34453)" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M6.66699 6.64648L17.333 17.3105M6.66699 17.3105L17.333 6.64648" stroke="red" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
   <defs>
     <linearGradient id="paint0_linear_2584_34453" x1="6.66699" y1="17.3105" x2="6.66699" y2="6.64648" gradientUnits="userSpaceOnUse">
       <stop stop-color="#f5363e"/>
@@ -365,7 +365,7 @@ export default {
         this.profileEdit = false;
         this.$notification.success({
           message: "Success",
-          description: "Successful changed",
+          description: this.$store.state.translations["profile.success-toast"],
         });
         localStorage.setItem("dis_auth_token", data?.new_token);
         this.__GET_PROFILE_INFO();
