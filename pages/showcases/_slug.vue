@@ -231,7 +231,7 @@
           <!-- <span class="categories-list_show-more">{{ $store.state.translations["main.show-more"] }}</span> -->
         </div>
         <div class="categories-atribute-box">
-          <button class="confirm" @click="sortHande = false">
+          <button class="confirm w-100" @click="sortHande = false">
             {{ $store.state.translations["category.show-resoult"] }}
           </button>
         </div>

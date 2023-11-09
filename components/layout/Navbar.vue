@@ -264,6 +264,7 @@
       <div class="d-flex align-items-center">
         <button @click="catalogMenu = !catalogMenu" class="drawer-btn">
           <svg
+            v-if="!catalogMenu"
             xmlns="http://www.w3.org/2000/svg"
             width="45"
             height="45"
@@ -279,6 +280,97 @@
               stroke-linejoin="round"
             />
           </svg>
+          <span v-else class="d-flex align-items-center justify-content-center" style="width: 45px; height: 45px">
+            <svg
+              xmlns:dc="http://purl.org/dc/elements/1.1/"
+              xmlns:cc="http://creativecommons.org/ns#"
+              xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+              xmlns:svg="http://www.w3.org/2000/svg"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+              xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+              version="1.1"
+              id="svg2"
+              height="24"
+              width="24"
+              sodipodi:docname="close_icon_grey.svg"
+              inkscape:export-filename="D:\Загрузки\close_icon_black2.svg.png"
+              inkscape:export-xdpi="72.959999"
+              inkscape:export-ydpi="72.959999"
+              inkscape:version="0.92.3 (2405546, 2018-03-11)"
+            >
+              <sodipodi:namedview
+                pagecolor="#ffffff"
+                bordercolor="#666666"
+                borderopacity="1"
+                objecttolerance="10"
+                gridtolerance="10"
+                guidetolerance="10"
+                inkscape:pageopacity="0"
+                inkscape:pageshadow="2"
+                inkscape:window-width="1366"
+                inkscape:window-height="706"
+                id="namedview3731"
+                showgrid="false"
+                inkscape:zoom="15.245222"
+                inkscape:cx="5.6822049"
+                inkscape:cy="12.495936"
+                inkscape:window-x="-8"
+                inkscape:window-y="-8"
+                inkscape:window-maximized="1"
+                inkscape:current-layer="imagebot_2"
+              />
+              <defs id="defs13" />
+              <metadata id="imagebot_6">
+                image/svg+xml<rdf:RDF>
+                  <cc:Work rdf:about="">
+                    <dc:format>image/svg+xml</dc:format>
+                    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+                    <dc:title />
+                  </cc:Work>
+                </rdf:RDF>
+              </metadata>
+              <g
+                transform="translate(3.9661017,3.5677966)"
+                id="imagebot_2"
+                label="Layer 1"
+              >
+                <path
+                  inkscape:connector-curvature="0"
+                  stroke-miterlimit="4"
+                  d="M -2.5783352e-4,-0.00146808 17.435473,18.212367"
+                  id="imagebot_5"
+                  style="
+                    opacity: 1;
+                    fill: #98a0a6;
+                    stroke: #98a0a6;
+                    stroke-width: 3.23161912;
+                    stroke-linecap: round;
+                    stroke-miterlimit: 4;
+                    fill-opacity: 1;
+                    stroke-opacity: 1;
+                  "
+                />
+                <path
+                  inkscape:connector-curvature="0"
+                  stroke-miterlimit="4"
+                  d="M -2.5783352e-4,18.212367 17.435473,-0.00146808"
+                  id="imagebot_4"
+                  style="
+                    opacity: 1;
+                    fill: #98a0a6;
+                    stroke: #98a0a6;
+                    stroke-width: 3.23161912;
+                    stroke-linecap: round;
+                    stroke-miterlimit: 4;
+                    fill-opacity: 1;
+                    stroke-opacity: 1;
+                  "
+                />
+                <title id="title9">Layer 1</title>
+              </g>
+            </svg>
+          </span>
         </button>
         <nuxt-link :to="localePath('/')"
           ><span class="nav_logo" v-html="navLogoMobile"></span
@@ -291,7 +383,10 @@
       </div> -->
       <a-dropdown :trigger="['click']">
         <span class="mobile-lang ant-dropdown-link" @click="(e) => e.preventDefault()"
-          >{{ locales.find((item) => item.code == $i18n.locale).name }}
+          >
+          <div v-html="flags[$i18n.locale]"></div>
+         
+          {{ locales.find((item) => item.code == $i18n.locale).name }}
           <!-- <svg
           xmlns="http://www.w3.org/2000/svg"
           width="12"
@@ -546,6 +641,34 @@ export default {
   props: ["categoryVisible"],
   data() {
     return {
+      flags: {
+        ru: ` <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+  <g clip-path="url(#clip0_12590_2058)">
+    <path d="M14 4.66687H0V9.33379H14V4.66687Z" fill="#006BB5"/>
+    <path d="M14 0H0V4.66691H14V0Z" fill="white"/>
+    <path d="M14 9.33313H0V14H14V9.33313Z" fill="#DA2128"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_12590_2058">
+      <rect width="14" height="14" rx="7" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>`,
+uz:`<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+  <g clip-path="url(#clip0_12605_1565)">
+    <path d="M0.330402 4.86993C0.11084 5.55861 -0.000616573 6.27717 2.56529e-06 7.00001C2.56529e-06 7.74271 0.116202 8.4588 0.330402 9.13009L7 9.43459L13.6696 9.13009C13.8838 8.4581 14 7.74271 14 7.00001C14.0007 6.27694 13.8892 5.55814 13.6696 4.86923L7 4.56543L0.330402 4.86993Z" fill="#F0F0F0"/>
+    <path d="M13.669 4.86923L6.99941 4.56543L0.329816 4.86923C0.266076 5.06966 0.21142 5.27286 0.166016 5.47822H13.8328C13.7874 5.27286 13.7328 5.06965 13.669 4.86923ZM0.166016 8.5218C0.212216 8.7283 0.266816 8.9313 0.330516 9.13079L7.00011 9.43459L13.669 9.13009C13.733 8.92968 13.7879 8.72648 13.8335 8.5211L0.166016 8.5218Z" fill="#D80027"/>
+    <path d="M6.99968 13.9997C10.1231 13.9997 12.7677 11.9544 13.6693 9.12988H0.330078C1.23168 11.9544 3.87768 13.9997 6.99968 13.9997Z" fill="#6DA544"/>
+    <path d="M6.99968 0C3.87628 0 1.23168 2.04538 0.330078 4.86986H13.6693C12.7677 2.04538 10.1231 0 6.99968 0Z" fill="#338AF3"/>
+    <path d="M3.19865 2.89067C3.19865 2.23548 3.65925 1.68808 4.27455 1.55368C4.07439 1.5095 3.86687 1.5108 3.66728 1.55748C3.4677 1.60417 3.28113 1.69504 3.12133 1.82341C2.96153 1.95178 2.83258 2.11438 2.74398 2.29921C2.65537 2.48404 2.60938 2.6864 2.60938 2.89137C2.60938 3.09635 2.65537 3.29871 2.74398 3.48354C2.83258 3.66837 2.96153 3.83096 3.12133 3.95933C3.28113 4.08771 3.4677 4.17858 3.66728 4.22526C3.86687 4.27194 4.07439 4.27324 4.27455 4.22906C3.96951 4.16204 3.69653 3.99279 3.50085 3.74937C3.30518 3.50596 3.19855 3.20299 3.19865 2.89067ZM5.08374 3.51367L5.17684 3.79857H5.47645L5.23424 3.97497L5.32664 4.26056L5.08374 4.08416L4.84154 4.26056L4.93394 3.97497L4.69104 3.79857H4.99134L5.08374 3.51367ZM6.04134 3.51367L6.13444 3.79857H6.43474L6.19184 3.97497L6.28424 4.26056L6.04134 4.08416L5.79914 4.26056L5.89154 3.97497L5.64864 3.79857H5.94894L6.04134 3.51367ZM6.99964 3.51367L7.09204 3.79857H7.39164L7.14944 3.97497L7.24184 4.26056L6.99964 4.08416L6.75744 4.26056L6.84984 3.97497L6.60694 3.79857H6.90724L6.99964 3.51367ZM7.95654 3.51367L8.04964 3.79857H8.34924L8.10704 3.97497L8.19944 4.26056L7.95654 4.08416L7.71434 4.26056L7.80674 3.97497L7.56384 3.79857H7.86414L7.95654 3.51367ZM8.91414 3.51367L9.00724 3.79857H9.30684L9.06464 3.97497L9.15704 4.26056L8.91414 4.08416L8.67194 4.26056L8.76434 3.97497L8.52144 3.79857H8.82174L8.91414 3.51367ZM6.04134 2.51758L6.13444 2.80247H6.43474L6.19184 2.97887L6.28424 3.26447L6.04134 3.08807L5.79914 3.26447L5.89154 2.97887L5.64864 2.80247H5.94894L6.04134 2.51758ZM6.99964 2.51758L7.09204 2.80247H7.39164L7.14944 2.97887L7.24184 3.26447L6.99964 3.08807L6.75744 3.26447L6.84984 2.97887L6.60694 2.80247H6.90724L6.99964 2.51758ZM7.95654 2.51758L8.04964 2.80247H8.34924L8.10704 2.97887L8.19944 3.26447L7.95654 3.08807L7.71434 3.26447L7.80674 2.97887L7.56384 2.80247H7.86414L7.95654 2.51758ZM8.91414 2.51758L9.00724 2.80247H9.30684L9.06464 2.97887L9.15704 3.26447L8.91414 3.08807L8.67194 3.26447L8.76434 2.97887L8.52144 2.80247H8.82174L8.91414 2.51758ZM6.99964 1.52148L7.09204 1.80638H7.39164L7.14944 1.98278L7.24184 2.26838L6.99964 2.09268L6.75744 2.26908L6.84984 1.98348L6.60694 1.80708H6.90724L6.99964 1.52218V1.52148ZM7.95654 1.52148L8.04964 1.80638H8.34924L8.10704 1.98278L8.19944 2.26838L7.95654 2.09198L7.71434 2.26838L7.80674 1.98278L7.56384 1.80638H7.86414L7.95654 1.52148ZM8.91414 1.52148L9.00724 1.80638H9.30684L9.06464 1.98278L9.15704 2.26838L8.91414 2.09198L8.67194 2.26838L8.76434 1.98278L8.52144 1.80638H8.82174L8.91414 1.52148Z" fill="#F0F0F0"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_12605_1565">
+      <rect width="14" height="14" rx="7" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>`
+      },
       locales: [
         { id: 1, code: "uz", name: "O'z" },
         // {
@@ -744,7 +867,7 @@ export default {
   display: flex;
   gap: 8px;
   align-items: center;
-  margin-right: 16px;
+  /* margin-right: 16px; */
 }
 .lang-menu {
   display: flex;
