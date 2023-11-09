@@ -729,6 +729,51 @@ import CategoriesTabCarousel from "../../components/categories/categoriesInner-t
 import global from "../../mixins/global";
 export default {
   mixins: [global],
+  head() {
+    const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true });
+    return {
+      title: this.categoryChilds?.name,
+
+      meta: [
+        {
+          name: "title",
+          content: this.categoryChilds?.name,
+        },
+        {
+          name: "keywords",
+          content: this.categoryChilds?.meta_keywords,
+        },
+        {
+          name: "description",
+          content: this.categoryChilds?.meta_desc,
+        },
+        { hid: "og-title", property: "og:title", content: this.categoryChilds.name },
+        {
+          hid: "og-description",
+          property: "og:description",
+          content: this.categoryChilds?.desc
+            ?.replaceAll("<p>", "")
+            ?.replaceAll("</p>", ""),
+        },
+        { hid: "og-type", property: "og:type", content: "website" },
+        {
+          hid: "og-url",
+          property: "og:url",
+          content: process.env.URL + "/" + this.$route.fullPath,
+        },
+
+        ...i18nHead.meta,
+      ],
+      link: [
+        {
+          rel: "icon",
+          type: "image/x-icon",
+          href: this.$store.state.siteInfo?.sm_favicon,
+        },
+        ...i18nHead.link,
+      ],
+    };
+  },
   data() {
     return {
       filterHandle: false,
@@ -823,6 +868,8 @@ export default {
     setTimeout(() => {
       store.commit("loaderHandler", false);
     }, 0);
+    console.log(categoryChilds);
+    console.log(categoryChilds);
     return {
       productsOthers,
       allCategories,
