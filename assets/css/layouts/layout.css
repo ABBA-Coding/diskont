@@ -78,7 +78,7 @@
   background: #f6f7f9;
   margin-top: -10px;
   margin-bottom: -10px;
-height: 100%;
+  height: 100%;
   color: #000000;
 }
 .search_input_container input::placeholder {
@@ -349,9 +349,8 @@ height: 100%;
   margin-right: 9px;
 }
 
-.main_info .stores-link{
+.main_info .stores-link {
   margin-bottom: 16px;
-
 }
 .footer_menu h4 {
   font-family: var(--SB_700);
@@ -579,6 +578,22 @@ height: 100%;
   border: none;
   background-color: transparent;
   margin-right: 18px;
+}
+@media (max-width: 1440px) {
+  .header-navbar_navbar ul {
+    padding-left: 16px;
+  }
+  .header-navbar_navbar ul li:not(:last-child) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  .header-navbar_navbar ul li svg {
+    margin-right: 12px;
+  }
+  .header-navbar_navbar ul li:last-child {
+    padding: 10px;
+  }
 }
 @media (max-width: 768px) {
   .header-navbar_web {

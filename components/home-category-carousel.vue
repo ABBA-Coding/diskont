@@ -117,7 +117,14 @@ export default {
   overflow: hidden;
   width: 100%;
 }
-
+@media (max-width: 1320px) {
+  .swiper-button-prev-category {
+    left: -8px;
+  }
+  .swiper-button-next-category {
+    right: -8px;
+  }
+}
 @media screen and (max-width: 1024px) {
   .swiper-button-next-category,
   .swiper-button-prev-category {

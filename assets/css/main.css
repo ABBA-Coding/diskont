@@ -696,6 +696,11 @@ body::-webkit-scrollbar-thumb {
     margin-bottom: 20px !important;
   }
 }
+@media (max-width: 1440px) {
+  .container_xl {
+    padding: 0 16px;
+  }
+}
 @media (max-width: 1024px) {
   .container_xl {
     padding: 0 16px;
