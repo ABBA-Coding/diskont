@@ -755,7 +755,6 @@ uz:`<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 
       } else {
         this.currentCategory = null;
       }
-      console.log("val", this.currentCategory);
     },
     clearSearchResoults() {
       localStorage.setItem("search_resoults", JSON.stringify([]));

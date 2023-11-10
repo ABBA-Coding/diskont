@@ -868,8 +868,6 @@ export default {
     setTimeout(() => {
       store.commit("loaderHandler", false);
     }, 0);
-    console.log(categoryChilds);
-    console.log(categoryChilds);
     return {
       productsOthers,
       allCategories,

@@ -1680,7 +1680,6 @@ export default {
         this.locations = coordinates;
       });
     } catch (e) {
-      console.log(e);
     }
     const [productData, productsData] = await Promise.all([
       this.$store.dispatch("fetchProducts/getProductsBySlug", {
