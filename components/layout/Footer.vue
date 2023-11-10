@@ -296,7 +296,7 @@
                 <nuxt-img format="webp" src="/click.uz.png" alt="" />
               </span>
               <span>
-                <nuxt-img format="webp" src="/payme.uz.png" alt="" />
+                <nuxt-img format="webp" src="/payme.uz1.png" alt="" />
               </span>
               <!-- <span>
                 <nuxt-img format="webp" src="/uzum.png" alt="" />
