@@ -163,7 +163,7 @@
                         /></svg
                     ></span>
                     <span v-else></span>
-                    <nuxt-img format="webp" src="/payme.uz.png" alt="" />
+                    <nuxt-img format="webp" src="/payme.uz1.png" alt="" />
                   </div>
                   <!-- <div class="pay-card" @click="form.payment_method = 'payze'">
                     <span v-if="form.payment_method == 'payze'" class="step-active"
