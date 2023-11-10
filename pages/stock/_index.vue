@@ -181,16 +181,16 @@ export default {
           },
         }),
       ]);
+      const promotion = promotionsData?.promotion;
+      const allCategories = promotionsData?.categories;
+      setTimeout(() => {
+        store.commit("loaderHandler", false);
+      }, 0);
+      return {
+        promotion,
+        allCategories,
+      };
     } catch (e) {}
-    const promotion = promotionsData?.promotion;
-    const allCategories = promotionsData?.categories;
-    setTimeout(() => {
-      store.commit("loaderHandler", false);
-    }, 0);
-    return {
-      promotion,
-      allCategories,
-    };
   },
   computed: {
     currentQuery() {

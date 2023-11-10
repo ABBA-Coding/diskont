@@ -186,7 +186,15 @@
         <p class="block-text">
           {{ $store.state.translations["about.block2-text1"] }}
         </p>
-
+        <p class="block-text">
+          {{ $store.state.translations["about.block2-text12"] }}
+        </p>
+        <p class="block-text">
+          {{ $store.state.translations["about.block2-text13"] }}
+        </p>
+        <p class="block-text">
+          {{ $store.state.translations["about.block2-text14"] }}
+        </p>
         <nuxt-img format="webp" src="/AdobeStock_573155258 1.png" alt="" />
         <p class="block-text">
           {{ $store.state.translations["about.block2-text2"] }}
