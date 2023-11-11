@@ -75,7 +75,6 @@ export default {
         this.loading = false;
       } catch (e) {
         this.loading = false;
-        console.log(e);
         if (e.response.status == 401) this.$store.dispatch("logout");
       }
     },
