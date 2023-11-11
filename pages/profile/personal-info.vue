@@ -81,7 +81,7 @@
                 <p>{{ $store.state.translations["profile.text-2"] }}</p>
 
                 <span>
-                  <a-switch default-checked @change="onChange" /><span
+                  <a-switch :checked="Boolean(form.subscriber)" @change="onChange" /><span
                     class="sms-title"
                     >{{ $store.state.translations["profile.by-sms"] }}</span
                   ></span
@@ -347,6 +347,7 @@ export default {
           phone_number: this.profile.login ? `+${this.profile.login}` : "",
           region_id: this.profile.region_id ? this.profile.region_id : "",
           district_id: this.profile.district_id ? this.profile.district_id : "",
+          subscriber: this.profile?.subscriber,
         };
         this.skeleton = false;
       } catch (e) {
@@ -395,7 +396,9 @@ export default {
         });
       }
     },
-    onChange(checked) {},
+    onChange(checked) {
+      this.__EDIT_PROFILE_INFO({ ...this.form, subscriber: checked ? 1 : 0 });
+    },
   },
   watch: {
     checkAuth(val) {
