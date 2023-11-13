@@ -100,7 +100,7 @@
     <div class="product-card-body">
       <nuxt-link :to="localePath(`/product/${product?.slug}`)">
         <h3 class="product-card-title">
-          {{ product?.info?.name ? product?.info?.name : "---" }}
+          {{ product?.name ? product?.name : "---" }}
         </h3>
       </nuxt-link>
       <p v-if="product.info.stars">
