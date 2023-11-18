@@ -162,11 +162,16 @@
   .product-grid .product-card:nth-child(8),
   .product-grid .product-card:nth-child(9),
   .product-grid .product-card:nth-child(10),
-  .product-grid-6 .product-card:first-child,
-  .product-grid-6 .product-card:nth-child(2),
-  .product-grid-6 .product-card:nth-child(3),
-  .product-grid-6 .product-card:nth-child(4),
-  .product-grid-6 .product-card:nth-child(5) {
+  .products-grid-6 .product-card:first-child,
+  .products-grid-6 .product-card:nth-child(2),
+  .products-grid-6 .product-card:nth-child(3),
+  .products-grid-6 .product-card:nth-child(4),
+  .products-grid-6 .product-card:nth-child(5),
+  .products-grid-6 .product-card:nth-child(6),
+  .products-grid-6 .product-card:nth-child(7),
+  .products-grid-6 .product-card:nth-child(8),
+  .products-grid-6 .product-card:nth-child(9),
+  .products-grid-6 .product-card:nth-child(10) {
     display: grid;
   }
   .posts.container_xl {
@@ -210,10 +215,14 @@
   .product-grid .product-card:nth-child(6),
   .product-grid .product-card:nth-child(7),
   .product-grid .product-card:nth-child(8),
-  .product-grid-6 .product-card:first-child,
-  .product-grid-6 .product-card:nth-child(2),
-  .product-grid-6 .product-card:nth-child(3),
-  .product-grid-6 .product-card:nth-child(4) {
+  .products-grid-6 .product-card:first-child,
+  .products-grid-6 .product-card:nth-child(2),
+  .products-grid-6 .product-card:nth-child(3),
+  .products-grid-6 .product-card:nth-child(4),
+  .products-grid-6 .product-card:nth-child(5),
+  .products-grid-6 .product-card:nth-child(6),
+  .products-grid-6 .product-card:nth-child(7),
+  .products-grid-6 .product-card:nth-child(8) {
     display: grid !important;
   }
 }
