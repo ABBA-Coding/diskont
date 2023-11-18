@@ -3,12 +3,12 @@
     <div class="container_xl">
       <div class="page-breadcrumb">
         <nuxt-link class="disabled" :to="localePath('/')">
-          {{ $store.state.translations["product.stores-title"] }}
+          {{ $store.state.translations["main.stores-title"] }}
         </nuxt-link>
       </div>
       <div class="d-flex page-container-title">
         <div class="d-flex align-items-end">
-          <MainTitle :title="$store.state.translations['product.stores-title']" />
+          <MainTitle :title="$store.state.translations['main.stores-title']" />
           <span class="d-flex align-items-end"
             >{{ branches?.length }}
             {{ $store.state.translations["product.stores-count"] }}</span

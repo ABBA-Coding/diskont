@@ -881,6 +881,7 @@ export default {
   },
 
   mounted() {
+    console.log(this.$route);
     this.getFirstData("__GET_PRODUCTS");
     this.sortItems = [
       {
